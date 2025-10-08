@@ -3,8 +3,12 @@
 # Define the library name
 set(LIB_NAME ${CMAKE_PROJECT_NAME})
 
+add_subdirectory(algorithms)
+
 # Collect all source files recursively (headers and implementations)
-file(GLOB_RECURSE lib_sources "*/*.h*" "*/*.cpp*")
+file(GLOB_RECURSE lib_sources "${CMAKE_CURRENT_LIST_DIR}/config/*.h" "${CMAKE_CURRENT_LIST_DIR}/config/*.cpp"
+        "${CMAKE_CURRENT_LIST_DIR}/model/*.h" "${CMAKE_CURRENT_LIST_DIR}/model/*.cpp"
+        "${CMAKE_CURRENT_LIST_DIR}/parser/*.h" "${CMAKE_CURRENT_LIST_DIR}/util/*.cpp")
 
 # Configure threading support with pthread preference
 # Required for Boost.Thread and other thread-dependent components
@@ -13,6 +17,7 @@ find_package(Threads REQUIRED)
 
 # Build core project as a static library
 add_library(${LIB_NAME} STATIC ${lib_sources})
+target_link_libraries(${LIB_NAME} PUBLIC algos)
 
 # Link essential dependencies
 # PRIVATE: Boost and threading internals (implementation details)

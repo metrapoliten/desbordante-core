@@ -1,13 +1,11 @@
-set(NAME pipelines)
-
-add_library(${NAME} STATIC)
+add_library(pipelines STATIC)
 
 file(GLOB_RECURSE pipelines_sources
-        "${CMAKE_CURRENT_SOURCE_DIR}/*.h"
-        "${CMAKE_CURRENT_SOURCE_DIR}/*.cpp"
+        "${CMAKE_CURRENT_LIST_DIR}/*.h"
+        "${CMAKE_CURRENT_LIST_DIR}/*.cpp"
 )
 
-target_sources(${NAME}
+target_sources(pipelines
         PUBLIC
         FILE_SET HEADERS
         PUBLIC

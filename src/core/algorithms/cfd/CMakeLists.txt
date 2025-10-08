@@ -1,8 +1,6 @@
-set(NAME CFD)
+add_library(CFD STATIC)
 
-add_library(${NAME} STATIC)
-
-target_sources(${NAME}
+target_sources(CFD
         PUBLIC
         FILE_SET HEADERS
         PUBLIC
