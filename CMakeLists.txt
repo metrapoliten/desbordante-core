@@ -312,15 +312,15 @@ endif()
 
 # --- Core Project Structure and Module Setup ---
 
-include_directories(
-    "src/core"
-    "src/core/algorithms"
-    "src/core/model"
-    "src/core/model/types"
-    "src/core/parser"
-    "src/core/util"
-    "src/core/config"
-)
+#include_directories(
+#    "src/core"
+#    "src/core/algorithms"
+#    "src/core/model"
+#    "src/core/model/types"
+#    "src/core/parser"
+#    "src/core/util"
+#    "src/core/config"
+#)
 
 add_subdirectory("src/core")
 
