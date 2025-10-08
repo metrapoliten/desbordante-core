@@ -1,13 +1,11 @@
-set(NAME IND)
-
-add_library(${NAME} STATIC)
+add_library(IND STATIC)
 
 file(GLOB_RECURSE ind_sources
-        "${CMAKE_CURRENT_SOURCE_DIR}/*.h"
-        "${CMAKE_CURRENT_SOURCE_DIR}/*.cpp"
+        "${CMAKE_CURRENT_LIST_DIR}/*.h"
+        "${CMAKE_CURRENT_LIST_DIR}/*.cpp"
 )
 
-target_sources(${NAME}
+target_sources(IND
         PUBLIC
         FILE_SET HEADERS
         PUBLIC
