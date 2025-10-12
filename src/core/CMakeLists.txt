@@ -3,13 +3,14 @@
 # Define the library name
 set(LIB_NAME ${CMAKE_PROJECT_NAME})
 
-add_subdirectory(algorithms)
-
 # Collect all source files recursively (headers and implementations)
-file(GLOB_RECURSE lib_sources "${CMAKE_CURRENT_LIST_DIR}/config/*.h" "${CMAKE_CURRENT_LIST_DIR}/config/*.cpp"
+file(GLOB_RECURSE lib_sources
         "${CMAKE_CURRENT_LIST_DIR}/model/*.h" "${CMAKE_CURRENT_LIST_DIR}/model/*.cpp"
         "${CMAKE_CURRENT_LIST_DIR}/parser/*.h" "${CMAKE_CURRENT_LIST_DIR}/parser/*.cpp"
         "${CMAKE_CURRENT_LIST_DIR}/util/*.h" "${CMAKE_CURRENT_LIST_DIR}/util/*.cpp")
+
+add_subdirectory(config)
+add_subdirectory(algorithms)
 
 # Configure threading support with pthread preference
 # Required for Boost.Thread and other thread-dependent components
