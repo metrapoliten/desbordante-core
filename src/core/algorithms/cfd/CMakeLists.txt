@@ -5,9 +5,10 @@ target_sources(CFD
             FILE_SET privateHeaders
             TYPE HEADERS
             BASE_DIRS
+                cfd_verifier
                 model
                 util
-                cfd_verifier
+
         PUBLIC
         cfd_verifier/cfd_stats_calculator.cpp
         cfd_verifier/cfd_verifier.cpp
