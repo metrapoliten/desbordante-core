@@ -5,8 +5,8 @@
 #include <type_traits>
 #include <vector>
 
-#include "algorithms/algorithms.h"
-#include "algorithms/create_algorithm.h"
+#include "algorithms.h"
+#include "create_algorithm.h"
 #include "config/names.h"
 #include "tabular_data/input_tables_type.h"
 

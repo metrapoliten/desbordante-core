@@ -21,4 +21,16 @@ add_subdirectory(od)
 add_subdirectory(statistics)
 add_subdirectory(ucc)
 
-target_link_libraries(algos PUBLIC AC AR CFD DC DD FD GFD IND MD METRIC NAR ND OD pipelines stat ucc)
+function(link_targets_with_algos)
+    foreach(TARGET IN LISTS ARGN)
+        if(TARGET ${TARGET})
+            target_link_libraries(${TARGET} PRIVATE algos)
+        else()
+            message(WARNING "Target '${TARGET}' doesn't exist")
+        endif()
+    endforeach()
+endfunction()
+
+link_targets_with_algos(CFD)
+
+target_link_libraries(AR CFD DC DD FD GFD IND MD METRIC NAR ND OD stat ucc)
