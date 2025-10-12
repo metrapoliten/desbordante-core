@@ -7,12 +7,6 @@ if(CMAKE_VERSION VERSION_GREATER_EQUAL 4.0)
     message(FATAL_ERROR "The project does not currently support versions 4.0 or higher.")
 endif()
 
-cmake_policy(SET CMP0167 NEW)
-#if(POLICY CMP0167)
-#    # deprecated by definition, but we use old behaviour for find_package(Boost) to load CMake's FindBoost module
-#    # TODO: port project to "Modern CMake" https://gist.github.com/mbinna/c61dbb39bca0e4fb7d1f73b0d66a4fd1
-#    cmake_policy(SET CMP0167 OLD)
-#endif()
 if(POLICY CMP0144)
     cmake_policy(SET CMP0144 NEW)
 endif()
@@ -303,16 +297,6 @@ endif()
 find_package(Boost 1.85.0 REQUIRED COMPONENTS ${boost_libraries})
 
 # --- Core Project Structure and Module Setup ---
-
-#include_directories(
-#    "src/core"
-#    "src/core/algorithms"
-#    "src/core/model"
-#    "src/core/model/types"
-#    "src/core/parser"
-#    "src/core/util"
-#    "src/core/config"
-#)
 
 add_subdirectory("src/core")
 
