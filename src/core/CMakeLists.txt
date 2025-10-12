@@ -20,6 +20,7 @@ add_library(${BINARY} STATIC ${lib_sources})
 target_link_libraries(
     ${BINARY}
     PRIVATE ${Boost_LIBRARIES} # Boost components specified in find_package
+            Boost::headers
             Threads::Threads # System threading library
     PUBLIC easyloggingpp # Logging infrastructure exposed in headers
 )
