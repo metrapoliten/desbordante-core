@@ -8,9 +8,9 @@
 
 #include <boost/any.hpp>
 
-#include "algorithms/algorithm.h"
-#include "algorithms/cfd/model/cfd_relation_data.h"
-#include "algorithms/cfd/model/cfd_types.h"
+#include "algorithm.h"
+#include "model/cfd_relation_data.h"
+#include "model/cfd_types.h"
 #include "config/tabular_data/input_table_type.h"
 
 // see algorithms/cfd/LICENSE

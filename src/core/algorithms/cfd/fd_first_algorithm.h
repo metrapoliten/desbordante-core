@@ -1,7 +1,7 @@
 #pragma once
 
-#include "algorithms/cfd/model/partition_tidlist.h"
-#include "algorithms/cfd/util/prefix_tree.h"
+#include "model/partition_tidlist.h"
+#include "util/prefix_tree.h"
 #include "cfd_discovery.h"
 #include "enums.h"
 #include "miner_node.h"

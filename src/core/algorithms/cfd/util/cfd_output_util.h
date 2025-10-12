@@ -4,8 +4,8 @@
 #include <optional>
 #include <string>
 
-#include "algorithms/cfd/model/cfd_relation_data.h"
-#include "algorithms/cfd/model/cfd_types.h"
+#include "model/cfd_relation_data.h"
+#include "model/cfd_types.h"
 
 // see algorithms/cfd/LICENSE
 
