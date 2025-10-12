@@ -2,11 +2,12 @@
 
 cmake_minimum_required(VERSION 3.25)
 
-if(POLICY CMP0167)
-    # deprecated by definition, but we use old behaviour for find_package(Boost) to load CMake's FindBoost module
-    # TODO: port project to "Modern CMake" https://gist.github.com/mbinna/c61dbb39bca0e4fb7d1f73b0d66a4fd1
-    cmake_policy(SET CMP0167 OLD)
-endif()
+cmake_policy(SET CMP0167 NEW)
+#if(POLICY CMP0167)
+#    # deprecated by definition, but we use old behaviour for find_package(Boost) to load CMake's FindBoost module
+#    # TODO: port project to "Modern CMake" https://gist.github.com/mbinna/c61dbb39bca0e4fb7d1f73b0d66a4fd1
+#    cmake_policy(SET CMP0167 OLD)
+#endif()
 if(POLICY CMP0144)
     cmake_policy(SET CMP0144 NEW)
 endif()
@@ -288,19 +289,10 @@ set(Boost_USE_STATIC_LIBS OFF)
 
 set(boost_libraries container thread graph)
 if (COMPILE_BENCHMARKS)
-	list(APPEND boost_libraries program_options)
+    list(APPEND boost_libraries program_options)
 endif()
 
 find_package(Boost 1.85.0 REQUIRED COMPONENTS ${boost_libraries})
-if(Boost_FOUND)
-    message(STATUS "Found Boost include dirs: ${Boost_INCLUDE_DIRS}")
-    include_directories(${Boost_INCLUDE_DIRS})
-    message(STATUS "Found Boost library dirs: ${Boost_LIBRARY_DIRS}")
-else()
-    message(FATAL_ERROR "Boost not found. If boost is installed specify environment"
-                        "variables like \"BOOST_ROOT\" for hint to CMake where to search"
-    )
-endif()
 
 # --- Core Project Structure and Module Setup ---
 

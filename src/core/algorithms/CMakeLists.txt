@@ -18,7 +18,6 @@ add_subdirectory(metric)
 add_subdirectory(nar)
 add_subdirectory(nd)
 add_subdirectory(od)
-add_subdirectory(pipelines)
 add_subdirectory(statistics)
 add_subdirectory(ucc)
 
