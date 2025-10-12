@@ -20,6 +20,17 @@ find_package(Threads REQUIRED)
 add_library(${LIB_NAME} STATIC ${lib_sources})
 target_link_libraries(${LIB_NAME} PUBLIC algos)
 
+
+#if(Boost_FOUND)
+#    message(STATUS "Found Boost include dirs: ${Boost_INCLUDE_DIRS}")
+#    include_directories(${Boost_INCLUDE_DIRS})
+#    message(STATUS "Found Boost library dirs: ${Boost_LIBRARY_DIRS}")
+#else()
+#    message(FATAL_ERROR "Boost not found. If boost is installed specify environment"
+#            "variables like \"BOOST_ROOT\" for hint to CMake where to search"
+#    )
+#endif()
+
 # Link essential dependencies
 # PRIVATE: Boost and threading internals (implementation details)
 # PUBLIC: easyloggingpp affects public interface (logging in headers)
