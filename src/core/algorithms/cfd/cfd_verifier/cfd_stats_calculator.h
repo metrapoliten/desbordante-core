@@ -8,8 +8,8 @@
 
 #include <boost/functional/hash.hpp>
 
-#include "cfd_relation_data.h"
-#include "cfd_types.h"
+#include "model/cfd_relation_data.h"
+#include "model/cfd_types.h"
 #include "highlight.h"
 
 namespace algos::cfd_verifier {
