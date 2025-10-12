@@ -300,15 +300,6 @@ if (COMPILE_BENCHMARKS)
 endif()
 
 find_package(Boost 1.85.0 REQUIRED COMPONENTS ${boost_libraries})
-if(Boost_FOUND)
-    message(STATUS "Found Boost include dirs: ${Boost_INCLUDE_DIRS}")
-    include_directories(${Boost_INCLUDE_DIRS})
-    message(STATUS "Found Boost library dirs: ${Boost_LIBRARY_DIRS}")
-else()
-    message(FATAL_ERROR "Boost not found. If boost is installed specify environment"
-                        "variables like \"BOOST_ROOT\" for hint to CMake where to search"
-    )
-endif()
 
 # --- Core Project Structure and Module Setup ---
 
