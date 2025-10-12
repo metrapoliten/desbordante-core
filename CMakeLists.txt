@@ -2,12 +2,11 @@
 
 cmake_minimum_required(VERSION 3.25)
 
-cmake_policy(SET CMP0167 NEW)
-#if(POLICY CMP0167)
-#    # deprecated by definition, but we use old behaviour for find_package(Boost) to load CMake's FindBoost module
-#    # TODO: port project to "Modern CMake" https://gist.github.com/mbinna/c61dbb39bca0e4fb7d1f73b0d66a4fd1
-#    cmake_policy(SET CMP0167 OLD)
-#endif()
+if(POLICY CMP0167)
+    # deprecated by definition, but we use old behaviour for find_package(Boost) to load CMake's FindBoost module
+    # TODO: port project to "Modern CMake" https://gist.github.com/mbinna/c61dbb39bca0e4fb7d1f73b0d66a4fd1
+    cmake_policy(SET CMP0167 OLD)
+endif()
 if(POLICY CMP0144)
     cmake_policy(SET CMP0144 NEW)
 endif()
