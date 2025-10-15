@@ -1,20 +1,25 @@
 add_library(CFD STATIC)
 
 target_sources(CFD
+        INTERFACE
+            FILE_SET interfaceHeaders
+            TYPE HEADERS
+            FILES
+            model/cfd_relation_data.h
         PUBLIC
             FILE_SET HEADERS
-            BASE_DIRS ${CMAKE_CURRENT_SOURCE_DIR}/model
+            BASE_DIRS ${CMAKE_CURRENT_LIST_DIR}
             FILES
-                model/cfd_column_data.h
-                model/cfd_relation_data.h
-                model/cfd_types.h
-                model/partition_tidlist.h
-                model/raw_cfd.h
-        PRIVATE
-            FILE_SET privateHeaders
-            TYPE HEADERS
-            BASE_DIRS ${CMAKE_CURRENT_SOURCE_DIR}
-            FILES
+#                model/cfd_column_data.h
+#
+#                model/cfd_types.h
+#                model/partition_tidlist.h
+#                model/raw_cfd.h
+#        PRIVATE
+#            FILE_SET privateHeaders
+#            TYPE HEADERS
+#            BASE_DIRS ${CMAKE_CURRENT_LIST_DIR}
+#            FILES
                 cfd_verifier/cfd_stats_calculator.h
                 cfd_verifier/cfd_verifier.h
                 util/cfd_output_util.h
@@ -44,10 +49,6 @@ target_sources(CFD
 
 #target_include_directories(CFD
 #        PUBLIC
-#        # This makes model headers available to both CFD and its dependents
 #        "$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>"
-#        PRIVATE
-#        # Additional private includes if needed
-#        "$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/cfd_verifier>"
-#        "$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/util>"
+#        "$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/model>"
 #)
