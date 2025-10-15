@@ -1,10 +1,3 @@
-add_library(algos STATIC)
-
-target_sources(algos
-        PUBLIC
-        FILE_SET HEADERS
-        PUBLIC algo_factory.cpp algorithm.cpp)
-
 add_subdirectory(algebraic_constraints)
 add_subdirectory(association_rules)
 add_subdirectory(cfd)
@@ -23,6 +16,8 @@ add_subdirectory(ucc)
 
 target_link_libraries(IND PRIVATE CFD)
 
+add_library(algos STATIC)
+
 function(link_targets_with_algos)
     foreach(TARGET IN LISTS ARGN)
         if(TARGET ${TARGET})
@@ -34,3 +29,8 @@ function(link_targets_with_algos)
 endfunction()
 
 link_targets_with_algos(AR CFD DC DD FD GFD IND MD METRIC NAR ND OD stat ucc)
+
+target_sources(algos
+        PUBLIC
+        FILE_SET HEADERS
+        PRIVATE algo_factory.cpp algorithm.cpp)
