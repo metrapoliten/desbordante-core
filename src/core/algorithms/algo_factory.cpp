@@ -5,9 +5,15 @@
 #include <type_traits>
 #include <vector>
 
-#include "algorithms.h"
+#include <boost/mp11/algorithm.hpp>
+#include <boost/type_index.hpp>
+
+#include "algorithm.h"
+#include "algorithm_types.h"
 #include "create_algorithm.h"
 #include "config/names.h"
+#include "csv_parser/csv_parser.h"
+#include "tabular_data/input_table_type.h"
 #include "tabular_data/input_tables_type.h"
 
 namespace algos {
