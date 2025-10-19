@@ -3,7 +3,12 @@ add_library(CFD STATIC)
 target_sources(CFD
         PUBLIC
             FILE_SET HEADERS
-            FILES model/cfd_relation_data.h
+            FILES
+                cfd_verifier/cfd_verifier.h
+                mining_algorithms.h
+        PRIVATE
+            FILE_SET privateHeaders
+            TYPE HEADERS
         PRIVATE
             model/cfd_relation_data.cpp
             model/partition_tidlist.cpp

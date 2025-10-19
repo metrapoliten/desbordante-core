@@ -13,15 +13,27 @@ add_subdirectory(nd)
 add_subdirectory(od)
 add_subdirectory(statistics)
 add_subdirectory(ucc)
+add_subdirectory(common)
 
-target_link_libraries(IND PRIVATE CFD)
+function(link_targets_with_create)
+    foreach(TARGET IN LISTS ARGN)
+        if(TARGET ${TARGET})
+            target_link_libraries(create INTERFACE ${TARGET})
+        else()
+            message(WARNING "Target '${TARGET}' doesn't exist")
+        endif()
+    endforeach()
+endfunction()
 
-add_library(algos STATIC)
+link_targets_with_create(AR CFD DC DD FD GFD IND MD METRIC NAR ND OD stat ucc)
+target_link_libraries(IND PRIVATE create)
+
+add_library(algos)
 
 function(link_targets_with_algos)
     foreach(TARGET IN LISTS ARGN)
         if(TARGET ${TARGET})
-            target_link_libraries(algos PUBLIC ${TARGET})
+            target_link_libraries(algos PRIVATE ${TARGET})
         else()
             message(WARNING "Target '${TARGET}' doesn't exist")
         endif()
@@ -29,8 +41,3 @@ function(link_targets_with_algos)
 endfunction()
 
 link_targets_with_algos(AR CFD DC DD FD GFD IND MD METRIC NAR ND OD stat ucc)
-
-target_sources(algos
-        PUBLIC
-        FILE_SET HEADERS
-        PRIVATE algo_factory.cpp algorithm.cpp)
