@@ -13,7 +13,30 @@ add_subdirectory(nd)
 add_subdirectory(od)
 add_subdirectory(statistics)
 add_subdirectory(ucc)
-add_subdirectory(common)
+
+add_library(common)
+target_sources(common
+    PUBLIC
+        FILE_SET HEADERS
+        FILES
+            algorithm.h
+            algo_factory.h
+        PRIVATE
+            algo_factory.cpp
+            algorithm.cpp
+)
+
+add_library(create INTERFACE)
+target_sources(create
+    PRIVATE
+        FILE_SET HEADERS
+        FILES
+            algorithms.h
+            algorithm_types.h
+            create_algorithm.h
+)
+
+target_link_libraries(common PRIVATE create)
 
 function(link_targets_with_create)
     foreach(TARGET IN LISTS ARGN)
