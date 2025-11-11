@@ -79,7 +79,7 @@ function(link_algos_with_headers)
     endforeach()
 endfunction()
 
-link_algos_with_headers(AR CFD DC DD FD GFD IND MD METRIC NAR ND OD stat ucc)
+link_algos_with_headers(AR cfd cfd_verifier DC DD FD GFD IND MD METRIC NAR ND OD stat ucc)
 #link_targets_with_create(AR CFD DC DD FD GFD IND MD METRIC NAR ND OD stat ucc)
 #target_link_libraries(IND PRIVATE create)
 
@@ -105,4 +105,4 @@ function(link_targets_with_algos)
     endforeach()
 endfunction()
 
-link_targets_with_algos(AR CFD DC DD FD GFD IND MD METRIC NAR ND OD stat ucc)
+link_targets_with_algos(AR cfd cfd_verifier DC DD FD GFD IND MD METRIC NAR ND OD stat ucc)

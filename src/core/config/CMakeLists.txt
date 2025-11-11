@@ -4,6 +4,9 @@ target_sources(config
         PUBLIC
         FILE_SET HEADERS
         PUBLIC
+        column_index/option.cpp
+        column_index/validate_index.cpp
+
         custom_random_seed/option.cpp
 
         equal_nulls/option.cpp
@@ -13,7 +16,6 @@ target_sources(config
         error_measure/option.cpp
 
         indices/option.cpp
-        indices/validate_index.cpp
 
         max_arity/option.cpp
 
