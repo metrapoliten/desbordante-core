@@ -1,8 +1,38 @@
+function(add_headers TARGET SCOPE)
+    set(files ${ARGN})
+
+    if(NOT TARGET ${HD_TARGET})
+        message(FATAL_ERROR "[add_headers] TARGET \"${HD_TARGET}\" не существует.")
+    endif()
+
+    if(SCOPE STREQUAL "PUBLIC")
+        set(FILESET_NAME "HEADERS")
+    elseif(SCOPE STREQUAL "PRIVATE")
+        set(FILESET_NAME "privateHeaders")
+    elseif(SCOPE STREQUAL "INTERFACE")
+        set(FILESET_NAME "interfaceHeaders")
+    else()
+        message(FATAL_ERROR
+                "[add_headers] Некорректная SCOPE: \"${HD_SCOPE}\". "
+                "Ожидается PUBLIC, PRIVATE или INTERFACE."
+        )
+    endif()
+
+    target_sources(${TARGET}
+            ${SCOPE}
+            FILE_SET ${FILESET_NAME}
+            TYPE HEADERS
+            BASE_DIRS ${PROJECT_SOURCE_DIR}/src/core
+            FILES ${files}
+    )
+endfunction()
+
+
 set(ALGO_SUBDIRS
         algebraic_constraints
         association_rules
         cfd
-#        dc
+        dc
         dd
         fd
         gfd
@@ -31,8 +61,8 @@ target_sources(algos
     PUBLIC
         FILE_SET HEADERS
         FILES
-        algorithm.h
-        algo_factory.h
+            algo_factory.h
+            algorithm.h
     PRIVATE
         algo_factory.cpp
         algorithm.cpp
@@ -54,5 +84,5 @@ function(target_link_with_algos)
     endforeach()
 endfunction()
 
-target_link_with_algos(ac ar cfd.cfd cfd.verifier dc.fastadc dc.verifier DD FD GFD IND MD METRIC NAR ND OD stat ucc)
+target_link_with_algos(ac ar cfd.cfd cfd.verifier dc.fastadc dc.verifier dd.verifier dd.split FD GFD IND MD METRIC NAR ND OD stat ucc)
 #target_link_libraries(algos PUBLIC AC AR cfd.cfd cfd.verifier DC DD FD GFD IND MD METRIC NAR ND OD stat ucc)

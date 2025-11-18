@@ -1,6 +1,7 @@
 add_subdirectory(cfd_verifier)
 
 add_library(cfd.cfd)
+add_library(cfd::cfd ALIAS cfd.cfd)
 add_library(cfd.model)
 add_library(cfd.util)
 
@@ -17,11 +18,11 @@ target_sources(cfd.cfd
         FILES
             cfd_discovery.h
             miner_node.h
-    INTERFACE
-        FILE_SET interfaceHeaders
-        BASE_DIRS ${PROJECT_SOURCE_DIR}/src/core
-        TYPE HEADERS
-        FILES mining_algorithms.h
+#    INTERFACE
+#        FILE_SET interfaceHeaders
+#        BASE_DIRS ${PROJECT_SOURCE_DIR}/src/core
+#        TYPE HEADERS
+#        FILES mining_algorithms.h
     PRIVATE
         cfd_discovery.cpp
         fd_first_algorithm.cpp
@@ -69,6 +70,5 @@ target_sources(cfd.util
         util/tidlist_util.cpp
 )
 
-target_link_libraries(cfd.util PUBLIC cfd.model)
-target_link_libraries(cfd.cfd PRIVATE cfd.util)
-target_link_libraries(cfd.verifier PRIVATE cfd.util)
+target_link_libraries(cfd.cfd PUBLIC cfd.model PRIVATE cfd.util)
+target_link_libraries(cfd.verifier PRIVATE cfd.util cfd.model)

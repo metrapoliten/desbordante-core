@@ -1,13 +1,5 @@
-add_library(stat STATIC)
+add_library(datastats)
 
-file(GLOB_RECURSE stat_sources
-        "${CMAKE_CURRENT_LIST_DIR}/*.h"
-        "${CMAKE_CURRENT_LIST_DIR}/*.cpp"
-)
-
-target_sources(stat
-        PUBLIC
-        FILE_SET HEADERS
-        PUBLIC
-        ${stat_sources}
-)
+add_headers(datastats PUBLIC data_stats.h)
+add_headers(datastats PRIVATE statistic.h)
+target_sources(datastats PRIVATE data_stats.cpp statistic.cpp)

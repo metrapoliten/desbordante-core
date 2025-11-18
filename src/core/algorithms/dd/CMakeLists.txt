@@ -1,13 +1,10 @@
-add_library(DD STATIC)
+add_subdirectory(split)
+add_subdirectory(dd_verifier)
 
-file(GLOB_RECURSE dd_sources
-        "${CMAKE_CURRENT_LIST_DIR}/*.h"
-        "${CMAKE_CURRENT_LIST_DIR}/*.cpp"
-)
+add_library(dd.dd INTERFACE)
+add_library(dd::dd ALIAS dd.dd)
 
-target_sources(DD
-        PUBLIC
-        FILE_SET HEADERS
-        PUBLIC
-        ${dd_sources}
-)
+add_headers(dd.dd INTERFACE dd.h)
+
+target_link_libraries(dd.verifier PUBLIC dd::dd)
+target_link_libraries(dd.split PUBLIC dd::dd)

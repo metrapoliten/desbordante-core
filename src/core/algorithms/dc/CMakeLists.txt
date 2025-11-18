@@ -1,6 +1,6 @@
+add_subdirectory(FastADC)
 add_subdirectory(verifier)
 
-add_library(dc.fastadc)
 add_library(dc.model)
 
 target_sources(dc.model
