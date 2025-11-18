@@ -1,11 +1,11 @@
-add_library(AR)
+add_library(ar)
 
-target_sources(AR
+target_sources(ar
         PUBLIC
             FILE_SET HEADERS
+            BASE_DIRS ${PROJECT_SOURCE_DIR}/src/core
             FILES
                 ar.h
-                mining_algorithms.h
         PRIVATE
             FILE_SET privateHeaders
             TYPE HEADERS
@@ -15,6 +15,11 @@ target_sources(AR
                 ar_algorithm_enums.h
                 candidate_hash_tree.h
                 node.h
+        INTERFACE
+            FILE_SET interfaceHeaders
+            TYPE HEADERS
+            BASE_DIRS ${PROJECT_SOURCE_DIR}/src/core
+            FILES mining_algorithms.h
         PRIVATE
             apriori.cpp
             ar_algorithm.cpp

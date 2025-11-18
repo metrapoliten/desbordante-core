@@ -1,11 +1,12 @@
-add_library(DC)
-
 add_subdirectory(verifier)
 
-add_library(dcmodel EXCLUDE_FROM_ALL)
-target_sources(dcmodel
+add_library(dc.fastadc)
+add_library(dc.model)
+
+target_sources(dc.model
     PUBLIC
         FILE_SET HEADERS
+        BASE_DIRS ${PROJECT_SOURCE_DIR}/src/core
         FILES
             model/component.h
             model/dc.h
@@ -23,25 +24,14 @@ target_sources(dcmodel
         model/dc.cpp
 )
 
-add_library(parser EXCLUDE_FROM_ALL)
-target_sources(parser
+add_library(dc.parser)
+target_sources(dc.parser
     PUBLIC
         FILE_SET HEADERS
+        BASE_DIRS ${PROJECT_SOURCE_DIR}/src/core
         FILES parser/dc_parser.h
     PRIVATE
         parser/dc_parser.cpp
 )
 
-target_link_libraries(dc_verifier PRIVATE dcmodel parser)
-
-file(GLOB_RECURSE dc_sources
-        "${CMAKE_CURRENT_LIST_DIR}/*.h"
-        "${CMAKE_CURRENT_LIST_DIR}/*.cpp"
-)
-
-target_sources(DC
-    PUBLIC
-        FILE_SET HEADERS
-    PUBLIC
-        ${dc_sources}
-)
+target_link_libraries(dc.verifier PRIVATE dc.model dc.parser)

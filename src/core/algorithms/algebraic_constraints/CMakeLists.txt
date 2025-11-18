@@ -1,8 +1,9 @@
-add_library(AC)
+add_library(ac)
 
-target_sources(AC
+target_sources(ac
     PUBLIC
         FILE_SET HEADERS
+        BASE_DIRS ${PROJECT_SOURCE_DIR}/src/core
         FILES
             ac.h
             ac_algorithm.h
