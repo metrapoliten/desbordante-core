@@ -1,9 +1,9 @@
 add_library(config STATIC)
 
 target_sources(config
-        PUBLIC
+    PUBLIC
         FILE_SET HEADERS
-        PUBLIC
+    PUBLIC
         column_index/option.cpp
         column_index/validate_index.cpp
 
@@ -28,8 +28,9 @@ target_sources(config
         tabular_data/crud_operations/update/option.cpp
 
         tabular_data/input_table/option.cpp
+        tabular_data/input_tables/option.cpp
 
         thread_number/option.cpp
 
-        time_limit/option.cpp)
-
+        time_limit/option.cpp
+)

@@ -19,6 +19,8 @@ find_package(Threads REQUIRED)
 
 # Build core project as a static library
 add_library(${LIB_NAME} STATIC ${lib_sources})
+target_link_libraries(algos PUBLIC config)
+#target_link_libraries(${LIB_NAME} PUBLIC config)
 target_link_libraries(${LIB_NAME} PUBLIC algos)
 
 target_compile_definitions(${BINARY} PUBLIC
