@@ -1,13 +1,22 @@
-add_library(gfd)
+add_subdirectory(gfd_miner)
+add_subdirectory(gfd_validator)
 
-file(GLOB_RECURSE gfd_sources
-        "${CMAKE_CURRENT_LIST_DIR}/*.h"
-        "${CMAKE_CURRENT_LIST_DIR}/*.cpp"
+add_library(gfd.gfd)
+add_library(gfd::gfd ALIAS gfd.gfd)
+
+add_headers(gfd.gfd
+    PUBLIC
+        gfd.h
+)
+add_headers(gfd.gfd
+    PRIVATE
+        comparator.h
+        graph_descriptor.h
+)
+target_sources(gfd.gfd
+    PRIVATE
+        comparator.cpp
+        gfd.cpp
 )
 
-target_sources(gfd
-        PUBLIC
-        FILE_SET HEADERS
-        PUBLIC
-        ${gfd_sources}
-)
+target_link_with_given(gfd::gfd PRIVATE gfd.miner gfd.validator)
