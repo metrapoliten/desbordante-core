@@ -96,5 +96,7 @@ target_link_with_given(algos
         fd.fd
         gfd.miner gfd.validator
         ind.ind
-        MD METRIC NAR ND OD datastats ucc)
+        md.md
+        METRIC NAR ND OD datastats ucc
+)
 #target_link_libraries(algos PUBLIC AC AR cfd.cfd cfd.verifier DC DD FD GFD IND MD METRIC NAR ND OD stat ucc)

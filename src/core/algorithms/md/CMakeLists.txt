@@ -1,13 +1,19 @@
-add_library(MD STATIC)
+add_subdirectory(hymd)
+add_subdirectory(md_verifier)
 
-file(GLOB_RECURSE md_sources
-        "${CMAKE_CURRENT_LIST_DIR}/*.h"
-        "${CMAKE_CURRENT_LIST_DIR}/*.cpp"
-)
+add_library(md.md)
+add_library(md::md ALIAS md.md)
 
-target_sources(MD
-        PUBLIC
-        FILE_SET HEADERS
-        PUBLIC
-        ${md_sources}
+add_headers(md.md
+    PRIVATE
+        column_match.h
+        column_similarity_classifier.h
+        decision_boundary.h
+        lhs_column_similarity_classifier.h
+        md.h
+        md_algorithm.h
+        similarity.h
 )
+target_sources(md.md PRIVATE md.cpp)
+
+target_link_with_given(md::md PRIVATE md.hymd md.verifier)
