@@ -14,6 +14,7 @@ set(FD_SUBDIRS
     pyro
     pyrocommon
     sfd
+    tane
 )
 
 foreach(DIR IN LISTS FD_SUBDIRS)
