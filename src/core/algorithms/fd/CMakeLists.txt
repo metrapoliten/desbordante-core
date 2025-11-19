@@ -10,6 +10,9 @@ set(FD_SUBDIRS
     fun
     hycommon
     hyfd
+    pfd_verifier
+    pyro
+    pyrocommon
 )
 
 foreach(DIR IN LISTS FD_SUBDIRS)
