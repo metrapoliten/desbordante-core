@@ -1,0 +1,5 @@
+add_library(fd.fastfds)
+add_library(fd::fastfds ALIAS fd.fastfds)
+
+add_headers(fd.fastfds PUBLIC fastfds.h)
+target_sources(fd.fastfds PRIVATE fastfds.cpp)
