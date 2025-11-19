@@ -1,13 +1,20 @@
-add_library(IND STATIC)
+add_subdirectory(faida)
+add_subdirectory(ind_verifier)
+add_subdirectory(mind)
+add_subdirectory(spider)
 
-file(GLOB_RECURSE ind_sources
-        "${CMAKE_CURRENT_LIST_DIR}/*.h"
-        "${CMAKE_CURRENT_LIST_DIR}/*.cpp"
+add_library(ind.ind)
+add_library(ind::ind ALIAS ind.ind)
+
+add_headers(ind.ind
+    PRIVATE
+        ind.h
+        ind_algorithm.h
+)
+target_sources(ind.ind
+    PRIVATE
+        ind.cpp
+        ind_algorithm.cpp
 )
 
-target_sources(IND
-        PUBLIC
-        FILE_SET HEADERS
-        PUBLIC
-        ${ind_sources}
-)
+target_link_with_given(ind::ind PRIVATE ind.faida ind.mind ind.spider)
