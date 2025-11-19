@@ -27,6 +27,18 @@ function(add_headers TARGET SCOPE)
     )
 endfunction()
 
+function(target_link_with_given GIVEN SCOPE)
+    if(NOT TARGET ${GIVEN})
+        message(FATAL_ERROR "[target_link_with_given] TARGET '${GIVEN}' doesn't exist.")
+    endif()
+    foreach(TARGET IN LISTS ARGN)
+        if(TARGET ${TARGET})
+            target_link_libraries(${TARGET} ${SCOPE} ${GIVEN})
+        else()
+            message(WARNING "Target '${TARGET}' doesn't exist")
+        endif()
+    endforeach()
+endfunction()
 
 set(ALGO_SUBDIRS
         algebraic_constraints
@@ -74,15 +86,5 @@ endforeach()
 
 target_link_libraries(IND PRIVATE create_algo)
 
-function(target_link_with_given GIVEN SCOPE)
-    foreach(TARGET IN LISTS ARGN)
-        if(TARGET ${TARGET})
-            target_link_libraries(${TARGET} ${SCOPE} ${GIVEN})
-        else()
-            message(WARNING "Target '${TARGET}' doesn't exist")
-        endif()
-    endforeach()
-endfunction()
-
-target_link_with_given(algos PRIVATE ac ar cfd.cfd cfd.verifier dc.fastadc dc.verifier dd.verifier dd.split FD GFD IND MD METRIC NAR ND OD stat ucc)
+target_link_with_given(algos PRIVATE ac ar cfd.cfd cfd.verifier dc.fastadc dc.verifier dd.verifier dd.split fd.fd gfd IND MD METRIC NAR ND OD datastats ucc)
 #target_link_libraries(algos PUBLIC AC AR cfd.cfd cfd.verifier DC DD FD GFD IND MD METRIC NAR ND OD stat ucc)
