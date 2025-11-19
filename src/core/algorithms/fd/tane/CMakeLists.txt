@@ -37,4 +37,7 @@ add_library(fd::tane::pfd ALIAS fd.tane.pfd)
 
 add_headers(fd.cords PUBLIC pfdtane.h)
 add_headers(fd.cords PRIVATE contingency_table.h)
-target_sources(fd.cords PRIVATEpfdtane.cpp)
+target_sources(fd.cords PRIVATE pfdtane.cpp)
+
+# --- Linking ---
+target_link_with_given(fd::tane::common PRIVATE fd.tane.tane fd.tane.pfd)
