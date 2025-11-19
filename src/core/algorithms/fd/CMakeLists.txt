@@ -13,6 +13,7 @@ set(FD_SUBDIRS
     pfd_verifier
     pyro
     pyrocommon
+    sfd
 )
 
 foreach(DIR IN LISTS FD_SUBDIRS)
