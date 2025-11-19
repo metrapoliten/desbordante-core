@@ -8,6 +8,8 @@ set(FD_SUBDIRS
     fd_verifier
     fdep
     fun
+    hycommon
+    hyfd
 )
 
 foreach(DIR IN LISTS FD_SUBDIRS)
