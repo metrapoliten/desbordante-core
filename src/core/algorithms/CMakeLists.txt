@@ -84,7 +84,7 @@ foreach(DIR IN LISTS ALGO_SUBDIRS)
     add_subdirectory(${DIR})
 endforeach()
 
-target_link_libraries(IND PRIVATE create_algo)
+target_link_libraries(ind.mind PRIVATE create_algo)
 
 target_link_with_given(algos
     PRIVATE
@@ -95,5 +95,6 @@ target_link_with_given(algos
         dd.verifier dd.split
         fd.fd
         gfd.miner gfd.validator
-        IND MD METRIC NAR ND OD datastats ucc)
+        ind.ind
+        MD METRIC NAR ND OD datastats ucc)
 #target_link_libraries(algos PUBLIC AC AR cfd.cfd cfd.verifier DC DD FD GFD IND MD METRIC NAR ND OD stat ucc)
