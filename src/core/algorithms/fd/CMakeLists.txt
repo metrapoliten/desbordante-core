@@ -1,13 +1,16 @@
-add_library(FD STATIC)
-
-file(GLOB_RECURSE fd_sources
-        "${CMAKE_CURRENT_LIST_DIR}/*.h"
-        "${CMAKE_CURRENT_LIST_DIR}/*.cpp"
+set(FD_SUBDIRS
+    aidfd
+    depminer
+    dfd
+    eulerfd
+    fastfds
+    fd_mine
+    fd_verifier
+    fdep
+    fun
 )
 
-target_sources(FD
-        PUBLIC
-        FILE_SET HEADERS
-        PUBLIC
-        ${fd_sources}
-)
+foreach(DIR IN LISTS FD_SUBDIRS)
+    add_subdirectory(${DIR})
+endforeach()
+
