@@ -103,6 +103,7 @@ target_link_with_given(algos
         nar.nar
         nd.verifier
         od.fastod od.order od.set_based_aod_verifier
-        datastats ucc
+        datastats
+        ucc.ucc
 )
 #target_link_libraries(algos PUBLIC AC AR cfd.cfd cfd.verifier DC DD FD GFD IND MD METRIC NAR ND OD stat ucc)
