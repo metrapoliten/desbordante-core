@@ -1,13 +1,17 @@
-add_library(NAR STATIC)
+add_subdirectory(des)
 
-file(GLOB_RECURSE nar_sources
-        "${CMAKE_CURRENT_LIST_DIR}/*.h"
-        "${CMAKE_CURRENT_LIST_DIR}/*.cpp"
+add_library(nar.nar)
+add_library(nar::nar ALIAS nar.nar)
+
+add_headers(nar.nar
+    PRIVATE
+        nar.h
+        nar_algorithm.h
+        value_range.h
 )
-
-target_sources(NAR
-        PUBLIC
-        FILE_SET HEADERS
-        PUBLIC
-        ${nar_sources}
+target_sources(nar.nar
+    PRIVATE
+        nar.cpp
+        nar_algorithm.cpp
+        value_range.cpp
 )

@@ -22,7 +22,7 @@ function(add_headers TARGET SCOPE)
             ${SCOPE}
             FILE_SET ${FILESET_NAME}
             TYPE HEADERS
-            BASE_DIRS ${PROJECT_SOURCE_DIR}/src/core
+            BASE_DIRS ${PROJECT_SOURCE_DIR}/src
             FILES ${files}
     )
 endfunction()
@@ -97,6 +97,7 @@ target_link_with_given(algos
         gfd.miner gfd.validator
         ind.ind
         md.md
-        METRIC NAR ND OD datastats ucc
+        metric
+        NAR ND OD datastats ucc
 )
 #target_link_libraries(algos PUBLIC AC AR cfd.cfd cfd.verifier DC DD FD GFD IND MD METRIC NAR ND OD stat ucc)

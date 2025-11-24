@@ -1,13 +1,18 @@
-add_library(METRIC STATIC)
+add_library(metric)
 
-file(GLOB_RECURSE metric_sources
-        "${CMAKE_CURRENT_LIST_DIR}/*.h"
-        "${CMAKE_CURRENT_LIST_DIR}/*.cpp"
+add_headers(metric
+    PRIVATE
+        aliases.h
+        enums.h
+        highlight.h
+        highlight_calculator.h
+        metric_verifier.h
+        points.h
+        points_calculator.h
 )
-
-target_sources(METRIC
-        PUBLIC
-        FILE_SET HEADERS
-        PUBLIC
-        ${metric_sources}
+target_sources(metric
+    PRIVATE
+        highlight_calculator.cpp
+        metric_verifier.cpp
+        points_calculator.cpp
 )
