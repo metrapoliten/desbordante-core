@@ -11,6 +11,7 @@ file(GLOB_RECURSE lib_sources
 
 add_subdirectory(config)
 add_subdirectory(algorithms)
+#add_subdirectory(parser/csv_parser)
 
 # Configure threading support with pthread preference
 # Required for Boost.Thread and other thread-dependent components

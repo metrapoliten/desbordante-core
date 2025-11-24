@@ -1,8 +1,4 @@
 add_library(dc.verifier)
-target_sources(dc.verifier
-    PUBLIC
-        FILE_SET HEADERS
-        BASE_DIRS ${PROJECT_SOURCE_DIR}/src/core
-    PRIVATE
-        dc_verifier.cpp
-)
+add_library(dc::verifier ALIAS dc.verifier)
+add_headers(dc.verifier PUBLIC dc_verifier.h)
+target_sources(dc.verifier PRIVATE dc_verifier.cpp)

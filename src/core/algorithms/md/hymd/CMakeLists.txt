@@ -1,6 +1,45 @@
 add_library(md.hymd)
 add_library(md::hymd ALIAS md.hymd)
 
+add_library(md.hymd.preprocessing)
+add_library(md::hymd::preprocessing ALIAS md.hymd.preprocessing)
+add_headers(md.hymd.preprocessing
+     PRIVATE
+        preprocessing/ccv_id_pickers/index_uniform.h
+        preprocessing/ccv_id_pickers/pick_lhs_ccv_ids_type.h
+
+        preprocessing/column_matches/basic_calculator.h
+        preprocessing/column_matches/column_match.h
+        preprocessing/column_matches/column_match_impl.h
+        preprocessing/column_matches/date_difference.h
+        preprocessing/column_matches/equality.h
+        preprocessing/column_matches/immediate_similarity_measure.h
+        preprocessing/column_matches/jaccard.h
+        preprocessing/column_matches/lcs.h
+        preprocessing/column_matches/levenshtein.h
+        preprocessing/column_matches/lv_normalized.h
+        preprocessing/column_matches/monge_elkan.h
+        preprocessing/column_matches/number_difference.h
+        preprocessing/column_matches/pairwise.h
+        preprocessing/column_matches/single_transformer.h
+        preprocessing/column_matches/smith_waterman_gotoh.h
+        preprocessing/column_matches/transformed_columns_holder.h
+
+        preprocessing/build_indexes.h
+        preprocessing/encode_results.h
+        preprocessing/similarity.h
+        preprocessing/valid_table_results.h
+)
+
+target_sources(md.hymd.preprocessing
+    PRIVATE
+        preprocessing/column_matches/jaccard.cpp
+        preprocessing/column_matches/lcs.cpp
+        preprocessing/column_matches/levenshtein.cpp
+        preprocessing/column_matches/monge_elkan.cpp
+        preprocessing/column_matches/smith_waterman_gotoh.cpp
+)
+
 add_headers(md.hymd PUBLIC hymd.h)
 add_headers(md.hymd
     PRIVATE
@@ -32,31 +71,6 @@ add_headers(md.hymd
         lattice/support_node.h
         lattice/total_generalization_checker.h
         lattice/validation_info.h
-
-        preprocessing/ccv_id_pickers/index_uniform.h
-        preprocessing/ccv_id_pickers/pick_lhs_ccv_ids_type.h
-
-        preprocessing/column_matches/basic_calculator.h
-        preprocessing/column_matches/column_match.h
-        preprocessing/column_matches/column_match_impl.h
-        preprocessing/column_matches/date_difference.h
-        preprocessing/column_matches/equality.h
-        preprocessing/column_matches/immediate_similarity_measure.h
-        preprocessing/column_matches/jaccard.h
-        preprocessing/column_matches/lcs.h
-        preprocessing/column_matches/levenshtein.h
-        preprocessing/column_matches/lv_normalized.h
-        preprocessing/column_matches/monge_elkan.h
-        preprocessing/column_matches/number_difference.h
-        preprocessing/column_matches/pairwise.h
-        preprocessing/column_matches/single_transformer.h
-        preprocessing/column_matches/smith_waterman_gotoh.h
-        preprocessing/column_matches/transformed_columns_holder.h
-
-        preprocessing/build_indexes.h
-        preprocessing/encode_results.h
-        preprocessing/similarity.h
-        preprocessing/valid_table_results.h
 
         utility/bit_cast.h
         utility/exclusion_list.h
@@ -102,12 +116,6 @@ target_sources(md.hymd
         lattice/cardinality/one_by_one_min_picker.cpp
 
         lattice/md_lattice.cpp
-
-        preprocessing/column_matches/jaccard.cpp
-        preprocessing/column_matches/lcs.cpp
-        preprocessing/column_matches/levenshtein.cpp
-        preprocessing/column_matches/monge_elkan.cpp
-        preprocessing/column_matches/smith_waterman_gotoh.cpp
 
         hymd.cpp
         lattice_traverser.cpp

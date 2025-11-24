@@ -16,24 +16,27 @@ if (COMPILE_TESTS)
 	enable_testing()
 	# Load CMake's built-in GoogleTest module
     include(GoogleTest)
+	add_subdirectory(unit)
 
-	# Create test executable
-    add_executable(${UNIT_TEST_BINARY} ${common_sources} ${unit_test_sources})
-
-	# ---- Test Dependencies ----
-
-	# Link test executable with:
-	# PRIVATE:
-	# - Core library (implementation under test)
-	# - GTest/GMock frameworks
-	# - Boost.Graph (test-specific dependencies)
-    target_link_libraries(${UNIT_TEST_BINARY} PRIVATE ${CMAKE_PROJECT_NAME} gtest gmock Boost::graph)
-
-	# ---- Test Discovery ----
-
-	# Auto-register tests from executable
-	# WORKING_DIRECTORY: Ensure test data paths resolve correctly
-    gtest_discover_tests(${UNIT_TEST_BINARY} WORKING_DIRECTORY "${CMAKE_RUNTIME_OUTPUT_DIRECTORY}")
+#	# Create test executable
+#    add_executable(${UNIT_TEST_BINARY} ${common_sources} ${unit_test_sources})
+#
+#	# ---- Test Dependencies ----
+#
+#    target_include_directories(${UNIT_TEST_BINARY} PRIVATE "common")
+#
+#	# Link test executable with:
+#	# PRIVATE:
+#	# - Core library (implementation under test)
+#	# - GTest/GMock frameworks
+#	# - Boost.Graph (test-specific dependencies)
+#    target_link_libraries(${UNIT_TEST_BINARY} PRIVATE ${CMAKE_PROJECT_NAME} gtest gmock Boost::graph)
+#
+#	# ---- Test Discovery ----
+#
+#	# Auto-register tests from executable
+#	# WORKING_DIRECTORY: Ensure test data paths resolve correctly
+#    gtest_discover_tests(${UNIT_TEST_BINARY} WORKING_DIRECTORY "${CMAKE_RUNTIME_OUTPUT_DIRECTORY}")
 endif()
 
 if (COMPILE_BENCHMARKS)

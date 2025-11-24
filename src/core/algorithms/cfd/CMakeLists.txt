@@ -2,9 +2,6 @@ add_subdirectory(cfd_verifier)
 
 add_library(cfd.cfd)
 add_library(cfd::cfd ALIAS cfd.cfd)
-add_library(cfd.model)
-add_library(cfd.util)
-
 target_sources(cfd.cfd
     PUBLIC
         FILE_SET HEADERS
@@ -28,6 +25,8 @@ target_sources(cfd.cfd
         fd_first_algorithm.cpp
 )
 
+add_library(cfd.model)
+add_library(cfd::model ALIAS cfd.model)
 target_sources(cfd.model
     PUBLIC
         FILE_SET HEADERS
@@ -47,6 +46,7 @@ target_sources(cfd.model
         model/raw_cfd.cpp
 )
 
+add_library(cfd.util)
 target_sources(cfd.util
     PUBLIC
         FILE_SET HEADERS
