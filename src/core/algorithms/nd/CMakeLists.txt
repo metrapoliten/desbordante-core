@@ -1,13 +1,16 @@
-add_library(ND STATIC)
+add_subdirectory(nd_verifier)
 
-file(GLOB_RECURSE nd_sources
-        "${CMAKE_CURRENT_LIST_DIR}/*.h"
-        "${CMAKE_CURRENT_LIST_DIR}/*.cpp"
+add_library(nd.nd)
+add_library(nd::nd ALIAS nd.nd)
+
+add_headers(nd.nd
+    PRIVATE
+        nd.h
+        util/get_vertical_names.h
 )
 
-target_sources(ND
-        PUBLIC
-        FILE_SET HEADERS
-        PUBLIC
-        ${nd_sources}
+target_sources(nd.nd
+    PRIVATE
+        nd.cpp
+        util/get_vertical_names.cpp
 )

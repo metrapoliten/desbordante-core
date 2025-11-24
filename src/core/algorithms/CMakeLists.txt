@@ -98,6 +98,8 @@ target_link_with_given(algos
         ind.ind
         md.md
         metric
-        NAR ND OD datastats ucc
+        nar.nar
+        nd.verifier
+        OD datastats ucc
 )
 #target_link_libraries(algos PUBLIC AC AR cfd.cfd cfd.verifier DC DD FD GFD IND MD METRIC NAR ND OD stat ucc)
