@@ -35,7 +35,7 @@ function(target_link_with_given GIVEN SCOPE)
         if(TARGET ${TARGET})
             target_link_libraries(${TARGET} ${SCOPE} ${GIVEN})
         else()
-            message(WARNING "Target '${TARGET}' doesn't exist")
+            message(FATAL_ERROR "Target '${TARGET}' doesn't exist")
         endif()
     endforeach()
 endfunction()
@@ -53,7 +53,9 @@ set(ALGO_SUBDIRS
         metric
         nar
         nd
-        od
+        od/fastod
+        od/order
+        od/set_based_verifier
         statistics
         ucc
 )
@@ -100,6 +102,7 @@ target_link_with_given(algos
         metric
         nar.nar
         nd.verifier
-        OD datastats ucc
+        od.fastod od.order od.set_based_aod_verifier
+        datastats ucc
 )
 #target_link_libraries(algos PUBLIC AC AR cfd.cfd cfd.verifier DC DD FD GFD IND MD METRIC NAR ND OD stat ucc)
