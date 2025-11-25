@@ -13,7 +13,6 @@ add_headers(md.hymd.preprocessing
         preprocessing/column_matches/column_match_impl.h
         preprocessing/column_matches/date_difference.h
         preprocessing/column_matches/equality.h
-        preprocessing/column_matches/immediate_similarity_measure.h
         preprocessing/column_matches/jaccard.h
         preprocessing/column_matches/lcs.h
         preprocessing/column_matches/levenshtein.h
