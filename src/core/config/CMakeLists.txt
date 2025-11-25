@@ -1,5 +1,5 @@
-add_library(config STATIC)
-
+add_library(config)
+#TODO: correct
 target_sources(config
     PUBLIC
         FILE_SET HEADERS

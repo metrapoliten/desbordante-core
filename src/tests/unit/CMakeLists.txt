@@ -4,15 +4,15 @@ function(add_test_with_libraries NAME FILES LIBS
 #        TEST_WORKING_DIRECTORY
 )
     set(TEST_NAME test.${NAME})
-    add_executable(${TEST_NAME} ${FILES})
-    target_link_libraries(${TEST_NAME} gtest gmock ${LIBS})
+    add_executable(${TEST_NAME} main.cpp ${FILES})
+    target_link_libraries(${TEST_NAME} easyloggingpp gtest gmock ${LIBS})
     gtest_discover_tests(${TEST_NAME}
             WORKING_DIRECTORY ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}
     )
 endfunction()
 
 # --- AC ---
-add_test_with_libraries(ac test_ac_algorithm.cpp ac)
+add_test_with_libraries(ac test_ac_algorithm.cpp "ac;test::common")
 
 # --- AR ---
 #add_test_with_libraries(ar test_apriori.cpp ar)

@@ -4,14 +4,15 @@
 set(LIB_NAME ${CMAKE_PROJECT_NAME})
 
 # Collect all source files recursively (headers and implementations)
-file(GLOB_RECURSE lib_sources
-        "${CMAKE_CURRENT_LIST_DIR}/model/*.h" "${CMAKE_CURRENT_LIST_DIR}/model/*.cpp"
-        "${CMAKE_CURRENT_LIST_DIR}/parser/*.h" "${CMAKE_CURRENT_LIST_DIR}/parser/*.cpp"
-        "${CMAKE_CURRENT_LIST_DIR}/util/*.h" "${CMAKE_CURRENT_LIST_DIR}/util/*.cpp")
+file(GLOB_RECURSE model_srcs "${CMAKE_CURRENT_LIST_DIR}/model/*.h" "${CMAKE_CURRENT_LIST_DIR}/model/*.cpp")
+file(GLOB_RECURSE util_srcs "${CMAKE_CURRENT_LIST_DIR}/util/*.h" "${CMAKE_CURRENT_LIST_DIR}/util/*.cpp")
+
+add_library(model ${model_srcs})
+add_library(util ${util_srcs})
 
 add_subdirectory(config)
 add_subdirectory(algorithms)
-#add_subdirectory(parser/csv_parser)
+add_subdirectory(parser/csv_parser)
 
 # Configure threading support with pthread preference
 # Required for Boost.Thread and other thread-dependent components
@@ -19,8 +20,8 @@ set(THREADS_PREFER_PTHREAD_FLAG ON)
 find_package(Threads REQUIRED)
 
 # Build core project as a static library
-add_library(${LIB_NAME} STATIC ${lib_sources})
-target_link_libraries(algos PUBLIC config)
+add_library(${LIB_NAME} STATIC ${lib_sources} ${model_srcs} ${parser})
+target_link_libraries(algos PUBLIC config model util parser::csv)
 #target_link_libraries(${LIB_NAME} PUBLIC config)
 target_link_libraries(${LIB_NAME} PUBLIC algos)
 
