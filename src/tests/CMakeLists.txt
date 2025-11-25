@@ -12,6 +12,11 @@ file(GLOB common_sources "common/*.h" "common/*.cpp")
 file(GLOB unit_test_sources "unit/*.h" "unit/*.cpp")
 file(GLOB benchmark_sources "benchmark/*.h" "benchmark/*.cpp")
 
+add_library(test.common)
+add_library(test::common ALIAS test.common)
+add_headers(test.common PUBLIC common/all_csv_configs.h)
+target_sources(test.common PRIVATE common/all_csv_configs.cpp)
+
 if (COMPILE_TESTS)
 	enable_testing()
 	# Load CMake's built-in GoogleTest module
