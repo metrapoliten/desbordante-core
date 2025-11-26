@@ -1,3 +1,4 @@
+#if 0
 // This part of code not currently used
 
 #include "core/algorithms/od/fastod/partitions/stripped_partition.h"
@@ -183,3 +184,4 @@ bool StrippedPartition::Swap(model::ColumnIndex left, model::ColumnIndex right,
 }
 
 }  // namespace algos::fastod
+#endif

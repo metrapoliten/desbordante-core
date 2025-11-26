@@ -1,3 +1,4 @@
+#if 0
 // This part of code not currently used
 
 #include "core/algorithms/od/fastod/partitions/range_based_stripped_partition.h"
@@ -257,3 +258,4 @@ std::vector<DataFrame::ValueIndices> RangeBasedStrippedPartition::IntersectWithA
 }
 
 }  // namespace algos::fastod
+#endif

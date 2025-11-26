@@ -1,3 +1,4 @@
+#if 0
 // This part of code not currently used
 
 #pragma once
@@ -38,3 +39,4 @@ public:
 };
 
 }  // namespace algos::fastod
+#endif
