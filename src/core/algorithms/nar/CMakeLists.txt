@@ -5,7 +5,6 @@ add_library(nar::nar ALIAS nar.nar)
 
 add_headers(nar.nar
     PRIVATE
-        nar.h
         nar_algorithm.h
         value_range.h
 )

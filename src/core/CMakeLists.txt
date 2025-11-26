@@ -21,6 +21,7 @@ find_package(Threads REQUIRED)
 
 # Build core project as a static library
 add_library(${LIB_NAME} STATIC ${lib_sources} ${model_srcs} ${parser})
+target_link_libraries(model PRIVATE util)
 target_link_libraries(algos PUBLIC config model util parser::csv)
 #target_link_libraries(${LIB_NAME} PUBLIC config)
 target_link_libraries(${LIB_NAME} PUBLIC algos)

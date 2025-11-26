@@ -47,6 +47,7 @@ target_sources(cfd.model
 )
 
 add_library(cfd.util)
+add_library(cfd::util ALIAS cfd.util)
 target_sources(cfd.util
     PUBLIC
         FILE_SET HEADERS
@@ -70,5 +71,6 @@ target_sources(cfd.util
         util/tidlist_util.cpp
 )
 
+target_link_libraries(cfd.model PRIVATE cfd::util)
 target_link_libraries(cfd.cfd PUBLIC cfd.model PRIVATE cfd.util)
 target_link_libraries(cfd.verifier PRIVATE cfd.util cfd.model)

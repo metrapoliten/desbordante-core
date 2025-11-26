@@ -8,7 +8,7 @@ add_headers(dc.fastadc.structs
         model/evidence.h
         model/evidence_set.h
         model/operator.h
-        model/pli_shard.cpp
+        model/pli_shard.h
         model/predicate.h
 
         providers/index_provider.h
@@ -43,6 +43,7 @@ target_sources(dc.fastadc.structs
         model/predicate.cpp
         model/predicate_set.cpp
         providers/index_provider.cpp
+        util/clue_set_builder.cpp
         util/cross_clue_set_builder.cpp
         util/dc_candidate_trie.cpp
         util/evidence_aux_structures_builder.cpp
