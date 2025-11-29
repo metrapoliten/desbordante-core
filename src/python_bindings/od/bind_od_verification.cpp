@@ -3,7 +3,7 @@
 #include <pybind11/pybind11.h>
 #include <pybind11/stl.h>
 
-#include "algorithms/od/set_based_verifier//verifier.h"
+#include "algorithms/od/set_based_verifier/verifier.h"
 #include "py_util/bind_primitive.h"
 
 namespace {
