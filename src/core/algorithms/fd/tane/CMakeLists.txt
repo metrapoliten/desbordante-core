@@ -2,7 +2,7 @@
 # --- TaneCommon ---
 add_library(fd.tane.common)
 add_library(fd::tane::common ALIAS fd.tane.common)
-target_link_libraries(fd.tane.common PRIVATE spdlog_helper)
+target_link_libraries(fd.tane.common PRIVATE spdlog::spdlog_header_only)
 
 add_headers(fd.tane.common PUBLIC tane_common.h)
 add_headers(fd.tane.common

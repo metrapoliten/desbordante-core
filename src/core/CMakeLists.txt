@@ -19,18 +19,17 @@ add_subdirectory(parser/csv_parser)
 set(THREADS_PREFER_PTHREAD_FLAG ON)
 find_package(Threads REQUIRED)
 
-add_library(spdlog_helper INTERFACE)
-target_link_libraries(spdlog_helper INTERFACE spdlog::spdlog_header_only)
-target_compile_definitions(spdlog_header_only INTERFACE
+# todo: Come up with something better
+set_property(TARGET spdlog_header_only APPEND PROPERTY INTERFACE_COMPILE_DEFINITIONS
         $<$<CONFIG:Debug>:SPDLOG_ACTIVE_LEVEL=SPDLOG_LEVEL_TRACE>
         $<$<CONFIG:Release>:SPDLOG_ACTIVE_LEVEL=SPDLOG_LEVEL_INFO>
 )
 
 # Build core project as a static library
 #add_library(${LIB_NAME} STATIC ${lib_sources} ${model_srcs} ${parser})
-target_link_libraries(model PUBLIC util PRIVATE spdlog_helper)
-target_link_libraries(util PRIVATE spdlog_helper)
-target_link_libraries(algos PUBLIC config model parser::csv spdlog_helper)
+target_link_libraries(model PUBLIC util PRIVATE spdlog::spdlog_header_only)
+target_link_libraries(util PRIVATE spdlog::spdlog_header_only)
+target_link_libraries(algos PUBLIC config model parser::csv spdlog::spdlog_header_only)
 #target_link_libraries(${LIB_NAME} PUBLIC config)
 #target_link_libraries(${LIB_NAME} PUBLIC algos)
 

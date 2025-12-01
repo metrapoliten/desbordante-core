@@ -16,4 +16,4 @@ target_sources(ucc.hy
         validator.cpp
 )
 
-target_link_libraries(ucc.hy PRIVATE spdlog_helper)
+target_link_libraries(ucc.hy PRIVATE spdlog::spdlog_header_only)

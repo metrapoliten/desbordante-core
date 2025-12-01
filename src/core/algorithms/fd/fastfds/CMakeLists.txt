@@ -4,4 +4,4 @@ add_library(fd::fastfds ALIAS fd.fastfds)
 add_headers(fd.fastfds PUBLIC fastfds.h)
 target_sources(fd.fastfds PRIVATE fastfds.cpp)
 
-target_link_libraries(fd.fastfds PRIVATE spdlog_helper)
+target_link_libraries(fd.fastfds PRIVATE spdlog::spdlog_header_only)
