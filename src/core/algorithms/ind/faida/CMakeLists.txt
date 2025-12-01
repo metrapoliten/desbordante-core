@@ -45,3 +45,5 @@ target_sources(ind.faida
 
         faida.cpp
 )
+
+target_link_libraries(ind.faida PRIVATE spdlog_helper)

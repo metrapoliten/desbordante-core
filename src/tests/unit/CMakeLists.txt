@@ -5,7 +5,8 @@ function(add_test_with_libraries NAME FILES LIBS
 )
     set(TEST_NAME test.${NAME})
     add_executable(${TEST_NAME} main.cpp ${FILES})
-    target_link_libraries(${TEST_NAME} easyloggingpp gtest gmock ${LIBS})
+    target_link_libraries(${TEST_NAME} PRIVATE spdlog_helper gtest gmock ${LIBS})
+    target_include_directories(${TEST_NAME} PRIVATE "../common")
     gtest_discover_tests(${TEST_NAME}
             WORKING_DIRECTORY ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}
     )

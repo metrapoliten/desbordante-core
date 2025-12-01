@@ -15,3 +15,5 @@ target_sources(ucc.hy
         inductor.cpp
         validator.cpp
 )
+
+target_link_libraries(ucc.hy PRIVATE spdlog_helper)

@@ -18,3 +18,5 @@ target_sources(ucc.hpivalid
         result_collector.cpp
         tree_search.cpp
 )
+
+target_link_libraries(ucc.hpivalid PRIVATE spdlog_helper)

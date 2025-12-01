@@ -3,6 +3,7 @@ add_library(fd::verifier ALIAS fd.verifier)
 
 add_headers(fd.verifier PUBLIC fd_verifier.h stats_calculator.h)
 target_sources(fd.verifier PRIVATE fd_verifier.cpp stats_calculator.cpp)
+target_link_libraries(fd.verifier PRIVATE spdlog_helper)
 
 add_library(fd.dynverifier)
 add_library(fd::dynverifier ALIAS fd.dynverifier)

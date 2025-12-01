@@ -50,6 +50,7 @@ target_sources(dc.fastadc.structs
         util/predicate_builder.cpp
         util/single_clue_set_builder.cpp
 )
+target_link_libraries(dc.fastadc.structs PRIVATE spdlog_helper)
 
 add_library(dc.fastadc)
 add_library(dc::fastadc ALIAS cfd.cfd)
