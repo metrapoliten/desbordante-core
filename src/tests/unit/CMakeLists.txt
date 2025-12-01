@@ -5,10 +5,17 @@ function(add_test_with_libraries NAME FILES LIBS
 )
     set(TEST_NAME test.${NAME})
     add_executable(${TEST_NAME} main.cpp ${FILES})
-    target_link_libraries(${TEST_NAME} PRIVATE spdlog::spdlog_header_only gtest gmock ${LIBS})
+    target_link_libraries(${TEST_NAME} PRIVATE gtest ${LIBS})
+    #todo: delete when includes
     target_include_directories(${TEST_NAME} PRIVATE "../common")
     gtest_discover_tests(${TEST_NAME}
             WORKING_DIRECTORY ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}
+            #[=[
+            to fix segfault by ind.util (idk what the reason)
+            docs: https://cmake.org/cmake/help/latest/module/GoogleTest.html#:~:text=DISCOVERY%5FMODE,-Added
+            the solution was found here: https://discourse.cmake.org/t/cmake-build-and-test-with-qt-and-google-test/4729/2
+            #]=]
+#            DISCOVERY_MODE PRE_TEST
     )
 endfunction()
 
@@ -47,25 +54,38 @@ add_test_with_libraries(nar.des test_des.cpp "nar::des;nar::nar;test::common;alg
 
 # --- FD ---
 add_test_with_libraries(fd.dynverifier test_dynamic_fd_verifier.cpp "fd::verifier;fd::dynverifier;test::common;algos")
-#[=[ These tests aren't ready yet, disable them
-# --- IND ---
-add_library(ind.util)
-add_library(tests::ind::util ALIAS ind.util)
-add_headers(ind.util PUBLIC test_ind_util.h)
-target_sources(ind.util PRIVATE test_ind_util.cpp)
 
-add_test_with_libraries(ind.faida test_faida.cpp "ind::faida tests::ind::util")
-add_test_with_libraries(ind.algos test_ind_algorithms.cpp "ind::faida ind::mind ind::spider ind::ind tests::ind::util")
-add_test_with_libraries(ind.verifier test_ind_verifier.cpp ind::verifier)
+# --- IND ---
+add_library(tests.ind.util)
+target_sources(tests.ind.util PRIVATE test_ind_util.cpp)
+target_link_libraries(tests.ind.util PRIVATE "test::common;algos;ind::ind")
+target_include_directories(tests.ind.util PRIVATE "../common")
+#[=[ todo: Segfault
+add_headers(tests.ind.util PUBLIC test_ind_util.h)
+
+#add_test_with_libraries(ind.util test_ind_util.cpp "")
+#set_target_properties(test.ind.util PROPERTIES ENABLE_EXPORTS ON)
+
+add_test_with_libraries(ind.faida test_faida.cpp "ind::faida;tests.ind.util;test::common")
+#]=]
+
+#[=[todo: test_hash_util
+add_test_with_libraries(ind.algos test_ind_algorithms.cpp "ind::faida;ind::mind;ind::spider;ind::ind;tests.ind.util")
+#]=]
+
+add_test_with_libraries(ind.verifier test_ind_verifier.cpp "ind::verifier;test::common;algos")
 
 # --- OD.FastOD ---
-add_test_with_libraries(od.fastod test_fastod.cpp od::fastod)
+add_test_with_libraries(od.fastod test_fastod.cpp "od::fastod;test::common")
 
 # --- FD ---
-# TODO: "test_fd_util.h"
+#[=[ todo: Segfault
 add_test_with_libraries(fd.algos test_fd_algorithm.cpp
-        "fd::depminer fd::dfd fd::fastfds fd::fdep fd::fun fd::hyfd fd::pyro fd::tane::pfd fd::tane::tane fd::fd")
-add_test_with_libraries(fd.approx test_fd_approximate.cpp fd::eulerfd fd::fd)
+    "fd::depminer;fd::dfd;fd::fastfds;fd::fdep;fd::fun;fd::hy;fd::pyro;fd::tane::pfd;fd::tane::tane;fd::fd;test::common")
+#]=]
+
+add_test_with_libraries(fd.approx test_fd_approximate.cpp "fd::eulerfd;fd::fd")
+#[=[ These tests aren't ready yet, disable them
 add_test_with_libraries(fd.mine test_fd_mine.cpp fd::pyrofd fd::fd)
 add_test_with_libraries(fd.verifier test_fd_verifier.cpp fd::verifier)
 

@@ -33,9 +33,11 @@ target_sources(fd.pyrocommon
         core/fd_g1_strategy.cpp
         core/key_g1_strategy.cpp
         core/profiling_context.cpp
-        core/search_space.h
+        core/search_space.cpp
 
         model/agree_set_sample.cpp
         model/confidence_interval.cpp
         model/pli_cache.cpp
+        model/list_agree_set_sample.cpp
 )
+target_link_libraries(fd.pyrocommon PRIVATE spdlog::spdlog_header_only)
