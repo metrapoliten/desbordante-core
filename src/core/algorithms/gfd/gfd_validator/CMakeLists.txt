@@ -1,6 +1,6 @@
 add_library(gfd.validator)
 add_library(gfd::validator ALIAS gfd.validator)
-
+#todo: egfd_validator/gfd_validator/naive
 add_headers(gfd.validator
     PRIVATE
         balancer.h

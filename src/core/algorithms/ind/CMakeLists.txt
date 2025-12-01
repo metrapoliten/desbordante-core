@@ -17,4 +17,4 @@ target_sources(ind.ind
         ind_algorithm.cpp
 )
 
-target_link_with_given(ind::ind PRIVATE ind.faida ind.mind ind.spider)
+target_link_with_given(ind::ind PRIVATE ind.faida ind.spider)

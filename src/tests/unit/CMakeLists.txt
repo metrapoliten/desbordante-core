@@ -69,9 +69,7 @@ add_headers(tests.ind.util PUBLIC test_ind_util.h)
 add_test_with_libraries(ind.faida test_faida.cpp "ind::faida;tests.ind.util;test::common")
 #]=]
 
-#[=[todo: test_hash_util
-add_test_with_libraries(ind.algos test_ind_algorithms.cpp "ind::faida;ind::mind;ind::spider;ind::ind;tests.ind.util")
-#]=]
+add_test_with_libraries(ind.algos test_ind_algorithms.cpp "ind::faida;ind::mind;ind::spider;ind::ind;tests.ind.util;tests.util.hash")
 
 add_test_with_libraries(ind.verifier test_ind_verifier.cpp "ind::verifier;test::common;algos")
 
@@ -101,12 +99,12 @@ target_include_directories(tests.gfd.paths PRIVATE "../common")
 
 add_test_with_libraries(gfd.miner test_gfd_miner.cpp "gfd::miner;tests.gfd.paths")
 add_test_with_libraries(gfd.validator test_gfd_validator.cpp "gfd::validator;tests.gfd.paths")
-#[=[ These tests aren't ready yet, disable them
-# --- Helper.Hash ---
-add_library(hash)
-add_headers(hash PUBLIC test_hash_util.h)
-target_sources(hash PRIVATE test_hash_util.cpp)
 
+# --- Helper.Hash ---
+add_library(tests.util.hash)
+add_headers(tests.util.hash PUBLIC test_hash_util.h)
+target_sources(tests.util.hash PRIVATE test_hash_util.cpp)
+#[=[ These tests aren't ready yet, disable them
 # --- MD ---
 add_test_with_libraries(md.hymd test_hymd.cpp md::hymd)
 add_test_with_libraries(md.metrics test_hymd_metrics.cpp md::hymd::preprocessing)

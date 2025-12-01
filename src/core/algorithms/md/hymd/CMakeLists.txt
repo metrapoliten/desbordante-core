@@ -122,3 +122,5 @@ target_sources(md.hymd
         similarity_data.cpp
         validator.cpp
 )
+
+target_link_libraries(md.hymd PRIVATE md.hymd.preprocessing)

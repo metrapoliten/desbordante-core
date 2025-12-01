@@ -17,3 +17,5 @@ target_sources(nar.des
         encoded_nar.cpp
         encoded_value_range.cpp
 )
+
+target_link_libraries(nar.des PRIVATE nar::nar)

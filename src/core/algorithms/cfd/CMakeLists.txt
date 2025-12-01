@@ -1,5 +1,5 @@
 add_subdirectory(cfd_verifier)
-
+#todo: first_algo/cfd/...
 add_library(cfd.cfd)
 add_library(cfd::cfd ALIAS cfd.cfd)
 target_sources(cfd.cfd
