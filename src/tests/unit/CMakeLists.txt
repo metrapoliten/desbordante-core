@@ -84,20 +84,24 @@ add_test_with_libraries(fd.algos test_fd_algorithm.cpp
     "fd::depminer;fd::dfd;fd::fastfds;fd::fdep;fd::fun;fd::hy;fd::pyro;fd::tane::pfd;fd::tane::tane;fd::fd;test::common")
 #]=]
 
-add_test_with_libraries(fd.approx test_fd_approximate.cpp "fd::eulerfd;fd::fd")
-#[=[ These tests aren't ready yet, disable them
-add_test_with_libraries(fd.mine test_fd_mine.cpp fd::pyrofd fd::fd)
-add_test_with_libraries(fd.verifier test_fd_verifier.cpp fd::verifier)
+#[=[ todo: Segfault
+add_library(tests.fd.util test_fd_util.h)
+target_link_libraries(tests.fd.util PRIVATE test::common)
+add_test_with_libraries(fd.approx test_fd_approximate.cpp "fd::eulerfd;fd::fd;tests.fd.util")
+add_test_with_libraries(fd.mine test_fd_mine.cpp "fd::pyro;fd::mine;test::common")
+#]=]
+
+add_test_with_libraries(fd.verifier test_fd_verifier.cpp "fd::verifier;algos;test::common")
 
 # --- GFD ---
-add_library(gfd.paths)
-add_library(tests::gfd::paths ALIAS gfd.paths)
-add_headers(gfd.paths PUBLIC all_gfd_paths.h)
-target_sources(gfd.paths PRIVATE all_gfd_paths.cpp)
+add_library(tests.gfd.paths)
+add_headers(tests.gfd.paths PUBLIC all_gfd_paths.h)
+target_sources(tests.gfd.paths PRIVATE all_gfd_paths.cpp)
+target_include_directories(tests.gfd.paths PRIVATE "../common")
 
-add_test_with_libraries(gfd.miner test_gfd_miner.cpp "gfd::miner tests::gfd::paths")
-add_test_with_libraries(gfd.validator test_gfd_validator.cpp "gfd::validator tests::gfd::paths")
-
+add_test_with_libraries(gfd.miner test_gfd_miner.cpp "gfd::miner;tests.gfd.paths")
+add_test_with_libraries(gfd.validator test_gfd_validator.cpp "gfd::validator;tests.gfd.paths")
+#[=[ These tests aren't ready yet, disable them
 # --- Helper.Hash ---
 add_library(hash)
 add_headers(hash PUBLIC test_hash_util.h)

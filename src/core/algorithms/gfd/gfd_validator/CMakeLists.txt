@@ -18,3 +18,5 @@ target_sources(gfd.validator
         gfd_validator.cpp
         naivegfd_validator.cpp
 )
+
+target_link_libraries(gfd.validator PRIVATE parser.graph)
