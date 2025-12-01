@@ -67,10 +67,8 @@ add_headers(tests.ind.util PUBLIC test_ind_util.h)
 #set_target_properties(test.ind.util PROPERTIES ENABLE_EXPORTS ON)
 
 add_test_with_libraries(ind.faida test_faida.cpp "ind::faida;tests.ind.util;test::common")
-#]=]
-
 add_test_with_libraries(ind.algos test_ind_algorithms.cpp "ind::faida;ind::mind;ind::spider;ind::ind;tests.ind.util;tests.util.hash")
-
+#]=]
 add_test_with_libraries(ind.verifier test_ind_verifier.cpp "ind::verifier;test::common;algos")
 
 # --- OD.FastOD ---
