@@ -1,4 +1,4 @@
-#TODO: main.cpp
+#TODO:  add_executable(${TEST_NAME} main.cpp ${FILES}) or add_library(test_main main.cpp)?
 
 function(add_test_with_libraries NAME FILES LIBS
 #        TEST_WORKING_DIRECTORY
@@ -122,10 +122,11 @@ add_test_with_libraries(nd.verifier test_nd_verifier.cpp "nd::verifier;test::com
 # --- Model.DoubleCompare (types.h) ---
 #add_test_with_libraries(model.types test_double_compare.cpp model.???)
 #add_test_with_libraries(model.types test_types.cpp model.???)
+]=]
 
 # --- OD.Order ---
-add_test_with_libraries(od.order test_order.cpp od::order)
-
+add_test_with_libraries(od.order test_order.cpp "od::order;test::common")
+#[=[ These tests aren't ready yet, disable them
 # --- FD.PFDVerifier ---
 add_test_with_libraries(fd.pfdverifier test_pfd_verifier.cpp fd::pfdverifier)
 
