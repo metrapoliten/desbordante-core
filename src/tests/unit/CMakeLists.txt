@@ -1,11 +1,11 @@
 #TODO:  add_executable(${TEST_NAME} main.cpp ${FILES}) or add_library(test_main main.cpp)?
-
+add_library(test_main main.cpp)
 function(add_test_with_libraries NAME FILES LIBS
 #        TEST_WORKING_DIRECTORY
 )
     set(TEST_NAME test.${NAME})
-    add_executable(${TEST_NAME} main.cpp ${FILES})
-    target_link_libraries(${TEST_NAME} PRIVATE gtest ${LIBS})
+    add_executable(${TEST_NAME} ${FILES})
+    target_link_libraries(${TEST_NAME} PRIVATE test_main gtest ${LIBS})
     #todo: delete when includes
     target_include_directories(${TEST_NAME} PRIVATE "../common")
     gtest_discover_tests(${TEST_NAME}
@@ -132,13 +132,12 @@ add_test_with_libraries(fd.pfdverifier test_pfd_verifier.cpp "fd::pfdverifier;te
 
 # --- FD.PFDTane ---
 add_test_with_libraries(fd.tane.pfd test_pfdtane.cpp "fd::tane::pfd;test::common")
-#[=[ These tests aren't ready yet, disable them
-# --- OD.SetBasedAODVerifier ---
-add_test_with_libraries(od.set_based_aod_verifier test_set_based_verifier.cpp od::set_based_aod_verifier)
 
-#TODO: Cords?
-# --- SFD ---
-add_test_with_libraries(fd.cords test_sfd.cpp fd::cords)
+# --- OD.SetBasedAODVerifier ---
+add_test_with_libraries(od.set_based_aod_verifier test_set_based_verifier.cpp "od::set_based_aod_verifier;od::fastod;test::common")
+#[=[ These tests aren't ready yet, disable them
+# --- FD.SFD ---
+add_test_with_libraries(fd.sfd.cords test_sfd.cpp fd::sfd::cords)
 
 # --- DD.Split ---
 add_test_with_libraries(dd.split test_split.cpp dd::split)
