@@ -138,10 +138,10 @@ add_test_with_libraries(od.set_based_aod_verifier test_set_based_verifier.cpp "o
 
 # --- FD.SFD ---
 add_test_with_libraries(fd.sfd.cords test_sfd.cpp "fd::sfd::cords;test::common")
-#[=[ These tests aren't ready yet, disable them
-# --- DD.Split ---
-add_test_with_libraries(dd.split test_split.cpp dd::split)
 
+# --- DD.Split ---
+add_test_with_libraries(dd.split test_split.cpp "dd::split;test::common")
+#[=[ These tests aren't ready yet, disable them
 # --- FD.Tane ---
 add_test_with_libraries(fd.tane test_tane_afd_measures.cpp fd::tane::tane)
 
