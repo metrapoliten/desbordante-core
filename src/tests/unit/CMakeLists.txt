@@ -60,7 +60,7 @@ add_library(tests.ind.util)
 target_sources(tests.ind.util PRIVATE test_ind_util.cpp)
 target_link_libraries(tests.ind.util PRIVATE "test::common;algos;ind::ind")
 target_include_directories(tests.ind.util PRIVATE "../common")
-#[=[ todo: Segfault
+#[===[ todo: Segfault
 add_headers(tests.ind.util PUBLIC test_ind_util.h)
 
 #add_test_with_libraries(ind.util test_ind_util.cpp "")
@@ -68,24 +68,24 @@ add_headers(tests.ind.util PUBLIC test_ind_util.h)
 
 add_test_with_libraries(ind.faida test_faida.cpp "ind::faida;tests.ind.util;test::common")
 add_test_with_libraries(ind.algos test_ind_algorithms.cpp "ind::faida;ind::mind;ind::spider;ind::ind;tests.ind.util;tests.util.hash")
-#]=]
+#]===]
 add_test_with_libraries(ind.verifier test_ind_verifier.cpp "ind::verifier;test::common;algos")
 
 # --- OD.FastOD ---
 add_test_with_libraries(od.fastod test_fastod.cpp "od::fastod;test::common")
 
 # --- FD ---
-#[=[ todo: Segfault
+#[===[ todo: Segfault
 add_test_with_libraries(fd.algos test_fd_algorithm.cpp
     "fd::depminer;fd::dfd;fd::fastfds;fd::fdep;fd::fun;fd::hy;fd::pyro;fd::tane::pfd;fd::tane::tane;fd::fd;test::common")
-#]=]
+#]===]
 
-#[=[ todo: Segfault
+#[===[ todo: Segfault
 add_library(tests.fd.util test_fd_util.h)
 target_link_libraries(tests.fd.util PRIVATE test::common)
 add_test_with_libraries(fd.approx test_fd_approximate.cpp "fd::eulerfd;fd::fd;tests.fd.util")
 add_test_with_libraries(fd.mine test_fd_mine.cpp "fd::pyro;fd::mine;test::common")
-#]=]
+#]===]
 
 add_test_with_libraries(fd.verifier test_fd_verifier.cpp "fd::verifier;algos;test::common")
 
@@ -102,12 +102,12 @@ add_test_with_libraries(gfd.validator test_gfd_validator.cpp "gfd::validator;tes
 add_library(tests.util.hash)
 add_headers(tests.util.hash PUBLIC test_hash_util.h)
 target_sources(tests.util.hash PRIVATE test_hash_util.cpp)
-#[=[ These tests aren't ready yet, disable them
-# --- MD ---
-add_test_with_libraries(md.hymd test_hymd.cpp md::hymd)
-add_test_with_libraries(md.metrics test_hymd_metrics.cpp md::hymd::preprocessing)
-add_test_with_libraries(md.verifier test_md_verification.cpp md::verifier)
 
+# --- MD ---
+add_test_with_libraries(md.hy test_hymd.cpp "md::hy;test::common")
+add_test_with_libraries(md.metrics test_hymd_metrics.cpp md.hy.preprocessing)
+add_test_with_libraries(md.verifier test_md_verification.cpp "md::verifier;test::common")
+#[=[ These tests aren't ready yet, disable them
 # --- Metric ---
 add_test_with_libraries(metric test_metric_verifier.cpp metric)
 

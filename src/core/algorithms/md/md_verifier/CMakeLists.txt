@@ -14,3 +14,5 @@ target_sources(md.verifier
         validation/validation.cpp
         md_verifier.cpp
 )
+
+target_link_libraries(md.verifier PRIVATE md::hy)

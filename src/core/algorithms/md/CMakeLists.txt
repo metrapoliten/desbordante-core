@@ -16,4 +16,4 @@ add_headers(md.md
 )
 target_sources(md.md PRIVATE md.cpp)
 
-target_link_with_given(md::md PRIVATE md.hymd md.verifier)
+target_link_with_given(md::md PRIVATE md.hy md.verifier)

@@ -1,9 +1,8 @@
-add_library(md.hymd)
-add_library(md::hymd ALIAS md.hymd)
+add_library(md.hy)
+add_library(md::hy ALIAS md.hy)
 
-add_library(md.hymd.preprocessing)
-add_library(md::hymd::preprocessing ALIAS md.hymd.preprocessing)
-add_headers(md.hymd.preprocessing
+add_library(md.hy.preprocessing)
+add_headers(md.hy.preprocessing
      PRIVATE
         preprocessing/ccv_id_pickers/index_uniform.h
         preprocessing/ccv_id_pickers/pick_lhs_ccv_ids_type.h
@@ -30,7 +29,7 @@ add_headers(md.hymd.preprocessing
         preprocessing/valid_table_results.h
 )
 
-target_sources(md.hymd.preprocessing
+target_sources(md.hy.preprocessing
     PRIVATE
         preprocessing/column_matches/jaccard.cpp
         preprocessing/column_matches/lcs.cpp
@@ -39,8 +38,8 @@ target_sources(md.hymd.preprocessing
         preprocessing/column_matches/smith_waterman_gotoh.cpp
 )
 
-add_headers(md.hymd PUBLIC hymd.h)
-add_headers(md.hymd
+add_headers(md.hy PUBLIC hymd.h)
+add_headers(md.hy
     PRIVATE
         indexes/column_similarity_info.h
         indexes/compressed_records.h
@@ -103,7 +102,7 @@ add_headers(md.hymd
         table_identifiers.h
         validator.h
 )
-target_sources(md.hymd
+target_sources(md.hy
     PRIVATE
         indexes/dictionary_compressor.cpp
         indexes/keyed_position_list_index.cpp
@@ -123,4 +122,4 @@ target_sources(md.hymd
         validator.cpp
 )
 
-target_link_libraries(md.hymd PRIVATE md.hymd.preprocessing)
+target_link_libraries(md.hy PRIVATE md.hy.preprocessing)
