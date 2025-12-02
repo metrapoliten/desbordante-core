@@ -126,13 +126,13 @@ add_test_with_libraries(nd.verifier test_nd_verifier.cpp "nd::verifier;test::com
 
 # --- OD.Order ---
 add_test_with_libraries(od.order test_order.cpp "od::order;test::common")
-#[=[ These tests aren't ready yet, disable them
+
 # --- FD.PFDVerifier ---
-add_test_with_libraries(fd.pfdverifier test_pfd_verifier.cpp fd::pfdverifier)
+add_test_with_libraries(fd.pfdverifier test_pfd_verifier.cpp "fd::pfdverifier;test::common;algos")
 
 # --- FD.PFDTane ---
-add_test_with_libraries(fd.tane.pfd test_pfdtane.cpp fd::tane::pfd)
-
+add_test_with_libraries(fd.tane.pfd test_pfdtane.cpp "fd::tane::pfd;test::common")
+#[=[ These tests aren't ready yet, disable them
 # --- OD.SetBasedAODVerifier ---
 add_test_with_libraries(od.set_based_aod_verifier test_set_based_verifier.cpp od::set_based_aod_verifier)
 
