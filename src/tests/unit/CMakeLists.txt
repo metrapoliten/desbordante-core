@@ -110,10 +110,10 @@ add_test_with_libraries(md.verifier test_md_verification.cpp "md::verifier;test:
 
 # --- Metric ---
 add_test_with_libraries(metric test_metric_verifier.cpp "metric;test::common")
-#[=[ These tests aren't ready yet, disable them
-# --- ND ---
-add_test_with_libraries(nd.verifier test_nd_verifier.cpp nd::verifier)
 
+# --- ND ---
+add_test_with_libraries(nd.verifier test_nd_verifier.cpp "nd::verifier;test::common")
+#[=[ These tests aren't ready yet, disable them
 #TODO: Model
 # --- Model.NumericTypeCast (types.h) ---
 #add_test_with_libraries(model.types1 test_numerictype_cast.cpp model.???)
