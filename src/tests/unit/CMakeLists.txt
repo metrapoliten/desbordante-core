@@ -23,24 +23,42 @@ endfunction()
 add_library(test_helper.ind.util)
 add_headers(test_helper.ind.util PUBLIC test_ind_util.h)
 target_sources(test_helper.ind.util PRIVATE test_ind_util.cpp)
-add_dependencies(test_helper.ind.util test.common)
-target_link_libraries(test_helper.ind.util PRIVATE ind::ind test.common)
+
+target_link_libraries(test_helper.ind.util PRIVATE ind::ind)
 target_include_directories(test_helper.ind.util PRIVATE "../common")
 
-#set_target_properties(test.ind.util PROPERTIES ENABLE_EXPORTS ON)
-
 add_test_with_libraries(ind.faida
-        "test_faida.cpp"
+        test_faida.cpp
         "test.common;ind::ind;ind::faida;test_helper.ind.util")
-#[===[ todo: Segfault. IND
-add_test_with_libraries(ind.algos test_ind_algorithms.cpp "ind::faida;ind::mind;ind::spider;ind::ind;tests.ind.util;tests.util.hash")
-#]===]
 
+add_library(test.common.obj OBJECT)
+target_include_directories(test.common.obj PRIVATE "../common")
+target_sources(test.common.obj PRIVATE
+        "${CMAKE_SOURCE_DIR}/tests/common/all_csv_configs.h"
+        "${CMAKE_SOURCE_DIR}/tests/common/all_csv_configs.cpp"
+        "${CMAKE_SOURCE_DIR}/tests/common/csv_config_util.h"
+)
+
+add_test_with_libraries(ind.algos
+    "$<TARGET_OBJECTS:test.common.obj>;test_ind_algorithms.cpp"
+    "algos;ind::ind;test_helper.ind.util;tests.util.hash;ind::spider;ind::mind;ind::faida"
+)
+#add_executable(test.ind.algos OBJECT)
+#4  ERROR
+#5  0x00005555555eb361 in CSVConfig::CSVConfig (this=0x7fffffffe198) at /core/parser/csv_parser/csv_parser.h:15
+#6  0x00005555555bea4e in __cxx_global_var_init.82(void) () at tests/unit/test_ind_algorithms.cpp:78
+#set_source_files_properties(all_csv_configs.cpp PROPERTIES OBJECT_DEPENDS "/home/nuc_user/dev/edu/uni/desbordante-core/build/src/tests/unit/CMakeFiles/test.ind.algos.dir/test_ind_algorithms.cpp.o")
+#set_source_files_properties(test_ind_algorithms.cpp PROPERTIES OBJECT_DEPENDS "/home/nuc_user/dev/edu/uni/desbordante-core/build/src/tests/CMakeFiles/test.common.dir/common/all_csv_configs.cpp.o")
+#add_test_with_libraries(ind.algos
+#        test_ind_algorithms.cpp
+#        "test.common;algos;ind::ind;test_helper.ind.util;tests.util.hash;ind::spider;ind::mind;ind::faida")
 
 #[===[ todo: Segfault. FD
 add_test_with_libraries(fd.algos test_fd_algorithm.cpp
-    "fd::depminer;fd::dfd;fd::fastfds;fd::fdep;fd::fun;fd::hy;fd::pyro;fd::tane::pfd;fd::tane::tane;fd::fd;test::common")
-add_library(tests.fd.util test_fd_util.h)
+    "test::common;fd::depminer;fd::dfd;fd::fastfds;fd::fdep;fd::fun;fd::hy;fd::pyro;fd::tane::pfd;fd::tane::tane;fd::fd;tests.fd.util")
+add_library(tests.fd.util INTERFACE test_fd_util.h)
+
+
 target_link_libraries(tests.fd.util PRIVATE test::common)
 add_test_with_libraries(fd.approx test_fd_approximate.cpp "fd::eulerfd;fd::fd;tests.fd.util")
 add_test_with_libraries(fd.mine test_fd_mine.cpp "fd::pyro;fd::mine;test::common")
