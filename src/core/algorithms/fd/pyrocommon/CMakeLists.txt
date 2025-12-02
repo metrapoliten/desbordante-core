@@ -40,4 +40,4 @@ target_sources(fd.pyrocommon
         model/pli_cache.cpp
         model/list_agree_set_sample.cpp
 )
-target_link_libraries(fd.pyrocommon PRIVATE spdlog::spdlog_header_only)
+target_link_libraries(fd.pyrocommon PRIVATE spdlog::spdlog_header_only model)

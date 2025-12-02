@@ -144,11 +144,13 @@ add_test_with_libraries(dd.split test_split.cpp "dd::split;test::common")
 
 # --- FD.Tane ---
 add_test_with_libraries(fd.tane test_tane_afd_measures.cpp "fd::tane::tane;test::common")
-#[=[ These tests aren't ready yet, disable them
-# --- UCC ---
-add_test_with_libraries(ucc.algos test_ucc_algorithms.cpp "ucc::ucc ucc::hy ucc::pyro ucc::hpivalid")
-add_test_with_libraries(ucc.verifier test_ucc_verifier.cpp ucc::verifier)
 
+# --- UCC ---
+#[===[ todo: Segfault
+add_test_with_libraries(ucc.algos test_ucc_algorithms.cpp "test::common;ucc::ucc;ucc::hy;tests.util.hash;ucc::pyro;ucc::hpivalid")
+#]===]
+add_test_with_libraries(ucc.verifier test_ucc_verifier.cpp "ucc::verifier;ucc::hy;test::common")
+#[=[ These tests aren't ready yet, disable them
 #TODO
 # --- Util??? ---
 add_test_with_libraries(util test_util.cpp "")

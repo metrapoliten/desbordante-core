@@ -21,4 +21,4 @@ target_sources(ucc.hy
         model/ucc_tree_vertex.cpp
 )
 
-target_link_libraries(ucc.hy PRIVATE spdlog::spdlog_header_only)
+target_link_libraries(ucc.hy PRIVATE spdlog::spdlog_header_only config fd::hycommon ucc::ucc)

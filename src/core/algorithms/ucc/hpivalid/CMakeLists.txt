@@ -19,4 +19,4 @@ target_sources(ucc.hpivalid
         tree_search.cpp
 )
 
-target_link_libraries(ucc.hpivalid PRIVATE spdlog::spdlog_header_only)
+target_link_libraries(ucc.hpivalid PRIVATE spdlog::spdlog_header_only fd::hycommon)
