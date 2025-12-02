@@ -4,7 +4,7 @@ add_subdirectory(verifier)
 add_library(dc.model)
 
 target_sources(dc.model
-    PUBLIC
+    PRIVATE
         FILE_SET HEADERS
         BASE_DIRS ${PROJECT_SOURCE_DIR}/src/core
         FILES
@@ -26,7 +26,7 @@ target_sources(dc.model
 
 add_library(dc.parser)
 target_sources(dc.parser
-    PUBLIC
+    PRIVATE
         FILE_SET HEADERS
         BASE_DIRS ${PROJECT_SOURCE_DIR}/src/core
         FILES parser/dc_parser.h

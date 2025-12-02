@@ -4,7 +4,7 @@ add_library(fd.tane.common)
 add_library(fd::tane::common ALIAS fd.tane.common)
 target_link_libraries(fd.tane.common PRIVATE spdlog::spdlog_header_only)
 
-add_headers(fd.tane.common PUBLIC tane_common.h)
+add_headers(fd.tane.common PRIVATE tane_common.h)
 add_headers(fd.tane.common
     PRIVATE
         model/lattice_level.h
@@ -22,7 +22,7 @@ add_library(fd.tane.tane)
 add_library(fd::tane::tane ALIAS fd.tane.tane)
 
 add_headers(fd.tane.tane
-    PUBLIC
+        PRIVATE
         afd_measures.h
         tane.h
 )
@@ -36,7 +36,7 @@ target_sources(fd.tane.tane
 add_library(fd.tane.pfd)
 add_library(fd::tane::pfd ALIAS fd.tane.pfd)
 
-add_headers(fd.tane.pfd PUBLIC pfdtane.h)
+add_headers(fd.tane.pfd PRIVATE pfdtane.h)
 target_sources(fd.tane.pfd PRIVATE pfdtane.cpp)
 
 # --- Linking ---

@@ -1,0 +1,54 @@
+add_library(model.table)
+
+add_headers(model.table
+    PRIVATE
+        abstract_column_data.h
+        agree_set_factory.h
+        arity_index.h
+        block_data.h
+        block_dataset_stream.h
+        column_combination.h
+        column_data.h
+        column_domain.h
+        column_domain_iterator.h
+        column.h
+        column_index.h
+        column_layout_relation_data.h
+        column_layout_typed_relation_data.h
+        dataset_stream_fixed.h
+        dataset_stream_projection.h
+        dataset_stream_wrapper.h
+        dynamic_position_list_index.h
+        dynamic_table_data.h
+        idataset_stream.h
+        identifier_set.h
+        position_list_index.h
+        relational_schema.h
+        relation_data.h
+        table_index.h
+        tuple_index.h
+        typed_column_data.h
+        vertical.h
+        vertical_map.h
+)
+
+target_sources(model.table
+    PRIVATE
+        agree_set_factory.cpp
+        block_data.cpp
+        column_combination.cpp
+        column.cpp
+        column_domain.cpp
+        column_domain_iterator.cpp
+        column_layout_relation_data.cpp
+        column_layout_typed_relation_data.cpp
+        dynamic_position_list_index.cpp
+        identifier_set.cpp
+        position_list_index.cpp
+        relational_schema.cpp
+        typed_column_data.cpp
+        vertical.cpp
+        vertical_map.cpp
+)
+
+target_link_libraries(model.table PRIVATE model.types)

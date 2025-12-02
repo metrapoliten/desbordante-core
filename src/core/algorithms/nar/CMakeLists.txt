@@ -14,3 +14,4 @@ target_sources(nar.nar
         nar_algorithm.cpp
         value_range.cpp
 )
+target_link_libraries(nar.nar PRIVATE model.table)

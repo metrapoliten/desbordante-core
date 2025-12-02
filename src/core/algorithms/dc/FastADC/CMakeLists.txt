@@ -1,7 +1,7 @@
 add_library(dc.fastadc.structs)
 add_library(dc::fastadc::structs ALIAS dc.fastadc.structs)
 add_headers(dc.fastadc.structs
-    PUBLIC
+    PRIVATE
         misc/misc.h
         model/column_operand.h
         model/denial_constraint.h
@@ -55,6 +55,6 @@ target_link_libraries(dc.fastadc.structs PRIVATE spdlog::spdlog_header_only)
 add_library(dc.fastadc)
 add_library(dc::fastadc ALIAS cfd.cfd)
 
-add_headers(dc.fastadc PUBLIC fastadc.h)
+add_headers(dc.fastadc PRIVATE fastadc.h)
 target_sources(dc.fastadc PRIVATE fastadc.cpp)
 target_link_libraries(dc.fastadc PRIVATE dc::fastadc::structs)

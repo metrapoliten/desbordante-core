@@ -72,7 +72,7 @@ target_sources(create_algo
 
 add_library(algos)
 target_sources(algos
-    PUBLIC
+    PRIVATE
         FILE_SET HEADERS
         FILES
             algo_factory.h
@@ -114,4 +114,5 @@ target_link_with_given(algos
         datastats
         ucc.ucc ucc.hy
 )
+target_link_libraries(algos PRIVATE util)
 #target_link_libraries(algos PUBLIC AC AR cfd.cfd cfd.verifier DC DD FD GFD IND MD METRIC NAR ND OD stat ucc)

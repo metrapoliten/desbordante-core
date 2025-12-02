@@ -1,7 +1,7 @@
 add_library(cfd.verifier)
 add_library(cfd::verifier ALIAS cfd.verifier)
 target_sources(cfd.verifier
-    PUBLIC
+    PRIVATE
         FILE_SET HEADERS
         BASE_DIRS ${PROJECT_SOURCE_DIR}/src/core
         FILES cfd_verifier.h

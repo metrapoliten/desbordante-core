@@ -4,14 +4,15 @@
 #set(LIB_NAME ${CMAKE_PROJECT_NAME})
 
 # Collect all source files recursively (headers and implementations)
-file(GLOB_RECURSE model_srcs "${CMAKE_CURRENT_LIST_DIR}/model/*.h" "${CMAKE_CURRENT_LIST_DIR}/model/*.cpp")
 file(GLOB_RECURSE util_srcs "${CMAKE_CURRENT_LIST_DIR}/util/*.h" "${CMAKE_CURRENT_LIST_DIR}/util/*.cpp")
 
-add_library(model ${model_srcs})
 add_library(util ${util_srcs})
 
-add_subdirectory(config)
 add_subdirectory(algorithms)
+add_subdirectory(config)
+add_subdirectory(model/table)
+add_subdirectory(model/transaction)
+add_subdirectory(model/types)
 add_subdirectory(parser/csv_parser)
 add_subdirectory(parser/graph_parser)
 
@@ -28,9 +29,11 @@ set_property(TARGET spdlog_header_only APPEND PROPERTY INTERFACE_COMPILE_DEFINIT
 
 # Build core project as a static library
 #add_library(${LIB_NAME} STATIC ${lib_sources} ${model_srcs} ${parser})
-target_link_libraries(model PUBLIC util PRIVATE spdlog::spdlog_header_only)
+#target_link_libraries(model PUBLIC util PRIVATE spdlog::spdlog_header_only)
+target_link_libraries(model.table PRIVATE spdlog::spdlog_header_only)
 target_link_libraries(util PRIVATE spdlog::spdlog_header_only)
-target_link_libraries(algos PUBLIC config model parser::csv spdlog::spdlog_header_only)
+#todo: try PRIVATE
+target_link_libraries(algos PUBLIC config parser::csv spdlog::spdlog_header_only)
 #target_link_libraries(${LIB_NAME} PUBLIC config)
 #target_link_libraries(${LIB_NAME} PUBLIC algos)
 

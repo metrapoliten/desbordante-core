@@ -2,7 +2,7 @@ add_library(fd.sfd.cords)
 add_library(fd::sfd::cords ALIAS fd.sfd.cords)
 
 add_headers(fd.sfd.cords
-    PUBLIC
+        PRIVATE
         cords.h
         correlation.h
         frequency_handler.h

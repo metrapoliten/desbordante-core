@@ -16,3 +16,5 @@ target_sources(metric
         metric_verifier.cpp
         points_calculator.cpp
 )
+
+target_link_libraries(metric PRIVATE model.table)

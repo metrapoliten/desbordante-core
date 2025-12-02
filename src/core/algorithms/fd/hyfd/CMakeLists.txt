@@ -9,7 +9,7 @@ target_sources(fd.hy.model PRIVATE model/fd_tree.h model/fd_tree_vertex.cpp)
 add_library(fd.hy)
 add_library(fd::hy ALIAS fd.hy)
 
-add_headers(fd.hy PUBLIC
+add_headers(fd.hy PRIVATE
         hyfd.h
 )
 add_headers(fd.hy PRIVATE

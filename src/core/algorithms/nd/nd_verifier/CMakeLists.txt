@@ -16,3 +16,5 @@ target_sources(nd.verifier
         util/stats_calculator.cpp
         util/value_combination.cpp
 )
+
+target_link_libraries(nd.verifier PRIVATE model.table)

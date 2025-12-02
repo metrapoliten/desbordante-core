@@ -20,3 +20,5 @@ target_sources(ar
         ar_algorithm.cpp
         candidate_hash_tree.cpp
 )
+
+target_link_libraries(ar PRIVATE model.transaction)

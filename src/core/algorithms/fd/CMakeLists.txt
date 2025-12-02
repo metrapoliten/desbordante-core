@@ -26,7 +26,7 @@ add_library(fd.fd)
 add_library(fd::fd ALIAS fd.fd)
 
 add_headers(fd.fd
-    PUBLIC
+        PRIVATE
         fd.h
         fd_algorithm.h
         raw_fd.h
@@ -42,7 +42,7 @@ add_library(fd.pli)
 add_library(fd::pli ALIAS fd.pli)
 
 add_headers(fd.pli
-    PUBLIC
+        PRIVATE
         pli_based_fd_algorithm.h
 )
 target_sources(fd.pli

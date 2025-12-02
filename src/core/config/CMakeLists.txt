@@ -1,9 +1,9 @@
 add_library(config)
 #TODO: correct
 target_sources(config
-    PUBLIC
+    PRIVATE
         FILE_SET HEADERS
-    PUBLIC
+    PRIVATE
         column_index/option.cpp
         column_index/validate_index.cpp
 

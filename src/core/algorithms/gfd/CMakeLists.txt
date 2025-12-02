@@ -4,7 +4,7 @@ add_subdirectory(gfd_validator)
 add_library(gfd.gfd)
 add_library(gfd::gfd ALIAS gfd.gfd)
 
-add_headers(gfd.gfd PUBLIC gfd.h)
+add_headers(gfd.gfd PRIVATE gfd.h)
 add_headers(gfd.gfd
     PRIVATE
         comparator.h

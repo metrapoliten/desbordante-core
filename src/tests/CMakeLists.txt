@@ -2,19 +2,17 @@
 
 # Define test binary name with project suffix for clarity
 # Format: <project_name>_test (e.g. Desbordante_test)
-set(UNIT_TEST_BINARY ${CMAKE_PROJECT_NAME}_test)
+#set(UNIT_TEST_BINARY ${CMAKE_PROJECT_NAME}_test)
 set(BENCHMARK_BINARY ${CMAKE_PROJECT_NAME}_benchmark)
 
 # ---- Test Sources Setup ----
 
 # Auto-collect test sources
-file(GLOB common_sources "common/*.h" "common/*.cpp")
-file(GLOB unit_test_sources "unit/*.h" "unit/*.cpp")
 file(GLOB benchmark_sources "benchmark/*.h" "benchmark/*.cpp")
 
 add_library(test.common)
 add_library(test::common ALIAS test.common)
-add_headers(test.common PUBLIC common/all_csv_configs.h)
+add_headers(test.common PRIVATE common/all_csv_configs.h)
 target_sources(test.common PRIVATE common/all_csv_configs.cpp)
 
 if (COMPILE_TESTS)

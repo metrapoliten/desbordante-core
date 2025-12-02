@@ -1,7 +1,7 @@
 add_library(ac)
 
 target_sources(ac
-    PUBLIC
+    PRIVATE
         FILE_SET HEADERS
         BASE_DIRS ${PROJECT_SOURCE_DIR}/src/core
         FILES
@@ -22,3 +22,5 @@ target_sources(ac
         ac_algorithm.cpp
         ac_exception_finder.cpp
 )
+
+target_link_libraries(ac PRIVATE model.table model.types)

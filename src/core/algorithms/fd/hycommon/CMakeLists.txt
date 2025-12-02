@@ -1,7 +1,7 @@
 add_library(fd.hycommon)
 add_library(fd::hycommon ALIAS fd.hycommon)
 
-add_headers(fd.hycommon PUBLIC
+add_headers(fd.hycommon PRIVATE
         column_combination_list.h
         preprocessor.h
         sampler.h

@@ -40,3 +40,5 @@ target_sources(od.fastod
         util/timer.cpp
         util/type_util.cpp
 )
+
+target_link_libraries(od.fastod PRIVATE model.table)

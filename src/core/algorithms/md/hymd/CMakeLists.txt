@@ -38,7 +38,9 @@ target_sources(md.hy.preprocessing
         preprocessing/column_matches/smith_waterman_gotoh.cpp
 )
 
-add_headers(md.hy PUBLIC hymd.h)
+target_link_libraries(md.hy.preprocessing PRIVATE model.table)
+
+add_headers(md.hy PRIVATE hymd.h)
 add_headers(md.hy
     PRIVATE
         indexes/column_similarity_info.h

@@ -2,7 +2,7 @@ add_library(fd.pyrocommon)
 add_library(fd::pyrocommon ALIAS fd.pyrocommon)
 
 add_headers(fd.pyrocommon
-    PUBLIC
+        PRIVATE
         core/dependency_candidate.h
         core/dependency_consumer.h
         core/fd_g1_strategy.h
@@ -40,4 +40,4 @@ target_sources(fd.pyrocommon
         model/pli_cache.cpp
         model/list_agree_set_sample.cpp
 )
-target_link_libraries(fd.pyrocommon PRIVATE spdlog::spdlog_header_only model)
+target_link_libraries(fd.pyrocommon PRIVATE spdlog::spdlog_header_only model.table)

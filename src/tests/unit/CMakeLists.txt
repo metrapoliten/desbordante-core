@@ -70,8 +70,8 @@ add_test_with_libraries(ac test_ac_algorithm.cpp "ac;test::common")
 add_test_with_libraries(ar test_apriori.cpp "ar;test::common")
 
 # --- CFD ---
-add_test_with_libraries(cfd.algos test_cfd_algos.cpp "cfd::cfd;test::common")
-add_test_with_libraries(cfd.relation_data test_cfd_relation_data.cpp "cfd::model;test::common;parser::csv;model")
+add_test_with_libraries(cfd.algos test_cfd_algos.cpp "cfd::cfd;test::common;cfd.model")
+add_test_with_libraries(cfd.relation_data test_cfd_relation_data.cpp "test::common;parser::csv;cfd.model")
 add_test_with_libraries(cfd.verifier test_cfd_verifier.cpp "cfd::verifier;test::common")
 
 # --- CSV ---
@@ -82,7 +82,7 @@ add_test_with_libraries(datastats test_data_stats.cpp "datastats;test::common")
 
 # --- DC ---
 #test_dc_structures_correct_results.h
-add_test_with_libraries(dc.structs test_dc_structures.cpp "dc::fastadc::structs;model;test::common;parser::csv")
+add_test_with_libraries(dc.structs test_dc_structures.cpp "dc::fastadc::structs;test::common;parser::csv;model.types;model.table")
 add_test_with_libraries(dc.verifier test_dc_verifier.cpp  "dc::verifier;test::common")
 
 # --- DD ---
@@ -96,14 +96,15 @@ add_test_with_libraries(nar.des test_des.cpp "nar::des;nar::nar;test::common;alg
 # --- FD ---
 add_test_with_libraries(fd.dynverifier test_dynamic_fd_verifier.cpp "fd::verifier;fd::dynverifier;test::common;algos")
 add_test_with_libraries(fd.verifier test_fd_verifier.cpp "fd::verifier;algos;test::common")
+
 # --- FD.PFDTane ---
-add_test_with_libraries(fd.tane.pfd test_pfdtane.cpp "fd::tane::pfd;test::common")
+add_test_with_libraries(fd.tane.pfd test_pfdtane.cpp "fd::tane::pfd;test::common;model.table")
 # --- FD.PFDVerifier ---
 add_test_with_libraries(fd.pfdverifier test_pfd_verifier.cpp "fd::pfdverifier;test::common;algos")
 # --- FD.SFD ---
-add_test_with_libraries(fd.sfd.cords test_sfd.cpp "fd::sfd::cords;test::common")
+add_test_with_libraries(fd.sfd.cords test_sfd.cpp "fd::sfd::cords;test::common;model.table")
 # --- FD.Tane ---
-add_test_with_libraries(fd.tane test_tane_afd_measures.cpp "fd::tane::tane;test::common")
+add_test_with_libraries(fd.tane test_tane_afd_measures.cpp "fd::tane::tane;test::common;model.table")
 
 # --- GFD ---
 add_library(tests.gfd.paths)
@@ -141,9 +142,9 @@ add_test_with_libraries(od.order test_order.cpp "od::order;test::common")
 add_test_with_libraries(od.set_based_aod_verifier test_set_based_verifier.cpp "od::set_based_aod_verifier;od::fastod;test::common")
 
 # --- UCC ---
-add_test_with_libraries(ucc.verifier test_ucc_verifier.cpp "ucc::verifier;ucc::hy;test::common")
+add_test_with_libraries(ucc.verifier test_ucc_verifier.cpp "ucc::verifier;ucc::hy;test::common;model.table")
 
 # --- Util ---
 #todo: only need fd::pyrocommon.model
-add_test_with_libraries(util test_util.cpp "test::common;model;fd::pyrocommon;parser::csv")
+add_test_with_libraries(util test_util.cpp "test::common;fd::pyrocommon;parser::csv")
 

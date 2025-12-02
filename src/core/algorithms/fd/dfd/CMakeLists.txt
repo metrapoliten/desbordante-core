@@ -1,7 +1,7 @@
 add_library(fd.dfd)
 add_library(fd::dfd ALIAS fd.dfd)
 
-add_headers(fd.dfd PUBLIC dfd.h)
+add_headers(fd.dfd PRIVATE dfd.h)
 add_headers(fd.dfd PRIVATE node_category.h)
 target_sources(fd.dfd
     PRIVATE

@@ -3,7 +3,7 @@ add_subdirectory(cfd_verifier)
 add_library(cfd.cfd)
 add_library(cfd::cfd ALIAS cfd.cfd)
 target_sources(cfd.cfd
-    PUBLIC
+    PRIVATE
         FILE_SET HEADERS
         BASE_DIRS ${PROJECT_SOURCE_DIR}/src/core
         FILES
@@ -26,9 +26,8 @@ target_sources(cfd.cfd
 )
 
 add_library(cfd.model)
-add_library(cfd::model ALIAS cfd.model)
 target_sources(cfd.model
-    PUBLIC
+    PRIVATE
         FILE_SET HEADERS
         BASE_DIRS ${PROJECT_SOURCE_DIR}/src/core/
         FILES
@@ -49,7 +48,7 @@ target_sources(cfd.model
 add_library(cfd.util)
 add_library(cfd::util ALIAS cfd.util)
 target_sources(cfd.util
-    PUBLIC
+    PRIVATE
         FILE_SET HEADERS
         BASE_DIRS ${PROJECT_SOURCE_DIR}/src/core
         FILES
@@ -71,6 +70,6 @@ target_sources(cfd.util
         util/tidlist_util.cpp
 )
 
-target_link_libraries(cfd.model PRIVATE cfd::util)
-target_link_libraries(cfd.cfd PUBLIC cfd.model PRIVATE cfd.util)
+target_link_libraries(cfd.model PRIVATE cfd::util model.table)
+target_link_libraries(cfd.cfd PRIVATE cfd.model cfd.util)
 target_link_libraries(cfd.verifier PRIVATE cfd.util cfd.model)

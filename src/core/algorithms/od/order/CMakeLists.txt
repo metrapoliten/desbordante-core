@@ -18,3 +18,4 @@ target_sources(od.order
         order_utility.cpp
         sorted_partitions.cpp
 )
+target_link_libraries(od.order PRIVATE model.table)
