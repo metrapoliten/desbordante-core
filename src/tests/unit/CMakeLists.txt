@@ -20,17 +20,19 @@ function(add_test_with_libraries NAME FILES LIBS
 endfunction()
 
 
-add_library(tests.ind.util)
-target_sources(tests.ind.util PRIVATE test_ind_util.cpp)
-target_link_libraries(tests.ind.util PRIVATE "test::common;algos;ind::ind")
-target_include_directories(tests.ind.util PRIVATE "../common")
-#[===[ todo: Segfault. IND
-add_headers(tests.ind.util PUBLIC test_ind_util.h)
+add_library(test_helper.ind.util)
+add_headers(test_helper.ind.util PUBLIC test_ind_util.h)
+target_sources(test_helper.ind.util PRIVATE test_ind_util.cpp)
+add_dependencies(test_helper.ind.util test.common)
+target_link_libraries(test_helper.ind.util PRIVATE ind::ind)
+target_include_directories(test_helper.ind.util PRIVATE "../common")
 
-#add_test_with_libraries(ind.util test_ind_util.cpp "")
 #set_target_properties(test.ind.util PROPERTIES ENABLE_EXPORTS ON)
 
-add_test_with_libraries(ind.faida test_faida.cpp "ind::faida;tests.ind.util;test::common")
+add_test_with_libraries(ind.faida
+        "test_faida.cpp"
+        "ind::ind;ind::faida;test_helper.ind.util;test.common")
+#[===[ todo: Segfault. IND
 add_test_with_libraries(ind.algos test_ind_algorithms.cpp "ind::faida;ind::mind;ind::spider;ind::ind;tests.ind.util;tests.util.hash")
 #]===]
 

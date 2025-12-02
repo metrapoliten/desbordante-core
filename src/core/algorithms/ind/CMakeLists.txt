@@ -17,4 +17,6 @@ target_sources(ind.ind
         ind_algorithm.cpp
 )
 
-target_link_with_given(ind::ind PRIVATE ind.faida ind.spider)
+#target_link_with_given(ind::ind PRIVATE ind.faida ind.spider)
+target_link_libraries(ind.faida PRIVATE ind::ind)
+target_link_libraries(ind.ind PRIVATE model.table)
