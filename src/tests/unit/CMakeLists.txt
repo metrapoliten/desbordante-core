@@ -107,10 +107,10 @@ target_sources(tests.util.hash PRIVATE test_hash_util.cpp)
 add_test_with_libraries(md.hy test_hymd.cpp "md::hy;test::common")
 add_test_with_libraries(md.metrics test_hymd_metrics.cpp md.hy.preprocessing)
 add_test_with_libraries(md.verifier test_md_verification.cpp "md::verifier;test::common")
-#[=[ These tests aren't ready yet, disable them
-# --- Metric ---
-add_test_with_libraries(metric test_metric_verifier.cpp metric)
 
+# --- Metric ---
+add_test_with_libraries(metric test_metric_verifier.cpp "metric;test::common")
+#[=[ These tests aren't ready yet, disable them
 # --- ND ---
 add_test_with_libraries(nd.verifier test_nd_verifier.cpp nd::verifier)
 
