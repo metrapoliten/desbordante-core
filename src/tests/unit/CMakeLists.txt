@@ -141,10 +141,10 @@ add_test_with_libraries(fd.sfd.cords test_sfd.cpp "fd::sfd::cords;test::common")
 
 # --- DD.Split ---
 add_test_with_libraries(dd.split test_split.cpp "dd::split;test::common")
-#[=[ These tests aren't ready yet, disable them
-# --- FD.Tane ---
-add_test_with_libraries(fd.tane test_tane_afd_measures.cpp fd::tane::tane)
 
+# --- FD.Tane ---
+add_test_with_libraries(fd.tane test_tane_afd_measures.cpp "fd::tane::tane;test::common")
+#[=[ These tests aren't ready yet, disable them
 # --- UCC ---
 add_test_with_libraries(ucc.algos test_ucc_algorithms.cpp "ucc::ucc ucc::hy ucc::pyro ucc::hpivalid")
 add_test_with_libraries(ucc.verifier test_ucc_verifier.cpp ucc::verifier)
