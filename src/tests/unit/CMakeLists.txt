@@ -24,14 +24,14 @@ add_library(test_helper.ind.util)
 add_headers(test_helper.ind.util PUBLIC test_ind_util.h)
 target_sources(test_helper.ind.util PRIVATE test_ind_util.cpp)
 add_dependencies(test_helper.ind.util test.common)
-target_link_libraries(test_helper.ind.util PRIVATE ind::ind)
+target_link_libraries(test_helper.ind.util PRIVATE ind::ind test.common)
 target_include_directories(test_helper.ind.util PRIVATE "../common")
 
 #set_target_properties(test.ind.util PROPERTIES ENABLE_EXPORTS ON)
 
 add_test_with_libraries(ind.faida
         "test_faida.cpp"
-        "ind::ind;ind::faida;test_helper.ind.util;test.common")
+        "test.common;ind::ind;ind::faida;test_helper.ind.util")
 #[===[ todo: Segfault. IND
 add_test_with_libraries(ind.algos test_ind_algorithms.cpp "ind::faida;ind::mind;ind::spider;ind::ind;tests.ind.util;tests.util.hash")
 #]===]
