@@ -1,8 +1,6 @@
 #TODO:  add_executable(${TEST_NAME} main.cpp ${FILES}) or add_library(test_main main.cpp)?
 add_library(test_main main.cpp)
-function(add_test_with_libraries NAME FILES LIBS
-#        TEST_WORKING_DIRECTORY
-)
+function(add_test_with_libraries NAME FILES LIBS)
     set(TEST_NAME test.${NAME})
     add_executable(${TEST_NAME} ${FILES})
     target_link_libraries(${TEST_NAME} PRIVATE test_main gtest ${LIBS})
@@ -10,12 +8,6 @@ function(add_test_with_libraries NAME FILES LIBS
     target_include_directories(${TEST_NAME} PRIVATE "../common")
     gtest_discover_tests(${TEST_NAME}
             WORKING_DIRECTORY ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}
-            #[=[
-            to fix segfault by ind.util (idk what the reason)
-            docs: https://cmake.org/cmake/help/latest/module/GoogleTest.html#:~:text=DISCOVERY%5FMODE,-Added
-            the solution was found here: https://discourse.cmake.org/t/cmake-build-and-test-with-qt-and-google-test/4729/2
-            #]=]
-#            DISCOVERY_MODE PRE_TEST
     )
 endfunction()
 
@@ -30,58 +22,35 @@ target_include_directories(test_helper.ind.util PRIVATE "../common")
 add_test_with_libraries(ind.faida
         test_faida.cpp
         "test.common;ind::ind;ind::faida;test_helper.ind.util")
-
+#todo: rework
 add_library(test.common.obj OBJECT)
 target_include_directories(test.common.obj PRIVATE "../common")
 target_sources(test.common.obj PRIVATE
-        "${CMAKE_SOURCE_DIR}/tests/common/all_csv_configs.h"
-        "${CMAKE_SOURCE_DIR}/tests/common/all_csv_configs.cpp"
-        "${CMAKE_SOURCE_DIR}/tests/common/csv_config_util.h"
+        "${CMAKE_SOURCE_DIR}/src/tests/common/all_csv_configs.h"
+        "${CMAKE_SOURCE_DIR}/src/tests/common/all_csv_configs.cpp"
+        "${CMAKE_SOURCE_DIR}/src/tests/common/csv_config_util.h"
 )
-
 add_test_with_libraries(ind.algos
     "$<TARGET_OBJECTS:test.common.obj>;test_ind_algorithms.cpp"
     "algos;ind::ind;test_helper.ind.util;tests.util.hash;ind::spider;ind::mind;ind::faida"
 )
-#add_executable(test.ind.algos OBJECT)
-#4  ERROR
-#5  0x00005555555eb361 in CSVConfig::CSVConfig (this=0x7fffffffe198) at /core/parser/csv_parser/csv_parser.h:15
-#6  0x00005555555bea4e in __cxx_global_var_init.82(void) () at tests/unit/test_ind_algorithms.cpp:78
-#set_source_files_properties(all_csv_configs.cpp PROPERTIES OBJECT_DEPENDS "/home/nuc_user/dev/edu/uni/desbordante-core/build/src/tests/unit/CMakeFiles/test.ind.algos.dir/test_ind_algorithms.cpp.o")
-#set_source_files_properties(test_ind_algorithms.cpp PROPERTIES OBJECT_DEPENDS "/home/nuc_user/dev/edu/uni/desbordante-core/build/src/tests/CMakeFiles/test.common.dir/common/all_csv_configs.cpp.o")
-#add_test_with_libraries(ind.algos
-#        test_ind_algorithms.cpp
-#        "test.common;algos;ind::ind;test_helper.ind.util;tests.util.hash;ind::spider;ind::mind;ind::faida")
-
-#[===[ todo: Segfault. FD
-add_test_with_libraries(fd.algos test_fd_algorithm.cpp
-    "test::common;fd::depminer;fd::dfd;fd::fastfds;fd::fdep;fd::fun;fd::hy;fd::pyro;fd::tane::pfd;fd::tane::tane;fd::fd;tests.fd.util")
-add_library(tests.fd.util INTERFACE test_fd_util.h)
-
-
-target_link_libraries(tests.fd.util PRIVATE test::common)
-add_test_with_libraries(fd.approx test_fd_approximate.cpp "fd::eulerfd;fd::fd;tests.fd.util")
-add_test_with_libraries(fd.mine test_fd_mine.cpp "fd::pyro;fd::mine;test::common")
-#]===]
-
-
-#[===[ todo: Segfault. UCC
-add_test_with_libraries(ucc.algos test_ucc_algorithms.cpp "test::common;ucc::ucc;ucc::hy;tests.util.hash;ucc::pyro;ucc::hpivalid")
-#]===]
-
-
-#[=[ These tests aren't ready yet, disable them
-#TODO: Model
-# --- Model.NumericTypeCast (types.h) ---
-#add_test_with_libraries(model.types1 test_numerictype_cast.cpp model.???)
-# --- Model.Table ---
-#add_test_with_libraries(model.table.typed_column_data test_typed_column_data.cpp model.???)
-# --- Model.DoubleCompare (types.h) ---
-#add_test_with_libraries(model.types test_double_compare.cpp model.???)
-#add_test_with_libraries(model.types test_types.cpp model.???)
-# --- Model.Bitset ---
-#add_test_with_libraries(model.bitset test_bitset.cpp model.bitset)
-]=]
+add_test_with_libraries(fd.algos
+    "$<TARGET_OBJECTS:test.common.obj>;test_fd_algorithm.cpp"
+    "fd::depminer;fd::dfd;fd::fastfds;fd::fdep;fd::fun;fd::hy;fd::pyro;fd::tane::pfd;fd::tane::tane;fd::fd"
+)
+add_test_with_libraries(fd.mine
+        "$<TARGET_OBJECTS:test.common.obj>;test_fd_mine.cpp"
+        "fd::pyro;fd::mine;test::common"
+)
+add_test_with_libraries(fd.approx
+        "$<TARGET_OBJECTS:test.common.obj>;test_fd_util.h;test_fd_approximate.cpp"
+        "fd::fd;fd::eulerfd"
+)
+add_test_with_libraries(ucc.algos
+        "$<TARGET_OBJECTS:test.common.obj>;test_ucc_algorithms.cpp"
+        "ucc::ucc;ucc::hy;tests.util.hash;ucc::pyro;ucc::hpivalid"
+)
+#todo: rework
 
 # --- AC ---
 add_test_with_libraries(ac test_ac_algorithm.cpp "ac;test::common")
@@ -142,6 +111,17 @@ target_sources(tests.util.hash PRIVATE test_hash_util.cpp)
 
 # --- IND ---
 add_test_with_libraries(ind.verifier test_ind_verifier.cpp "ind::verifier;test::common;algos")
+
+# --- Model.Bitset ---
+add_test_with_libraries(model.bitset test_bitset.cpp "")
+# --- Model.Types.NumericTypeCast ---
+add_test_with_libraries(model.types.numeric_type_cast test_numerictype_cast.cpp "")
+# --- Model.Types.DoubleCompare ---
+add_test_with_libraries(model.types.double_compare test_double_compare.cpp "")
+# --- Model.Types.Types ---
+add_test_with_libraries(model.types.types test_types.cpp model.types)
+# --- Model.Table ---
+add_test_with_libraries(model.table test_typed_column_data.cpp "model.table;test.common;parser.csv")
 
 # --- ND ---
 add_test_with_libraries(nd.verifier test_nd_verifier.cpp "nd::verifier;test::common")
