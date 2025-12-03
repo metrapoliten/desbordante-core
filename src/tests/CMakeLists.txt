@@ -44,14 +44,17 @@ endif()
 
 if (COMPILE_BENCHMARKS)
 	# Create benchmark executable
-	add_executable(${BENCHMARK_BINARY} ${common_sources} ${benchmark_sources})
+	add_subdirectory(benchmark)
+#	add_executable(${BENCHMARK_BINARY} ${common_sources} ${benchmark_sources})
 
 	# ---- Benchmark Dependencies ----
+
+#    target_include_directories(${BENCHMARK_BINARY} PRIVATE "common")
 
 	# Link benchmark executable with:
 	# PRIVATE:
 	# - Core library (implementation under benchmark)
-    target_link_libraries(${BENCHMARK_BINARY} PRIVATE ${CMAKE_PROJECT_NAME})
+#    target_link_libraries(${BENCHMARK_BINARY} PRIVATE ${CMAKE_PROJECT_NAME})
 endif()
 
 # ---- Test Data Preparation ----

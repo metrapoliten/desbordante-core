@@ -53,7 +53,7 @@ target_sources(dc.fastadc.structs
 target_link_libraries(dc.fastadc.structs PRIVATE spdlog::spdlog_header_only)
 
 add_library(dc.fastadc)
-add_library(dc::fastadc ALIAS cfd.cfd)
+add_library(dc::fastadc ALIAS dc.fastadc)
 
 add_headers(dc.fastadc PRIVATE fastadc.h)
 target_sources(dc.fastadc PRIVATE fastadc.cpp)

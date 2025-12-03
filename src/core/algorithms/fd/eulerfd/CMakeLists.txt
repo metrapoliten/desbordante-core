@@ -1,8 +1,8 @@
-add_library(fd.eulerfd)
-add_library(fd::eulerfd ALIAS fd.eulerfd)
+add_library(fd.euler)
+add_library(fd::euler ALIAS fd.euler)
 
-add_headers(fd.eulerfd PRIVATE eulerfd.h)
-target_sources(fd.eulerfd
+add_headers(fd.euler PRIVATE eulerfd.h)
+target_sources(fd.euler
     PRIVATE
         cluster.cpp
         eulerfd.cpp

@@ -44,7 +44,7 @@ add_test_with_libraries(fd.mine
 )
 add_test_with_libraries(fd.approx
         "$<TARGET_OBJECTS:test.common.obj>;test_fd_util.h;test_fd_approximate.cpp"
-        "fd::fd;fd::eulerfd"
+        "fd::fd;fd::euler"
 )
 add_test_with_libraries(ucc.algos
         "$<TARGET_OBJECTS:test.common.obj>;test_ucc_algorithms.cpp"
