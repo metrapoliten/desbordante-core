@@ -24,15 +24,13 @@ set_property(TARGET spdlog_header_only APPEND PROPERTY INTERFACE_COMPILE_DEFINIT
         $<$<CONFIG:Release>:SPDLOG_ACTIVE_LEVEL=SPDLOG_LEVEL_INFO>
 )
 
+#todo: do we need static?
 # Build core project as a static library
 #add_library(${LIB_NAME} STATIC ${lib_sources} ${model_srcs} ${parser})
-#target_link_libraries(model PUBLIC util PRIVATE spdlog::spdlog_header_only)
 target_link_libraries(model.table PRIVATE spdlog::spdlog_header_only)
 target_link_libraries(util PRIVATE spdlog::spdlog_header_only)
 #todo: try PRIVATE
-target_link_libraries(algos PUBLIC config parser::csv spdlog::spdlog_header_only)
-#target_link_libraries(${LIB_NAME} PUBLIC config)
-#target_link_libraries(${LIB_NAME} PUBLIC algos)
+target_link_libraries(algos PRIVATE config parser::csv spdlog::spdlog_header_only)
 
 # Link essential dependencies
 # PRIVATE: Boost and threading internals (implementation details)

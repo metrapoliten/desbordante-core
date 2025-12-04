@@ -18,4 +18,4 @@ target_sources(od.order
         order_utility.cpp
         sorted_partitions.cpp
 )
-target_link_libraries(od.order PRIVATE model.table)
+target_link_libraries(od.order PRIVATE model.table spdlog::spdlog_header_only)

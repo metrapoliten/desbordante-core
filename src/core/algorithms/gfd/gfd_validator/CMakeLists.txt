@@ -19,4 +19,4 @@ target_sources(gfd.validator
         naivegfd_validator.cpp
 )
 
-target_link_libraries(gfd.validator PRIVATE parser.graph)
+target_link_libraries(gfd.validator PRIVATE parser.graph spdlog::spdlog_header_only)

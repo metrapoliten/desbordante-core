@@ -23,4 +23,4 @@ target_sources(ac
         ac_exception_finder.cpp
 )
 
-target_link_libraries(ac PRIVATE model.table model.types)
+target_link_libraries(ac PRIVATE model.table model.types spdlog::spdlog_header_only)
