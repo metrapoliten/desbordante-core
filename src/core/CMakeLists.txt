@@ -2,13 +2,13 @@
 
 # Define the library name
 #set(LIB_NAME ${CMAKE_PROJECT_NAME})
-
+include(${CMAKE_SOURCE_DIR}/cmake/helpers.cmake) #todo: make nice
 # Collect all source files recursively (headers and implementations)
-add_subdirectory(algorithms)
-add_subdirectory(config)
 add_subdirectory(model/table)
 add_subdirectory(model/transaction)
 add_subdirectory(model/types)
+add_subdirectory(algorithms)
+add_subdirectory(config)
 add_subdirectory(parser/csv_parser)
 add_subdirectory(parser/graph_parser)
 add_subdirectory(util)

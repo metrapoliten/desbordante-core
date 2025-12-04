@@ -1,6 +1,7 @@
-add_library(metric)
+add_library(metric.verifier)
+add_library(metric::verifier ALIAS metric.verifier)
 #todo: metric verifier
-add_headers(metric
+add_headers(metric.verifier
     PRIVATE
         aliases.h
         enums.h
@@ -10,11 +11,11 @@ add_headers(metric
         points.h
         points_calculator.h
 )
-target_sources(metric
+target_sources(metric.verifier
     PRIVATE
         highlight_calculator.cpp
         metric_verifier.cpp
         points_calculator.cpp
 )
 
-target_link_libraries(metric PRIVATE model.table)
+target_link_libraries(metric.verifier PRIVATE model.table)

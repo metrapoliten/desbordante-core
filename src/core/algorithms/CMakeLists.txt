@@ -1,45 +1,3 @@
-function(add_headers TARGET SCOPE)
-    set(files ${ARGN})
-
-    if(NOT TARGET ${HD_TARGET})
-        message(FATAL_ERROR "[add_headers] TARGET \"${HD_TARGET}\" не существует.")
-    endif()
-
-    if(SCOPE STREQUAL "PUBLIC")
-        set(FILESET_NAME "HEADERS")
-    elseif(SCOPE STREQUAL "PRIVATE")
-        set(FILESET_NAME "privateHeaders")
-    elseif(SCOPE STREQUAL "INTERFACE")
-        set(FILESET_NAME "interfaceHeaders")
-    else()
-        message(FATAL_ERROR
-                "[add_headers] Некорректная SCOPE: \"${HD_SCOPE}\". "
-                "Ожидается PUBLIC, PRIVATE или INTERFACE."
-        )
-    endif()
-
-    target_sources(${TARGET}
-            ${SCOPE}
-            FILE_SET ${FILESET_NAME}
-            TYPE HEADERS
-            BASE_DIRS ${PROJECT_SOURCE_DIR}/src
-            FILES ${files}
-    )
-endfunction()
-
-function(target_link_with_given GIVEN SCOPE)
-    if(NOT TARGET ${GIVEN})
-        message(FATAL_ERROR "[target_link_with_given] TARGET '${GIVEN}' doesn't exist.")
-    endif()
-    foreach(TARGET IN LISTS ARGN)
-        if(TARGET ${TARGET})
-            target_link_libraries(${TARGET} ${SCOPE} ${GIVEN})
-        else()
-            message(FATAL_ERROR "Target '${TARGET}' doesn't exist")
-        endif()
-    endforeach()
-endfunction()
-
 set(ALGO_SUBDIRS
         algebraic_constraints
         association_rules
@@ -61,33 +19,23 @@ set(ALGO_SUBDIRS
 )
 
 add_library(create_algo INTERFACE)
-target_sources(create_algo
+add_headers(create_algo
     INTERFACE
-        FILE_SET HEADERS
-        FILES
-            algorithms.h
-            algorithm_types.h
-            create_algorithm.h
+        algorithms.h
+        algorithm_types.h
+        create_algorithm.h
 )
 
 add_library(algos)
-target_sources(algos
-    PRIVATE
-        FILE_SET HEADERS
-        FILES
-            algo_factory.h
-            algorithm.h
-    PRIVATE
-        algo_factory.cpp
-        algorithm.cpp
-)
+add_headers(algos PRIVATE algo_factory.h algorithm.h)
+target_sources(algos PRIVATE algo_factory.cpp algorithm.cpp)
 
 foreach(DIR IN LISTS ALGO_SUBDIRS)
     add_subdirectory(${DIR})
 endforeach()
 
 target_link_libraries(create_algo INTERFACE fd::depminer fd::dfd fd::fastfds fd::fdep fd::mine fd::pyro fd::tane::tane
-                                            fd::tane::pfd fd::fun fd::hy fd::aid fd::euler ar nar::des metric
+                                            fd::tane::pfd fd::fun fd::hy fd::aid fd::euler ar nar::des metric.verifier
                                             datastats fd::verifier ucc::hy ucc::pyro ucc::hpivalid cfd::cfd ac
                                             ucc::verifier ind::faida ind::spider ind::verifier od::fastod gfd::validator
                                             od::order dd::split fd::sfd::cords md::hy fd::pfdverifier cfd::verifier
@@ -99,19 +47,21 @@ target_link_with_given(algos
     PRIVATE
         ac
         ar
-        cfd.cfd cfd.verifier
-        dc.fastadc dc.verifier
-        dd.verifier dd.split
+        cfd.cfd
+        cfd.verifier
+        dc.verifier
+        dd.verifier
+        dd.split
         fd.fd
-        gfd.miner gfd.validator
+        gfd.miner
+        gfd.validator
         ind.ind
         md.md
-        metric
-        nar.nar
+        metric.verifier
         nd.verifier
-        od.fastod od.order od.set_based_aod_verifier
+        od.fastod
+        od.order
         datastats
-        ucc.ucc ucc.hy
+        ucc.hy
 )
 target_link_libraries(algos PRIVATE util)
-#target_link_libraries(algos PUBLIC AC AR cfd.cfd cfd.verifier DC DD FD GFD IND MD METRIC NAR ND OD stat ucc)

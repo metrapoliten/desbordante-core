@@ -1,5 +1,4 @@
 add_library(dc.fastadc.structs)
-add_library(dc::fastadc::structs ALIAS dc.fastadc.structs)
 add_headers(dc.fastadc.structs
     PRIVATE
         misc/misc.h
@@ -10,6 +9,7 @@ add_headers(dc.fastadc.structs
         model/operator.h
         model/pli_shard.h
         model/predicate.h
+        model/predicate_set.h
 
         providers/index_provider.h
         providers/index_provider.h
@@ -20,12 +20,6 @@ add_headers(dc.fastadc.structs
         util/evidence_set_builder.h
         util/predicate_builder.h
         util/predicate_organizer.h
-)
-
-add_headers(dc.fastadc.structs
-    PRIVATE
-        misc/typed_column_data_value_differences.h
-        model/predicate_set.h
         util/closure.h
         util/clue_set_builder.h
         util/cross_clue_set_builder.h
@@ -34,6 +28,8 @@ add_headers(dc.fastadc.structs
         util/denial_constraint_set.h
         util/ntree_search.h
         util/single_clue_set_builder.h
+
+        misc/typed_column_data_value_differences.h
 )
 target_sources(dc.fastadc.structs
     PRIVATE
@@ -57,4 +53,4 @@ add_library(dc::fastadc ALIAS dc.fastadc)
 
 add_headers(dc.fastadc PRIVATE fastadc.h)
 target_sources(dc.fastadc PRIVATE fastadc.cpp)
-target_link_libraries(dc.fastadc PRIVATE dc::fastadc::structs)
+target_link_libraries(dc.fastadc PRIVATE dc.fastadc.structs)

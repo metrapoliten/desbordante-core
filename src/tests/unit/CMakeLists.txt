@@ -71,7 +71,7 @@ add_test_with_libraries(datastats test_data_stats.cpp "datastats;test::common")
 
 # --- DC ---
 #test_dc_structures_correct_results.h
-add_test_with_libraries(dc.structs test_dc_structures.cpp "dc::fastadc::structs;test::common;parser::csv;model.types;model.table")
+add_test_with_libraries(dc.structs test_dc_structures.cpp "dc.fastadc.structs;test::common;parser::csv;model.types;model.table")
 add_test_with_libraries(dc.verifier test_dc_verifier.cpp  "dc::verifier;test::common")
 
 # --- DD ---
@@ -132,7 +132,7 @@ add_test_with_libraries(md.metrics test_hymd_metrics.cpp md.hy.preprocessing)
 add_test_with_libraries(md.verifier test_md_verification.cpp "md::verifier;test::common")
 
 # --- Metric ---
-add_test_with_libraries(metric test_metric_verifier.cpp "metric;test::common")
+add_test_with_libraries(metric.verifier test_metric_verifier.cpp "metric.verifier;test::common")
 
 # --- OD.FastOD ---
 add_test_with_libraries(od.fastod test_fastod.cpp "od::fastod;test::common")
