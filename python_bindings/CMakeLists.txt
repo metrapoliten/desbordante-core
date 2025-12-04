@@ -1,3 +1,12 @@
+cmake_minimum_required(VERSION 3.25)
+
+project(
+    Desbordante.bindings
+    LANGUAGES CXX
+    VERSION 0.0.0
+    DESCRIPTION "Python bindings to the interface of the Desbordante C++ core library"
+)
+
 # ---- Python Bindings Configuration ----
 
 # Define the output name for Python bindings module

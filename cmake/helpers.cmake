@@ -19,7 +19,7 @@ function(add_headers TARGET SCOPE)
     endif()
 
     target_sources(${TARGET}
-            ${SCOPE}
+        ${SCOPE}
             FILE_SET ${FILESET_NAME}
             TYPE HEADERS
             BASE_DIRS ${PROJECT_SOURCE_DIR}/src

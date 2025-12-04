@@ -326,5 +326,5 @@ endif()
 
 # Configure Python bindings
 if(PYTHON)
-    add_subdirectory("src/python_bindings")
+    add_subdirectory("python_bindings")
 endif()
