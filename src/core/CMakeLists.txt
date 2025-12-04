@@ -4,10 +4,6 @@
 #set(LIB_NAME ${CMAKE_PROJECT_NAME})
 
 # Collect all source files recursively (headers and implementations)
-file(GLOB_RECURSE util_srcs "${CMAKE_CURRENT_LIST_DIR}/util/*.h" "${CMAKE_CURRENT_LIST_DIR}/util/*.cpp")
-
-add_library(util ${util_srcs})
-
 add_subdirectory(algorithms)
 add_subdirectory(config)
 add_subdirectory(model/table)
@@ -15,6 +11,7 @@ add_subdirectory(model/transaction)
 add_subdirectory(model/types)
 add_subdirectory(parser/csv_parser)
 add_subdirectory(parser/graph_parser)
+add_subdirectory(util)
 
 # Configure threading support with pthread preference
 # Required for Boost.Thread and other thread-dependent components
@@ -57,9 +54,10 @@ option(SAFE_VERTICAL_HASHING
     at the cost of reduced performance. Recommended for exploratory data analysis." OFF
 )
 
+#todo: think how to do it
 # Propagate the setting to all consumers of the library
 if(SAFE_VERTICAL_HASHING)
     target_compile_definitions(
-        ${LIB_NAME} PUBLIC SAFE_VERTICAL_HASHING # Affects compilation of dependent code
+        util PUBLIC SAFE_VERTICAL_HASHING # Affects compilation of dependent code
     )
 endif()
