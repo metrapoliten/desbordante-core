@@ -13,6 +13,7 @@ add_subdirectory(parser/csv_parser)
 add_subdirectory(parser/graph_parser)
 add_subdirectory(util)
 
+#todo: no errors with threads...
 # Configure threading support with pthread preference
 # Required for Boost.Thread and other thread-dependent components
 set(THREADS_PREFER_PTHREAD_FLAG ON)

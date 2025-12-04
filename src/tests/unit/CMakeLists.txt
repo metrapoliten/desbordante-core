@@ -13,7 +13,7 @@ endfunction()
 
 
 add_library(test_helper.ind.util)
-add_headers(test_helper.ind.util PUBLIC test_ind_util.h)
+add_headers(test_helper.ind.util PRIVATE test_ind_util.h)
 target_sources(test_helper.ind.util PRIVATE test_ind_util.cpp)
 
 target_link_libraries(test_helper.ind.util PRIVATE ind::ind)
@@ -97,7 +97,7 @@ add_test_with_libraries(fd.tane test_tane_afd_measures.cpp "fd::tane::tane;test:
 
 # --- GFD ---
 add_library(tests.gfd.paths)
-add_headers(tests.gfd.paths PUBLIC all_gfd_paths.h)
+add_headers(tests.gfd.paths PRIVATE all_gfd_paths.h)
 target_sources(tests.gfd.paths PRIVATE all_gfd_paths.cpp)
 target_include_directories(tests.gfd.paths PRIVATE "../common")
 
@@ -106,7 +106,7 @@ add_test_with_libraries(gfd.validator test_gfd_validator.cpp "gfd::validator;tes
 
 # --- Helper.Hash ---
 add_library(tests.util.hash)
-add_headers(tests.util.hash PUBLIC test_hash_util.h)
+add_headers(tests.util.hash PRIVATE test_hash_util.h)
 target_sources(tests.util.hash PRIVATE test_hash_util.cpp)
 
 # --- IND ---

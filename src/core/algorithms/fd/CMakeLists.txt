@@ -51,7 +51,7 @@ target_sources(fd.pli
 )
 
 # --- Linking ---
-target_link_libraries(fd.pli PUBLIC fd::fd)
+target_link_libraries(fd.pli PRIVATE fd::fd)
 target_link_libraries(fd.fd PRIVATE model.table)
 
 #TODO: pli -> common -> pfd/tane

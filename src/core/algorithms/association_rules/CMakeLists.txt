@@ -1,7 +1,7 @@
 add_library(ar)
 #todo: apriori
 target_sources(ar
-    PUBLIC
+    PRIVATE
         FILE_SET HEADERS
         BASE_DIRS ${PROJECT_SOURCE_DIR}/src/core
         FILES

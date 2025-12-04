@@ -86,7 +86,6 @@ foreach(DIR IN LISTS ALGO_SUBDIRS)
     add_subdirectory(${DIR})
 endforeach()
 
-#todo: do smth with mind algo
 target_link_libraries(create_algo INTERFACE fd::depminer fd::dfd fd::fastfds fd::fdep fd::mine fd::pyro fd::tane::tane
                                             fd::tane::pfd fd::fun fd::hy fd::aid fd::euler ar nar::des metric
                                             datastats fd::verifier ucc::hy ucc::pyro ucc::hpivalid cfd::cfd ac
