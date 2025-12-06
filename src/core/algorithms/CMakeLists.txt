@@ -35,7 +35,7 @@ foreach(DIR IN LISTS ALGO_SUBDIRS)
 endforeach()
 
 target_link_libraries(create_algo INTERFACE fd::depminer fd::dfd fd::fastfds fd::fdep fd::mine fd::pyro fd::tane::tane
-                                            fd::tane::pfd fd::fun fd::hy fd::aid fd::euler ar nar::des metric.verifier
+                                            fd::tane::pfd fd::fun fd::hy fd::aid fd::euler Desbordante.ar nar::des metric.verifier
                                             datastats fd::verifier ucc::hy ucc::pyro ucc::hpivalid cfd::cfd Desbordante::ac
                                             ucc::verifier ind::faida ind::spider ind::verifier od::fastod gfd::validator
                                             od::order dd::split fd::sfd::cords md::hy fd::pfdverifier cfd::verifier
@@ -46,7 +46,7 @@ target_link_libraries(ind.mind PRIVATE create_algo)
 target_link_with_given(algos
     PRIVATE
         Desbordante.ac
-        ar
+        Desbordante.ar
         cfd.cfd
         cfd.verifier
         dc.verifier

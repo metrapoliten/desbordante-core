@@ -56,7 +56,7 @@ add_test_with_libraries(ucc.algos
 add_test_with_libraries(ac test_ac_algorithm.cpp "Desbordante::ac;test::common")
 
 # --- AR ---
-add_test_with_libraries(ar test_apriori.cpp "ar;test::common")
+add_test_with_libraries(ar test_apriori.cpp "Desbordante::ar;test::common")
 
 # --- CFD ---
 add_test_with_libraries(cfd.algos test_cfd_algos.cpp "cfd::cfd;test::common;cfd.model")
