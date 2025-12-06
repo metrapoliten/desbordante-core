@@ -53,7 +53,7 @@ add_test_with_libraries(ucc.algos
 #todo: rework
 
 # --- AC ---
-add_test_with_libraries(ac test_ac_algorithm.cpp "ac;test::common")
+add_test_with_libraries(ac test_ac_algorithm.cpp "Desbordante::ac;test::common")
 
 # --- AR ---
 add_test_with_libraries(ar test_apriori.cpp "ar;test::common")

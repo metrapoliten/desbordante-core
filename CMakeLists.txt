@@ -279,10 +279,6 @@ if(COMPILE_TESTS)
     )
 endif()
 
-if(PYTHON)
-    CPMAddPackage("gh:pybind/pybind11@2.13.4")
-endif()
-
 # Configure boost
 set(Boost_USE_STATIC_LIBS OFF)
 
