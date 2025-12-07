@@ -16,7 +16,7 @@ add_library(${BINDINGS_NAME} MODULE bind_main_classes.cpp bind_main_classes.h bi
 #todo: move to 1 func
 include(../cmake/helpers.cmake)
 
-function(add_bindings_with_libraries NAME)
+function(Desbordante_AddBinds NAME)
     set(multiVals BIND_SRCS BIND_LIBS)
     cmake_parse_arguments(args "" "" "${multiVals}" ${ARGN})
     set(NAME Desbordante.bind.${NAME})
@@ -26,66 +26,64 @@ function(add_bindings_with_libraries NAME)
         SRCS ${args_BIND_SRCS}
         LIBS ${args_BIND_LIBS}
     )
-#    target_link_libraries(${NAME} PRIVATE pybind11::module)
     target_link_libraries(${BINDINGS_NAME} PRIVATE ${NAME})
-#    target_link_libraries(${BIND_NAME} PRIVATE ${LIBS})
     #todo: delete when includes
     target_include_directories(${NAME} PRIVATE ".")
 endfunction()
 
-add_bindings_with_libraries(ac
+Desbordante_AddBinds(ac
         BIND_SRCS ac/bind_ac.h ac/bind_ac.cpp
         BIND_LIBS Desbordante::ac
 )
 
-add_bindings_with_libraries(ar
+Desbordante_AddBinds(ar
     BIND_SRCS ar/bind_ar.h ar/bind_ar.cpp
     BIND_LIBS Desbordante::ar
 )
 # undefined symbol: typeinfo for algos::cfd::CFDDiscovery
-add_bindings_with_libraries(cfd
+Desbordante_AddBinds(cfd
     BIND_SRCS cfd/bind_cfd.h cfd/bind_cfd_verification.h cfd/bind_cfd.cpp cfd/bind_cfd_verification.cpp)
 
-add_bindings_with_libraries(data BIND_SRCS data/bind_data_types.h data/bind_data_types.cpp)
+Desbordante_AddBinds(data BIND_SRCS data/bind_data_types.h data/bind_data_types.cpp)
 
-add_bindings_with_libraries(dc
+Desbordante_AddBinds(dc
     BIND_SRCS dc/bind_dc_verification.h dc/bind_fastadc.h dc/bind_dc_verification.cpp dc/bind_fastadc.cpp)
 
-add_bindings_with_libraries(dd
+Desbordante_AddBinds(dd
     BIND_SRCS dd/bind_dd_verification.h dd/bind_split.h dd/bind_dd_verification.cpp dd/bind_split.cpp)
 
-add_bindings_with_libraries(dynamic
+Desbordante_AddBinds(dynamic
     BIND_SRCS dynamic/bind_dynamic_fd_verification.h dynamic/bind_dynamic_fd_verification.cpp
 )
 
-add_bindings_with_libraries(fd
+Desbordante_AddBinds(fd
     BIND_SRCS fd/bind_fd.h fd/bind_fd_verification.h fd/bind_fd.cpp fd/bind_fd_verification.cpp)
 
-add_bindings_with_libraries(gfd
+Desbordante_AddBinds(gfd
     BIND_SRCS gfd/bind_gfd.h gfd/bind_gfd_verification.h gfd/bind_gfd.cpp gfd/bind_gfd_verification.cpp)
 
-add_bindings_with_libraries(ind
+Desbordante_AddBinds(ind
     BIND_SRCS ind/bind_ind.h ind/bind_ind_verification.h ind/bind_ind.cpp ind/bind_ind_verification.cpp)
 
-add_bindings_with_libraries(md
+Desbordante_AddBinds(md
     BIND_SRCS md/bind_md.h md/bind_md_verification.h md/object_similarity_measure.h md/bind_md.cpp md/bind_md_verification.cpp)
 
-add_bindings_with_libraries(mfd
+Desbordante_AddBinds(mfd
     BIND_SRCS mfd/bind_mfd_verification.h mfd/bind_mfd_verification.cpp)
 
-add_bindings_with_libraries(nar
+Desbordante_AddBinds(nar
     BIND_SRCS nar/bind_nar.cpp nar/bind_nar.h)
 
-add_bindings_with_libraries(nd
+Desbordante_AddBinds(nd
     BIND_SRCS nd/bind_nd.h nd/bind_nd_verification.h nd/bind_nd.cpp nd/bind_nd_verification.cpp)
 
-add_bindings_with_libraries(od
+Desbordante_AddBinds(od
     BIND_SRCS od/bind_od.h od/bind_od_verification.h od/bind_od.cpp od/bind_od_verification.cpp)
 
-add_bindings_with_libraries(pfd
+Desbordante_AddBinds(pfd
     BIND_SRCS pfd/bind_pfd_verification.h pfd/bind_pfd_verification.cpp)
 
-add_bindings_with_libraries(util
+Desbordante_AddBinds(util
     BIND_SRCS
         py_util/create_dataframe_reader.h
         py_util/dataframe_reader.h
@@ -105,11 +103,11 @@ add_bindings_with_libraries(util
         py_util/table_serialization.cpp
 )
 
-add_bindings_with_libraries(sfd
+Desbordante_AddBinds(sfd
     BIND_SRCS sfd/bind_sfd.h sfd/bind_sfd.cpp)
-add_bindings_with_libraries(statistics
+Desbordante_AddBinds(statistics
     BIND_SRCS statistics/bind_statistics.h statistics/bind_statistics.cpp)
-add_bindings_with_libraries(ucc
+Desbordante_AddBinds(ucc
     BIND_SRCS ucc/bind_ucc.h ucc/bind_ucc_verification.h ucc/bind_ucc.cpp ucc/bind_ucc_verification.cpp)
 
 # Define the output name for Python bindings module

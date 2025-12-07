@@ -11,6 +11,22 @@ function(add_test_with_libraries NAME FILES LIBS)
     )
 endfunction()
 
+function(Desbordante_AddTest NAME)
+    set(multiVals TEST_SRCS TEST_LIBS)
+    cmake_parse_arguments(args "" "" "${multiVals}" ${ARGN})
+    set(NAME Desbordante.test.${NAME})
+    list(APPEND args_TEST_LIBS test_main gtest)
+    Desbordante_AddTarget(${NAME}
+            TYPE EXE
+            SRCS ${args_TEST_SRCS}
+            LIBS ${args_TEST_LIBS}
+    )
+    target_include_directories(${NAME} PRIVATE "../common")
+    gtest_discover_tests(${NAME}
+            WORKING_DIRECTORY ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}
+    )
+endfunction()
+
 
 add_library(test_helper.ind.util)
 add_headers(test_helper.ind.util PRIVATE test_ind_util.h)
@@ -59,7 +75,10 @@ add_test_with_libraries(ac test_ac_algorithm.cpp "Desbordante::ac;test::common")
 add_test_with_libraries(ar test_apriori.cpp "Desbordante::ar;test::common")
 
 # --- CFD ---
-add_test_with_libraries(cfd.algos test_cfd_algos.cpp "cfd::cfd;test::common;cfd.model")
+Desbordante_AddTest(cfd.algos
+    TEST_SRCS test_cfd_algos.cpp
+    TEST_LIBS Desbordante::cfd test::common cfd.model
+)
 add_test_with_libraries(cfd.relation_data test_cfd_relation_data.cpp "test::common;parser::csv;cfd.model")
 add_test_with_libraries(cfd.verifier test_cfd_verifier.cpp "cfd::verifier;test::common")
 

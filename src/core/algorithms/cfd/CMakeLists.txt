@@ -1,15 +1,15 @@
 add_subdirectory(cfd_verifier)
 #todo: first_algo/cfd/...
-add_library(cfd.cfd)
-add_library(cfd::cfd ALIAS cfd.cfd)
-add_headers(cfd.cfd
+add_library(Desbordante.cfd.cfd)
+add_library(Desbordante::cfd ALIAS Desbordante.cfd.cfd)
+add_headers(Desbordante.cfd.cfd
     PRIVATE
         enums.h
         fd_first_algorithm.h
         cfd_discovery.h
         miner_node.h
 )
-target_sources(cfd.cfd
+target_sources(Desbordante.cfd.cfd
     PRIVATE
         cfd_discovery.cpp
         fd_first_algorithm.cpp
@@ -51,5 +51,5 @@ target_sources(cfd.util
 )
 
 target_link_libraries(cfd.model PRIVATE cfd.util model.table)
-target_link_libraries(cfd.cfd PRIVATE cfd.model)
+target_link_libraries(Desbordante.cfd.cfd PRIVATE cfd.model)
 target_link_libraries(cfd.verifier PRIVATE cfd.model)
