@@ -19,9 +19,9 @@ include(../cmake/helpers.cmake)
 function(Desbordante_AddBinds name)
     set(multiVals SRCS LIBS)
     cmake_parse_arguments(args "" "" "${multiVals}" ${ARGN})
-    set(name Desbordante.bind.${name})
     list(APPEND args_LIBS pybind11::pybind11)
     Desbordante_AddTarget(${name}
+            PREFIX bind
             TYPE LIB
             _SRCS ${args_SRCS}
             _LIBS ${args_LIBS}

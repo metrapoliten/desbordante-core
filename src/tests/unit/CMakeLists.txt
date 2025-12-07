@@ -4,10 +4,10 @@ add_library(test_main main.cpp)
 function(Desbordante_AddTest name)
     set(multiVals SRCS LIBS)
     cmake_parse_arguments(args "" "" "${multiVals}" ${ARGN})
-    set(name Desbordante.test.${name})
     list(APPEND args_LIBS test_main gtest)
     Desbordante_AddTarget(${name}
-            TYPE EXE
+            PREFIX "test"
+            TYPE "EXE"
             _SRCS ${args_SRCS}
             _LIBS ${args_LIBS}
     )
