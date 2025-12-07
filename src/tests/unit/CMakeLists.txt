@@ -112,7 +112,10 @@ Desbordante_AddTest(dd.split
 )
 
 # --- DES ---
-add_test_with_libraries(nar.des test_des.cpp "nar::des;nar::nar;test::common;algos")
+Desbordante_AddTest(nar.des
+    SRCS test_des.cpp
+    LIBS nar::des Desbordante::nar test::common algos
+)
 
 # --- FD ---
 Desbordante_AddTest(fd.verifier.dynamic

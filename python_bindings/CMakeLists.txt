@@ -88,7 +88,9 @@ Desbordante_AddBinds(mfd
 )
 
 Desbordante_AddBinds(nar
-    SRCS nar/bind_nar.cpp nar/bind_nar.h)
+    SRCS nar/bind_nar.cpp nar/bind_nar.h
+    LIBS Desbordante::nar
+)
 
 Desbordante_AddBinds(nd
     SRCS nd/bind_nd.h nd/bind_nd_verification.h nd/bind_nd.cpp nd/bind_nd_verification.cpp)
