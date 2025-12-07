@@ -16,4 +16,4 @@ target_sources(gfd.gfd
         gfd.cpp
 )
 
-target_link_with_given(gfd::gfd PRIVATE gfd.miner gfd.validator)
+target_link_with_given(gfd::gfd PRIVATE Desbordante.gfd.miner Desbordante.gfd.validator)

@@ -69,8 +69,9 @@ Desbordante_AddBinds(fd
 )
 
 Desbordante_AddBinds(gfd
-    SRCS gfd/bind_gfd.h gfd/bind_gfd_verification.h gfd/bind_gfd.cpp gfd/bind_gfd_verification.cpp)
-
+    SRCS gfd/bind_gfd.h gfd/bind_gfd_verification.h gfd/bind_gfd.cpp gfd/bind_gfd_verification.cpp
+    LIBS Desbordante::gfd::miner Desbordante::gfd::validator
+)
 Desbordante_AddBinds(ind
     SRCS ind/bind_ind.h ind/bind_ind_verification.h ind/bind_ind.cpp ind/bind_ind_verification.cpp)
 

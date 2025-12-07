@@ -1,7 +1,7 @@
-add_library(gfd.validator)
-add_library(gfd::validator ALIAS gfd.validator)
+add_library(Desbordante.gfd.validator)
+add_library(Desbordante::gfd::validator ALIAS Desbordante.gfd.validator)
 #todo: egfd_validator/gfd_validator/naive
-add_headers(gfd.validator
+add_headers(Desbordante.gfd.validator
     PRIVATE
         balancer.h
         egfd_validator.h
@@ -10,7 +10,7 @@ add_headers(gfd.validator
         naivegfd_validator.h
         verification_algorithms.h
 )
-target_sources(gfd.validator
+target_sources(Desbordante.gfd.validator
     PRIVATE
         balancer.cpp
         egfd_validator.cpp
@@ -19,4 +19,4 @@ target_sources(gfd.validator
         naivegfd_validator.cpp
 )
 
-target_link_libraries(gfd.validator PRIVATE parser.graph spdlog::spdlog_header_only)
+target_link_libraries(Desbordante.gfd.validator PRIVATE parser.graph spdlog::spdlog_header_only)

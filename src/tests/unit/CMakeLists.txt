@@ -137,8 +137,14 @@ add_headers(tests.gfd.paths PRIVATE all_gfd_paths.h)
 target_sources(tests.gfd.paths PRIVATE all_gfd_paths.cpp)
 target_include_directories(tests.gfd.paths PRIVATE "../common")
 
-add_test_with_libraries(gfd.miner test_gfd_miner.cpp "gfd::miner;tests.gfd.paths")
-add_test_with_libraries(gfd.validator test_gfd_validator.cpp "gfd::validator;tests.gfd.paths")
+Desbordante_AddTest(gfd.miner
+    SRCS test_gfd_miner.cpp
+    LIBS Desbordante::gfd::miner tests.gfd.paths
+)
+Desbordante_AddTest(gfd.validator
+    SRCS test_gfd_validator.cpp
+    LIBS Desbordante::gfd::validator tests.gfd.paths
+)
 
 # --- Helper.Hash ---
 add_library(tests.util.hash)
