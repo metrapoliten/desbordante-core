@@ -26,18 +26,14 @@ function(Desbordante_AddBinds NAME)
         _SRCS ${args_SRCS}
         _LIBS ${args_LIBS}
     )
-    #todo: start ONLY FOR DEV:
-    target_link_options(${NAME} PUBLIC "-Wl,--no-undefined")
-    target_link_libraries(${NAME} PUBLIC pybind11::embed)
-    #todo: end ONLY FOR DEV ^^^
     target_link_libraries(${BINDINGS_NAME} PRIVATE ${NAME})
     #todo: delete when includes
     target_include_directories(${NAME} PRIVATE ".")
 endfunction()
 
 Desbordante_AddBinds(ac
-        SRCS ac/bind_ac.h ac/bind_ac.cpp
-        LIBS Desbordante::ac
+    SRCS ac/bind_ac.h ac/bind_ac.cpp
+    LIBS Desbordante::ac
 )
 
 Desbordante_AddBinds(ar
@@ -177,9 +173,6 @@ set_target_properties(
 #target_link_libraries(
 #    ${BINDINGS_NAME} PRIVATE ${CMAKE_PROJECT_NAME} # Desbordante core static library
 #)
-
-# Enable local header inclusion
-#include_directories(".")
 
 # ---- Installation Setup ----
 
