@@ -1,4 +1,4 @@
-add_executable(Desbordante.benchmark) #old name: ${CMAKE_PROJECT_NAME}_benchmark
+add_executable(Desbordante.benchmark)
 
 add_headers(Desbordante.benchmark
     PRIVATE

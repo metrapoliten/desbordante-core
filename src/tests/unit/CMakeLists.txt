@@ -1,12 +1,10 @@
 #TODO:  add_executable(${TEST_NAME} main.cpp ${FILES}) or add_library(test_main main.cpp)?
 add_library(test_main main.cpp)
 function(add_test_with_libraries NAME FILES LIBS)
-    set(TEST_NAME test.${NAME})
-    add_executable(${TEST_NAME} ${FILES})
-    target_link_libraries(${TEST_NAME} PRIVATE test_main gtest ${LIBS})
-    #todo: delete when includes
-#    target_include_directories(${TEST_NAME} PRIVATE "../common")
-    gtest_discover_tests(${TEST_NAME}
+    set(NAME test.${NAME})
+    add_executable(${NAME} ${FILES})
+    target_link_libraries(${NAME} PRIVATE test_main gtest ${LIBS})
+    gtest_discover_tests(${NAME}
             WORKING_DIRECTORY ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}
     )
 endfunction()
@@ -37,104 +35,104 @@ target_include_directories(test_helper.ind.util PRIVATE "../common")
 
 Desbordante_AddTest(ind.faida
     SRCS test_faida.cpp
-    LIBS test.common Desbordante::ind Desbordante::ind::faida test_helper.ind.util
+    LIBS Desbordante.test.common Desbordante::ind Desbordante::ind::faida test_helper.ind.util
 )
 #todo: rework
-add_library(test.common.obj OBJECT)
-target_include_directories(test.common.obj PRIVATE "../common")
-target_sources(test.common.obj PRIVATE
+add_library(Desbordante.test.common.obj OBJECT)
+target_include_directories(Desbordante.test.common.obj PRIVATE "../common")
+target_sources(Desbordante.test.common.obj PRIVATE
         "${CMAKE_SOURCE_DIR}/src/tests/common/all_csv_configs.h"
         "${CMAKE_SOURCE_DIR}/src/tests/common/all_csv_configs.cpp"
         "${CMAKE_SOURCE_DIR}/src/tests/common/csv_config_util.h"
 )
 add_test_with_libraries(ind.algos
-    "$<TARGET_OBJECTS:test.common.obj>;test_ind_algorithms.cpp"
+    "$<TARGET_OBJECTS:Desbordante.test.common.obj>;test_ind_algorithms.cpp"
     "algos;Desbordante::ind;test_helper.ind.util;tests.util.hash;Desbordante::ind::spider;Desbordante::ind::mind;Desbordante::ind::faida"
 )
 Desbordante_AddTest(fd.algos
-    SRCS $<TARGET_OBJECTS:test.common.obj> test_fd_algorithm.cpp
+    SRCS $<TARGET_OBJECTS:Desbordante.test.common.obj> test_fd_algorithm.cpp
     LIBS Desbordante::fd::depminer Desbordante::fd::dfd Desbordante::fd::fastfds Desbordante::fd::fdep
          Desbordante::fd::fun Desbordante::fd::hy Desbordante::fd::pyro Desbordante::fd::tane::pfd Desbordante::fd::tane Desbordante::fd
 )
 add_test_with_libraries(fd.mine
-        "$<TARGET_OBJECTS:test.common.obj>;test_fd_mine.cpp"
-        "Desbordante::fd::pyro;Desbordante::fd::mine;test::common"
+        "$<TARGET_OBJECTS:Desbordante.test.common.obj>;test_fd_mine.cpp"
+        "Desbordante::fd::pyro;Desbordante::fd::mine;Desbordante.test.common"
 )
 add_test_with_libraries(fd.approx
-        "$<TARGET_OBJECTS:test.common.obj>;test_fd_util.h;test_fd_approximate.cpp"
+        "$<TARGET_OBJECTS:Desbordante.test.common.obj>;test_fd_util.h;test_fd_approximate.cpp"
         "Desbordante::fd;Desbordante::fd::euler"
 )
 add_test_with_libraries(ucc.algos
-        "$<TARGET_OBJECTS:test.common.obj>;test_ucc_algorithms.cpp"
+        "$<TARGET_OBJECTS:Desbordante.test.common.obj>;test_ucc_algorithms.cpp"
         "Desbordante::ucc;Desbordante::ucc::hy;tests.util.hash;Desbordante::ucc::pyro;Desbordante::ucc::hpivalid"
 )
 #todo: rework
 
 # --- AC ---
-add_test_with_libraries(ac test_ac_algorithm.cpp "Desbordante::ac;test::common")
+add_test_with_libraries(ac test_ac_algorithm.cpp "Desbordante::ac;Desbordante.test.common")
 
 # --- AR ---
-add_test_with_libraries(ar test_apriori.cpp "Desbordante::ar;test::common")
+add_test_with_libraries(ar test_apriori.cpp "Desbordante::ar;Desbordante.test.common")
 
 # --- CFD ---
 Desbordante_AddTest(cfd.algos
     SRCS test_cfd_algos.cpp
-    LIBS Desbordante::cfd test::common cfd.model
+    LIBS Desbordante::cfd Desbordante.test.common cfd.model
 )
-add_test_with_libraries(cfd.relation_data test_cfd_relation_data.cpp "test::common;parser::csv;cfd.model")
+add_test_with_libraries(cfd.relation_data test_cfd_relation_data.cpp "Desbordante.test.common;parser::csv;cfd.model")
 Desbordante_AddTest(cfd.verifier
     SRCS test_cfd_verifier.cpp
-    LIBS Desbordante::cfd::verifier test::common
+    LIBS Desbordante::cfd::verifier Desbordante.test.common
 )
 
 # --- CSV ---
-add_test_with_libraries(csv.parser test_csv_parser.cpp "parser::csv;test::common")
+add_test_with_libraries(csv.parser test_csv_parser.cpp "parser::csv;Desbordante.test.common")
 
 # --- DataStats ---
-add_test_with_libraries(datastats test_data_stats.cpp "Desbordante::datastats;test::common")
+add_test_with_libraries(datastats test_data_stats.cpp "Desbordante::datastats;Desbordante.test.common")
 
 # --- DC ---
 #test_dc_structures_correct_results.h
-add_test_with_libraries(dc.structs test_dc_structures.cpp "dc.fastadc.structs;test::common;parser::csv;model.types;model.table")
+add_test_with_libraries(dc.structs test_dc_structures.cpp "dc.fastadc.structs;Desbordante.test.common;parser::csv;model.types;model.table")
 Desbordante_AddTest(dc.verifier
     SRCS test_dc_verifier.cpp
-    LIBS Desbordante::dc::verifier test::common
+    LIBS Desbordante::dc::verifier Desbordante.test.common
 )
 
 # --- DD ---
 Desbordante_AddTest(dd.verifier
     SRCS test_dd_verifier.cpp
-    LIBS Desbordante::dd::verifier test::common
+    LIBS Desbordante::dd::verifier Desbordante.test.common
 )
 # --- DD.Split ---
 Desbordante_AddTest(dd.split
     SRCS test_split.cpp
-    LIBS Desbordante::dd::split test::common
+    LIBS Desbordante::dd::split Desbordante.test.common
 )
 
 # --- DES ---
 Desbordante_AddTest(nar.des
     SRCS test_des.cpp
-    LIBS Desbordante::nar::des Desbordante::nar test::common algos
+    LIBS Desbordante::nar::des Desbordante::nar Desbordante.test.common algos
 )
 
 # --- FD ---
 Desbordante_AddTest(fd.verifier.dynamic
     SRCS test_dynamic_fd_verifier.cpp
-    LIBS Desbordante::fd::verifier Desbordante::fd::verifier::dynamic test::common algos
+    LIBS Desbordante::fd::verifier Desbordante::fd::verifier::dynamic Desbordante.test.common algos
 )
 Desbordante_AddTest(fd.verifier
     SRCS test_fd_verifier.cpp
-    LIBS Desbordante::fd::verifier algos test::common
+    LIBS Desbordante::fd::verifier algos Desbordante.test.common
 )
 # --- FD.PFDTane ---
-add_test_with_libraries(fd.tane.pfd test_pfdtane.cpp "Desbordante::fd::tane::pfd;test::common;model.table")
+add_test_with_libraries(fd.tane.pfd test_pfdtane.cpp "Desbordante::fd::tane::pfd;Desbordante.test.common;model.table")
 # --- FD.PFDVerifier ---
-add_test_with_libraries(fd.pfd_verifier test_pfd_verifier.cpp "Desbordante::fd::pfd_verifier;test::common;algos")
+add_test_with_libraries(fd.pfd_verifier test_pfd_verifier.cpp "Desbordante::fd::pfd_verifier;Desbordante.test.common;algos")
 # --- FD.SFD ---
-add_test_with_libraries(fd.sfd.cords test_sfd.cpp "Desbordante::fd::sfd::cords;test::common;model.table")
+add_test_with_libraries(fd.sfd.cords test_sfd.cpp "Desbordante::fd::sfd::cords;Desbordante.test.common;model.table")
 # --- FD.Tane ---
-add_test_with_libraries(fd.tane test_tane_afd_measures.cpp "Desbordante::fd::tane;test::common;model.table")
+add_test_with_libraries(fd.tane test_tane_afd_measures.cpp "Desbordante::fd::tane;Desbordante.test.common;model.table")
 
 # --- GFD ---
 add_library(tests.gfd.paths)
@@ -159,7 +157,7 @@ target_sources(tests.util.hash PRIVATE test_hash_util.cpp)
 # --- IND ---
 Desbordante_AddTest(ind.verifier
     SRCS test_ind_verifier.cpp
-    LIBS Desbordante::ind::verifier test::common algos
+    LIBS Desbordante::ind::verifier Desbordante.test.common algos
 )
 
 # --- Model.Bitset ---
@@ -171,39 +169,39 @@ add_test_with_libraries(model.types.double_compare test_double_compare.cpp "")
 # --- Model.Types.Types ---
 add_test_with_libraries(model.types.types test_types.cpp model.types)
 # --- Model.Table ---
-add_test_with_libraries(model.table test_typed_column_data.cpp "model.table;test.common;parser.csv")
+add_test_with_libraries(model.table test_typed_column_data.cpp "model.table;Desbordante.test.common;parser.csv")
 
 # --- ND ---
 Desbordante_AddTest(nd.verifier
     SRCS test_nd_verifier.cpp
-    LIBS Desbordante::nd::verifier test::common
+    LIBS Desbordante::nd::verifier Desbordante.test.common
 )
 
 # --- MD ---
-add_test_with_libraries(md.hy test_hymd.cpp "md::hy;test::common")
+add_test_with_libraries(md.hy test_hymd.cpp "md::hy;Desbordante.test.common")
 add_test_with_libraries(md.metrics test_hymd_metrics.cpp md.hy.preprocessing)
 Desbordante_AddTest(md.verifier
     SRCS test_md_verification.cpp
-    LIBS Desbordante::md::verifier test::common
+    LIBS Desbordante::md::verifier Desbordante.test.common
 )
 
 # --- Metric ---
 Desbordante_AddTest(metric.verifier
     SRCS test_metric_verifier.cpp
-    LIBS Desbordante::metric::verifier test::common
+    LIBS Desbordante::metric::verifier Desbordante.test.common
 )
 
 # --- OD.FastOD ---
-add_test_with_libraries(od.fastod test_fastod.cpp "Desbordante::od::fastod;test::common")
+add_test_with_libraries(od.fastod test_fastod.cpp "Desbordante::od::fastod;Desbordante.test.common")
 # --- OD.Order ---
-add_test_with_libraries(od.order test_order.cpp "Desbordante::od::order;test::common")
+add_test_with_libraries(od.order test_order.cpp "Desbordante::od::order;Desbordante.test.common")
 # --- OD.SetBasedAODVerifier ---
-add_test_with_libraries(od.set_based_aod_verifier test_set_based_verifier.cpp "Desbordante::od::set_based_aod_verifier;Desbordante::od::fastod;test::common")
+add_test_with_libraries(od.set_based_aod_verifier test_set_based_verifier.cpp "Desbordante::od::set_based_aod_verifier;Desbordante::od::fastod;Desbordante.test.common")
 
 # --- UCC ---
-add_test_with_libraries(ucc.verifier test_ucc_verifier.cpp "ucc::verifier;Desbordante::ucc::hy;test::common;model.table")
+add_test_with_libraries(ucc.verifier test_ucc_verifier.cpp "ucc::verifier;Desbordante::ucc::hy;Desbordante.test.common;model.table")
 
 # --- Util ---
 #todo: only need fd::pyrocommon.model
-add_test_with_libraries(util test_util.cpp "test::common;fd::pyrocommon;parser::csv")
+add_test_with_libraries(util test_util.cpp "Desbordante.test.common;fd::pyrocommon;parser::csv")
 
