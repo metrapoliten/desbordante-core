@@ -78,7 +78,9 @@ Desbordante_AddBinds(ind
 )
 
 Desbordante_AddBinds(md
-    SRCS md/bind_md.h md/bind_md_verification.h md/object_similarity_measure.h md/bind_md.cpp md/bind_md_verification.cpp)
+    SRCS md/bind_md.h md/bind_md_verification.h md/object_similarity_measure.h md/bind_md.cpp md/bind_md_verification.cpp
+    LIBS Desbordante::md::verifier
+)
 
 Desbordante_AddBinds(mfd
     SRCS mfd/bind_mfd_verification.h mfd/bind_mfd_verification.cpp)

@@ -175,7 +175,10 @@ add_test_with_libraries(nd.verifier test_nd_verifier.cpp "nd::verifier;test::com
 # --- MD ---
 add_test_with_libraries(md.hy test_hymd.cpp "md::hy;test::common")
 add_test_with_libraries(md.metrics test_hymd_metrics.cpp md.hy.preprocessing)
-add_test_with_libraries(md.verifier test_md_verification.cpp "md::verifier;test::common")
+Desbordante_AddTest(md.verifier
+    SRCS test_md_verification.cpp
+    LIBS Desbordante::md::verifier test::common
+)
 
 # --- Metric ---
 add_test_with_libraries(metric.verifier test_metric_verifier.cpp "metric.verifier;test::common")

@@ -1,7 +1,7 @@
-add_library(md.verifier)
-add_library(md::verifier ALIAS md.verifier)
+add_library(Desbordante.md.verifier)
+add_library(Desbordante::md::verifier ALIAS Desbordante.md.verifier)
 
-add_headers(md.verifier
+add_headers(Desbordante.md.verifier
     PRIVATE
         highlights/highlights.h
         validation/validation.h
@@ -9,10 +9,10 @@ add_headers(md.verifier
         column_similarity_classifier.h
         md_verifier.h
 )
-target_sources(md.verifier
+target_sources(Desbordante.md.verifier
     PRIVATE
         validation/validation.cpp
         md_verifier.cpp
 )
 
-target_link_libraries(md.verifier PRIVATE md::hy)
+target_link_libraries(Desbordante.md.verifier PRIVATE md::hy)
