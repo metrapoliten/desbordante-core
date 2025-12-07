@@ -62,4 +62,4 @@ target_link_with_given(fd::pli
         Desbordante.fd.pyro
         Desbordante.fd.depminer Desbordante.fd.hy Desbordante.fd.fun)
 target_link_with_given(Desbordante::fd
-    PRIVATE Desbordante.fd.fdep Desbordante.fd.euler Desbordante.fd.aid fd.sfd.cords fd.pli)
+    PRIVATE Desbordante.fd.fdep Desbordante.fd.euler Desbordante.fd.aid Desbordante.fd.sfd.cords fd.pli)

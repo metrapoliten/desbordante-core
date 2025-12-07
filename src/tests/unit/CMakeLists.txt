@@ -132,7 +132,7 @@ add_test_with_libraries(fd.tane.pfd test_pfdtane.cpp "Desbordante::fd::tane::pfd
 # --- FD.PFDVerifier ---
 add_test_with_libraries(fd.pfd_verifier test_pfd_verifier.cpp "Desbordante::fd::pfd_verifier;test::common;algos")
 # --- FD.SFD ---
-add_test_with_libraries(fd.sfd.cords test_sfd.cpp "fd::sfd::cords;test::common;model.table")
+add_test_with_libraries(fd.sfd.cords test_sfd.cpp "Desbordante::fd::sfd::cords;test::common;model.table")
 # --- FD.Tane ---
 add_test_with_libraries(fd.tane test_tane_afd_measures.cpp "Desbordante::fd::tane;test::common;model.table")
 

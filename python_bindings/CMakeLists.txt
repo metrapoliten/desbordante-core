@@ -113,7 +113,7 @@ Desbordante_AddBinds(pfd
     SRCS pfd/bind_pfd_verification.h pfd/bind_pfd_verification.cpp
     LIBS Desbordante::fd::pfd_verifier
 )
-
+#todo: maybe just add_library?
 Desbordante_AddBinds(util
     SRCS
         py_util/create_dataframe_reader.h
@@ -135,7 +135,9 @@ Desbordante_AddBinds(util
 )
 
 Desbordante_AddBinds(sfd
-    SRCS sfd/bind_sfd.h sfd/bind_sfd.cpp)
+    SRCS sfd/bind_sfd.h sfd/bind_sfd.cpp
+    LIBS Desbordante::fd::sfd::cords
+)
 Desbordante_AddBinds(statistics
     SRCS statistics/bind_statistics.h statistics/bind_statistics.cpp)
 Desbordante_AddBinds(ucc
