@@ -39,7 +39,7 @@ target_link_libraries(create_algo
         Desbordante::fd::depminer Desbordante::fd::dfd Desbordante::fd::fastfds Desbordante::fd::fdep
         Desbordante::fd::mine Desbordante::fd::pyro Desbordante::fd::tane
         Desbordante::fd::tane::pfd Desbordante::fd::fun Desbordante::fd::hy Desbordante::fd::aid Desbordante::fd::euler
-        Desbordante::ar nar::des Desbordante::metric::verifier
+        Desbordante::ar Desbordante::nar::des Desbordante::metric::verifier
         datastats Desbordante::fd::verifier ucc::hy ucc::pyro ucc::hpivalid Desbordante::cfd Desbordante::ac
         ucc::verifier ind::faida ind::spider Desbordante::ind::verifier od::fastod Desbordante::gfd::validator
         od::order Desbordante::dd::split fd::sfd::cords md::hy fd::pfdverifier Desbordante::cfd::verifier

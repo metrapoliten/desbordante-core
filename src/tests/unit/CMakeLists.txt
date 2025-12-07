@@ -115,7 +115,7 @@ Desbordante_AddTest(dd.split
 # --- DES ---
 Desbordante_AddTest(nar.des
     SRCS test_des.cpp
-    LIBS nar::des Desbordante::nar test::common algos
+    LIBS Desbordante::nar::des Desbordante::nar test::common algos
 )
 
 # --- FD ---

@@ -33,6 +33,7 @@ target_link_libraries(benchmark
         Desbordante::fd::pyro
         Desbordante::fd::tane
         Desbordante::fd::aid
-        md::hy md.hy.preprocessing
-        nar::des
+        md::hy
+        md.hy.preprocessing
+        Desbordante::nar::des
 )

@@ -1,7 +1,7 @@
-add_library(nar.des)
-add_library(nar::des ALIAS nar.des)
+add_library(Desbordante.nar.des)
+add_library(Desbordante::nar::des ALIAS Desbordante.nar.des)
 
-add_headers(nar.des
+add_headers(Desbordante.nar.des
     PRIVATE
         des.h
         differential_functions.h
@@ -10,7 +10,7 @@ add_headers(nar.des
         enums.h
         rng.h
 )
-target_sources(nar.des
+target_sources(Desbordante.nar.des
     PRIVATE
         des.cpp
         differential_functions.cpp
@@ -18,4 +18,4 @@ target_sources(nar.des
         encoded_value_range.cpp
 )
 
-target_link_libraries(nar.des PRIVATE Desbordante::nar)
+target_link_libraries(Desbordante.nar.des PRIVATE Desbordante::nar)

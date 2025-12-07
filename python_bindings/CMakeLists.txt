@@ -96,7 +96,7 @@ Desbordante_AddBinds(mfd
 
 Desbordante_AddBinds(nar
     SRCS nar/bind_nar.cpp nar/bind_nar.h
-    LIBS Desbordante::nar
+    LIBS Desbordante::nar Desbordante::nar::des
 )
 
 Desbordante_AddBinds(nd
