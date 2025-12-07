@@ -114,7 +114,10 @@ Desbordante_AddTest(dd.split
 add_test_with_libraries(nar.des test_des.cpp "nar::des;nar::nar;test::common;algos")
 
 # --- FD ---
-add_test_with_libraries(fd.dynverifier test_dynamic_fd_verifier.cpp "fd::verifier;fd::dynverifier;test::common;algos")
+Desbordante_AddTest(fd.verifier.dynamic
+    SRCS test_dynamic_fd_verifier.cpp
+    LIBS fd::verifier Desbordante::fd::verifier::dynamic test::common algos
+)
 add_test_with_libraries(fd.verifier test_fd_verifier.cpp "fd::verifier;algos;test::common")
 
 # --- FD.PFDTane ---
