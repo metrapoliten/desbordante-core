@@ -45,7 +45,7 @@ endfunction()
 
 function(Desbordante_AddTarget NAME)
     set(singleVals TYPE)
-    set(multiVals SRCS LIBS)
+    set(multiVals _SRCS _LIBS)
 
     cmake_parse_arguments(args "" "${singleVals}" "${multiVals}" ${ARGN})
     if(args_TYPE STREQUAL "EXE")

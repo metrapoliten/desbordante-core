@@ -38,7 +38,7 @@ target_link_libraries(create_algo INTERFACE fd::depminer fd::dfd fd::fastfds fd:
                                             fd::tane::pfd fd::fun fd::hy fd::aid fd::euler Desbordante.ar nar::des metric.verifier
                                             datastats fd::verifier ucc::hy ucc::pyro ucc::hpivalid Desbordante::cfd Desbordante::ac
                                             ucc::verifier ind::faida ind::spider ind::verifier od::fastod gfd::validator
-                                            od::order dd::split fd::sfd::cords md::hy fd::pfdverifier cfd::verifier
+                                            od::order dd::split fd::sfd::cords md::hy fd::pfdverifier Desbordante::cfd::verifier
 
 )
 target_link_libraries(ind.mind PRIVATE create_algo)
@@ -48,8 +48,8 @@ target_link_with_given(algos
         Desbordante.ac
         Desbordante.ar
         Desbordante.cfd.cfd
-        cfd.verifier
-        dc.verifier
+        Desbordante.cfd.verifier
+        Desbordante.dc.verifier
         dd.verifier
         dd.split
         fd.fd

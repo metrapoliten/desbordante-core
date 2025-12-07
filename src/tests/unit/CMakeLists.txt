@@ -12,14 +12,14 @@ function(add_test_with_libraries NAME FILES LIBS)
 endfunction()
 
 function(Desbordante_AddTest NAME)
-    set(multiVals TEST_SRCS TEST_LIBS)
+    set(multiVals SRCS LIBS)
     cmake_parse_arguments(args "" "" "${multiVals}" ${ARGN})
     set(NAME Desbordante.test.${NAME})
-    list(APPEND args_TEST_LIBS test_main gtest)
+    list(APPEND args_LIBS test_main gtest)
     Desbordante_AddTarget(${NAME}
             TYPE EXE
-            SRCS ${args_TEST_SRCS}
-            LIBS ${args_TEST_LIBS}
+            _SRCS ${args_SRCS}
+            _LIBS ${args_LIBS}
     )
     target_include_directories(${NAME} PRIVATE "../common")
     gtest_discover_tests(${NAME}
@@ -76,11 +76,14 @@ add_test_with_libraries(ar test_apriori.cpp "Desbordante::ar;test::common")
 
 # --- CFD ---
 Desbordante_AddTest(cfd.algos
-    TEST_SRCS test_cfd_algos.cpp
-    TEST_LIBS Desbordante::cfd test::common cfd.model
+    SRCS test_cfd_algos.cpp
+    LIBS Desbordante::cfd test::common cfd.model
 )
 add_test_with_libraries(cfd.relation_data test_cfd_relation_data.cpp "test::common;parser::csv;cfd.model")
-add_test_with_libraries(cfd.verifier test_cfd_verifier.cpp "cfd::verifier;test::common")
+Desbordante_AddTest(cfd.verifier
+    SRCS test_cfd_verifier.cpp
+    LIBS Desbordante::cfd::verifier test::common
+)
 
 # --- CSV ---
 add_test_with_libraries(csv.parser test_csv_parser.cpp "parser::csv;test::common")
@@ -91,7 +94,10 @@ add_test_with_libraries(datastats test_data_stats.cpp "datastats;test::common")
 # --- DC ---
 #test_dc_structures_correct_results.h
 add_test_with_libraries(dc.structs test_dc_structures.cpp "dc.fastadc.structs;test::common;parser::csv;model.types;model.table")
-add_test_with_libraries(dc.verifier test_dc_verifier.cpp  "dc::verifier;test::common")
+Desbordante_AddTest(dc.verifier
+    SRCS test_dc_verifier.cpp
+    LIBS Desbordante::dc::verifier test::common
+)
 
 # --- DD ---
 add_test_with_libraries(dd.verifier test_dd_verifier.cpp "dd::verifier;test::common")

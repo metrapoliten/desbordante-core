@@ -52,4 +52,4 @@ target_sources(cfd.util
 
 target_link_libraries(cfd.model PRIVATE cfd.util model.table)
 target_link_libraries(Desbordante.cfd.cfd PRIVATE cfd.model)
-target_link_libraries(cfd.verifier PRIVATE cfd.model)
+target_link_libraries(Desbordante.cfd.verifier PRIVATE cfd.model)

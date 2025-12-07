@@ -19,4 +19,4 @@ add_library(dc.parser)
 add_headers(dc.parser PRIVATE parser/dc_parser.h)
 target_sources(dc.parser PRIVATE parser/dc_parser.cpp)
 
-target_link_libraries(dc.verifier PRIVATE dc.model dc.parser)
+target_link_libraries(Desbordante.dc.verifier PRIVATE dc.model dc.parser)
