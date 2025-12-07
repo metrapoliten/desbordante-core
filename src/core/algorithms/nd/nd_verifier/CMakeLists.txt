@@ -1,7 +1,7 @@
-add_library(nd.verifier)
-add_library(nd::verifier ALIAS nd.verifier)
+add_library(Desbordante.nd.verifier)
+add_library(Desbordante::nd::verifier ALIAS Desbordante.nd.verifier)
 
-add_headers(nd.verifier
+add_headers(Desbordante.nd.verifier
     PRIVATE
         nd_verifier.h
         util/highlight.h
@@ -9,7 +9,7 @@ add_headers(nd.verifier
         util/value_combination.h
 )
 
-target_sources(nd.verifier
+target_sources(Desbordante.nd.verifier
     PRIVATE
         nd_verifier.cpp
         util/highlight.cpp
@@ -17,4 +17,4 @@ target_sources(nd.verifier
         util/value_combination.cpp
 )
 
-target_link_libraries(nd.verifier PRIVATE model.table)
+target_link_libraries(Desbordante.nd.verifier PRIVATE model.table)

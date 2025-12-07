@@ -58,7 +58,7 @@ target_link_with_given(algos
         Desbordante.ind.ind
         md.md
         Desbordante.metric.verifier
-        nd.verifier
+        Desbordante.nd.verifier
         od.fastod
         od.order
         datastats

@@ -93,7 +93,9 @@ Desbordante_AddBinds(nar
 )
 
 Desbordante_AddBinds(nd
-    SRCS nd/bind_nd.h nd/bind_nd_verification.h nd/bind_nd.cpp nd/bind_nd_verification.cpp)
+    SRCS nd/bind_nd.h nd/bind_nd_verification.h nd/bind_nd.cpp nd/bind_nd_verification.cpp
+    LIBS Desbordante::nd::verifier
+)
 
 Desbordante_AddBinds(od
     SRCS od/bind_od.h od/bind_od_verification.h od/bind_od.cpp od/bind_od_verification.cpp)

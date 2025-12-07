@@ -173,7 +173,10 @@ add_test_with_libraries(model.types.types test_types.cpp model.types)
 add_test_with_libraries(model.table test_typed_column_data.cpp "model.table;test.common;parser.csv")
 
 # --- ND ---
-add_test_with_libraries(nd.verifier test_nd_verifier.cpp "nd::verifier;test::common")
+Desbordante_AddTest(nd.verifier
+    SRCS test_nd_verifier.cpp
+    LIBS Desbordante::nd::verifier test::common
+)
 
 # --- MD ---
 add_test_with_libraries(md.hy test_hymd.cpp "md::hy;test::common")
