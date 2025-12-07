@@ -1,7 +1,7 @@
-add_library(ucc.hpivalid)
-add_library(ucc::hpivalid ALIAS ucc.hpivalid)
+add_library(Desbordante.ucc.hpivalid)
+add_library(Desbordante::ucc::hpivalid ALIAS Desbordante.ucc.hpivalid)
 
-add_headers(ucc.hpivalid
+add_headers(Desbordante.ucc.hpivalid
     PRIVATE
         config.h
         enums.h
@@ -11,7 +11,7 @@ add_headers(ucc.hpivalid
         result_collector.h
         tree_search.h
 )
-target_sources(ucc.hpivalid
+target_sources(Desbordante.ucc.hpivalid
     PRIVATE
         hpivalid.cpp
         hypergraph.cpp
@@ -19,4 +19,4 @@ target_sources(ucc.hpivalid
         tree_search.cpp
 )
 
-target_link_libraries(ucc.hpivalid PRIVATE spdlog::spdlog_header_only fd::hycommon)
+target_link_libraries(Desbordante.ucc.hpivalid PRIVATE spdlog::spdlog_header_only fd::hycommon)

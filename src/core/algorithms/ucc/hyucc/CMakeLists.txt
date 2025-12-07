@@ -1,7 +1,7 @@
-add_library(ucc.hy)
-add_library(ucc::hy ALIAS ucc.hy)
+add_library(Desbordante.ucc.hy)
+add_library(Desbordante::ucc::hy ALIAS Desbordante.ucc.hy)
 
-add_headers(ucc.hy
+add_headers(Desbordante.ucc.hy
     PRIVATE
         hyucc.h
         inductor.h
@@ -12,7 +12,7 @@ add_headers(ucc.hy
         model/ucc_tree.h
         model/ucc_tree_vertex.h
 )
-target_sources(ucc.hy
+target_sources(Desbordante.ucc.hy
     PRIVATE
         hyucc.cpp
         inductor.cpp
@@ -21,4 +21,4 @@ target_sources(ucc.hy
         model/ucc_tree_vertex.cpp
 )
 
-target_link_libraries(ucc.hy PRIVATE spdlog::spdlog_header_only config fd::hycommon ucc::ucc)
+target_link_libraries(Desbordante.ucc.hy PRIVATE spdlog::spdlog_header_only config fd::hycommon Desbordante::ucc)

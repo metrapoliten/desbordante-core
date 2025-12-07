@@ -139,9 +139,13 @@ Desbordante_AddBinds(sfd
     LIBS Desbordante::fd::sfd::cords
 )
 Desbordante_AddBinds(statistics
-    SRCS statistics/bind_statistics.h statistics/bind_statistics.cpp)
+    SRCS statistics/bind_statistics.h statistics/bind_statistics.cpp
+    LIBS Desbordante::datastats
+)
 Desbordante_AddBinds(ucc
-    SRCS ucc/bind_ucc.h ucc/bind_ucc_verification.h ucc/bind_ucc.cpp ucc/bind_ucc_verification.cpp)
+    SRCS ucc/bind_ucc.h ucc/bind_ucc_verification.h ucc/bind_ucc.cpp ucc/bind_ucc_verification.cpp
+    LIBS Desbordante::ucc::hpivalid Desbordante::ucc Desbordante::ucc::hy Desbordante::ucc::pyro
+)
 
 # Define the output name for Python bindings module
 # NOTE: Matches the Python import name (e.g. 'import desbordante')

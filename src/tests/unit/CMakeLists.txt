@@ -66,7 +66,7 @@ add_test_with_libraries(fd.approx
 )
 add_test_with_libraries(ucc.algos
         "$<TARGET_OBJECTS:test.common.obj>;test_ucc_algorithms.cpp"
-        "ucc::ucc;ucc::hy;tests.util.hash;ucc::pyro;ucc::hpivalid"
+        "Desbordante::ucc;Desbordante::ucc::hy;tests.util.hash;Desbordante::ucc::pyro;Desbordante::ucc::hpivalid"
 )
 #todo: rework
 
@@ -91,7 +91,7 @@ Desbordante_AddTest(cfd.verifier
 add_test_with_libraries(csv.parser test_csv_parser.cpp "parser::csv;test::common")
 
 # --- DataStats ---
-add_test_with_libraries(datastats test_data_stats.cpp "datastats;test::common")
+add_test_with_libraries(datastats test_data_stats.cpp "Desbordante::datastats;test::common")
 
 # --- DC ---
 #test_dc_structures_correct_results.h
@@ -201,7 +201,7 @@ add_test_with_libraries(od.order test_order.cpp "Desbordante::od::order;test::co
 add_test_with_libraries(od.set_based_aod_verifier test_set_based_verifier.cpp "Desbordante::od::set_based_aod_verifier;Desbordante::od::fastod;test::common")
 
 # --- UCC ---
-add_test_with_libraries(ucc.verifier test_ucc_verifier.cpp "ucc::verifier;ucc::hy;test::common;model.table")
+add_test_with_libraries(ucc.verifier test_ucc_verifier.cpp "ucc::verifier;Desbordante::ucc::hy;test::common;model.table")
 
 # --- Util ---
 #todo: only need fd::pyrocommon.model
