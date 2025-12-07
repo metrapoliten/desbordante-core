@@ -1,4 +1,4 @@
-#include "python_bindings/sfd/bind_sfd.h"
+#include "sfd/bind_sfd.h"
 
 #include <algorithm>
 
@@ -7,8 +7,8 @@
 
 #include "core/algorithms/fd/sfd/cords.h"
 #include "core/algorithms/fd/sfd/correlation.h"
-#include "python_bindings/py_util/bind_primitive.h"
-#include "python_bindings/py_util/table_serialization.h"
+#include "py_util/bind_primitive.h"
+#include "py_util/table_serialization.h"
 
 namespace {
 namespace py = pybind11;

@@ -1,4 +1,4 @@
-#include "python_bindings/dynamic/bind_dynamic_fd_verification.h"
+#include "dynamic/bind_dynamic_fd_verification.h"
 
 #include <pybind11/pybind11.h>
 #include <pybind11/stl.h>
@@ -8,8 +8,8 @@
 #include "core/algorithms/fd/verification_algorithms.h"
 #include "core/config/names.h"
 #include "core/config/tabular_data/crud_operations/operations.h"
-#include "python_bindings/py_util/bind_primitive.h"
-#include "python_bindings/py_util/py_to_any.h"
+#include "py_util/bind_primitive.h"
+#include "py_util/py_to_any.h"
 
 namespace {
 namespace py = pybind11;

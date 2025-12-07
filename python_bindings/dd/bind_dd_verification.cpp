@@ -1,4 +1,4 @@
-#include "python_bindings/dd/bind_dd_verification.h"
+#include "dd/bind_dd_verification.h"
 
 #include <pybind11/pybind11.h>
 #include <pybind11/stl.h>
@@ -7,7 +7,7 @@
 #include "core/algorithms/dd/dd_verifier/dd_verifier.h"
 #include "core/algorithms/dd/dd_verifier/highlight.h"
 #include "core/util/create_dd.h"
-#include "python_bindings/py_util/bind_primitive.h"
+#include "py_util/bind_primitive.h"
 
 namespace python_bindings {
 namespace py = pybind11;

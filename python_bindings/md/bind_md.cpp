@@ -1,4 +1,4 @@
-#include "python_bindings/md/bind_md.h"
+#include "md/bind_md.h"
 
 #include <pybind11/cast.h>
 #include <pybind11/functional.h>
@@ -15,9 +15,9 @@
 #include "core/algorithms/md/hymd/preprocessing/column_matches/number_difference.h"
 #include "core/algorithms/md/md.h"
 #include "core/algorithms/md/mining_algorithms.h"
-#include "python_bindings/md/object_similarity_measure.h"
-#include "python_bindings/py_util/bind_primitive.h"
-#include "python_bindings/py_util/table_serialization.h"
+#include "md/object_similarity_measure.h"
+#include "py_util/bind_primitive.h"
+#include "py_util/table_serialization.h"
 
 namespace {
 namespace py = pybind11;

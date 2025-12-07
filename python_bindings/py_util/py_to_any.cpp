@@ -22,7 +22,7 @@
 #include "core/config/tabular_data/input_tables_type.h"
 #include "core/parser/csv_parser/csv_parser.h"
 #include "core/util/enum_to_available_values.h"
-#include "python_bindings/py_util/create_dataframe_reader.h"
+#include "py_util/create_dataframe_reader.h"
 
 namespace {
 

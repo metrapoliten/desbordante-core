@@ -1,10 +1,10 @@
-#include "python_bindings/gfd/bind_gfd.h"
+#include "gfd/bind_gfd.h"
 
 #include <pybind11/pybind11.h>
 #include <pybind11/stl.h>
 
 #include "core/algorithms/gfd/gfd_miner/gfd_miner.h"
-#include "python_bindings/py_util/bind_primitive.h"
+#include "py_util/bind_primitive.h"
 
 namespace python_bindings {
 void BindGfd(pybind11::module_& main_module) {

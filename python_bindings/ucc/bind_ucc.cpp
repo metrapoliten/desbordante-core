@@ -1,4 +1,4 @@
-#include "python_bindings/ucc/bind_ucc.h"
+#include "ucc/bind_ucc.h"
 
 #include <cstddef>
 #include <vector>
@@ -11,8 +11,8 @@
 #include "core/config/indices/type.h"
 #include "core/model/table/column.h"
 #include "core/util/bitset_utils.h"
-#include "python_bindings/py_util/bind_primitive.h"
-#include "python_bindings/py_util/table_serialization.h"
+#include "py_util/bind_primitive.h"
+#include "py_util/table_serialization.h"
 
 namespace {
 namespace py = pybind11;

@@ -20,7 +20,7 @@ target_sources(benchmark
         benchmark_comparer.cpp
 )
 #todo: delete when PR
-target_include_directories(benchmark PRIVATE "../common")
+#target_include_directories(benchmark PRIVATE "../common")
 target_link_libraries(benchmark
     PRIVATE
         test.common

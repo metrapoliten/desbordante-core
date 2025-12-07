@@ -1,4 +1,4 @@
-#include "python_bindings/dd/bind_split.h"
+#include "dd/bind_split.h"
 
 #include <pybind11/pybind11.h>
 #include <pybind11/stl.h>
@@ -6,7 +6,7 @@
 #include "core/algorithms/dd/dd.h"
 #include "core/algorithms/dd/mining_algorithms.h"
 #include "core/util/create_dd.h"
-#include "python_bindings/py_util/bind_primitive.h"
+#include "py_util/bind_primitive.h"
 
 namespace {
 namespace py = pybind11;

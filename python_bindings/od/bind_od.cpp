@@ -1,4 +1,4 @@
-#include "python_bindings/od/bind_od.h"
+#include "od/bind_od.h"
 
 #include <pybind11/pybind11.h>
 #include <pybind11/stl.h>
@@ -9,7 +9,7 @@
 #include "core/algorithms/od/order/list_od.h"
 #include "core/config/indices/type.h"
 #include "core/util/bitset_utils.h"
-#include "python_bindings/py_util/bind_primitive.h"
+#include "py_util/bind_primitive.h"
 
 namespace {
 namespace py = pybind11;

@@ -3,7 +3,7 @@
 
 #include "core/algorithms/cfd/cfd_verifier/cfd_verifier.h"
 #include "core/algorithms/cfd/cfd_verifier/highlight.h"
-#include "python_bindings/py_util/bind_primitive.h"
+#include "py_util/bind_primitive.h"
 
 namespace {
 namespace py = pybind11;

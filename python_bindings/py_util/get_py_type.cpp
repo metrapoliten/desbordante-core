@@ -1,4 +1,4 @@
-#include "python_bindings/py_util/get_py_type.h"
+#include "py_util/get_py_type.h"
 
 #include <functional>
 #include <typeinfo>

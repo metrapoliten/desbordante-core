@@ -1,4 +1,4 @@
-#include "python_bindings/md/bind_md_verification.h"
+#include "md/bind_md_verification.h"
 
 #include <pybind11/stl.h>
 
@@ -6,7 +6,7 @@
 #include "core/algorithms/md/md_verifier/column_similarity_classifier.h"
 #include "core/algorithms/md/md_verifier/highlights/highlights.h"
 #include "core/algorithms/md/md_verifier/md_verifier.h"
-#include "python_bindings/py_util/bind_primitive.h"
+#include "py_util/bind_primitive.h"
 
 namespace {
 namespace py = pybind11;

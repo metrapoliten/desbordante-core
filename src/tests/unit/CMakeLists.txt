@@ -5,7 +5,7 @@ function(add_test_with_libraries NAME FILES LIBS)
     add_executable(${TEST_NAME} ${FILES})
     target_link_libraries(${TEST_NAME} PRIVATE test_main gtest ${LIBS})
     #todo: delete when includes
-    target_include_directories(${TEST_NAME} PRIVATE "../common")
+#    target_include_directories(${TEST_NAME} PRIVATE "../common")
     gtest_discover_tests(${TEST_NAME}
             WORKING_DIRECTORY ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}
     )

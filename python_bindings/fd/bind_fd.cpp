@@ -1,4 +1,4 @@
-#include "python_bindings/fd/bind_fd.h"
+#include "fd/bind_fd.h"
 
 #include <pybind11/pybind11.h>
 #include <pybind11/stl.h>
@@ -8,8 +8,8 @@
 #include "core/algorithms/fd/mining_algorithms.h"
 #include "core/config/indices/type.h"
 #include "core/util/bitset_utils.h"
-#include "python_bindings/py_util/bind_primitive.h"
-#include "python_bindings/py_util/table_serialization.h"
+#include "py_util/bind_primitive.h"
+#include "py_util/table_serialization.h"
 
 namespace {
 namespace py = pybind11;

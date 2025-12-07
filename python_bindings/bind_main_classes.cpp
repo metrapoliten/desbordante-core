@@ -1,4 +1,4 @@
-#include "python_bindings/bind_main_classes.h"
+#include "bind_main_classes.h"
 
 #include <typeindex>
 #include <typeinfo>
@@ -10,9 +10,9 @@
 #include "core/algorithms/algorithm.h"
 #include "core/config/exceptions.h"
 #include "core/config/names.h"
-#include "python_bindings/py_util/get_py_type.h"
-#include "python_bindings/py_util/opt_to_py.h"
-#include "python_bindings/py_util/py_to_any.h"
+#include "py_util/get_py_type.h"
+#include "py_util/opt_to_py.h"
+#include "py_util/py_to_any.h"
 
 namespace {
 namespace py = pybind11;

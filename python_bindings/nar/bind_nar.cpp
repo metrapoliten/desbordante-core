@@ -4,7 +4,7 @@
 #include "core/algorithms/nar/mining_algorithms.h"
 #include "core/algorithms/nar/nar.h"
 #include "core/algorithms/nar/value_range.h"
-#include "python_bindings/py_util/bind_primitive.h"
+#include "py_util/bind_primitive.h"
 
 namespace py = pybind11;
 

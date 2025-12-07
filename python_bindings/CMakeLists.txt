@@ -28,7 +28,7 @@ function(Desbordante_AddBinds NAME)
     )
     target_link_libraries(${BINDINGS_NAME} PRIVATE ${NAME})
     #todo: delete when includes
-    target_include_directories(${NAME} PRIVATE ".")
+    target_include_directories(${NAME} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
 endfunction()
 
 Desbordante_AddBinds(ac

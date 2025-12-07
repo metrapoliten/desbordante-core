@@ -1,4 +1,4 @@
-#include "python_bindings/ac/bind_ac.h"
+#include "ac/bind_ac.h"
 
 #include <pybind11/pybind11.h>
 #include <pybind11/stl.h>
@@ -6,7 +6,7 @@
 #include "core/algorithms/algebraic_constraints/ac.h"
 #include "core/algorithms/algebraic_constraints/mining_algorithms.h"
 #include "core/model/types/create_type.h"
-#include "python_bindings/py_util/bind_primitive.h"
+#include "py_util/bind_primitive.h"
 
 namespace {
 std::unique_ptr<model::INumericType> CreateNumericTypeFromTypeId(model::TypeId type_id) {

@@ -1,10 +1,10 @@
-#include "python_bindings/nd/bind_nd.h"
+#include "nd/bind_nd.h"
 
 #include <pybind11/pybind11.h>
 #include <pybind11/stl.h>
 
 #include "core/algorithms/nd/nd.h"
-#include "python_bindings/py_util/bind_primitive.h"
+#include "py_util/bind_primitive.h"
 
 namespace py = pybind11;
 
