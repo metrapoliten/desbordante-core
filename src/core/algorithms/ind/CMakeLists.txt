@@ -18,5 +18,5 @@ target_sources(Desbordante.ind.ind
 )
 
 #target_link_with_given(ind::ind PRIVATE ind.faida ind.spider)
-target_link_libraries(ind.faida PRIVATE Desbordante::ind)
+target_link_libraries(Desbordante.ind.faida PRIVATE Desbordante::ind)
 target_link_libraries(Desbordante.ind.ind PRIVATE model.table)

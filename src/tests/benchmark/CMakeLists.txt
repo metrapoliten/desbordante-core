@@ -28,7 +28,7 @@ target_link_libraries(benchmark
         Desbordante::dc::fastadc
         Desbordante::dd::split
         Desbordante::ind
-        ind::mind
+        Desbordante::ind::mind
         Desbordante::fd::hy
         Desbordante::fd::pyro
         Desbordante::fd::tane

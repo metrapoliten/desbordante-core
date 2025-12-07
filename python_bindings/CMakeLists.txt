@@ -81,7 +81,8 @@ Desbordante_AddBinds(gfd
 )
 Desbordante_AddBinds(ind
     SRCS ind/bind_ind.h ind/bind_ind_verification.h ind/bind_ind.cpp ind/bind_ind_verification.cpp
-    LIBS Desbordante::ind Desbordante::ind::verifier
+    LIBS Desbordante::ind Desbordante::ind::verifier Desbordante::ind::spider Desbordante::ind::faida
+         Desbordante::ind::mind
 )
 
 Desbordante_AddBinds(md

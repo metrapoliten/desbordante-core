@@ -1,11 +1,11 @@
-add_library(ind.faida)
-add_library(ind::faida ALIAS ind.faida)
+add_library(Desbordante.ind.faida)
+add_library(Desbordante::ind::faida ALIAS Desbordante.ind.faida)
 
 #add_headers(ind.faida
 #    PUBLIC
 #
 #)
-add_headers(ind.faida
+add_headers(Desbordante.ind.faida
     PRIVATE
         candidate_generation/apriori_candidate_generator.h
 
@@ -29,7 +29,7 @@ add_headers(ind.faida
 
         faida.h
 )
-target_sources(ind.faida
+target_sources(Desbordante.ind.faida
     PRIVATE
         candidate_generation/apriori_candidate_generator.cpp
         hashing/murmur_hash_3.cpp
@@ -46,4 +46,4 @@ target_sources(ind.faida
         faida.cpp
 )
 
-target_link_libraries(ind.faida PRIVATE spdlog::spdlog_header_only)
+target_link_libraries(Desbordante.ind.faida PRIVATE spdlog::spdlog_header_only)

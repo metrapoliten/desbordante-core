@@ -37,7 +37,7 @@ target_include_directories(test_helper.ind.util PRIVATE "../common")
 
 Desbordante_AddTest(ind.faida
     SRCS test_faida.cpp
-    LIBS test.common Desbordante::ind ind::faida test_helper.ind.util
+    LIBS test.common Desbordante::ind Desbordante::ind::faida test_helper.ind.util
 )
 #todo: rework
 add_library(test.common.obj OBJECT)
@@ -49,7 +49,7 @@ target_sources(test.common.obj PRIVATE
 )
 add_test_with_libraries(ind.algos
     "$<TARGET_OBJECTS:test.common.obj>;test_ind_algorithms.cpp"
-    "algos;Desbordante::ind;test_helper.ind.util;tests.util.hash;ind::spider;ind::mind;ind::faida"
+    "algos;Desbordante::ind;test_helper.ind.util;tests.util.hash;Desbordante::ind::spider;Desbordante::ind::mind;Desbordante::ind::faida"
 )
 Desbordante_AddTest(fd.algos
     SRCS $<TARGET_OBJECTS:test.common.obj> test_fd_algorithm.cpp

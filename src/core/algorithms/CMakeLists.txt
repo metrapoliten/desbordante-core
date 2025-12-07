@@ -41,11 +41,11 @@ target_link_libraries(create_algo
         Desbordante::fd::tane::pfd Desbordante::fd::fun Desbordante::fd::hy Desbordante::fd::aid Desbordante::fd::euler
         Desbordante::ar Desbordante::nar::des Desbordante::metric::verifier
         Desbordante::datastats Desbordante::fd::verifier Desbordante::ucc::hy Desbordante::ucc::pyro Desbordante::ucc::hpivalid Desbordante::cfd Desbordante::ac
-        ucc::verifier ind::faida ind::spider Desbordante::ind::verifier Desbordante::od::fastod Desbordante::gfd::validator
+        ucc::verifier Desbordante::ind::faida Desbordante::ind::spider Desbordante::ind::verifier Desbordante::od::fastod Desbordante::gfd::validator
         Desbordante::od::order Desbordante::dd::split Desbordante::fd::sfd::cords md::hy Desbordante::fd::pfd_verifier Desbordante::cfd::verifier
 
 )
-target_link_libraries(ind.mind PRIVATE create_algo)
+target_link_libraries(Desbordante.ind.mind PRIVATE create_algo)
 
 target_link_with_given(algos
     PRIVATE
