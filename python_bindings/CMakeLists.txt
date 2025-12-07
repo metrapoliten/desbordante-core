@@ -54,7 +54,9 @@ Desbordante_AddBinds(dc
 )
 
 Desbordante_AddBinds(dd
-    SRCS dd/bind_dd_verification.h dd/bind_split.h dd/bind_dd_verification.cpp dd/bind_split.cpp)
+    SRCS dd/bind_dd_verification.h dd/bind_split.h dd/bind_dd_verification.cpp dd/bind_split.cpp
+    LIBS Desbordante::dd::verifier
+)
 
 Desbordante_AddBinds(dynamic
     SRCS dynamic/bind_dynamic_fd_verification.h dynamic/bind_dynamic_fd_verification.cpp

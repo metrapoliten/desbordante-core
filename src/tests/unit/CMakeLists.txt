@@ -100,7 +100,10 @@ Desbordante_AddTest(dc.verifier
 )
 
 # --- DD ---
-add_test_with_libraries(dd.verifier test_dd_verifier.cpp "dd::verifier;test::common")
+Desbordante_AddTest(dd.verifier
+    SRCS test_dd_verifier.cpp
+    LIBS Desbordante::dd::verifier test::common
+)
 # --- DD.Split ---
 add_test_with_libraries(dd.split test_split.cpp "dd::split;test::common")
 

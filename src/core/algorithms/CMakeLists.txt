@@ -50,7 +50,7 @@ target_link_with_given(algos
         Desbordante.cfd.cfd
         Desbordante.cfd.verifier
         Desbordante.dc.verifier
-        dd.verifier
+        Desbordante.dd.verifier
         dd.split
         fd.fd
         gfd.miner
