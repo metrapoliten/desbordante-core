@@ -83,7 +83,9 @@ Desbordante_AddBinds(md
 )
 
 Desbordante_AddBinds(mfd
-    SRCS mfd/bind_mfd_verification.h mfd/bind_mfd_verification.cpp)
+    SRCS mfd/bind_mfd_verification.h mfd/bind_mfd_verification.cpp
+    LIBS Desbordante::metric::verifier
+)
 
 Desbordante_AddBinds(nar
     SRCS nar/bind_nar.cpp nar/bind_nar.h)

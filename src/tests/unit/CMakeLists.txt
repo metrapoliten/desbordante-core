@@ -181,7 +181,10 @@ Desbordante_AddTest(md.verifier
 )
 
 # --- Metric ---
-add_test_with_libraries(metric.verifier test_metric_verifier.cpp "metric.verifier;test::common")
+Desbordante_AddTest(metric.verifier
+    SRCS test_metric_verifier.cpp
+    LIBS Desbordante::metric::verifier test::common
+)
 
 # --- OD.FastOD ---
 add_test_with_libraries(od.fastod test_fastod.cpp "od::fastod;test::common")
