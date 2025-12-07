@@ -105,7 +105,10 @@ Desbordante_AddTest(dd.verifier
     LIBS Desbordante::dd::verifier test::common
 )
 # --- DD.Split ---
-add_test_with_libraries(dd.split test_split.cpp "dd::split;test::common")
+Desbordante_AddTest(dd.split
+    SRCS test_split.cpp
+    LIBS Desbordante::dd::split test::common
+)
 
 # --- DES ---
 add_test_with_libraries(nar.des test_des.cpp "nar::des;nar::nar;test::common;algos")
