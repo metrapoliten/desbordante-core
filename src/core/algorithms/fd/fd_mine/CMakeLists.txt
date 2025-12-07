@@ -1,7 +1,7 @@
-add_library(fd.mine)
-add_library(fd::mine ALIAS fd.mine)
+add_library(Desbordante.fd.mine)
+add_library(Desbordante::fd::mine ALIAS Desbordante.fd.mine)
 
-add_headers(fd.mine PRIVATE fd_mine.h)
-target_sources(fd.mine PRIVATE fd_mine.cpp)
+add_headers(Desbordante.fd.mine PRIVATE fd_mine.h)
+target_sources(Desbordante.fd.mine PRIVATE fd_mine.cpp)
 
-target_link_libraries(fd.mine PRIVATE spdlog::spdlog_header_only)
+target_link_libraries(Desbordante.fd.mine PRIVATE spdlog::spdlog_header_only)

@@ -27,10 +27,12 @@ target_link_libraries(benchmark
         Boost::program_options
         Desbordante::dc::fastadc
         Desbordante::dd::split
-        Desbordante::ind ind::mind
-        fd::hy fd::pyro
-        fd::tane::tane
-        fd::aid
+        Desbordante::ind
+        ind::mind
+        Desbordante::fd::hy
+        Desbordante::fd::pyro
+        Desbordante::fd::tane
+        Desbordante::fd::aid
         md::hy md.hy.preprocessing
         nar::des
 )

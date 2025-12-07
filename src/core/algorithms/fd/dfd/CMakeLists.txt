@@ -1,9 +1,8 @@
-add_library(fd.dfd)
-add_library(fd::dfd ALIAS fd.dfd)
+add_library(Desbordante.fd.dfd)
+add_library(Desbordante::fd::dfd ALIAS Desbordante.fd.dfd)
 
-add_headers(fd.dfd PRIVATE dfd.h)
-add_headers(fd.dfd PRIVATE node_category.h)
-target_sources(fd.dfd
+add_headers(Desbordante.fd.dfd PRIVATE dfd.h node_category.h)
+target_sources(Desbordante.fd.dfd
     PRIVATE
         dfd.cpp
 

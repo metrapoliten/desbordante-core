@@ -6,22 +6,22 @@ add_headers(fd.hy.model PRIVATE
 )
 target_sources(fd.hy.model PRIVATE model/fd_tree.cpp model/fd_tree_vertex.cpp)
 
-add_library(fd.hy)
-add_library(fd::hy ALIAS fd.hy)
+add_library(Desbordante.fd.hy)
+add_library(Desbordante::fd::hy ALIAS Desbordante.fd.hy)
 
-add_headers(fd.hy PRIVATE
+add_headers(Desbordante.fd.hy PRIVATE
         hyfd.h
 )
-add_headers(fd.hy PRIVATE
+add_headers(Desbordante.fd.hy PRIVATE
     hyfd_config.h
     inductor.h
     sampler.h
     validator.h
 )
-target_sources(fd.hy PRIVATE
+target_sources(Desbordante.fd.hy PRIVATE
     hyfd.cpp
     inductor.cpp
     validator.cpp
 )
 
-target_link_libraries(fd.hy PRIVATE fd::hycommon fd.hy.model)
+target_link_libraries(Desbordante.fd.hy PRIVATE fd::hycommon fd.hy.model)

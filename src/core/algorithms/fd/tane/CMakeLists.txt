@@ -18,26 +18,26 @@ target_sources(fd.tane.common
 )
 
 # --- Tane ---
-add_library(fd.tane.tane)
-add_library(fd::tane::tane ALIAS fd.tane.tane)
+add_library(Desbordante.fd.tane.tane)
+add_library(Desbordante::fd::tane ALIAS Desbordante.fd.tane.tane)
 
-add_headers(fd.tane.tane
+add_headers(Desbordante.fd.tane.tane
         PRIVATE
         afd_measures.h
         tane.h
 )
-target_sources(fd.tane.tane
+target_sources(Desbordante.fd.tane.tane
     PRIVATE
         afd_measures.cpp
         tane.cpp
 )
 
 # --- PFDTane ---
-add_library(fd.tane.pfd)
-add_library(fd::tane::pfd ALIAS fd.tane.pfd)
+add_library(Desbordante.fd.tane.pfd)
+add_library(Desbordante::fd::tane::pfd ALIAS Desbordante.fd.tane.pfd)
 
-add_headers(fd.tane.pfd PRIVATE pfdtane.h)
-target_sources(fd.tane.pfd PRIVATE pfdtane.cpp)
+add_headers(Desbordante.fd.tane.pfd PRIVATE pfdtane.h)
+target_sources(Desbordante.fd.tane.pfd PRIVATE pfdtane.cpp)
 
 # --- Linking ---
-target_link_with_given(fd::tane::common PRIVATE fd.tane.tane fd.tane.pfd)
+target_link_with_given(fd::tane::common PRIVATE Desbordante.fd.tane.tane Desbordante.fd.tane.pfd)

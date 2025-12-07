@@ -53,15 +53,16 @@ add_test_with_libraries(ind.algos
 )
 Desbordante_AddTest(fd.algos
     SRCS $<TARGET_OBJECTS:test.common.obj> test_fd_algorithm.cpp
-    LIBS fd::depminer fd::dfd fd::fastfds fd::fdep fd::fun fd::hy fd::pyro fd::tane::pfd fd::tane::tane Desbordante::fd
+    LIBS Desbordante::fd::depminer Desbordante::fd::dfd Desbordante::fd::fastfds Desbordante::fd::fdep
+         Desbordante::fd::fun Desbordante::fd::hy Desbordante::fd::pyro Desbordante::fd::tane::pfd Desbordante::fd::tane Desbordante::fd
 )
 add_test_with_libraries(fd.mine
         "$<TARGET_OBJECTS:test.common.obj>;test_fd_mine.cpp"
-        "fd::pyro;fd::mine;test::common"
+        "Desbordante::fd::pyro;Desbordante::fd::mine;test::common"
 )
 add_test_with_libraries(fd.approx
         "$<TARGET_OBJECTS:test.common.obj>;test_fd_util.h;test_fd_approximate.cpp"
-        "Desbordante::fd;fd::euler"
+        "Desbordante::fd;Desbordante::fd::euler"
 )
 add_test_with_libraries(ucc.algos
         "$<TARGET_OBJECTS:test.common.obj>;test_ucc_algorithms.cpp"
@@ -127,13 +128,13 @@ Desbordante_AddTest(fd.verifier
     LIBS Desbordante::fd::verifier algos test::common
 )
 # --- FD.PFDTane ---
-add_test_with_libraries(fd.tane.pfd test_pfdtane.cpp "fd::tane::pfd;test::common;model.table")
+add_test_with_libraries(fd.tane.pfd test_pfdtane.cpp "Desbordante::fd::tane::pfd;test::common;model.table")
 # --- FD.PFDVerifier ---
 add_test_with_libraries(fd.pfdverifier test_pfd_verifier.cpp "fd::pfdverifier;test::common;algos")
 # --- FD.SFD ---
 add_test_with_libraries(fd.sfd.cords test_sfd.cpp "fd::sfd::cords;test::common;model.table")
 # --- FD.Tane ---
-add_test_with_libraries(fd.tane test_tane_afd_measures.cpp "fd::tane::tane;test::common;model.table")
+add_test_with_libraries(fd.tane test_tane_afd_measures.cpp "Desbordante::fd::tane;test::common;model.table")
 
 # --- GFD ---
 add_library(tests.gfd.paths)

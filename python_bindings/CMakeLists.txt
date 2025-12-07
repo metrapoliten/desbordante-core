@@ -69,7 +69,10 @@ Desbordante_AddBinds(fd.verifier.dynamic
 
 Desbordante_AddBinds(fd
     SRCS fd/bind_fd.h fd/bind_fd_verification.h fd/bind_fd.cpp fd/bind_fd_verification.cpp
-    LIBS Desbordante::fd Desbordante::fd::verifier
+    LIBS Desbordante::fd Desbordante::fd::verifier Desbordante::fd::hy Desbordante::fd::aid Desbordante::fd::euler
+         Desbordante::fd::depminer Desbordante::fd::dfd Desbordante::fd::fastfds Desbordante::fd::fdep
+         Desbordante::fd::mine Desbordante::fd::fun Desbordante::fd::pyro Desbordante::fd::tane
+         Desbordante::fd::tane::pfd
 )
 
 Desbordante_AddBinds(gfd
