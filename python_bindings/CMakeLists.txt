@@ -3,13 +3,13 @@ cmake_minimum_required(VERSION 3.25)
 project(
     Desbordante.bindings
     LANGUAGES CXX
-    VERSION 0.0.0
     DESCRIPTION "Python bindings to the interface of the Desbordante C++ core library"
 )
 
-if(PYTHON)
-    CPMAddPackage("gh:pybind/pybind11@2.13.4")
-endif()
+CPMAddPackage("gh:pybind/pybind11@2.13.4")
+
+# Define the output name for Python bindings module
+# NOTE: Matches the Python import name (e.g. 'import desbordante')
 set(BINDINGS_NAME desbordante)
 add_library(${BINDINGS_NAME} MODULE bind_main_classes.cpp bind_main_classes.h bindings.cpp)
 
@@ -109,11 +109,19 @@ Desbordante_AddBinds(pfd
     SRCS pfd/bind_pfd_verification.h pfd/bind_pfd_verification.cpp
     LIBS Desbordante::fd::pfd_verifier
 )
-#todo: maybe just add_library?
 add_library(Desbordante.bind.util)
 target_sources(Desbordante.bind.util
     PRIVATE
         FILE_SET HEADERS
+        FILES
+            py_util/bind_primitive.h
+            py_util/table_serialization.h
+            py_util/py_to_any.h
+            py_util/opt_to_py.h
+            py_util/logging.h
+            py_util/get_py_type.h
+            py_util/dataframe_reader.h
+            py_util/create_dataframe_reader.h
 )
 target_sources(Desbordante.bind.util
     PRIVATE
@@ -141,23 +149,14 @@ Desbordante_AddBinds(ucc
     LIBS Desbordante::ucc::hpivalid Desbordante::ucc Desbordante::ucc::hy Desbordante::ucc::pyro
 )
 
-# Define the output name for Python bindings module
-# NOTE: Matches the Python import name (e.g. 'import desbordante')
-# maybe pybind11::pybind11 enough
-target_link_libraries(${BINDINGS_NAME} PRIVATE pybind11::module algos)
+
+target_link_libraries(${BINDINGS_NAME} PRIVATE pybind11::pybind11 algos)
 pybind11_extension(${BINDINGS_NAME})
 if(NOT ${CMAKE_BUILD_TYPE} MATCHES Debug|RelWithDebInfo)
     # Strip unnecessary sections of the binary on Linux/macOS
     pybind11_strip(${BINDINGS_NAME})
 endif()
 set_target_properties(${BINDINGS_NAME} PROPERTIES CXX_VISIBILITY_PRESET "hidden")
-
-# Auto-discover all source files for bindings
-#file(GLOB_RECURSE sources "*.h*" "*.cpp*")
-
-# Create Python-native module using pybind11
-# Generates SHARED library with Python-compatible ABI
-#pybind11_add_module(${BINDINGS_NAME} ${sources})
 
 # Configure output directory to central build folder
 # Ensures generated .so/.pyd files are placed alongside other binaries
@@ -166,10 +165,6 @@ set_target_properties(
                                 ${CMAKE_RUNTIME_OUTPUT_DIRECTORY} # ${CMAKE_BINARY_DIR}/target
 )
 
-# Link against core library containing algorithm implementations
-#target_link_libraries(
-#    ${BINDINGS_NAME} PRIVATE ${CMAKE_PROJECT_NAME} # Desbordante core static library
-#)
 
 # ---- Installation Setup ----
 
