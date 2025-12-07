@@ -1,6 +1,6 @@
-add_executable(benchmark) #old name: ${CMAKE_PROJECT_NAME}_benchmark
+add_executable(Desbordante.benchmark) #old name: ${CMAKE_PROJECT_NAME}_benchmark
 
-add_headers(benchmark
+add_headers(Desbordante.benchmark
     PRIVATE
         adc_benchmark.h
         benchmark_cli.h
@@ -13,15 +13,14 @@ add_headers(benchmark
         md_benchmark.h
         nar_benchmark.h
 )
-target_sources(benchmark
+target_sources(Desbordante.benchmark
     PRIVATE
         main.cpp
         benchmark_cli.cpp
         benchmark_comparer.cpp
 )
-#todo: delete when PR
-#target_include_directories(benchmark PRIVATE "../common")
-target_link_libraries(benchmark
+
+target_link_libraries(Desbordante.benchmark
     PRIVATE
         test.common
         Boost::program_options
