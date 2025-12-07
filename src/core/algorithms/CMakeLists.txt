@@ -42,7 +42,7 @@ target_link_libraries(create_algo
         Desbordante::ar Desbordante::nar::des Desbordante::metric::verifier
         datastats Desbordante::fd::verifier ucc::hy ucc::pyro ucc::hpivalid Desbordante::cfd Desbordante::ac
         ucc::verifier ind::faida ind::spider Desbordante::ind::verifier Desbordante::od::fastod Desbordante::gfd::validator
-        Desbordante::od::order Desbordante::dd::split fd::sfd::cords md::hy fd::pfdverifier Desbordante::cfd::verifier
+        Desbordante::od::order Desbordante::dd::split fd::sfd::cords md::hy Desbordante::fd::pfd_verifier Desbordante::cfd::verifier
 
 )
 target_link_libraries(ind.mind PRIVATE create_algo)

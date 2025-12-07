@@ -1,8 +1,8 @@
-add_library(fd.pfdverifier)
-add_library(fd::pfdverifier ALIAS fd.pfdverifier)
+add_library(Desbordante.fd.pfd_verifier)
+add_library(Desbordante::fd::pfd_verifier ALIAS Desbordante.fd.pfd_verifier)
 
-add_headers(fd.pfdverifier PRIVATE pfd_verifier.h)
-add_headers(fd.pfdverifier PRIVATE pfd_stats_calculator.h)
-target_sources(fd.pfdverifier PRIVATE pfd_verifier.cpp)
+add_headers(Desbordante.fd.pfd_verifier PRIVATE pfd_verifier.h)
+add_headers(Desbordante.fd.pfd_verifier PRIVATE pfd_stats_calculator.h)
+target_sources(Desbordante.fd.pfd_verifier PRIVATE pfd_verifier.cpp)
 
-target_link_libraries(fd.pfdverifier PRIVATE model.table)
+target_link_libraries(Desbordante.fd.pfd_verifier PRIVATE model.table)

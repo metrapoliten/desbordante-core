@@ -130,7 +130,7 @@ Desbordante_AddTest(fd.verifier
 # --- FD.PFDTane ---
 add_test_with_libraries(fd.tane.pfd test_pfdtane.cpp "Desbordante::fd::tane::pfd;test::common;model.table")
 # --- FD.PFDVerifier ---
-add_test_with_libraries(fd.pfdverifier test_pfd_verifier.cpp "fd::pfdverifier;test::common;algos")
+add_test_with_libraries(fd.pfd_verifier test_pfd_verifier.cpp "Desbordante::fd::pfd_verifier;test::common;algos")
 # --- FD.SFD ---
 add_test_with_libraries(fd.sfd.cords test_sfd.cpp "fd::sfd::cords;test::common;model.table")
 # --- FD.Tane ---

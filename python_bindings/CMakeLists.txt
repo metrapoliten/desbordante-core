@@ -110,7 +110,9 @@ Desbordante_AddBinds(od
 )
 
 Desbordante_AddBinds(pfd
-    SRCS pfd/bind_pfd_verification.h pfd/bind_pfd_verification.cpp)
+    SRCS pfd/bind_pfd_verification.h pfd/bind_pfd_verification.cpp
+    LIBS Desbordante::fd::pfd_verifier
+)
 
 Desbordante_AddBinds(util
     SRCS
