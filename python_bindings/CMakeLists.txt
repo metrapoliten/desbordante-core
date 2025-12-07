@@ -12,22 +12,21 @@ if(PYTHON)
 endif()
 set(BINDINGS_NAME desbordante)
 add_library(${BINDINGS_NAME} MODULE bind_main_classes.cpp bind_main_classes.h bindings.cpp)
+
 # ---- Python Bindings Configuration ----
-#todo: move to 1 func
 include(../cmake/helpers.cmake)
 
 function(Desbordante_AddBinds NAME)
     set(multiVals SRCS LIBS)
     cmake_parse_arguments(args "" "" "${multiVals}" ${ARGN})
     set(NAME Desbordante.bind.${NAME})
-    list(APPEND args_LIBS pybind11::module)
+    list(APPEND args_LIBS pybind11::pybind11)
     Desbordante_AddTarget(${NAME}
         TYPE LIB
         _SRCS ${args_SRCS}
         _LIBS ${args_LIBS}
     )
     target_link_libraries(${BINDINGS_NAME} PRIVATE ${NAME})
-    #todo: delete when includes
     target_include_directories(${NAME} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
 endfunction()
 
@@ -111,17 +110,13 @@ Desbordante_AddBinds(pfd
     LIBS Desbordante::fd::pfd_verifier
 )
 #todo: maybe just add_library?
-Desbordante_AddBinds(util
-    SRCS
-        py_util/create_dataframe_reader.h
-        py_util/dataframe_reader.h
-        py_util/get_py_type.h
-        py_util/logging.h
-        py_util/opt_to_py.h
-        py_util/py_to_any.h
-        py_util/table_serialization.h
-        py_util/bind_primitive.h
-
+add_library(Desbordante.bind.util)
+target_sources(Desbordante.bind.util
+    PRIVATE
+        FILE_SET HEADERS
+)
+target_sources(Desbordante.bind.util
+    PRIVATE
         py_util/create_dataframe_reader.cpp
         py_util/dataframe_reader.cpp
         py_util/get_py_type.cpp
@@ -130,6 +125,8 @@ Desbordante_AddBinds(util
         py_util/py_to_any.cpp
         py_util/table_serialization.cpp
 )
+target_link_libraries(Desbordante.bind.util PRIVATE pybind11::pybind11)
+target_link_libraries(${BINDINGS_NAME} PRIVATE Desbordante.bind.util)
 
 Desbordante_AddBinds(sfd
     SRCS sfd/bind_sfd.h sfd/bind_sfd.cpp

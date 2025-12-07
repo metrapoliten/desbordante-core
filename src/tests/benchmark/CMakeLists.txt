@@ -22,7 +22,7 @@ target_sources(Desbordante.benchmark
 
 target_link_libraries(Desbordante.benchmark
     PRIVATE
-        test.common
+        Desbordante.test.common
         Boost::program_options
         Desbordante::dc::fastadc
         Desbordante::dd::split
