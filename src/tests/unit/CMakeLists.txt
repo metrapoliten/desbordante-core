@@ -194,11 +194,11 @@ Desbordante_AddTest(metric.verifier
 )
 
 # --- OD.FastOD ---
-add_test_with_libraries(od.fastod test_fastod.cpp "od::fastod;test::common")
+add_test_with_libraries(od.fastod test_fastod.cpp "Desbordante::od::fastod;test::common")
 # --- OD.Order ---
-add_test_with_libraries(od.order test_order.cpp "od::order;test::common")
+add_test_with_libraries(od.order test_order.cpp "Desbordante::od::order;test::common")
 # --- OD.SetBasedAODVerifier ---
-add_test_with_libraries(od.set_based_aod_verifier test_set_based_verifier.cpp "od::set_based_aod_verifier;od::fastod;test::common")
+add_test_with_libraries(od.set_based_aod_verifier test_set_based_verifier.cpp "Desbordante::od::set_based_aod_verifier;Desbordante::od::fastod;test::common")
 
 # --- UCC ---
 add_test_with_libraries(ucc.verifier test_ucc_verifier.cpp "ucc::verifier;ucc::hy;test::common;model.table")

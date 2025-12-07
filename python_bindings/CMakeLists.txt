@@ -105,7 +105,9 @@ Desbordante_AddBinds(nd
 )
 
 Desbordante_AddBinds(od
-    SRCS od/bind_od.h od/bind_od_verification.h od/bind_od.cpp od/bind_od_verification.cpp)
+    SRCS od/bind_od.h od/bind_od_verification.h od/bind_od.cpp od/bind_od_verification.cpp
+    LIBS Desbordante::od::fastod Desbordante::od::order Desbordante::od::set_based_aod_verifier
+)
 
 Desbordante_AddBinds(pfd
     SRCS pfd/bind_pfd_verification.h pfd/bind_pfd_verification.cpp)

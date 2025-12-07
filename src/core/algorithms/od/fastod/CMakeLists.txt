@@ -1,7 +1,7 @@
-add_library(od.fastod)
-add_library(od::fastod ALIAS od.fastod)
+add_library(Desbordante.od.fastod)
+add_library(Desbordante::od::fastod ALIAS Desbordante.od.fastod)
 
-add_headers(od.fastod
+add_headers(Desbordante.od.fastod
     PRIVATE
         fastod.h
         od_ordering.h
@@ -24,7 +24,7 @@ add_headers(od.fastod
         util/type_util.h
 )
 
-target_sources(od.fastod
+target_sources(Desbordante.od.fastod
     PRIVATE
         fastod.cpp
         model/attribute_pair.cpp
@@ -41,4 +41,4 @@ target_sources(od.fastod
         util/type_util.cpp
 )
 
-target_link_libraries(od.fastod PRIVATE model.table spdlog::spdlog_header_only)
+target_link_libraries(Desbordante.od.fastod PRIVATE model.table spdlog::spdlog_header_only)

@@ -41,8 +41,8 @@ target_link_libraries(create_algo
         Desbordante::fd::tane::pfd Desbordante::fd::fun Desbordante::fd::hy Desbordante::fd::aid Desbordante::fd::euler
         Desbordante::ar Desbordante::nar::des Desbordante::metric::verifier
         datastats Desbordante::fd::verifier ucc::hy ucc::pyro ucc::hpivalid Desbordante::cfd Desbordante::ac
-        ucc::verifier ind::faida ind::spider Desbordante::ind::verifier od::fastod Desbordante::gfd::validator
-        od::order Desbordante::dd::split fd::sfd::cords md::hy fd::pfdverifier Desbordante::cfd::verifier
+        ucc::verifier ind::faida ind::spider Desbordante::ind::verifier Desbordante::od::fastod Desbordante::gfd::validator
+        Desbordante::od::order Desbordante::dd::split fd::sfd::cords md::hy fd::pfdverifier Desbordante::cfd::verifier
 
 )
 target_link_libraries(ind.mind PRIVATE create_algo)
@@ -63,8 +63,8 @@ target_link_with_given(algos
         md.md
         Desbordante.metric.verifier
         Desbordante.nd.verifier
-        od.fastod
-        od.order
+        Desbordante.od.fastod
+        Desbordante.od.order
         datastats
         ucc.hy
 )
