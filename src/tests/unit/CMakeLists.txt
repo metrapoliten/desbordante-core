@@ -32,12 +32,13 @@ add_library(test_helper.ind.util)
 add_headers(test_helper.ind.util PRIVATE test_ind_util.h)
 target_sources(test_helper.ind.util PRIVATE test_ind_util.cpp)
 
-target_link_libraries(test_helper.ind.util PRIVATE ind::ind)
+target_link_libraries(test_helper.ind.util PRIVATE Desbordante::ind)
 target_include_directories(test_helper.ind.util PRIVATE "../common")
 
-add_test_with_libraries(ind.faida
-        test_faida.cpp
-        "test.common;ind::ind;ind::faida;test_helper.ind.util")
+Desbordante_AddTest(ind.faida
+    SRCS test_faida.cpp
+    LIBS test.common Desbordante::ind ind::faida test_helper.ind.util
+)
 #todo: rework
 add_library(test.common.obj OBJECT)
 target_include_directories(test.common.obj PRIVATE "../common")
@@ -48,11 +49,11 @@ target_sources(test.common.obj PRIVATE
 )
 add_test_with_libraries(ind.algos
     "$<TARGET_OBJECTS:test.common.obj>;test_ind_algorithms.cpp"
-    "algos;ind::ind;test_helper.ind.util;tests.util.hash;ind::spider;ind::mind;ind::faida"
+    "algos;Desbordante::ind;test_helper.ind.util;tests.util.hash;ind::spider;ind::mind;ind::faida"
 )
-add_test_with_libraries(fd.algos
-    "$<TARGET_OBJECTS:test.common.obj>;test_fd_algorithm.cpp"
-    "fd::depminer;fd::dfd;fd::fastfds;fd::fdep;fd::fun;fd::hy;fd::pyro;fd::tane::pfd;fd::tane::tane;Desbordante::fd"
+Desbordante_AddTest(fd.algos
+    SRCS $<TARGET_OBJECTS:test.common.obj> test_fd_algorithm.cpp
+    LIBS fd::depminer fd::dfd fd::fastfds fd::fdep fd::fun fd::hy fd::pyro fd::tane::pfd fd::tane::tane Desbordante::fd
 )
 add_test_with_libraries(fd.mine
         "$<TARGET_OBJECTS:test.common.obj>;test_fd_mine.cpp"
@@ -152,7 +153,10 @@ add_headers(tests.util.hash PRIVATE test_hash_util.h)
 target_sources(tests.util.hash PRIVATE test_hash_util.cpp)
 
 # --- IND ---
-add_test_with_libraries(ind.verifier test_ind_verifier.cpp "ind::verifier;test::common;algos")
+Desbordante_AddTest(ind.verifier
+    SRCS test_ind_verifier.cpp
+    LIBS Desbordante::ind::verifier test::common algos
+)
 
 # --- Model.Bitset ---
 add_test_with_libraries(model.bitset test_bitset.cpp "")

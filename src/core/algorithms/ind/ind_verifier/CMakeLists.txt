@@ -1,5 +1,5 @@
-add_library(ind.verifier)
-add_library(ind::verifier ALIAS ind.verifier)
+add_library(Desbordante.ind.verifier)
+add_library(Desbordante::ind::verifier ALIAS Desbordante.ind.verifier)
 
-add_headers(ind.verifier PRIVATE ind_verifier.h)
-target_sources(ind.verifier PRIVATE ind_verifier.cpp)
+add_headers(Desbordante.ind.verifier PRIVATE ind_verifier.h)
+target_sources(Desbordante.ind.verifier PRIVATE ind_verifier.cpp)

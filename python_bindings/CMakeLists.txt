@@ -73,7 +73,9 @@ Desbordante_AddBinds(gfd
     LIBS Desbordante::gfd::miner Desbordante::gfd::validator
 )
 Desbordante_AddBinds(ind
-    SRCS ind/bind_ind.h ind/bind_ind_verification.h ind/bind_ind.cpp ind/bind_ind_verification.cpp)
+    SRCS ind/bind_ind.h ind/bind_ind_verification.h ind/bind_ind.cpp ind/bind_ind_verification.cpp
+    LIBS Desbordante::ind Desbordante::ind::verifier
+)
 
 Desbordante_AddBinds(md
     SRCS md/bind_md.h md/bind_md_verification.h md/object_similarity_measure.h md/bind_md.cpp md/bind_md_verification.cpp)

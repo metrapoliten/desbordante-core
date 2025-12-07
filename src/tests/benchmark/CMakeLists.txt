@@ -27,7 +27,7 @@ target_link_libraries(benchmark
         Boost::program_options
         Desbordante::dc::fastadc
         Desbordante::dd::split
-        ind::ind ind::mind
+        Desbordante::ind ind::mind
         fd::hy fd::pyro
         fd::tane::tane
         fd::aid
