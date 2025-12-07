@@ -26,6 +26,10 @@ function(Desbordante_AddBinds NAME)
         _SRCS ${args_SRCS}
         _LIBS ${args_LIBS}
     )
+    #todo: start ONLY FOR DEV:
+    target_link_options(${NAME} PUBLIC "-Wl,--no-undefined")
+    target_link_libraries(${NAME} PUBLIC pybind11::embed)
+    #todo: end ONLY FOR DEV ^^^
     target_link_libraries(${BINDINGS_NAME} PRIVATE ${NAME})
     #todo: delete when includes
     target_include_directories(${NAME} PRIVATE ".")
