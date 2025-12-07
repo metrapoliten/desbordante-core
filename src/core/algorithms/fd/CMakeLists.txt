@@ -22,16 +22,16 @@ foreach(DIR IN LISTS FD_SUBDIRS)
 endforeach()
 
 # --- FD ---
-add_library(fd.fd)
-add_library(fd::fd ALIAS fd.fd)
+add_library(Desbordante.fd.fd)
+add_library(Desbordante::fd ALIAS Desbordante.fd.fd)
 
-add_headers(fd.fd
+add_headers(Desbordante.fd.fd
         PRIVATE
         fd.h
         fd_algorithm.h
         raw_fd.h
 )
-target_sources(fd.fd
+target_sources(Desbordante.fd.fd
     PRIVATE
         fd.cpp
         fd_algorithm.cpp
@@ -51,9 +51,9 @@ target_sources(fd.pli
 )
 
 # --- Linking ---
-target_link_libraries(fd.pli PRIVATE fd::fd)
-target_link_libraries(fd.fd PRIVATE model.table)
+target_link_libraries(fd.pli PRIVATE Desbordante::fd)
+target_link_libraries(Desbordante.fd.fd PRIVATE model.table)
 
 #TODO: pli -> common -> pfd/tane
 target_link_with_given(fd::pli PRIVATE fd.dfd fd.tane.tane fd.tane.pfd fd.tane.common fd.fastfds fd.mine fd.pyro fd.depminer fd.hy fd.fun)
-target_link_with_given(fd::fd PRIVATE fd.fdep fd.euler fd.aid fd.sfd.cords)
+target_link_with_given(Desbordante::fd PRIVATE fd.fdep fd.euler fd.aid fd.sfd.cords fd.pli)

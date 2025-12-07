@@ -1,9 +1,9 @@
-add_library(fd.verifier)
-add_library(fd::verifier ALIAS fd.verifier)
+add_library(Desbordante.fd.verifier)
+add_library(Desbordante::fd::verifier ALIAS Desbordante.fd.verifier)
 
-add_headers(fd.verifier PRIVATE fd_verifier.h stats_calculator.h)
-target_sources(fd.verifier PRIVATE fd_verifier.cpp stats_calculator.cpp)
-target_link_libraries(fd.verifier PRIVATE spdlog::spdlog_header_only model.table)
+add_headers(Desbordante.fd.verifier PRIVATE fd_verifier.h stats_calculator.h)
+target_sources(Desbordante.fd.verifier PRIVATE fd_verifier.cpp stats_calculator.cpp)
+target_link_libraries(Desbordante.fd.verifier PRIVATE spdlog::spdlog_header_only model.table)
 
 add_library(Desbordante.fd.verifier.dynamic)
 add_library(Desbordante::fd::verifier::dynamic ALIAS Desbordante.fd.verifier.dynamic)

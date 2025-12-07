@@ -36,7 +36,7 @@ endforeach()
 
 target_link_libraries(create_algo INTERFACE fd::depminer fd::dfd fd::fastfds fd::fdep fd::mine fd::pyro fd::tane::tane
                                             fd::tane::pfd fd::fun fd::hy fd::aid fd::euler Desbordante::ar nar::des metric.verifier
-                                            datastats fd::verifier ucc::hy ucc::pyro ucc::hpivalid Desbordante::cfd Desbordante::ac
+                                            datastats Desbordante::fd::verifier ucc::hy ucc::pyro ucc::hpivalid Desbordante::cfd Desbordante::ac
                                             ucc::verifier ind::faida ind::spider ind::verifier od::fastod gfd::validator
                                             od::order Desbordante::dd::split fd::sfd::cords md::hy fd::pfdverifier Desbordante::cfd::verifier
 
@@ -52,7 +52,7 @@ target_link_with_given(algos
         Desbordante.dc.verifier
         Desbordante.dd.verifier
         Desbordante.dd.split
-        fd.fd
+        Desbordante.fd.fd
         gfd.miner
         gfd.validator
         ind.ind

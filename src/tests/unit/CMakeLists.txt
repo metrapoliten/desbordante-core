@@ -52,7 +52,7 @@ add_test_with_libraries(ind.algos
 )
 add_test_with_libraries(fd.algos
     "$<TARGET_OBJECTS:test.common.obj>;test_fd_algorithm.cpp"
-    "fd::depminer;fd::dfd;fd::fastfds;fd::fdep;fd::fun;fd::hy;fd::pyro;fd::tane::pfd;fd::tane::tane;fd::fd"
+    "fd::depminer;fd::dfd;fd::fastfds;fd::fdep;fd::fun;fd::hy;fd::pyro;fd::tane::pfd;fd::tane::tane;Desbordante::fd"
 )
 add_test_with_libraries(fd.mine
         "$<TARGET_OBJECTS:test.common.obj>;test_fd_mine.cpp"
@@ -60,7 +60,7 @@ add_test_with_libraries(fd.mine
 )
 add_test_with_libraries(fd.approx
         "$<TARGET_OBJECTS:test.common.obj>;test_fd_util.h;test_fd_approximate.cpp"
-        "fd::fd;fd::euler"
+        "Desbordante::fd;fd::euler"
 )
 add_test_with_libraries(ucc.algos
         "$<TARGET_OBJECTS:test.common.obj>;test_ucc_algorithms.cpp"
@@ -116,10 +116,12 @@ add_test_with_libraries(nar.des test_des.cpp "nar::des;nar::nar;test::common;alg
 # --- FD ---
 Desbordante_AddTest(fd.verifier.dynamic
     SRCS test_dynamic_fd_verifier.cpp
-    LIBS fd::verifier Desbordante::fd::verifier::dynamic test::common algos
+    LIBS Desbordante::fd::verifier Desbordante::fd::verifier::dynamic test::common algos
 )
-add_test_with_libraries(fd.verifier test_fd_verifier.cpp "fd::verifier;algos;test::common")
-
+Desbordante_AddTest(fd.verifier
+    SRCS test_fd_verifier.cpp
+    LIBS Desbordante::fd::verifier algos test::common
+)
 # --- FD.PFDTane ---
 add_test_with_libraries(fd.tane.pfd test_pfdtane.cpp "fd::tane::pfd;test::common;model.table")
 # --- FD.PFDVerifier ---
