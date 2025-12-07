@@ -25,7 +25,7 @@ target_link_libraries(benchmark
     PRIVATE
         test.common
         Boost::program_options
-        dc::fastadc
+        Desbordante::dc::fastadc
         dd::split
         ind::ind ind::mind
         fd::hy fd::pyro

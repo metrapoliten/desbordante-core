@@ -50,7 +50,7 @@ Desbordante_AddBinds(data SRCS data/bind_data_types.h data/bind_data_types.cpp)
 
 Desbordante_AddBinds(dc
     SRCS dc/bind_dc_verification.h dc/bind_fastadc.h dc/bind_dc_verification.cpp dc/bind_fastadc.cpp
-    LIBS Desbordante::dc::verifier
+    LIBS Desbordante::dc::verifier Desbordante::dc::fastadc
 )
 
 Desbordante_AddBinds(dd

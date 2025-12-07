@@ -48,9 +48,9 @@ target_sources(dc.fastadc.structs
 )
 target_link_libraries(dc.fastadc.structs PRIVATE spdlog::spdlog_header_only)
 
-add_library(dc.fastadc)
-add_library(dc::fastadc ALIAS dc.fastadc)
+add_library(Desbordante.dc.fastadc)
+add_library(Desbordante::dc::fastadc ALIAS Desbordante.dc.fastadc)
 
-add_headers(dc.fastadc PRIVATE fastadc.h)
-target_sources(dc.fastadc PRIVATE fastadc.cpp)
-target_link_libraries(dc.fastadc PRIVATE dc.fastadc.structs)
+add_headers(Desbordante.dc.fastadc PRIVATE fastadc.h)
+target_sources(Desbordante.dc.fastadc PRIVATE fastadc.cpp)
+target_link_libraries(Desbordante.dc.fastadc PRIVATE dc.fastadc.structs)
