@@ -1,13 +1,17 @@
 #TODO:  add_executable(${TEST_NAME} main.cpp ${FILES}) or add_library(test_main main.cpp)?
-add_library(test_main main.cpp)
+Desbordante_AddTarget(main
+    PREFIX testlib
+    TYPE LIB
+    _SRCS main.cpp
+)
 
 function(Desbordante_AddTest name)
     set(multiVals SRCS LIBS)
     cmake_parse_arguments(args "" "" "${multiVals}" ${ARGN})
-    list(APPEND args_LIBS test_main gtest)
+    list(APPEND args_LIBS Desbordante.testlib.main gtest)
     Desbordante_AddTarget(${name}
-            PREFIX "test"
-            TYPE "EXE"
+            PREFIX test
+            TYPE EXE
             _SRCS ${args_SRCS}
             _LIBS ${args_LIBS}
     )
@@ -17,28 +21,31 @@ function(Desbordante_AddTest name)
     )
 endfunction()
 
-add_library(test_helper.ind.util)
-add_headers(test_helper.ind.util PRIVATE test_ind_util.h)
-target_sources(test_helper.ind.util PRIVATE test_ind_util.cpp)
-
-target_link_libraries(test_helper.ind.util PRIVATE Desbordante::ind)
-target_include_directories(test_helper.ind.util PRIVATE "../common")
+Desbordante_AddTarget(ind
+    PREFIX testlib
+    TYPE LIB
+    _SRCS test_ind_util.cpp
+    _LIBS Desbordante::ind
+)
+add_headers(Desbordante.testlib.ind PRIVATE test_ind_util.h)
+target_include_directories(Desbordante.testlib.ind PRIVATE "../common")
 
 Desbordante_AddTest(ind.faida
     SRCS test_faida.cpp
-    LIBS Desbordante.test.common Desbordante::ind Desbordante::ind::faida test_helper.ind.util
+    LIBS Desbordante.test.common Desbordante::ind Desbordante::ind::faida Desbordante.testlib.ind
 )
 #todo: rework
 add_library(Desbordante.test.common.obj OBJECT)
-target_include_directories(Desbordante.test.common.obj PRIVATE "../common")
 target_sources(Desbordante.test.common.obj PRIVATE
         "${CMAKE_SOURCE_DIR}/src/tests/common/all_csv_configs.h"
         "${CMAKE_SOURCE_DIR}/src/tests/common/all_csv_configs.cpp"
         "${CMAKE_SOURCE_DIR}/src/tests/common/csv_config_util.h"
 )
+target_include_directories(Desbordante.test.common.obj PRIVATE "../common")
+
 Desbordante_AddTest(ind.algos
     SRCS $<TARGET_OBJECTS:Desbordante.test.common.obj> test_ind_algorithms.cpp
-    LIBS algos Desbordante::ind test_helper.ind.util tests.util.hash Desbordante::ind::spider Desbordante::ind::mind Desbordante::ind::faida
+    LIBS algos Desbordante::ind Desbordante.testlib.ind Desbordante.testlib.hash Desbordante::ind::spider Desbordante::ind::mind Desbordante::ind::faida
 )
 Desbordante_AddTest(fd.algos
     SRCS $<TARGET_OBJECTS:Desbordante.test.common.obj> test_fd_algorithm.cpp
@@ -55,7 +62,7 @@ Desbordante_AddTest(fd.approx
 )
 Desbordante_AddTest(ucc.algos
     SRCS $<TARGET_OBJECTS:Desbordante.test.common.obj> test_ucc_algorithms.cpp
-    LIBS Desbordante::ucc Desbordante::ucc::hy tests.util.hash Desbordante::ucc::pyro Desbordante::ucc::hpivalid
+    LIBS Desbordante::ucc Desbordante::ucc::hy Desbordante.testlib.hash Desbordante::ucc::pyro Desbordante::ucc::hpivalid
 )
 #todo: rework
 
@@ -156,24 +163,31 @@ Desbordante_AddTest(fd.tane
 )
 
 # --- GFD ---
-add_library(tests.gfd.paths)
-add_headers(tests.gfd.paths PRIVATE all_gfd_paths.h)
-target_sources(tests.gfd.paths PRIVATE all_gfd_paths.cpp)
-target_include_directories(tests.gfd.paths PRIVATE "../common")
+Desbordante_AddTarget(gfd.paths
+    PREFIX testlib
+    TYPE LIB
+    _SRCS all_gfd_paths.cpp
+)
+add_headers(Desbordante.testlib.gfd.paths PRIVATE all_gfd_paths.h)
+target_include_directories(Desbordante.testlib.gfd.paths PRIVATE "../common")
 
 Desbordante_AddTest(gfd.miner
     SRCS test_gfd_miner.cpp
-    LIBS Desbordante::gfd::miner tests.gfd.paths
+    LIBS Desbordante::gfd::miner Desbordante.testlib.gfd.paths
 )
 Desbordante_AddTest(gfd.validator
     SRCS test_gfd_validator.cpp
-    LIBS Desbordante::gfd::validator tests.gfd.paths
+    LIBS Desbordante::gfd::validator Desbordante.testlib.gfd.paths
 )
 
 # --- Helper.Hash ---
-add_library(tests.util.hash)
-add_headers(tests.util.hash PRIVATE test_hash_util.h)
-target_sources(tests.util.hash PRIVATE test_hash_util.cpp)
+Desbordante_AddTarget(hash
+    PREFIX testlib
+    TYPE LIB
+    _SRCS test_hash_util.cpp
+
+)
+add_headers(Desbordante.testlib.hash PRIVATE test_hash_util.h)
 
 # --- IND ---
 Desbordante_AddTest(ind.verifier
