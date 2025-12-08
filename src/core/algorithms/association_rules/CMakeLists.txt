@@ -5,7 +5,7 @@ Desbordante_AddLibrary(${name}
         apriori.cpp
         ar_algorithm.cpp
         candidate_hash_tree.cpp
-    LIBS ${Desb_PREFIX}.model.transaction ${Desb_PREFIX}.algos
+    LIBS ${Desb}.model.transaction ${Desb}.algos
 )
 #todo: apriori
 add_headers(${name}

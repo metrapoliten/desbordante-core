@@ -3,10 +3,10 @@ Desbordante_AddLibrary(${name}
     CREATE_ALIAS
     PREFIX ucc
     SRCS hpivalid.cpp hypergraph.cpp result_collector.cpp tree_search.cpp
-    LIBS spdlog::spdlog_header_only ${Desb_PREFIX}.fd.hy.common
+    LIBS spdlog::spdlog_header_only ${Desb}.fd.hy.common
 )
 
-add_headers(Desbordante.ucc.hpivalid
+add_headers(${Desb}.ucc.hpivalid
     PRIVATE
         config.h
         enums.h

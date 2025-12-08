@@ -2,7 +2,7 @@ set(name types)
 Desbordante_AddLibrary(${name}
     PREFIX model
     SRCS create_type.cpp
-    LIBS ${Desb_PREFIX}.util
+    LIBS ${Desb}.util
 )
 add_headers(${name}
     PRIVATE

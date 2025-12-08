@@ -3,6 +3,6 @@ Desbordante_AddLibrary(${name}
     CREATE_ALIAS
     PREFIX fd
     SRCS fdep.cpp fd_tree_element.cpp
-    LIBS ${Desb_PREFIX}::fd
+    LIBS ${Desb}::fd
 )
-add_headers(Desbordante.fd.fdep PRIVATE fdep.h fd_tree_element.h)
+add_headers(${Desb}.fd.fdep PRIVATE fdep.h fd_tree_element.h)

@@ -4,4 +4,4 @@ Desbordante_AddLibrary(${name}
     PREFIX ind
     SRCS spider.cpp attribute.cpp
 )
-add_headers(Desbordante.ind.spider PRIVATE spider.h attribute.h)
+add_headers(${Desb}.ind.spider PRIVATE spider.h attribute.h)

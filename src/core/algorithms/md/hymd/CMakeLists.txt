@@ -18,7 +18,7 @@ Desbordante_AddLibrary(${name}
         record_pair_inferrer.cpp
         similarity_data.cpp
         validator.cpp
-    LIBS ${Desb_PREFIX}.md.hy.preprocessing ${Desb_PREFIX}.md
+    LIBS ${Desb}.md.hy.preprocessing ${Desb}.md
 )
 
 add_headers(${name}
@@ -95,7 +95,7 @@ Desbordante_AddLibrary(${name}
         preprocessing/column_matches/levenshtein.cpp
         preprocessing/column_matches/monge_elkan.cpp
         preprocessing/column_matches/smith_waterman_gotoh.cpp
-    LIBS ${Desb_PREFIX}.model.table
+    LIBS ${Desb}.model.table
 )
 add_headers(${name}
      PRIVATE

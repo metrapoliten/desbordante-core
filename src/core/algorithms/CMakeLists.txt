@@ -30,47 +30,47 @@ add_headers(${name}
 )
 target_link_libraries(${name}
     INTERFACE
-        Desbordante::ac
-        Desbordante::ar
-        Desbordante::cfd
-        Desbordante::cfd::verifier
-        Desbordante::datastats
-        Desbordante::dd::split
-        Desbordante::fd::aid
-        Desbordante::fd::depminer
-        Desbordante::fd::dfd
-        Desbordante::fd::euler
-        Desbordante::fd::fastfds
-        Desbordante::fd::fdep
-        Desbordante::fd::fun
-        Desbordante::fd::hy
-        Desbordante::fd::mine
-        Desbordante::fd::pfd_verifier
-        Desbordante::fd::pyro
-        Desbordante::fd::sfd::cords
-        Desbordante::fd::tane
-        Desbordante::fd::tane::pfd
-        Desbordante::fd::verifier
-        Desbordante::gfd::validator
-        Desbordante::ind::faida
-        Desbordante::ind::spider
-        Desbordante::ind::verifier
-        Desbordante::metric::verifier
-        ${Desb_PREFIX}.md.hy
-        Desbordante::nar::des
-        Desbordante::od::order
-        Desbordante::ucc::hy
-        Desbordante::ucc::pyro
-        Desbordante::ucc::hpivalid
-        ${Desb_PREFIX}::ucc::verifier
-        ${Desb_PREFIX}::od::fast
+        ${Desb}::ac
+        ${Desb}::ar
+        ${Desb}::cfd
+        ${Desb}::cfd::verifier
+        ${Desb}::datastats
+        ${Desb}::dd::split
+        ${Desb}::fd::aid
+        ${Desb}::fd::depminer
+        ${Desb}::fd::dfd
+        ${Desb}::fd::euler
+        ${Desb}::fd::fastfds
+        ${Desb}::fd::fdep
+        ${Desb}::fd::fun
+        ${Desb}::fd::hy
+        ${Desb}::fd::mine
+        ${Desb}::fd::pfd_verifier
+        ${Desb}::fd::pyro
+        ${Desb}::fd::sfd::cords
+        ${Desb}::fd::tane
+        ${Desb}::fd::tane::pfd
+        ${Desb}::fd::verifier
+        ${Desb}::gfd::validator
+        ${Desb}::ind::faida
+        ${Desb}::ind::spider
+        ${Desb}::ind::verifier
+        ${Desb}::metric::verifier
+        ${Desb}.md.hy
+        ${Desb}::nar::des
+        ${Desb}::od::order
+        ${Desb}::ucc::hy
+        ${Desb}::ucc::pyro
+        ${Desb}::ucc::hpivalid
+        ${Desb}::ucc::verifier
+        ${Desb}::od::fast
 )
 
 set(name algos)
 Desbordante_AddLibrary(${name}
     CREATE_ALIAS
     SRCS algo_factory.cpp algorithm.cpp
-    LIBS ${Desb_PREFIX}.util ${Desb_PREFIX}.config ${Desb_PREFIX}.parser.csv spdlog::spdlog_header_only
+    LIBS ${Desb}.util ${Desb}.config ${Desb}.parser.csv spdlog::spdlog_header_only
 )
 add_headers(${name} PRIVATE algo_factory.h algorithm.h)
 

@@ -4,7 +4,7 @@ add_subdirectory(md_verifier)
 set(name md)
 Desbordante_AddLibrary(${name}
     SRCS md.cpp
-    LIBS ${Desb_PREFIX}.algos
+    LIBS ${Desb}.algos
 )
 
 add_headers(${name}

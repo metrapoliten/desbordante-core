@@ -1,9 +1,9 @@
 # ---- Test Suite Configuration ----
 
 # ---- Test Sources Setup ----
-add_library(Desbordante.test.common)
-add_headers(Desbordante.test.common PRIVATE common/all_csv_configs.h)
-target_sources(Desbordante.test.common PRIVATE common/all_csv_configs.cpp)
+add_library(${Desb}.test.common)
+add_headers(${Desb}.test.common PRIVATE common/all_csv_configs.h)
+target_sources(${Desb}.test.common PRIVATE common/all_csv_configs.cpp)
 
 if (COMPILE_TESTS)
 	enable_testing()

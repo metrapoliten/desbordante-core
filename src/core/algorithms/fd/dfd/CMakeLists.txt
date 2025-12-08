@@ -16,6 +16,6 @@ Desbordante_AddLibrary(${name}
         pruning_maps/dependencies_map.cpp
         pruning_maps/non_dependencies_map.cpp
         pruning_maps/pruning_map.cpp
-    LIBS ${Desb_PREFIX}.fd.pli
+    LIBS ${Desb}.fd.pli
 )
 add_headers(${name} PRIVATE dfd.h node_category.h)

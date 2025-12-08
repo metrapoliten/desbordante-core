@@ -14,7 +14,7 @@ Desbordante_AddLibrary(${name}
     CREATE_ALIAS
     PREFIX fd
     SRCS hyfd.cpp inductor.cpp validator.cpp
-    LIBS ${Desb_PREFIX}.fd.hy.common ${Desb_PREFIX}.fd.hy.model ${Desb_PREFIX}.fd.pli
+    LIBS ${Desb}.fd.hy.common ${Desb}.fd.hy.model ${Desb}.fd.pli
 )
 
 add_headers(${name} PRIVATE

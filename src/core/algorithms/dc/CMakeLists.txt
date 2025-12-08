@@ -4,7 +4,7 @@ add_subdirectory(verifier)
 set(name dc.model)
 Desbordante_AddLibrary(${name}
     SRCS model/component.cpp model/dc.cpp
-    LIBS ${Desb_PREFIX}.algos
+    LIBS ${Desb}.algos
 )
 add_headers(${name}
     PRIVATE

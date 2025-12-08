@@ -8,9 +8,9 @@ Desbordante_AddLibrary(${name}
         validator.cpp
         model/ucc_tree.cpp
         model/ucc_tree_vertex.cpp
-    LIBS spdlog::spdlog_header_only ${Desb_PREFIX}.config Desbordante.fd.hy.common Desbordante::ucc ${Desb_PREFIX}.algos
+    LIBS spdlog::spdlog_header_only ${Desb}.config ${Desb}.fd.hy.common ${Desb}::ucc ${Desb}.algos
 )
-add_headers(Desbordante.ucc.hy
+add_headers(${Desb}.ucc.hy
     PRIVATE
         hyucc.h
         inductor.h

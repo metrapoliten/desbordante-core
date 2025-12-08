@@ -3,7 +3,7 @@ Desbordante_AddLibrary(${name}
     PREFIX fd
     CREATE_ALIAS
     SRCS depminer.cpp
-    LIBS ${Desb_PREFIX}.fd.pli
+    LIBS ${Desb}.fd.pli
 )
 
-add_headers(Desbordante.fd.depminer PRIVATE depminer.h cmax_set.h)
+add_headers(${Desb}.fd.depminer PRIVATE depminer.h cmax_set.h)

@@ -4,7 +4,7 @@ set(name cfd)
 Desbordante_AddLibrary(${name}
     CREATE_ALIAS
     SRCS cfd_discovery.cpp fd_first_algorithm.cpp
-    LIBS ${Desb_PREFIX}.cfd.model ${Desb_PREFIX}.algos
+    LIBS ${Desb}.cfd.model ${Desb}.algos
 )
 add_headers(${name}
     PRIVATE
@@ -36,7 +36,7 @@ add_headers(${name} INTERFACE util/prefix_tree.h)
 set(name cfd.model)
 Desbordante_AddLibrary(${name}
     SRCS model/cfd_relation_data.cpp model/partition_tidlist.cpp model/raw_cfd.cpp
-    LIBS Desbordante.cfd.util ${Desb_PREFIX}.model.table
+    LIBS ${Desb}.cfd.util ${Desb}.model.table
 )
 add_headers(${name}
     PRIVATE

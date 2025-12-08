@@ -53,6 +53,6 @@ set(name dc.fastadc)
 Desbordante_AddLibrary(${name}
     CREATE_ALIAS
     SRCS fastadc.cpp
-    LIBS Desbordante.dc.fastadc.structs
+    LIBS ${Desb}.dc.fastadc.structs
 )
 add_headers(${name} PRIVATE fastadc.h)

@@ -12,10 +12,10 @@ Desbordante_AddLibrary(${name}
         preprocessing/preprocessor.cpp
         util/simple_ind.cpp
         faida.cpp
-    LIBS spdlog::spdlog_header_only ${Desb_PREFIX}::ind
+    LIBS spdlog::spdlog_header_only ${Desb}::ind
 )
 
-add_headers(Desbordante.ind.faida
+add_headers(${Desb}.ind.faida
     PRIVATE
         candidate_generation/apriori_candidate_generator.h
 

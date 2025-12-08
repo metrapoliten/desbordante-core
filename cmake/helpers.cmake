@@ -1,4 +1,4 @@
-set(Desb_PREFIX "Desbordante" CACHE STRING "")
+set(Desb "Desbordante" CACHE STRING "")
 function(add_headers target scope)
     set(files ${ARGN})
 
@@ -45,13 +45,13 @@ endfunction()
 
 function(Desbordante_AddTarget name)
     set(singleVals PREFIX TYPE LIB_TYPE)
-    set(multiVals _SRCS _LIBS)
+    set(multiVals SRCS LIBS)
 
     cmake_parse_arguments(args "" "${singleVals}" "${multiVals}" ${ARGN})
     if("${args_PREFIX}" STREQUAL "")
-        set(name "${Desb_PREFIX}.${name}")
+        set(name "${Desb}.${name}")
     else()
-        set(name "${Desb_PREFIX}.${args_PREFIX}.${name}")
+        set(name "${Desb}.${args_PREFIX}.${name}")
     endif()
     if(args_TYPE STREQUAL "EXE")
         add_executable(${name})
@@ -66,12 +66,12 @@ function(Desbordante_AddTarget name)
     else()
         message(FATAL_ERROR "add_target: TYPE must be EXE or LIB")
     endif()
-    if(args__SRCS)
-        target_sources(${name} PRIVATE ${args__SRCS})
+    if(args_SRCS)
+        target_sources(${name} PRIVATE ${args_SRCS})
     endif()
     set_target_properties(${name} PROPERTIES LINK_LIBRARIES_ONLY_TARGETS ON)
-    if(args__LIBS)
-        target_link_libraries(${name} PRIVATE ${args__LIBS})
+    if(args_LIBS)
+        target_link_libraries(${name} PRIVATE ${args_LIBS})
     endif()
     return(PROPAGATE name)
 endfunction()
@@ -85,8 +85,8 @@ function(Desbordante_AddLibrary name)
             PREFIX ${args_PREFIX}
             TYPE LIB
             LIB_TYPE ${args_LIB_TYPE}
-            _SRCS ${args_SRCS}
-            _LIBS ${args_LIBS}
+            SRCS ${args_SRCS}
+            LIBS ${args_LIBS}
     )
     if(args_CREATE_ALIAS)
         string(REPLACE "." "::" alias "${name}")

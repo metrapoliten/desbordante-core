@@ -26,7 +26,7 @@ set(name fd)
 Desbordante_AddLibrary(${name}
     CREATE_ALIAS
     SRCS fd.cpp fd_algorithm.cpp
-    LIBS ${Desb_PREFIX}.model.table ${Desb_PREFIX}.algos
+    LIBS ${Desb}.model.table ${Desb}.algos
 )
 add_headers(${name} PRIVATE fd.h fd_algorithm.h raw_fd.h)
 
@@ -35,6 +35,6 @@ set(name pli)
 Desbordante_AddLibrary(${name}
     PREFIX fd
     SRCS pli_based_fd_algorithm.cpp
-    LIBS ${Desb_PREFIX}::fd
+    LIBS ${Desb}::fd
 )
 add_headers(${name} PRIVATE pli_based_fd_algorithm.h)

@@ -3,7 +3,7 @@ Desbordante_AddLibrary(${name}
     CREATE_ALIAS
     PREFIX fd.sfd
     SRCS contingency_table.cpp cords.cpp frequency_handler.cpp sample.cpp
-    LIBS ${Desb_PREFIX}::fd
+    LIBS ${Desb}::fd
 )
 
 add_headers(${name}

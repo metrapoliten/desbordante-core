@@ -8,10 +8,10 @@ Desbordante_AddLibrary(${name}
         order.cpp
         order_utility.cpp
         sorted_partitions.cpp
-    LIBS ${Desb_PREFIX}.model.table spdlog::spdlog_header_only ${Desb_PREFIX}.algos
+    LIBS ${Desb}.model.table spdlog::spdlog_header_only ${Desb}.algos
 )
 
-add_headers(Desbordante.od.order
+add_headers(${Desb}.od.order
     PRIVATE
         dependency_checker.h
         list_lattice.h

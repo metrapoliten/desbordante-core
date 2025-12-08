@@ -14,7 +14,7 @@ set(BINDINGS_NAME desbordante)
 add_library(${BINDINGS_NAME} MODULE bind_main_classes.cpp bind_main_classes.h bindings.cpp)
 
 # ---- Python Bindings Configuration ----
-include(../cmake/helpers.cmake)
+include(${CMAKE_CURRENT_SOURCE_DIR}/../cmake/helpers.cmake)
 
 function(Desbordante_AddBinds name)
     set(multiVals SRCS LIBS)
@@ -23,8 +23,8 @@ function(Desbordante_AddBinds name)
     Desbordante_AddTarget(${name}
             PREFIX bind
             TYPE LIB
-            _SRCS ${args_SRCS}
-            _LIBS ${args_LIBS}
+            SRCS ${args_SRCS}
+            LIBS ${args_LIBS}
     )
     target_link_libraries(${BINDINGS_NAME} PRIVATE ${name})
     target_include_directories(${name} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})

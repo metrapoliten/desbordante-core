@@ -1,24 +1,24 @@
 # Create benchmark executable
-Desbordante_AddTarget(benchmark
-    TYPE EXE
-    _SRCS main.cpp benchmark_cli.cpp benchmark_comparer.cpp
-    _LIBS
-        Desbordante.test.common
+set(name benchmark)
+Desbordante_AddLibrary(benchmark
+    SRCS main.cpp benchmark_cli.cpp benchmark_comparer.cpp
+    LIBS
+        ${Desb}.test.common
         Boost::program_options
-        Desbordante::dc::fastadc
-        Desbordante::dd::split
-        Desbordante::ind
-        Desbordante::ind::mind
-        Desbordante::fd::hy
-        Desbordante::fd::pyro
-        Desbordante::fd::tane
-        Desbordante::fd::aid
-        ${Desb_PREFIX}.md.hy
-        ${Desb_PREFIX}.md.hy.preprocessing
-        Desbordante::nar::des
+        ${Desb}::dc::fastadc
+        ${Desb}::dd::split
+        ${Desb}::ind
+        ${Desb}::ind::mind
+        ${Desb}::fd::hy
+        ${Desb}::fd::pyro
+        ${Desb}::fd::tane
+        ${Desb}::fd::aid
+        ${Desb}.md.hy
+        ${Desb}.md.hy.preprocessing
+        ${Desb}::nar::des
 )
 
-add_headers(Desbordante.benchmark
+add_headers(${name}
     PRIVATE
         adc_benchmark.h
         benchmark_cli.h
