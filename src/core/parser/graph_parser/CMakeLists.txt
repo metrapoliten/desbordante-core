@@ -1,6 +1,7 @@
-add_library(parser.graph)
-
-add_headers(parser.graph PRIVATE graph_parser.h)
-target_sources(parser.graph PRIVATE graph_parser.cpp)
-
-target_link_libraries(parser.graph PRIVATE Boost::graph)
+set(name graph)
+Desbordante_AddLibrary(${name}
+    PREFIX parser
+    SRCS graph_parser.cpp
+    LIBS Boost::graph
+)
+add_headers(${name} PRIVATE graph_parser.h)

@@ -1,5 +1,6 @@
-add_library(parser.csv)
-add_library(parser::csv ALIAS parser.csv)
-
-add_headers(parser.csv PRIVATE csv_parser.h)
-target_sources(parser.csv PRIVATE csv_parser.cpp)
+set(name csv)
+Desbordante_AddLibrary(${name}
+    PREFIX parser
+    SRCS csv_parser.cpp
+)
+add_headers(${name} PRIVATE csv_parser.h)

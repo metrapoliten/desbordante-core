@@ -2,9 +2,9 @@ set(name types)
 Desbordante_AddLibrary(${name}
     PREFIX model
     SRCS create_type.cpp
-    LIBS util
+    LIBS ${Desb_PREFIX}.util
 )
-add_headers(model.types
+add_headers(${name}
     PRIVATE
         big_int_type.h
         bitset.h

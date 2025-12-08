@@ -70,7 +70,7 @@ set(name algos)
 Desbordante_AddLibrary(${name}
     CREATE_ALIAS
     SRCS algo_factory.cpp algorithm.cpp
-    LIBS util ${Desb_PREFIX}.config parser::csv spdlog::spdlog_header_only
+    LIBS ${Desb_PREFIX}.util ${Desb_PREFIX}.config ${Desb_PREFIX}.parser.csv spdlog::spdlog_header_only
 )
 add_headers(${name} PRIVATE algo_factory.h algorithm.h)
 

@@ -7,6 +7,6 @@ set(name ind)
 Desbordante_AddLibrary(${name}
     CREATE_ALIAS
     SRCS ind.cpp ind_algorithm.cpp
-    LIBS model.table ${Desb_PREFIX}.algos
+    LIBS ${Desb_PREFIX}.model.table ${Desb_PREFIX}.algos
 )
 add_headers(${name} PRIVATE ind.h ind_algorithm.h)

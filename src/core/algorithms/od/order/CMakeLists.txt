@@ -8,7 +8,7 @@ Desbordante_AddLibrary(${name}
         order.cpp
         order_utility.cpp
         sorted_partitions.cpp
-    LIBS model.table spdlog::spdlog_header_only ${Desb_PREFIX}.algos
+    LIBS ${Desb_PREFIX}.model.table spdlog::spdlog_header_only ${Desb_PREFIX}.algos
 )
 
 add_headers(Desbordante.od.order

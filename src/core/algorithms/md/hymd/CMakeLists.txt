@@ -95,7 +95,7 @@ Desbordante_AddLibrary(${name}
         preprocessing/column_matches/levenshtein.cpp
         preprocessing/column_matches/monge_elkan.cpp
         preprocessing/column_matches/smith_waterman_gotoh.cpp
-    LIBS model.table
+    LIBS ${Desb_PREFIX}.model.table
 )
 add_headers(${name}
      PRIVATE

@@ -1,6 +1,9 @@
-add_library(util)
-
-add_headers(util
+set(name util)
+Desbordante_AddLibrary(${name}
+    SRCS convex_hull.cpp create_dd.cpp levenshtein_distance.cpp progress.cpp qgram_vector.cpp worker_thread_pool.cpp
+    LIBS spdlog::spdlog_header_only
+)
+add_headers(${name}
     PRIVATE
         argument_type.h
         auto_join_thread.h
@@ -29,13 +32,4 @@ add_headers(util
         range_to_string.h
         timed_invoke.h
         worker_thread_pool.h
-)
-target_sources(util
-    PRIVATE
-        convex_hull.cpp
-        create_dd.cpp
-        levenshtein_distance.cpp
-        progress.cpp
-        qgram_vector.cpp
-        worker_thread_pool.cpp
 )

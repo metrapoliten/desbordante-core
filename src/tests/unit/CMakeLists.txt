@@ -85,7 +85,7 @@ Desbordante_AddTest(cfd.algos
 )
 Desbordante_AddTest(cfd.relation_data
     SRCS test_cfd_relation_data.cpp
-    LIBS Desbordante.test.common parser.csv Desbordante.cfd.model
+    LIBS Desbordante.test.common ${Desb_PREFIX}.parser.csv Desbordante.cfd.model
 )
 Desbordante_AddTest(cfd.verifier
     SRCS test_cfd_verifier.cpp
@@ -95,7 +95,7 @@ Desbordante_AddTest(cfd.verifier
 # --- CSV ---
 Desbordante_AddTest(csv.parser
     SRCS test_csv_parser.cpp
-    LIBS parser::csv Desbordante.test.common
+    LIBS ${Desb_PREFIX}.parser.csv Desbordante.test.common
 )
 
 # --- DataStats ---
@@ -108,7 +108,7 @@ Desbordante_AddTest(datastats
 #test_dc_structures_correct_results.h
 Desbordante_AddTest(dc.structs
     SRCS test_dc_structures.cpp
-    LIBS Desbordante.dc.fastadc.structs Desbordante.test.common parser.csv model.types model.table
+    LIBS Desbordante.dc.fastadc.structs Desbordante.test.common ${Desb_PREFIX}.parser.csv ${Desb_PREFIX}.model.types ${Desb_PREFIX}.model.table
 )
 Desbordante_AddTest(dc.verifier
     SRCS test_dc_verifier.cpp
@@ -144,7 +144,7 @@ Desbordante_AddTest(fd.verifier
 # --- FD.PFDTane ---
 Desbordante_AddTest(fd.tane.pfd
     SRCS test_pfdtane.cpp
-    LIBS Desbordante::fd::tane::pfd Desbordante.test.common model.table
+    LIBS Desbordante::fd::tane::pfd Desbordante.test.common ${Desb_PREFIX}.model.table
 )
 # --- FD.PFDVerifier ---
 Desbordante_AddTest(fd.pfd_verifier
@@ -154,12 +154,12 @@ Desbordante_AddTest(fd.pfd_verifier
 # --- FD.SFD ---
 Desbordante_AddTest(fd.sfd.cords
     SRCS test_sfd.cpp
-    LIBS Desbordante::fd::sfd::cords Desbordante.test.common model.table
+    LIBS Desbordante::fd::sfd::cords Desbordante.test.common ${Desb_PREFIX}.model.table
 )
 # --- FD.Tane ---
 Desbordante_AddTest(fd.tane
     SRCS test_tane_afd_measures.cpp
-    LIBS Desbordante::fd::tane Desbordante.test.common model.table
+    LIBS Desbordante::fd::tane Desbordante.test.common ${Desb_PREFIX}.model.table
 )
 
 # --- GFD ---
@@ -202,9 +202,9 @@ Desbordante_AddTest(model.types.numeric_type_cast SRCS test_numerictype_cast.cpp
 # --- Model.Types.DoubleCompare ---
 Desbordante_AddTest(model.types.double_compare SRCS test_double_compare.cpp)
 # --- Model.Types.Types ---
-Desbordante_AddTest(model.types.types SRCS test_types.cpp LIBS model.types)
+Desbordante_AddTest(model.types SRCS test_types.cpp LIBS ${Desb_PREFIX}.model.types)
 # --- Model.Table ---
-Desbordante_AddTest(model.table SRCS test_typed_column_data.cpp LIBS model.table Desbordante.test.common parser.csv)
+Desbordante_AddTest(model.table SRCS test_typed_column_data.cpp LIBS ${Desb_PREFIX}.model.table Desbordante.test.common ${Desb_PREFIX}.parser.csv)
 
 # --- ND ---
 Desbordante_AddTest(nd.verifier
@@ -239,12 +239,12 @@ Desbordante_AddTest(od.set_based_aod_verifier
 # --- UCC ---
 Desbordante_AddTest(ucc.verifier
     SRCS test_ucc_verifier.cpp
-    LIBS ${Desb_PREFIX}::ucc::verifier ${Desb_PREFIX}::ucc::hy ${Desb_PREFIX}.test.common model.table
+    LIBS ${Desb_PREFIX}::ucc::verifier ${Desb_PREFIX}::ucc::hy ${Desb_PREFIX}.test.common ${Desb_PREFIX}.model.table
 )
 
 # --- Util ---
 #todo: only need fd::pyrocommon.model
 Desbordante_AddTest(util
     SRCS test_util.cpp
-    LIBS Desbordante.test.common ${Desb_PREFIX}.fd.pyro.common parser::csv
+    LIBS Desbordante.test.common ${Desb_PREFIX}.fd.pyro.common ${Desb_PREFIX}.parser.csv
 )

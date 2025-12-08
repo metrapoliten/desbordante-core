@@ -2,7 +2,7 @@
 
 # Define the library name
 #set(LIB_NAME ${CMAKE_PROJECT_NAME})
-include(${CMAKE_SOURCE_DIR}/cmake/helpers.cmake) #todo: make nice
+include(${CMAKE_CURRENT_SOURCE_DIR}/../../cmake/helpers.cmake) #todo: make nice
 # Collect all source files recursively (headers and implementations)
 add_subdirectory(model/table)
 add_subdirectory(model/transaction)
@@ -28,9 +28,6 @@ set_property(TARGET spdlog_header_only APPEND PROPERTY INTERFACE_COMPILE_DEFINIT
 #todo: do we need static?
 # Build core project as a static library
 #add_library(${LIB_NAME} STATIC ${lib_sources} ${model_srcs} ${parser})
-target_link_libraries(model.table PRIVATE spdlog::spdlog_header_only)
-target_link_libraries(util PRIVATE spdlog::spdlog_header_only)
-#todo: try PRIVATE
 
 # Link essential dependencies
 # PRIVATE: Boost and threading internals (implementation details)

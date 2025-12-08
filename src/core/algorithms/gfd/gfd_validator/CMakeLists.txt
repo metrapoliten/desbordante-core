@@ -4,6 +4,6 @@ Desbordante_AddLibrary(${name}
     CREATE_ALIAS
     PREFIX gfd
     SRCS balancer.cpp egfd_validator.cpp gfd_handler.cpp gfd_validator.cpp naivegfd_validator.cpp
-    LIBS parser.graph spdlog::spdlog_header_only ${Desb_PREFIX}.gfd ${Desb_PREFIX}.algos
+    LIBS ${Desb_PREFIX}.parser.graph spdlog::spdlog_header_only ${Desb_PREFIX}.gfd ${Desb_PREFIX}.algos
 )
 add_headers(${name} PRIVATE balancer.h egfd_validator.h gfd_handler.h gfd_validator.h naivegfd_validator.h verification_algorithms.h)

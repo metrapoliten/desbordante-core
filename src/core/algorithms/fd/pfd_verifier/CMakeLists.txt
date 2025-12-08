@@ -3,6 +3,6 @@ Desbordante_AddLibrary(${name}
     CREATE_ALIAS
     PREFIX fd
     SRCS pfd_verifier.cpp
-    LIBS model.table
+    LIBS ${Desb_PREFIX}.model.table
 )
 add_headers(${name} PRIVATE pfd_verifier.h pfd_stats_calculator.h)

@@ -17,7 +17,7 @@ Desbordante_AddLibrary(${name}
         typed_column_data.cpp
         vertical.cpp
         vertical_map.cpp
-    LIBS ${Desb_PREFIX}.types
+    LIBS ${Desb_PREFIX}.model.types spdlog::spdlog_header_only
 )
 add_headers(${name}
     PRIVATE

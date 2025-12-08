@@ -16,7 +16,7 @@ Desbordante_AddLibrary(${name}
 
         util/timer.cpp
         util/type_util.cpp
-    LIBS model.table spdlog::spdlog_header_only ${Desb_PREFIX}.algos
+    LIBS ${Desb_PREFIX}.model.table spdlog::spdlog_header_only ${Desb_PREFIX}.algos
 )
 add_headers(${name}
     PRIVATE

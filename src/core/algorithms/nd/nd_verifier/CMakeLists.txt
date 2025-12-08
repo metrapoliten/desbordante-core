@@ -3,7 +3,7 @@ Desbordante_AddLibrary(${name}
     CREATE_ALIAS
     PREFIX nd
     SRCS nd_verifier.cpp util/highlight.cpp util/stats_calculator.cpp util/value_combination.cpp
-    LIBS model.table ${Desb_PREFIX}.algos
+    LIBS ${Desb_PREFIX}.model.table ${Desb_PREFIX}.algos
 )
 add_headers(${name}
     PRIVATE
