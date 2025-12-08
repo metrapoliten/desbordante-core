@@ -1,7 +1,8 @@
-add_library(Desbordante.gfd.miner)
-add_library(Desbordante::gfd::miner ALIAS Desbordante.gfd.miner)
-
-add_headers(Desbordante.gfd.miner PRIVATE gfd_miner.h)
-target_sources(Desbordante.gfd.miner PRIVATE gfd_miner.cpp)
-
-target_link_libraries(Desbordante.gfd.miner PRIVATE parser.graph)
+set(name miner)
+Desbordante_AddLibrary(${name}
+    CREATE_ALIAS
+    PREFIX gfd
+    SRCS gfd_miner.cpp
+    LIBS parser.graph ${Desb_PREFIX}.gfd ${Desb_PREFIX}.algos
+)
+add_headers(${name} PRIVATE gfd_miner.h)

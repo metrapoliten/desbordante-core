@@ -1,6 +1,25 @@
-add_library(model.table)
-
-add_headers(model.table
+set(name table)
+Desbordante_AddLibrary(${name}
+    PREFIX model
+    SRCS
+        agree_set_factory.cpp
+        block_data.cpp
+        column_combination.cpp
+        column.cpp
+        column_domain.cpp
+        column_domain_iterator.cpp
+        column_layout_relation_data.cpp
+        column_layout_typed_relation_data.cpp
+        dynamic_position_list_index.cpp
+        identifier_set.cpp
+        position_list_index.cpp
+        relational_schema.cpp
+        typed_column_data.cpp
+        vertical.cpp
+        vertical_map.cpp
+    LIBS ${Desb_PREFIX}.types
+)
+add_headers(${name}
     PRIVATE
         abstract_column_data.h
         agree_set_factory.h
@@ -31,24 +50,3 @@ add_headers(model.table
         vertical.h
         vertical_map.h
 )
-
-target_sources(model.table
-    PRIVATE
-        agree_set_factory.cpp
-        block_data.cpp
-        column_combination.cpp
-        column.cpp
-        column_domain.cpp
-        column_domain_iterator.cpp
-        column_layout_relation_data.cpp
-        column_layout_typed_relation_data.cpp
-        dynamic_position_list_index.cpp
-        identifier_set.cpp
-        position_list_index.cpp
-        relational_schema.cpp
-        typed_column_data.cpp
-        vertical.cpp
-        vertical_map.cpp
-)
-
-target_link_libraries(model.table PRIVATE model.types)

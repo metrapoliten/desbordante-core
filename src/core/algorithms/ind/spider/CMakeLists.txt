@@ -1,6 +1,7 @@
-add_library(Desbordante.ind.spider)
-add_library(Desbordante::ind::spider ALIAS Desbordante.ind.spider)
-
-add_headers(Desbordante.ind.spider PRIVATE spider.h)
-add_headers(Desbordante.ind.spider PRIVATE attribute.h)
-target_sources(Desbordante.ind.spider PRIVATE spider.cpp attribute.cpp)
+set(name spider)
+Desbordante_AddLibrary(${name}
+    CREATE_ALIAS
+    PREFIX ind
+    SRCS spider.cpp attribute.cpp
+)
+add_headers(Desbordante.ind.spider PRIVATE spider.h attribute.h)

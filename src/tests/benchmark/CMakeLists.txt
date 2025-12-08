@@ -13,8 +13,8 @@ Desbordante_AddTarget(benchmark
         Desbordante::fd::pyro
         Desbordante::fd::tane
         Desbordante::fd::aid
-        md::hy
-        md.hy.preprocessing
+        ${Desb_PREFIX}.md.hy
+        ${Desb_PREFIX}.md.hy.preprocessing
         Desbordante::nar::des
 )
 

@@ -1,7 +1,11 @@
-add_library(Desbordante.metric.verifier)
-add_library(Desbordante::metric::verifier ALIAS Desbordante.metric.verifier)
-#todo: metric verifier
-add_headers(Desbordante.metric.verifier
+set(name verifier)
+Desbordante_AddLibrary(${name}
+    CREATE_ALIAS
+    PREFIX metric
+    SRCS highlight_calculator.cpp metric_verifier.cpp points_calculator.cpp
+    LIBS model.table ${Desb_PREFIX}.algos
+)
+add_headers(${name}
     PRIVATE
         aliases.h
         enums.h
@@ -11,11 +15,3 @@ add_headers(Desbordante.metric.verifier
         points.h
         points_calculator.h
 )
-target_sources(Desbordante.metric.verifier
-    PRIVATE
-        highlight_calculator.cpp
-        metric_verifier.cpp
-        points_calculator.cpp
-)
-
-target_link_libraries(Desbordante.metric.verifier PRIVATE model.table)

@@ -3,13 +3,9 @@ add_subdirectory(hyucc)
 add_subdirectory(pyroucc)
 add_subdirectory(ucc_verifier)
 
-add_library(Desbordante.ucc.ucc)
-add_library(Desbordante::ucc ALIAS Desbordante.ucc.ucc)
-
-add_headers(Desbordante.ucc.ucc
-    PRIVATE
-        raw_ucc.h
-        ucc.h
-        ucc_algorithm.h
+set(name ucc)
+Desbordante_AddLibrary(${name}
+    CREATE_ALIAS
+    SRCS ucc_algorithm.cpp
 )
-target_sources(Desbordante.ucc.ucc PRIVATE ucc_algorithm.cpp)
+add_headers(${name} PRIVATE raw_ucc.h ucc.h ucc_algorithm.h)

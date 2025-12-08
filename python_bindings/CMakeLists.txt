@@ -102,7 +102,7 @@ Desbordante_AddBinds(nd
 
 Desbordante_AddBinds(od
     SRCS od/bind_od.h od/bind_od_verification.h od/bind_od.cpp od/bind_od_verification.cpp
-    LIBS Desbordante::od::fastod Desbordante::od::order Desbordante::od::set_based_aod_verifier
+    LIBS Desbordante::od::fast Desbordante::od::order Desbordante::od::set_based_aod_verifier
 )
 
 Desbordante_AddBinds(pfd
@@ -150,7 +150,7 @@ Desbordante_AddBinds(ucc
 )
 
 
-target_link_libraries(${BINDINGS_NAME} PRIVATE pybind11::pybind11 algos)
+target_link_libraries(${BINDINGS_NAME} PRIVATE pybind11::pybind11 Desbordante::algos)
 pybind11_extension(${BINDINGS_NAME})
 if(NOT ${CMAKE_BUILD_TYPE} MATCHES Debug|RelWithDebInfo)
     # Strip unnecessary sections of the binary on Linux/macOS

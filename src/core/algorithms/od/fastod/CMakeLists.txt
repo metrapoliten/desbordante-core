@@ -1,7 +1,24 @@
-add_library(Desbordante.od.fastod)
-add_library(Desbordante::od::fastod ALIAS Desbordante.od.fastod)
+set(name fast)
+Desbordante_AddLibrary(${name}
+    CREATE_ALIAS
+    PREFIX od
+    SRCS
+        fastod.cpp
+        model/attribute_pair.cpp
+        model/attribute_set.cpp
+        model/canonical_od.cpp
 
-add_headers(Desbordante.od.fastod
+        partitions/complex_stripped_partition.cpp
+        partitions/range_based_stripped_partition.cpp
+        partitions/stripped_partition.cpp
+
+        storage/data_frame.cpp
+
+        util/timer.cpp
+        util/type_util.cpp
+    LIBS model.table spdlog::spdlog_header_only ${Desb_PREFIX}.algos
+)
+add_headers(${name}
     PRIVATE
         fastod.h
         od_ordering.h
@@ -23,22 +40,3 @@ add_headers(Desbordante.od.fastod
         util/timer.h
         util/type_util.h
 )
-
-target_sources(Desbordante.od.fastod
-    PRIVATE
-        fastod.cpp
-        model/attribute_pair.cpp
-        model/attribute_set.cpp
-        model/canonical_od.cpp
-
-        partitions/complex_stripped_partition.cpp
-        partitions/range_based_stripped_partition.cpp
-        partitions/stripped_partition.cpp
-
-        storage/data_frame.cpp
-
-        util/timer.cpp
-        util/type_util.cpp
-)
-
-target_link_libraries(Desbordante.od.fastod PRIVATE model.table spdlog::spdlog_header_only)

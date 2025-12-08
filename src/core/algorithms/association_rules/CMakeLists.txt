@@ -1,7 +1,14 @@
-add_library(Desbordante.ar)
-add_library(Desbordante::ar ALIAS Desbordante.ar)
+set(name ar)
+Desbordante_AddLibrary(${name}
+    CREATE_ALIAS
+    SRCS
+        apriori.cpp
+        ar_algorithm.cpp
+        candidate_hash_tree.cpp
+    LIBS model.transaction ${Desb_PREFIX}.algos
+)
 #todo: apriori
-add_headers(Desbordante.ar
+add_headers(${name}
     PRIVATE
         ar.h
         apriori.h
@@ -10,10 +17,3 @@ add_headers(Desbordante.ar
         candidate_hash_tree.h
         node.h
 )
-target_sources(Desbordante.ar
-    PRIVATE
-        apriori.cpp
-        ar_algorithm.cpp
-        candidate_hash_tree.cpp
-)
-target_link_libraries(Desbordante.ar PRIVATE model.transaction)

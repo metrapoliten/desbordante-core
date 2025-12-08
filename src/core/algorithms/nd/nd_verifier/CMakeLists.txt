@@ -1,20 +1,14 @@
-add_library(Desbordante.nd.verifier)
-add_library(Desbordante::nd::verifier ALIAS Desbordante.nd.verifier)
-
-add_headers(Desbordante.nd.verifier
+set(name verifier)
+Desbordante_AddLibrary(${name}
+    CREATE_ALIAS
+    PREFIX nd
+    SRCS nd_verifier.cpp util/highlight.cpp util/stats_calculator.cpp util/value_combination.cpp
+    LIBS model.table ${Desb_PREFIX}.algos
+)
+add_headers(${name}
     PRIVATE
         nd_verifier.h
         util/highlight.h
         util/stats_calculator.h
         util/value_combination.h
 )
-
-target_sources(Desbordante.nd.verifier
-    PRIVATE
-        nd_verifier.cpp
-        util/highlight.cpp
-        util/stats_calculator.cpp
-        util/value_combination.cpp
-)
-
-target_link_libraries(Desbordante.nd.verifier PRIVATE model.table)

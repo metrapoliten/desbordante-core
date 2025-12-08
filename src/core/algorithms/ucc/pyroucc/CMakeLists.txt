@@ -1,7 +1,8 @@
-add_library(Desbordante.ucc.pyro)
-add_library(Desbordante::ucc::pyro ALIAS Desbordante.ucc.pyro)
-
-add_headers(Desbordante.ucc.pyro PRIVATE pyroucc.h)
-target_sources(Desbordante.ucc.pyro PRIVATE pyroucc.cpp)
-
-target_link_libraries(Desbordante.ucc.pyro PRIVATE Desbordante::ucc fd::pyrocommon)
+set(name pyro)
+Desbordante_AddLibrary(${name}
+    CREATE_ALIAS
+    PREFIX ucc
+    SRCS pyroucc.cpp
+    LIBS ${Desb_PREFIX}::ucc ${Desb_PREFIX}.fd.pyro.common
+)
+add_headers(${name} PRIVATE pyroucc.h)

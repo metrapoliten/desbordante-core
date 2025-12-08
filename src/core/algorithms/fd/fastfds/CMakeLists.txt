@@ -1,7 +1,8 @@
-add_library(Desbordante.fd.fastfds)
-add_library(Desbordante::fd::fastfds ALIAS Desbordante.fd.fastfds)
-
-add_headers(Desbordante.fd.fastfds PRIVATE fastfds.h)
-target_sources(Desbordante.fd.fastfds PRIVATE fastfds.cpp)
-
-target_link_libraries(Desbordante.fd.fastfds PRIVATE spdlog::spdlog_header_only)
+set(name fastfds)
+Desbordante_AddLibrary(${name}
+    CREATE_ALIAS
+    PREFIX fd
+    SRCS fastfds.cpp
+    LIBS spdlog::spdlog_header_only ${Desb_PREFIX}.fd.pli
+)
+add_headers(${name} PRIVATE fastfds.h)

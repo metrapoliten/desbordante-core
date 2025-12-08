@@ -1,6 +1,8 @@
-add_library(Desbordante.dc.verifier)
-add_library(Desbordante::dc::verifier ALIAS Desbordante.dc.verifier)
-add_headers(Desbordante.dc.verifier PRIVATE dc_verifier.h)
-target_sources(Desbordante.dc.verifier PRIVATE dc_verifier.cpp)
+set(name dc.verifier)
+Desbordante_AddLibrary(${name}
+    CREATE_ALIAS
+    SRCS dc_verifier.cpp
+    LIBS model.table model.types Desbordante.dc.model Desbordante.dc.parser
+)
 
-target_link_libraries(Desbordante.dc.verifier PRIVATE model.table model.types)
+add_headers(${name} PRIVATE dc_verifier.h)

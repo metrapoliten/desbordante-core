@@ -1,27 +1,26 @@
-add_library(fd.hy.model)
-add_headers(fd.hy.model PRIVATE
+set(name hy.model)
+Desbordante_AddLibrary(${name}
+    PREFIX fd
+    SRCS model/fd_tree.cpp model/fd_tree_vertex.cpp
+)
+add_headers(${name} PRIVATE
     model/fd_tree.h
     model/fd_tree_vertex.h
     model/non_fd_list.h
 )
-target_sources(fd.hy.model PRIVATE model/fd_tree.cpp model/fd_tree_vertex.cpp)
 
-add_library(Desbordante.fd.hy)
-add_library(Desbordante::fd::hy ALIAS Desbordante.fd.hy)
-
-add_headers(Desbordante.fd.hy PRIVATE
-        hyfd.h
+set(name hy)
+Desbordante_AddLibrary(${name}
+    CREATE_ALIAS
+    PREFIX fd
+    SRCS hyfd.cpp inductor.cpp validator.cpp
+    LIBS ${Desb_PREFIX}.fd.hy.common ${Desb_PREFIX}.fd.hy.model ${Desb_PREFIX}.fd.pli
 )
-add_headers(Desbordante.fd.hy PRIVATE
+
+add_headers(${name} PRIVATE
+    hyfd.h
     hyfd_config.h
     inductor.h
     sampler.h
     validator.h
 )
-target_sources(Desbordante.fd.hy PRIVATE
-    hyfd.cpp
-    inductor.cpp
-    validator.cpp
-)
-
-target_link_libraries(Desbordante.fd.hy PRIVATE fd::hycommon fd.hy.model)

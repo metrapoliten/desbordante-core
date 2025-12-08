@@ -1,5 +1,7 @@
-add_library(Desbordante.dd.verifier)
-add_library(Desbordante::dd::verifier ALIAS Desbordante.dd.verifier)
-
-add_headers(Desbordante.dd.verifier PRIVATE dd_verifier.h highlight.h)
-target_sources(Desbordante.dd.verifier PRIVATE dd_verifier.cpp)
+set(name dd.verifier)
+Desbordante_AddLibrary(${name}
+    CREATE_ALIAS
+    SRCS dd_verifier.cpp
+    LIBS Desbordante.dd model.table model.types spdlog::spdlog_header_only ${Desb_PREFIX}.algos
+)
+add_headers(${name} PRIVATE dd_verifier.h highlight.h)

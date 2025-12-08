@@ -1,10 +1,20 @@
-add_library(Desbordante.ind.faida)
-add_library(Desbordante::ind::faida ALIAS Desbordante.ind.faida)
+set(name faida)
+Desbordante_AddLibrary(${name}
+    CREATE_ALIAS
+    PREFIX ind
+    SRCS
+        candidate_generation/apriori_candidate_generator.cpp
+        hashing/murmur_hash_3.cpp
+        inclusion_testing/combined_inclusion_tester.cpp
+        inclusion_testing/sampled_inverted_index.cpp
+        preprocessing/abstract_column_store.cpp
+        preprocessing/hashed_column_store.cpp
+        preprocessing/preprocessor.cpp
+        util/simple_ind.cpp
+        faida.cpp
+    LIBS spdlog::spdlog_header_only ${Desb_PREFIX}::ind
+)
 
-#add_headers(ind.faida
-#    PUBLIC
-#
-#)
 add_headers(Desbordante.ind.faida
     PRIVATE
         candidate_generation/apriori_candidate_generator.h
@@ -29,21 +39,3 @@ add_headers(Desbordante.ind.faida
 
         faida.h
 )
-target_sources(Desbordante.ind.faida
-    PRIVATE
-        candidate_generation/apriori_candidate_generator.cpp
-        hashing/murmur_hash_3.cpp
-
-        inclusion_testing/combined_inclusion_tester.cpp
-        inclusion_testing/sampled_inverted_index.cpp
-
-        preprocessing/abstract_column_store.cpp
-        preprocessing/hashed_column_store.cpp
-        preprocessing/preprocessor.cpp
-
-        util/simple_ind.cpp
-
-        faida.cpp
-)
-
-target_link_libraries(Desbordante.ind.faida PRIVATE spdlog::spdlog_header_only)

@@ -1,10 +1,13 @@
 add_subdirectory(hymd)
 add_subdirectory(md_verifier)
 
-add_library(md.md)
-add_library(md::md ALIAS md.md)
+set(name md)
+Desbordante_AddLibrary(${name}
+    SRCS md.cpp
+    LIBS ${Desb_PREFIX}.algos
+)
 
-add_headers(md.md
+add_headers(${name}
     PRIVATE
         column_match.h
         column_similarity_classifier.h
@@ -14,6 +17,3 @@ add_headers(md.md
         md_algorithm.h
         similarity.h
 )
-target_sources(md.md PRIVATE md.cpp)
-
-target_link_with_given(md::md PRIVATE md.hy Desbordante.md.verifier)

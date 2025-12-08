@@ -1,7 +1,7 @@
-add_library(Desbordante.datastats)
-add_library(Desbordante::datastats ALIAS Desbordante.datastats)
-
-add_headers(Desbordante.datastats PRIVATE data_stats.h statistic.h)
-target_sources(Desbordante.datastats PRIVATE data_stats.cpp statistic.cpp)
-
-target_link_libraries(Desbordante.datastats PRIVATE model.table model.types)
+set(name datastats)
+Desbordante_AddLibrary(${name}
+    CREATE_ALIAS
+    SRCS data_stats.cpp statistic.cpp
+    LIBS model.table model.types ${Desb_PREFIX}.algos
+)
+add_headers(${name} PRIVATE data_stats.h statistic.h)

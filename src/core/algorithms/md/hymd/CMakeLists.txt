@@ -1,48 +1,29 @@
-add_library(md.hy)
-add_library(md::hy ALIAS md.hy)
+set(name hy)
+Desbordante_AddLibrary(${name}
+    PREFIX md
+    SRCS
+        indexes/dictionary_compressor.cpp
+        indexes/keyed_position_list_index.cpp
+        indexes/records_info.cpp
+        indexes/similarity_index.cpp
 
-add_library(md.hy.preprocessing)
-add_headers(md.hy.preprocessing
-     PRIVATE
-        preprocessing/ccv_id_pickers/index_uniform.h
-        preprocessing/ccv_id_pickers/pick_lhs_ccv_ids_type.h
+        lattice/cardinality/min_picker_lattice.cpp
+        lattice/cardinality/min_picking_level_getter.cpp
+        lattice/cardinality/one_by_one_min_picker.cpp
 
-        preprocessing/column_matches/basic_calculator.h
-        preprocessing/column_matches/column_match.h
-        preprocessing/column_matches/column_match_impl.h
-        preprocessing/column_matches/date_difference.h
-        preprocessing/column_matches/equality.h
-        preprocessing/column_matches/jaccard.h
-        preprocessing/column_matches/lcs.h
-        preprocessing/column_matches/levenshtein.h
-        preprocessing/column_matches/lv_normalized.h
-        preprocessing/column_matches/monge_elkan.h
-        preprocessing/column_matches/number_difference.h
-        preprocessing/column_matches/pairwise.h
-        preprocessing/column_matches/single_transformer.h
-        preprocessing/column_matches/smith_waterman_gotoh.h
-        preprocessing/column_matches/transformed_columns_holder.h
+        lattice/md_lattice.cpp
 
-        preprocessing/build_indexes.h
-        preprocessing/encode_results.h
-        preprocessing/similarity.h
-        preprocessing/valid_table_results.h
+        hymd.cpp
+        lattice_traverser.cpp
+        record_pair_inferrer.cpp
+        similarity_data.cpp
+        validator.cpp
+    LIBS ${Desb_PREFIX}.md.hy.preprocessing ${Desb_PREFIX}.md
 )
 
-target_sources(md.hy.preprocessing
+add_headers(${name}
     PRIVATE
-        preprocessing/column_matches/jaccard.cpp
-        preprocessing/column_matches/lcs.cpp
-        preprocessing/column_matches/levenshtein.cpp
-        preprocessing/column_matches/monge_elkan.cpp
-        preprocessing/column_matches/smith_waterman_gotoh.cpp
-)
-
-target_link_libraries(md.hy.preprocessing PRIVATE model.table)
-
-add_headers(md.hy PRIVATE hymd.h)
-add_headers(md.hy
-    PRIVATE
+        hymd.h
         indexes/column_similarity_info.h
         indexes/compressed_records.h
         indexes/dictionary_compressor.h
@@ -104,24 +85,41 @@ add_headers(md.hy
         table_identifiers.h
         validator.h
 )
-target_sources(md.hy
-    PRIVATE
-        indexes/dictionary_compressor.cpp
-        indexes/keyed_position_list_index.cpp
-        indexes/records_info.cpp
-        indexes/similarity_index.cpp
 
-        lattice/cardinality/min_picker_lattice.cpp
-        lattice/cardinality/min_picking_level_getter.cpp
-        lattice/cardinality/one_by_one_min_picker.cpp
-
-        lattice/md_lattice.cpp
-
-        hymd.cpp
-        lattice_traverser.cpp
-        record_pair_inferrer.cpp
-        similarity_data.cpp
-        validator.cpp
+set(name hy.preprocessing)
+Desbordante_AddLibrary(${name}
+    PREFIX md
+    SRCS
+        preprocessing/column_matches/jaccard.cpp
+        preprocessing/column_matches/lcs.cpp
+        preprocessing/column_matches/levenshtein.cpp
+        preprocessing/column_matches/monge_elkan.cpp
+        preprocessing/column_matches/smith_waterman_gotoh.cpp
+    LIBS model.table
 )
+add_headers(${name}
+     PRIVATE
+        preprocessing/ccv_id_pickers/index_uniform.h
+        preprocessing/ccv_id_pickers/pick_lhs_ccv_ids_type.h
 
-target_link_libraries(md.hy PRIVATE md.hy.preprocessing)
+        preprocessing/column_matches/basic_calculator.h
+        preprocessing/column_matches/column_match.h
+        preprocessing/column_matches/column_match_impl.h
+        preprocessing/column_matches/date_difference.h
+        preprocessing/column_matches/equality.h
+        preprocessing/column_matches/jaccard.h
+        preprocessing/column_matches/lcs.h
+        preprocessing/column_matches/levenshtein.h
+        preprocessing/column_matches/lv_normalized.h
+        preprocessing/column_matches/monge_elkan.h
+        preprocessing/column_matches/number_difference.h
+        preprocessing/column_matches/pairwise.h
+        preprocessing/column_matches/single_transformer.h
+        preprocessing/column_matches/smith_waterman_gotoh.h
+        preprocessing/column_matches/transformed_columns_holder.h
+
+        preprocessing/build_indexes.h
+        preprocessing/encode_results.h
+        preprocessing/similarity.h
+        preprocessing/valid_table_results.h
+)

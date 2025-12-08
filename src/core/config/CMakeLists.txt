@@ -1,9 +1,5 @@
-add_library(config)
-#TODO: correct
-target_sources(config
-    PRIVATE
-        FILE_SET HEADERS
-    PRIVATE
+Desbordante_AddLibrary(config
+    SRCS
         column_index/option.cpp
         column_index/validate_index.cpp
 

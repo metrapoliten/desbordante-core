@@ -1,5 +1,8 @@
-add_library(Desbordante.fd.fun)
-add_library(Desbordante::fd::fun ALIAS Desbordante.fd.fun)
-
+set(name fun)
+Desbordante_AddLibrary(${name}
+    CREATE_ALIAS
+    PREFIX fd
+    SRCS fun.cpp
+    LIBS ${Desb_PREFIX}.fd.pli
+)
 add_headers(Desbordante.fd.fun PRIVATE fun.h)
-target_sources(Desbordante.fd.fun PRIVATE fun.cpp)

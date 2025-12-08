@@ -31,7 +31,6 @@ set_property(TARGET spdlog_header_only APPEND PROPERTY INTERFACE_COMPILE_DEFINIT
 target_link_libraries(model.table PRIVATE spdlog::spdlog_header_only)
 target_link_libraries(util PRIVATE spdlog::spdlog_header_only)
 #todo: try PRIVATE
-target_link_libraries(algos PRIVATE config parser::csv spdlog::spdlog_header_only)
 
 # Link essential dependencies
 # PRIVATE: Boost and threading internals (implementation details)

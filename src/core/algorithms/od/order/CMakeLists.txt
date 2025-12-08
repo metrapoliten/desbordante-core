@@ -1,5 +1,15 @@
-add_library(Desbordante.od.order)
-add_library(Desbordante::od::order ALIAS Desbordante.od.order)
+set(name order)
+Desbordante_AddLibrary(${name}
+    CREATE_ALIAS
+    PREFIX od
+    SRCS
+        dependency_checker.cpp
+        list_lattice.cpp
+        order.cpp
+        order_utility.cpp
+        sorted_partitions.cpp
+    LIBS model.table spdlog::spdlog_header_only ${Desb_PREFIX}.algos
+)
 
 add_headers(Desbordante.od.order
     PRIVATE
@@ -10,12 +20,3 @@ add_headers(Desbordante.od.order
         order_utility.h
         sorted_partitions.h
 )
-target_sources(Desbordante.od.order
-    PRIVATE
-        dependency_checker.cpp
-        list_lattice.cpp
-        order.cpp
-        order_utility.cpp
-        sorted_partitions.cpp
-)
-target_link_libraries(Desbordante.od.order PRIVATE model.table spdlog::spdlog_header_only)

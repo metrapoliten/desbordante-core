@@ -18,54 +18,62 @@ set(ALGO_SUBDIRS
         ucc
 )
 
-add_library(create_algo INTERFACE)
-add_headers(create_algo
+set(name create_algo)
+Desbordante_AddLibrary(${name}
+    LIB_TYPE INTERFACE
+)
+add_headers(${name}
     INTERFACE
         algorithms.h
         algorithm_types.h
         create_algorithm.h
 )
+target_link_libraries(${name}
+    INTERFACE
+        Desbordante::ac
+        Desbordante::ar
+        Desbordante::cfd
+        Desbordante::cfd::verifier
+        Desbordante::datastats
+        Desbordante::dd::split
+        Desbordante::fd::aid
+        Desbordante::fd::depminer
+        Desbordante::fd::dfd
+        Desbordante::fd::euler
+        Desbordante::fd::fastfds
+        Desbordante::fd::fdep
+        Desbordante::fd::fun
+        Desbordante::fd::hy
+        Desbordante::fd::mine
+        Desbordante::fd::pfd_verifier
+        Desbordante::fd::pyro
+        Desbordante::fd::sfd::cords
+        Desbordante::fd::tane
+        Desbordante::fd::tane::pfd
+        Desbordante::fd::verifier
+        Desbordante::gfd::validator
+        Desbordante::ind::faida
+        Desbordante::ind::spider
+        Desbordante::ind::verifier
+        Desbordante::metric::verifier
+        ${Desb_PREFIX}.md.hy
+        Desbordante::nar::des
+        Desbordante::od::order
+        Desbordante::ucc::hy
+        Desbordante::ucc::pyro
+        Desbordante::ucc::hpivalid
+        ${Desb_PREFIX}::ucc::verifier
+        ${Desb_PREFIX}::od::fast
+)
 
-add_library(algos)
-add_headers(algos PRIVATE algo_factory.h algorithm.h)
-target_sources(algos PRIVATE algo_factory.cpp algorithm.cpp)
+set(name algos)
+Desbordante_AddLibrary(${name}
+    CREATE_ALIAS
+    SRCS algo_factory.cpp algorithm.cpp
+    LIBS util ${Desb_PREFIX}.config parser::csv spdlog::spdlog_header_only
+)
+add_headers(${name} PRIVATE algo_factory.h algorithm.h)
 
 foreach(DIR IN LISTS ALGO_SUBDIRS)
     add_subdirectory(${DIR})
 endforeach()
-
-target_link_libraries(create_algo
-    INTERFACE
-        Desbordante::fd::depminer Desbordante::fd::dfd Desbordante::fd::fastfds Desbordante::fd::fdep
-        Desbordante::fd::mine Desbordante::fd::pyro Desbordante::fd::tane
-        Desbordante::fd::tane::pfd Desbordante::fd::fun Desbordante::fd::hy Desbordante::fd::aid Desbordante::fd::euler
-        Desbordante::ar Desbordante::nar::des Desbordante::metric::verifier
-        Desbordante::datastats Desbordante::fd::verifier Desbordante::ucc::hy Desbordante::ucc::pyro Desbordante::ucc::hpivalid Desbordante::cfd Desbordante::ac
-        ucc::verifier Desbordante::ind::faida Desbordante::ind::spider Desbordante::ind::verifier Desbordante::od::fastod Desbordante::gfd::validator
-        Desbordante::od::order Desbordante::dd::split Desbordante::fd::sfd::cords md::hy Desbordante::fd::pfd_verifier Desbordante::cfd::verifier
-
-)
-target_link_libraries(Desbordante.ind.mind PRIVATE create_algo)
-
-target_link_with_given(algos
-    PRIVATE
-        Desbordante.ac
-        Desbordante.ar
-        Desbordante.cfd.cfd
-        Desbordante.cfd.verifier
-        Desbordante.dc.verifier
-        Desbordante.dd.verifier
-        Desbordante.dd.split
-        Desbordante.fd.fd
-        Desbordante.gfd.miner
-        Desbordante.gfd.validator
-        Desbordante.ind.ind
-        md.md
-        Desbordante.metric.verifier
-        Desbordante.nd.verifier
-        Desbordante.od.fastod
-        Desbordante.od.order
-        Desbordante.datastats
-        Desbordante.ucc.hy
-)
-target_link_libraries(algos PRIVATE util)

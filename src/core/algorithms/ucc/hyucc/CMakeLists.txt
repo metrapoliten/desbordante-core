@@ -1,6 +1,15 @@
-add_library(Desbordante.ucc.hy)
-add_library(Desbordante::ucc::hy ALIAS Desbordante.ucc.hy)
-
+set(name hy)
+Desbordante_AddLibrary(${name}
+    CREATE_ALIAS
+    PREFIX ucc
+    SRCS
+        hyucc.cpp
+        inductor.cpp
+        validator.cpp
+        model/ucc_tree.cpp
+        model/ucc_tree_vertex.cpp
+    LIBS spdlog::spdlog_header_only ${Desb_PREFIX}.config Desbordante.fd.hy.common Desbordante::ucc ${Desb_PREFIX}.algos
+)
 add_headers(Desbordante.ucc.hy
     PRIVATE
         hyucc.h
@@ -12,13 +21,3 @@ add_headers(Desbordante.ucc.hy
         model/ucc_tree.h
         model/ucc_tree_vertex.h
 )
-target_sources(Desbordante.ucc.hy
-    PRIVATE
-        hyucc.cpp
-        inductor.cpp
-        validator.cpp
-        model/ucc_tree.cpp
-        model/ucc_tree_vertex.cpp
-)
-
-target_link_libraries(Desbordante.ucc.hy PRIVATE spdlog::spdlog_header_only config fd::hycommon Desbordante::ucc)

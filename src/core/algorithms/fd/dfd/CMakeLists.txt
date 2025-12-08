@@ -1,9 +1,8 @@
-add_library(Desbordante.fd.dfd)
-add_library(Desbordante::fd::dfd ALIAS Desbordante.fd.dfd)
-
-add_headers(Desbordante.fd.dfd PRIVATE dfd.h node_category.h)
-target_sources(Desbordante.fd.dfd
-    PRIVATE
+set(name dfd)
+Desbordante_AddLibrary(${name}
+    CREATE_ALIAS
+    PREFIX fd
+    SRCS
         dfd.cpp
 
         column_order/column_order.cpp
@@ -17,4 +16,6 @@ target_sources(Desbordante.fd.dfd
         pruning_maps/dependencies_map.cpp
         pruning_maps/non_dependencies_map.cpp
         pruning_maps/pruning_map.cpp
+    LIBS ${Desb_PREFIX}.fd.pli
 )
+add_headers(${name} PRIVATE dfd.h node_category.h)

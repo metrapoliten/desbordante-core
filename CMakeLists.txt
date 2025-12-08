@@ -301,7 +301,7 @@ endif()
 # --- Core Project Structure and Module Setup ---
 
 include_directories("src")
-
+include(cmake/helpers.cmake)
 add_subdirectory("src/core")
 
 # --- Optional Modules Setup ---

@@ -1,6 +1,7 @@
-add_library(Desbordante.fd.aid)
-add_library(Desbordante::fd::aid ALIAS Desbordante.fd.aid)
-
-add_headers(Desbordante.fd.aid PRIVATE aid.h)
-add_headers(Desbordante.fd.aid PRIVATE search_tree.h)
-target_sources(Desbordante.fd.aid PRIVATE aid.cpp search_tree.cpp)
+set(name fd.aid)
+Desbordante_AddLibrary(${name}
+    CREATE_ALIAS
+    SRCS aid.cpp search_tree.cpp
+    LIBS ${Desb_PREFIX}::fd
+)
+add_headers(${name} PRIVATE aid.h search_tree.h)

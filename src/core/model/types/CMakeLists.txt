@@ -1,5 +1,9 @@
-add_library(model.types)
-
+set(name types)
+Desbordante_AddLibrary(${name}
+    PREFIX model
+    SRCS create_type.cpp
+    LIBS util
+)
 add_headers(model.types
     PRIVATE
         big_int_type.h
@@ -19,7 +23,3 @@ add_headers(model.types
         types.h
         undefined_type.h
 )
-
-target_sources(model.types PRIVATE create_type.cpp)
-
-target_link_libraries(model.types PRIVATE util)
