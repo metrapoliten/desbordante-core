@@ -7,6 +7,6 @@ set(name ind)
 Desbordante_AddLibrary(${name}
     CREATE_ALIAS
     SRCS ind.cpp ind_algorithm.cpp
-    LIBS ${Desb}.model.table ${Desb}.algos better-enums
+    LIBS ${Desb}.model.table ${Desb}.algos better-enums Boost::headers
 )
 add_headers(${name} PRIVATE ind.h ind_algorithm.h)
