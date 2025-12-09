@@ -5,7 +5,7 @@ Desbordante_AddLibrary(${name}
         apriori.cpp
         ar_algorithm.cpp
         candidate_hash_tree.cpp
-    LIBS ${Desb}.model.transaction ${Desb}.algos spdlog::spdlog_header_only
+    LIBS ${Desb}.model.transaction ${Desb}.algos spdlog::spdlog_header_only better-enums
 )
 #todo: apriori
 add_headers(${name}
@@ -17,4 +17,3 @@ add_headers(${name}
         candidate_hash_tree.h
         node.h
 )
-target_include_directories(${name} SYSTEM PRIVATE "${better-enums_SOURCE_DIR}")

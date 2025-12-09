@@ -14,7 +14,7 @@ Desbordante_AddLibrary(${name}
     CREATE_ALIAS
     PREFIX fd
     SRCS hyfd.cpp inductor.cpp validator.cpp
-    LIBS ${Desb}.fd.hy.common ${Desb}.fd.hy.model ${Desb}.fd.pli spdlog::spdlog_header_only
+    LIBS ${Desb}.fd.hy.common ${Desb}.fd.hy.model ${Desb}.fd.pli spdlog::spdlog_header_only better-enums
 )
 add_headers(${name} PRIVATE
     hyfd.h
@@ -23,4 +23,3 @@ add_headers(${name} PRIVATE
     sampler.h
     validator.h
 )
-target_include_directories(${name} SYSTEM PRIVATE "${better-enums_SOURCE_DIR}")

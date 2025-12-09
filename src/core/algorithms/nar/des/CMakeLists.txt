@@ -3,7 +3,7 @@ Desbordante_AddLibrary(${name}
     CREATE_ALIAS
     PREFIX nar
     SRCS des.cpp differential_functions.cpp encoded_nar.cpp encoded_value_range.cpp
-    LIBS ${Desb}::nar
+    LIBS ${Desb}::nar better-enums
 )
 add_headers(${name}
     PRIVATE
@@ -14,4 +14,3 @@ add_headers(${name}
         enums.h
         rng.h
 )
-target_include_directories(${name} SYSTEM PRIVATE "${better-enums_SOURCE_DIR}")

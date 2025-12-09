@@ -12,7 +12,7 @@ Desbordante_AddLibrary(${name}
         preprocessing/preprocessor.cpp
         util/simple_ind.cpp
         faida.cpp
-    LIBS spdlog::spdlog_header_only ${Desb}::ind emhash
+    LIBS spdlog::spdlog_header_only ${Desb}::ind emhash better-enums
 )
 add_headers(${name}
     PRIVATE
@@ -38,4 +38,3 @@ add_headers(${name}
 
         faida.h
 )
-target_include_directories(${name} SYSTEM PRIVATE "${better-enums_SOURCE_DIR}")

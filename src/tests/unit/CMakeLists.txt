@@ -34,9 +34,8 @@ target_include_directories(${Desb}.testlib.ind PRIVATE "../common")
 
 Desbordante_AddTest(ind.faida
     SRCS test_faida.cpp
-    LIBS ${Desb}.test.common ${Desb}::ind ${Desb}::ind::faida ${Desb}.testlib.ind spdlog::spdlog_header_only
+    LIBS ${Desb}.test.common ${Desb}::ind ${Desb}::ind::faida ${Desb}.testlib.ind spdlog::spdlog_header_only better-enums
 )
-target_include_directories(${Desb}.test.ind.faida SYSTEM PRIVATE "${better-enums_SOURCE_DIR}")
 
 #todo: rework
 add_library(${Desb}.test.common.obj OBJECT)
@@ -50,57 +49,49 @@ target_include_directories(${Desb}.test.common.obj PRIVATE "../common")
 Desbordante_AddTest(ind.algos
     SRCS $<TARGET_OBJECTS:${Desb}.test.common.obj> test_ind_algorithms.cpp
     LIBS ${Desb}.algos ${Desb}::ind ${Desb}.testlib.ind ${Desb}.testlib.hash ${Desb}::ind::spider ${Desb}::ind::mind
-         ${Desb}::ind::faida spdlog::spdlog_header_only
+         ${Desb}::ind::faida spdlog::spdlog_header_only better-enums
 )
-target_include_directories(${Desb}.test.ind.algos SYSTEM PRIVATE "${better-enums_SOURCE_DIR}")
 
 Desbordante_AddTest(fd.algos
     SRCS $<TARGET_OBJECTS:${Desb}.test.common.obj> test_fd_algorithm.cpp
     LIBS ${Desb}::fd::depminer ${Desb}::fd::dfd ${Desb}::fd::fastfds ${Desb}::fd::fdep
          ${Desb}::fd::fun ${Desb}::fd::hy ${Desb}::fd::pyro ${Desb}::fd::tane::pfd ${Desb}::fd::tane ${Desb}::fd
-         spdlog::spdlog_header_only
+         spdlog::spdlog_header_only better-enums
 )
-target_include_directories(${Desb}.test.fd.algos SYSTEM PRIVATE "${better-enums_SOURCE_DIR}")
 
 Desbordante_AddTest(fd.mine
     SRCS $<TARGET_OBJECTS:${Desb}.test.common.obj> test_fd_mine.cpp
-    LIBS ${Desb}::fd::pyro ${Desb}::fd::mine ${Desb}.test.common spdlog::spdlog_header_only
+    LIBS ${Desb}::fd::pyro ${Desb}::fd::mine ${Desb}.test.common spdlog::spdlog_header_only better-enums
 )
-target_include_directories(${Desb}.test.fd.mine SYSTEM PRIVATE "${better-enums_SOURCE_DIR}")
 
 Desbordante_AddTest(fd.approx
     SRCS $<TARGET_OBJECTS:${Desb}.test.common.obj> test_fd_util.h test_fd_approximate.cpp
-    LIBS ${Desb}::fd ${Desb}::fd::euler spdlog::spdlog_header_only
+    LIBS ${Desb}::fd ${Desb}::fd::euler spdlog::spdlog_header_only better-enums
 )
-target_include_directories(${Desb}.test.fd.approx SYSTEM PRIVATE "${better-enums_SOURCE_DIR}")
 
 Desbordante_AddTest(ucc.algos
     SRCS $<TARGET_OBJECTS:${Desb}.test.common.obj> test_ucc_algorithms.cpp
-    LIBS ${Desb}::ucc ${Desb}::ucc::hy ${Desb}.testlib.hash ${Desb}::ucc::pyro ${Desb}::ucc::hpivalid spdlog::spdlog_header_only
+    LIBS ${Desb}::ucc ${Desb}::ucc::hy ${Desb}.testlib.hash ${Desb}::ucc::pyro ${Desb}::ucc::hpivalid spdlog::spdlog_header_only better-enums
 )
-target_include_directories(${Desb}.test.ucc.algos SYSTEM PRIVATE "${better-enums_SOURCE_DIR}")
 #todo: rework
 
 # --- AC ---
 Desbordante_AddTest(ac
     SRCS test_ac_algorithm.cpp
-    LIBS ${Desb}::ac ${Desb}.test.common spdlog::spdlog_header_only
+    LIBS ${Desb}::ac ${Desb}.test.common spdlog::spdlog_header_only better-enums
 )
-target_include_directories(${Desb}.test.ac SYSTEM PRIVATE "${better-enums_SOURCE_DIR}")
 
 # --- AR ---
 Desbordante_AddTest(ar
     SRCS test_apriori.cpp
-    LIBS ${Desb}::ar ${Desb}.test.common spdlog::spdlog_header_only
+    LIBS ${Desb}::ar ${Desb}.test.common spdlog::spdlog_header_only better-enums
 )
-target_include_directories(${Desb}.test.ar SYSTEM PRIVATE "${better-enums_SOURCE_DIR}")
 
 # --- CFD ---
 Desbordante_AddTest(cfd.algos
     SRCS test_cfd_algos.cpp
-    LIBS ${Desb}::cfd ${Desb}.test.common ${Desb}.cfd.model spdlog::spdlog_header_only
+    LIBS ${Desb}::cfd ${Desb}.test.common ${Desb}.cfd.model spdlog::spdlog_header_only better-enums
 )
-target_include_directories(${Desb}.test.cfd.algos SYSTEM PRIVATE "${better-enums_SOURCE_DIR}")
 
 Desbordante_AddTest(cfd.relation_data
     SRCS test_cfd_relation_data.cpp
@@ -108,9 +99,8 @@ Desbordante_AddTest(cfd.relation_data
 )
 Desbordante_AddTest(cfd.verifier
     SRCS test_cfd_verifier.cpp
-    LIBS ${Desb}::cfd::verifier ${Desb}.test.common spdlog::spdlog_header_only
+    LIBS ${Desb}::cfd::verifier ${Desb}.test.common spdlog::spdlog_header_only better-enums
 )
-target_include_directories(${Desb}.test.cfd.verifier SYSTEM PRIVATE "${better-enums_SOURCE_DIR}")
 
 # --- CSV ---
 Desbordante_AddTest(csv.parser
@@ -121,25 +111,20 @@ Desbordante_AddTest(csv.parser
 # --- DataStats ---
 Desbordante_AddTest(datastats
     SRCS test_data_stats.cpp
-    LIBS ${Desb}::datastats ${Desb}.test.common spdlog::spdlog_header_only
+    LIBS ${Desb}::datastats ${Desb}.test.common spdlog::spdlog_header_only better-enums
 )
-target_include_directories(${Desb}.test.datastats SYSTEM PRIVATE "${better-enums_SOURCE_DIR}")
 
 # --- DC ---
 #test_dc_structures_correct_results.h
 Desbordante_AddTest(dc.structs
     SRCS test_dc_structures.cpp
-    LIBS ${Desb}.dc.fastadc.structs ${Desb}.test.common ${Desb}.parser.csv ${Desb}.model.types ${Desb}.model.table spdlog::spdlog_header_only
+    LIBS ${Desb}.dc.fastadc.structs ${Desb}.test.common ${Desb}.parser.csv ${Desb}.model.types ${Desb}.model.table spdlog::spdlog_header_only frozen better-enums
 )
-target_include_directories(${Desb}.test.dc.structs SYSTEM PRIVATE "${frozen_SOURCE_DIR}/include")
-target_include_directories(${Desb}.test.dc.structs SYSTEM PRIVATE "${better-enums_SOURCE_DIR}")
 
 Desbordante_AddTest(dc.verifier
     SRCS test_dc_verifier.cpp
-    LIBS ${Desb}::dc::verifier ${Desb}.test.common spdlog::spdlog_header_only
+    LIBS ${Desb}::dc::verifier ${Desb}.test.common spdlog::spdlog_header_only frozen better-enums
 )
-target_include_directories(${Desb}.test.dc.verifier SYSTEM PRIVATE "${frozen_SOURCE_DIR}/include")
-target_include_directories(${Desb}.test.dc.verifier SYSTEM PRIVATE "${better-enums_SOURCE_DIR}")
 
 # --- DD ---
 Desbordante_AddTest(dd.verifier

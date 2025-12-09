@@ -3,7 +3,6 @@ Desbordante_AddLibrary(${name}
     CREATE_ALIAS
     PREFIX od
     SRCS verifier.cpp
-    LIBS spdlog::spdlog_header_only
+    LIBS spdlog::spdlog_header_only better-enums
 )
 add_headers(${name} PRIVATE verifier.h)
-target_include_directories(${name} SYSTEM PRIVATE "${better-enums_SOURCE_DIR}")

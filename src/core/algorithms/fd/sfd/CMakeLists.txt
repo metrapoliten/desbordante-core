@@ -3,7 +3,7 @@ Desbordante_AddLibrary(${name}
     CREATE_ALIAS
     PREFIX fd.sfd
     SRCS contingency_table.cpp cords.cpp frequency_handler.cpp sample.cpp
-    LIBS ${Desb}::fd
+    LIBS ${Desb}::fd better-enums
 )
 add_headers(${name}
     PRIVATE
@@ -13,4 +13,3 @@ add_headers(${name}
         sample.h
         contingency_table.h
 )
-target_include_directories(${name} SYSTEM PRIVATE "${better-enums_SOURCE_DIR}")

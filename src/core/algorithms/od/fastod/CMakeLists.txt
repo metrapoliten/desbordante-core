@@ -16,7 +16,7 @@ Desbordante_AddLibrary(${name}
 
         util/timer.cpp
         util/type_util.cpp
-    LIBS ${Desb}.model.table spdlog::spdlog_header_only ${Desb}.algos
+    LIBS ${Desb}.model.table spdlog::spdlog_header_only ${Desb}.algos better-enums
 )
 add_headers(${name}
     PRIVATE
@@ -40,4 +40,3 @@ add_headers(${name}
         util/timer.h
         util/type_util.h
 )
-target_include_directories(${name} SYSTEM PRIVATE "${better-enums_SOURCE_DIR}")

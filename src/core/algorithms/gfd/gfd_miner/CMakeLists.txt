@@ -3,7 +3,6 @@ Desbordante_AddLibrary(${name}
     CREATE_ALIAS
     PREFIX gfd
     SRCS gfd_miner.cpp
-    LIBS ${Desb}.parser.graph ${Desb}.gfd ${Desb}.algos spdlog::spdlog_header_only
+    LIBS ${Desb}.parser.graph ${Desb}.gfd ${Desb}.algos spdlog::spdlog_header_only better-enums
 )
 add_headers(${name} PRIVATE gfd_miner.h)
-target_include_directories(${name} SYSTEM PRIVATE "${better-enums_SOURCE_DIR}")

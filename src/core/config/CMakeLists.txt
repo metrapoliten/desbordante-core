@@ -29,5 +29,5 @@ Desbordante_AddLibrary(config
         thread_number/option.cpp
 
         time_limit/option.cpp
+    LIBS better-enums
 )
-target_include_directories(${Desb}.config SYSTEM PRIVATE "${better-enums_SOURCE_DIR}")

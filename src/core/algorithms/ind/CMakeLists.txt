@@ -7,7 +7,6 @@ set(name ind)
 Desbordante_AddLibrary(${name}
     CREATE_ALIAS
     SRCS ind.cpp ind_algorithm.cpp
-    LIBS ${Desb}.model.table ${Desb}.algos
+    LIBS ${Desb}.model.table ${Desb}.algos better-enums
 )
 add_headers(${name} PRIVATE ind.h ind_algorithm.h)
-target_include_directories(${name} SYSTEM PRIVATE "${better-enums_SOURCE_DIR}")

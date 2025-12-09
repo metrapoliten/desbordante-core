@@ -3,7 +3,6 @@ Desbordante_AddLibrary(${name}
     CREATE_ALIAS
     PREFIX fd
     SRCS pfd_verifier.cpp
-    LIBS ${Desb}.model.table
+    LIBS ${Desb}.model.table better-enums
 )
 add_headers(${name} PRIVATE pfd_verifier.h pfd_stats_calculator.h)
-target_include_directories(${name} SYSTEM PRIVATE "${better-enums_SOURCE_DIR}")

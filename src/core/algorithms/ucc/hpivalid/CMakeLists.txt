@@ -3,7 +3,7 @@ Desbordante_AddLibrary(${name}
     CREATE_ALIAS
     PREFIX ucc
     SRCS hpivalid.cpp hypergraph.cpp result_collector.cpp tree_search.cpp
-    LIBS spdlog::spdlog_header_only ${Desb}.fd.hy.common
+    LIBS spdlog::spdlog_header_only ${Desb}.fd.hy.common better-enums
 )
 
 add_headers(${Desb}.ucc.hpivalid
@@ -16,4 +16,3 @@ add_headers(${Desb}.ucc.hpivalid
         result_collector.h
         tree_search.h
 )
-target_include_directories(${name} SYSTEM PRIVATE "${better-enums_SOURCE_DIR}")

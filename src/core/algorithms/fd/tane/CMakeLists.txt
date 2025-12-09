@@ -18,10 +18,9 @@ Desbordante_AddLibrary(${name}
     CREATE_ALIAS
     PREFIX fd
     SRCS afd_measures.cpp tane.cpp
-    LIBS ${Desb}.fd.tane.common ${Desb}.fd.pli
+    LIBS ${Desb}.fd.tane.common ${Desb}.fd.pli better-enums
 )
 add_headers(${name} PRIVATE afd_measures.h tane.h)
-target_include_directories(${name} SYSTEM PRIVATE "${better-enums_SOURCE_DIR}")
 
 # --- PFDTane ---
 set(name pfd)
@@ -29,7 +28,6 @@ Desbordante_AddLibrary(${name}
     CREATE_ALIAS
     PREFIX fd.tane
     SRCS pfdtane.cpp
-    LIBS ${Desb}.fd.tane.common ${Desb}.fd.pli
+    LIBS ${Desb}.fd.tane.common ${Desb}.fd.pli better-enums
 )
 add_headers(${name} PRIVATE pfdtane.h)
-target_include_directories(${name} SYSTEM PRIVATE "${better-enums_SOURCE_DIR}")

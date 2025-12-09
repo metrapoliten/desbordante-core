@@ -8,7 +8,7 @@ Desbordante_AddLibrary(${name}
         order.cpp
         order_utility.cpp
         sorted_partitions.cpp
-    LIBS ${Desb}.model.table spdlog::spdlog_header_only ${Desb}.algos
+    LIBS ${Desb}.model.table spdlog::spdlog_header_only ${Desb}.algos better-enums
 )
 add_headers(${name}
     PRIVATE
@@ -19,4 +19,3 @@ add_headers(${name}
         order_utility.h
         sorted_partitions.h
 )
-target_include_directories(${name} SYSTEM PRIVATE "${better-enums_SOURCE_DIR}")

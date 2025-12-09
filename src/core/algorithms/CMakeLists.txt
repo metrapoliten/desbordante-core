@@ -70,10 +70,9 @@ set(name algos)
 Desbordante_AddLibrary(${name}
     CREATE_ALIAS
     SRCS algo_factory.cpp algorithm.cpp
-    LIBS ${Desb}.util ${Desb}.config ${Desb}.parser.csv spdlog::spdlog_header_only
+    LIBS ${Desb}.util ${Desb}.config ${Desb}.parser.csv spdlog::spdlog_header_only better-enums
 )
 add_headers(${name} PRIVATE algo_factory.h algorithm.h)
-target_include_directories(${name} SYSTEM PRIVATE "${better-enums_SOURCE_DIR}")
 
 foreach(DIR IN LISTS ALGO_SUBDIRS)
     add_subdirectory(${DIR})

@@ -4,7 +4,7 @@ set(name cfd)
 Desbordante_AddLibrary(${name}
     CREATE_ALIAS
     SRCS cfd_discovery.cpp fd_first_algorithm.cpp
-    LIBS ${Desb}.cfd.model ${Desb}.algos spdlog::spdlog_header_only
+    LIBS ${Desb}.cfd.model ${Desb}.algos spdlog::spdlog_header_only better-enums
 )
 add_headers(${name}
     PRIVATE
@@ -13,7 +13,6 @@ add_headers(${name}
         cfd_discovery.h
         miner_node.h
 )
-target_include_directories(${name} SYSTEM PRIVATE "${better-enums_SOURCE_DIR}")
 
 set(name cfd.util)
 Desbordante_AddLibrary(${name}

@@ -2,7 +2,7 @@ set(name types)
 Desbordante_AddLibrary(${name}
     PREFIX model
     SRCS create_type.cpp
-    LIBS ${Desb}.util
+    LIBS ${Desb}.util better-enums
 )
 add_headers(${name}
     PRIVATE
@@ -23,4 +23,3 @@ add_headers(${name}
         types.h
         undefined_type.h
 )
-target_include_directories(${name} SYSTEM PRIVATE "${better-enums_SOURCE_DIR}")

@@ -18,7 +18,7 @@ Desbordante_AddLibrary(${name}
         record_pair_inferrer.cpp
         similarity_data.cpp
         validator.cpp
-    LIBS ${Desb}.md.hy.preprocessing ${Desb}.md spdlog::spdlog_header_only
+    LIBS ${Desb}.md.hy.preprocessing ${Desb}.md spdlog::spdlog_header_only better-enums
 )
 
 add_headers(${name}
@@ -85,7 +85,6 @@ add_headers(${name}
         table_identifiers.h
         validator.h
 )
-target_include_directories(${name} SYSTEM PRIVATE "${better-enums_SOURCE_DIR}")
 
 set(name hy.preprocessing)
 Desbordante_AddLibrary(${name}
@@ -96,7 +95,7 @@ Desbordante_AddLibrary(${name}
         preprocessing/column_matches/levenshtein.cpp
         preprocessing/column_matches/monge_elkan.cpp
         preprocessing/column_matches/smith_waterman_gotoh.cpp
-    LIBS ${Desb}.model.table spdlog::spdlog_header_only
+    LIBS ${Desb}.model.table spdlog::spdlog_header_only better-enums
 )
 add_headers(${name}
      PRIVATE
@@ -124,4 +123,3 @@ add_headers(${name}
         preprocessing/similarity.h
         preprocessing/valid_table_results.h
 )
-target_include_directories(${name} SYSTEM PRIVATE "${better-enums_SOURCE_DIR}")

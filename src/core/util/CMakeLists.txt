@@ -1,7 +1,7 @@
 set(name util)
 Desbordante_AddLibrary(${name}
     SRCS convex_hull.cpp create_dd.cpp levenshtein_distance.cpp progress.cpp qgram_vector.cpp worker_thread_pool.cpp
-    LIBS spdlog::spdlog_header_only
+    LIBS spdlog::spdlog_header_only better-enums
 )
 add_headers(${name}
     PRIVATE
@@ -33,4 +33,3 @@ add_headers(${name}
         timed_invoke.h
         worker_thread_pool.h
 )
-target_include_directories(${name} SYSTEM PRIVATE "${better-enums_SOURCE_DIR}")
