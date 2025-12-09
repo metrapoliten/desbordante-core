@@ -2,6 +2,7 @@ set(name hy.model)
 Desbordante_AddLibrary(${name}
     PREFIX fd
     SRCS model/fd_tree.cpp model/fd_tree_vertex.cpp
+    LIBS Boost::headers
 )
 add_headers(${name} PRIVATE
     model/fd_tree.h

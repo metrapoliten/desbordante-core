@@ -35,6 +35,6 @@ set(name pli)
 Desbordante_AddLibrary(${name}
     PREFIX fd
     SRCS pli_based_fd_algorithm.cpp
-    LIBS ${Desb}::fd
+    LIBS ${Desb}::fd Boost::headers
 )
 add_headers(${name} PRIVATE pli_based_fd_algorithm.h)
