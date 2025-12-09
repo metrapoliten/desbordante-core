@@ -14,7 +14,7 @@ Desbordante_AddLibrary(${name}
         model/confidence_interval.cpp
         model/pli_cache.cpp
         model/list_agree_set_sample.cpp
-    LIBS spdlog::spdlog_header_only ${Desb}.model.table
+    LIBS spdlog::spdlog_header_only ${Desb}.model.table Boost::headers
 )
 
 add_headers(${name}
