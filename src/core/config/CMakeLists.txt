@@ -29,5 +29,5 @@ Desbordante_AddLibrary(config
         thread_number/option.cpp
 
         time_limit/option.cpp
-    LIBS better-enums
+    LIBS better-enums Boost::headers
 )

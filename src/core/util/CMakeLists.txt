@@ -1,7 +1,7 @@
 set(name util)
 Desbordante_AddLibrary(${name}
     SRCS convex_hull.cpp create_dd.cpp levenshtein_distance.cpp progress.cpp qgram_vector.cpp worker_thread_pool.cpp
-    LIBS spdlog::spdlog_header_only better-enums
+    LIBS spdlog::spdlog_header_only better-enums Boost::headers
 )
 add_headers(${name}
     PRIVATE

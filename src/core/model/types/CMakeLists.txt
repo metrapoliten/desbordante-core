@@ -2,7 +2,7 @@ set(name types)
 Desbordante_AddLibrary(${name}
     PREFIX model
     SRCS create_type.cpp
-    LIBS ${Desb}.util better-enums
+    LIBS ${Desb}.util better-enums Boost::headers
 )
 add_headers(${name}
     PRIVATE

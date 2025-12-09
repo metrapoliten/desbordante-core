@@ -4,7 +4,7 @@ include(GoogleTest)
 Desbordante_AddLibrary(main
     PREFIX testlib
     SRCS main.cpp
-    LIBS spdlog::spdlog_header_only
+    LIBS spdlog::spdlog_header_only gtest
 )
 
 function(Desbordante_AddTest name)
@@ -27,7 +27,7 @@ set(name ind)
 Desbordante_AddLibrary(${name}
     PREFIX testlib
     SRCS test_ind_util.cpp
-    LIBS ${Desb}::ind
+    LIBS ${Desb}::ind gtest
 )
 add_headers(${name} PRIVATE test_ind_util.h)
 target_include_directories(${Desb}.testlib.ind PRIVATE "../common")
