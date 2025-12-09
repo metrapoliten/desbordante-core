@@ -12,6 +12,6 @@ Desbordante_AddLibrary(${name}
     CREATE_ALIAS
     PREFIX fd
     SRCS dynamic_fd_verifier.cpp dynamic_stats_calculator.cpp
-    LIBS ${Desb}.model.table
+    LIBS ${Desb}.model.table spdlog::spdlog_header_only
 )
 add_headers(${Desb}.fd.verifier.dynamic PRIVATE dynamic_fd_verifier.h dynamic_stats_calculator.h highlight.h)

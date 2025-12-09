@@ -239,8 +239,6 @@ CPMAddPackage(
     SYSTEM YES
 )
 
-include_directories(SYSTEM "${spdlog_SOURCE_DIR}/include")
-
 CPMAddPackage("gh:ktprime/emhash#5f327039a2776f38910e600889acf924a2d99ea3")
 include_directories(SYSTEM "${emhash_SOURCE_DIR}")
 

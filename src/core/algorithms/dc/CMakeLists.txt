@@ -4,7 +4,7 @@ add_subdirectory(verifier)
 set(name dc.model)
 Desbordante_AddLibrary(${name}
     SRCS model/component.cpp model/dc.cpp
-    LIBS ${Desb}.algos
+    LIBS ${Desb}.algos spdlog::spdlog_header_only
 )
 add_headers(${name}
     PRIVATE
@@ -19,5 +19,6 @@ add_headers(${name}
 set(name dc.parser)
 Desbordante_AddLibrary(${name}
     SRCS parser/dc_parser.cpp
+    LIBS spdlog::spdlog_header_only
 )
 add_headers(${name} PRIVATE parser/dc_parser.h)

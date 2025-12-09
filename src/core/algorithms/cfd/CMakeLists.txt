@@ -4,7 +4,7 @@ set(name cfd)
 Desbordante_AddLibrary(${name}
     CREATE_ALIAS
     SRCS cfd_discovery.cpp fd_first_algorithm.cpp
-    LIBS ${Desb}.cfd.model ${Desb}.algos
+    LIBS ${Desb}.cfd.model ${Desb}.algos spdlog::spdlog_header_only
 )
 add_headers(${name}
     PRIVATE
