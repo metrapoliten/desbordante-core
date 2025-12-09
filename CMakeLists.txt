@@ -267,7 +267,8 @@ CPMAddPackage(
     GIT_TAG e295358fea9532fa4c37197630d037a4a53ddede
     DOWNLOAD_ONLY True
 )
-include_directories(SYSTEM "${atomicbitvector_SOURCE_DIR}/include")
+add_library(atomic_bitvector INTERFACE)
+target_include_directories(atomic_bitvector SYSTEM INTERFACE "${atomicbitvector_SOURCE_DIR}/include")
 
 if(COMPILE_TESTS)
     CPMAddPackage(
