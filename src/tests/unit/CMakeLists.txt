@@ -111,7 +111,7 @@ Desbordante_AddTest(csv.parser
 # --- DataStats ---
 Desbordante_AddTest(datastats
     SRCS test_data_stats.cpp
-    LIBS ${Desb}::datastats ${Desb}.test.common spdlog::spdlog_header_only better-enums
+    LIBS ${Desb}::datastats ${Desb}.test.common spdlog::spdlog_header_only better-enums gmock
 )
 
 # --- DC ---
