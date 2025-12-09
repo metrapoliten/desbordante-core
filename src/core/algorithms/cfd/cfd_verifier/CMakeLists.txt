@@ -2,7 +2,7 @@ set(name cfd.verifier)
 Desbordante_AddLibrary(${name}
     CREATE_ALIAS
     SRCS cfd_stats_calculator.cpp cfd_verifier.cpp
-    LIBS ${Desb}.cfd.model ${Desb}.algos spdlog::spdlog_header_only better-enums
+    LIBS ${Desb}.cfd.model ${Desb}.algos spdlog::spdlog_header_only better-enums Boost::headers
 )
 add_headers(${name}
     PRIVATE
