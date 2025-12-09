@@ -240,7 +240,8 @@ CPMAddPackage(
 )
 
 CPMAddPackage("gh:ktprime/emhash#5f327039a2776f38910e600889acf924a2d99ea3")
-include_directories(SYSTEM "${emhash_SOURCE_DIR}")
+add_library(emhash INTERFACE)
+target_include_directories(emhash SYSTEM INTERFACE ${emhash_SOURCE_DIR})
 
 CPMAddPackage(
     NAME frozen

@@ -12,7 +12,7 @@ Desbordante_AddLibrary(${name}
         preprocessing/preprocessor.cpp
         util/simple_ind.cpp
         faida.cpp
-    LIBS spdlog::spdlog_header_only ${Desb}::ind
+    LIBS spdlog::spdlog_header_only ${Desb}::ind emhash
 )
 
 add_headers(${Desb}.ind.faida
