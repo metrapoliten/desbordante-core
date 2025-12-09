@@ -1,4 +1,5 @@
 set(Desb "Desbordante" CACHE STRING "")
+
 function(add_headers target scope)
     set(files ${ARGN})
 
@@ -18,14 +19,22 @@ function(add_headers target scope)
                 "Possible scopes: PRIVATE, PUBLIC, INTERFACE."
         )
     endif()
-
-    target_sources(${target}
-        ${scope}
-            FILE_SET ${file_set_name}
-            TYPE HEADERS
-            BASE_DIRS ${PROJECT_SOURCE_DIR}/src #todo: make good
-            FILES ${files}
-    )
+    if(files)
+        target_sources(${target}
+            ${scope}
+                FILE_SET ${file_set_name}
+                TYPE HEADERS
+                BASE_DIRS ${PROJECT_SOURCE_DIR}/src #todo: can i do it better?
+                FILES ${files}
+        )
+    else()
+        target_sources(${target}
+            ${scope}
+                FILE_SET ${file_set_name}
+                TYPE HEADERS
+                BASE_DIRS ${PROJECT_SOURCE_DIR}/src
+        )
+    endif()
 endfunction()
 
 function(target_link_with_given given scope)
@@ -69,6 +78,7 @@ function(Desbordante_AddTarget name)
     if(args_SRCS)
         target_sources(${name} PRIVATE ${args_SRCS})
     endif()
+    add_headers(${name} PUBLIC)
     set_target_properties(${name} PROPERTIES LINK_LIBRARIES_ONLY_TARGETS ON)
     if(args_LIBS)
         target_link_libraries(${name} PRIVATE ${args_LIBS})

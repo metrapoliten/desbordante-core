@@ -49,7 +49,7 @@ function(Desbordante_AddBinds name)
             LIBS ${args_LIBS}
     )
     target_link_libraries(${MODULE_NAME} PRIVATE ${name})
-    target_sources(${name} PRIVATE FILE_SET HEADERS)
+    target_sources(${name} PRIVATE FILE_SET privateHeaders TYPE HEADERS)
 endfunction()
 
 Desbordante_AddBinds(ac
@@ -68,6 +68,7 @@ Desbordante_AddBinds(cfd
 )
 
 Desbordante_AddBinds(data SRCS data/bind_data_types.h data/bind_data_types.cpp)
+target_include_directories(Desbordante.bind.data PRIVATE "${PROJECT_SOURCE_DIR}/../src")
 
 Desbordante_AddBinds(dc
     SRCS dc/bind_dc_verification.h dc/bind_fastadc.h dc/bind_dc_verification.cpp dc/bind_fastadc.cpp
@@ -132,7 +133,7 @@ Desbordante_AddBinds(pfd
     SRCS pfd/bind_pfd_verification.h pfd/bind_pfd_verification.cpp
     LIBS Desbordante::fd::pfd_verifier better-enums
 )
-
+#todo: can't desb_addlib because headers
 add_library(Desbordante.bind.util)
 target_sources(Desbordante.bind.util
     PRIVATE
@@ -158,6 +159,7 @@ target_sources(Desbordante.bind.util
         py_util/table_serialization.cpp
 )
 target_link_libraries(Desbordante.bind.util PRIVATE pybind11::pybind11 better-enums spdlog::spdlog_header_only)
+target_include_directories(Desbordante.bind.util PRIVATE "${PROJECT_SOURCE_DIR}/../src")
 
 Desbordante_AddBinds(sfd
     SRCS sfd/bind_sfd.h sfd/bind_sfd.cpp

@@ -3,7 +3,7 @@ set(name benchmark)
 Desbordante_AddLibrary(benchmark
     SRCS main.cpp benchmark_cli.cpp benchmark_comparer.cpp
     LIBS
-        ${Desb}.test.common
+        ${Desb}.testlib.common
         ${Desb}::dc::fastadc
         ${Desb}::dd::split
         ${Desb}::ind

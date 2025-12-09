@@ -291,7 +291,7 @@ find_package(Boost 1.85.0 REQUIRED COMPONENTS ${boost_libraries})
 
 # --- Core Project Structure and Module Setup ---
 
-include_directories("src")
+#include_directories("src")
 include(cmake/helpers.cmake)
 add_subdirectory("src/core")
 

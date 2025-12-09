@@ -1,4 +1,5 @@
-Desbordante_AddLibrary(config
+set(name config)
+Desbordante_AddLibrary(${name}
     SRCS
         column_index/option.cpp
         column_index/validate_index.cpp

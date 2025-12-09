@@ -1,9 +1,7 @@
 # ---- Test Suite Configuration ----
 
 # ---- Test Sources Setup ----
-add_library(${Desb}.test.common)
-add_headers(${Desb}.test.common PRIVATE common/all_csv_configs.h)
-target_sources(${Desb}.test.common PRIVATE common/all_csv_configs.cpp)
+add_subdirectory(common)
 
 if(COMPILE_TESTS)
 	add_subdirectory(unit)
