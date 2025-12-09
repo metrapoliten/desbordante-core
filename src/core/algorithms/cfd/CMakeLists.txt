@@ -14,14 +14,16 @@ add_headers(${name}
         miner_node.h
 )
 
-set(name cfd.util)
+set(name util)
 Desbordante_AddLibrary(${name}
+    PREFIX cfd
     SRCS
         util/cfd_output_util.cpp
         util/partition_tidlist_util.cpp
         util/partition_util.cpp
         util/set_util.cpp
         util/tidlist_util.cpp
+    LIBS Boost::headers
 )
 add_headers(${name}
     PRIVATE

@@ -26,7 +26,7 @@ set(name fd)
 Desbordante_AddLibrary(${name}
     CREATE_ALIAS
     SRCS fd.cpp fd_algorithm.cpp
-    LIBS ${Desb}.model.table ${Desb}.algos
+    LIBS ${Desb}.model.table ${Desb}.algos Boost::headers
 )
 add_headers(${name} PRIVATE fd.h fd_algorithm.h raw_fd.h)
 

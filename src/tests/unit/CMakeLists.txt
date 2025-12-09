@@ -105,7 +105,7 @@ Desbordante_AddTest(cfd.verifier
 # --- CSV ---
 Desbordante_AddTest(csv.parser
     SRCS test_csv_parser.cpp
-    LIBS ${Desb}.parser.csv ${Desb}.test.common
+    LIBS ${Desb}.parser.csv ${Desb}.test.common gmock
 )
 
 # --- DataStats ---
