@@ -1,3 +1,4 @@
+include_guard(GLOBAL)
 set(Desb "Desbordante" CACHE STRING "")
 
 function(add_headers target scope)

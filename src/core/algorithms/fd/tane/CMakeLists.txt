@@ -3,7 +3,7 @@ set(name common)
 Desbordante_AddLibrary(${name}
     PREFIX fd.tane
     SRCS model/lattice_level.cpp model/lattice_vertex.cpp tane_common.cpp
-    LIBS spdlog::spdlog_header_only ${Desb}.fd.pli
+    LIBS spdlog::spdlog_header_only ${Desb}.fd.pli Boost::headers
 )
 add_headers(${name}
     PRIVATE
