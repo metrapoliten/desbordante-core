@@ -1,10 +1,11 @@
 add_subdirectory(FastADC)
 add_subdirectory(verifier)
 
-set(name dc.model)
+set(name model)
 Desbordante_AddLibrary(${name}
+    PREFIX dc
     SRCS model/component.cpp model/dc.cpp
-    LIBS ${Desb}.algos spdlog::spdlog_header_only frozen better-enums
+    LIBS ${Desb}.algos spdlog::spdlog_header_only frozen better-enums Boost::headers
 )
 add_headers(${name}
     PRIVATE
