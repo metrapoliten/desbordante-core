@@ -56,17 +56,17 @@ Desbordante_AddTest(fd.algos
     SRCS $<TARGET_OBJECTS:${Desb}.test.common.obj> test_fd_algorithm.cpp
     LIBS ${Desb}::fd::depminer ${Desb}::fd::dfd ${Desb}::fd::fastfds ${Desb}::fd::fdep
          ${Desb}::fd::fun ${Desb}::fd::hy ${Desb}::fd::pyro ${Desb}::fd::tane::pfd ${Desb}::fd::tane ${Desb}::fd
-         spdlog::spdlog_header_only better-enums
+         spdlog::spdlog_header_only better-enums gmock
 )
 
 Desbordante_AddTest(fd.mine
     SRCS $<TARGET_OBJECTS:${Desb}.test.common.obj> test_fd_mine.cpp
-    LIBS ${Desb}::fd::pyro ${Desb}::fd::mine ${Desb}.test.common spdlog::spdlog_header_only better-enums
+    LIBS ${Desb}::fd::pyro ${Desb}::fd::mine ${Desb}.test.common spdlog::spdlog_header_only better-enums gmock
 )
 
 Desbordante_AddTest(fd.approx
     SRCS $<TARGET_OBJECTS:${Desb}.test.common.obj> test_fd_util.h test_fd_approximate.cpp
-    LIBS ${Desb}::fd ${Desb}::fd::euler spdlog::spdlog_header_only better-enums
+    LIBS ${Desb}::fd ${Desb}::fd::euler spdlog::spdlog_header_only better-enums gmock
 )
 
 Desbordante_AddTest(ucc.algos

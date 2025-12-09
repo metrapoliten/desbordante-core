@@ -17,7 +17,7 @@ Desbordante_AddLibrary(${name}
         typed_column_data.cpp
         vertical.cpp
         vertical_map.cpp
-    LIBS ${Desb}.model.types spdlog::spdlog_header_only better-enums
+    LIBS ${Desb}.model.types spdlog::spdlog_header_only better-enums Boost::headers
 )
 add_headers(${name}
     PRIVATE
