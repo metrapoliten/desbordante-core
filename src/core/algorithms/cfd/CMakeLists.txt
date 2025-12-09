@@ -35,10 +35,11 @@ add_headers(${name}
 )
 add_headers(${name} INTERFACE util/prefix_tree.h)
 
-set(name cfd.model)
+set(name model)
 Desbordante_AddLibrary(${name}
+    PREFIX cfd
     SRCS model/cfd_relation_data.cpp model/partition_tidlist.cpp model/raw_cfd.cpp
-    LIBS ${Desb}.cfd.util ${Desb}.model.table
+    LIBS ${Desb}.cfd.util ${Desb}.model.table Boost::headers
 )
 add_headers(${name}
     PRIVATE

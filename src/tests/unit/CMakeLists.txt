@@ -83,7 +83,7 @@ Desbordante_AddTest(ac
 # --- AR ---
 Desbordante_AddTest(ar
     SRCS test_apriori.cpp
-    LIBS ${Desb}::ar ${Desb}.testlib.common spdlog::spdlog_header_only better-enums
+    LIBS ${Desb}::ar ${Desb}.testlib.common spdlog::spdlog_header_only better-enums gmock
 )
 
 # --- CFD ---
@@ -117,12 +117,12 @@ Desbordante_AddTest(datastats
 #test_dc_structures_correct_results.h
 Desbordante_AddTest(dc.structs
     SRCS test_dc_structures.cpp
-    LIBS ${Desb}.dc.fastadc.structs ${Desb}.testlib.common ${Desb}.parser.csv ${Desb}.model.types ${Desb}.model.table spdlog::spdlog_header_only frozen better-enums
+    LIBS ${Desb}.dc.fastadc.structs ${Desb}.testlib.common ${Desb}.parser.csv ${Desb}.model.types ${Desb}.model.table spdlog::spdlog_header_only frozen better-enums gmock
 )
 
 Desbordante_AddTest(dc.verifier
     SRCS test_dc_verifier.cpp
-    LIBS ${Desb}::dc::verifier ${Desb}.testlib.common spdlog::spdlog_header_only frozen better-enums
+    LIBS ${Desb}::dc::verifier ${Desb}.testlib.common spdlog::spdlog_header_only frozen better-enums gmock
 )
 
 # --- DD ---
