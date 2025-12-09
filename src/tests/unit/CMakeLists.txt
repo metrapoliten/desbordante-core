@@ -1,4 +1,6 @@
-#TODO:  add_executable(${TEST_NAME} main.cpp ${FILES}) or add_library(test_main main.cpp)?
+# Load CMake's built-in GoogleTest module
+include(GoogleTest)
+#TODO:  add_executable(${TEST_NAME} main.cpp ${FILES}) or add_library(test_main main.cpp)
 Desbordante_AddLibrary(main
     PREFIX testlib
     SRCS main.cpp
@@ -9,10 +11,10 @@ function(Desbordante_AddTest name)
     cmake_parse_arguments(args "" "" "${multiVals}" ${ARGN})
     list(APPEND args_LIBS ${Desb}.testlib.main gtest)
     Desbordante_AddTarget(${name}
-            PREFIX test
-            TYPE EXE
-            SRCS ${args_SRCS}
-            LIBS ${args_LIBS}
+        PREFIX test
+        TYPE EXE
+        SRCS ${args_SRCS}
+        LIBS ${args_LIBS}
     )
     target_include_directories(${name} PRIVATE "../common")
     gtest_discover_tests(${name}

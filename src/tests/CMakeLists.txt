@@ -5,26 +5,11 @@ add_library(${Desb}.test.common)
 add_headers(${Desb}.test.common PRIVATE common/all_csv_configs.h)
 target_sources(${Desb}.test.common PRIVATE common/all_csv_configs.cpp)
 
-if (COMPILE_TESTS)
-	enable_testing()
-	# Load CMake's built-in GoogleTest module
-    include(GoogleTest)
+if(COMPILE_TESTS)
 	add_subdirectory(unit)
 endif()
-
 if (COMPILE_BENCHMARKS)
-
 	add_subdirectory(benchmark)
-#	add_executable(${BENCHMARK_BINARY} ${common_sources} ${benchmark_sources})
-
-	# ---- Benchmark Dependencies ----
-
-#    target_include_directories(${BENCHMARK_BINARY} PRIVATE "common")
-
-	# Link benchmark executable with:
-	# PRIVATE:
-	# - Core library (implementation under benchmark)
-#    target_link_libraries(${BENCHMARK_BINARY} PRIVATE ${CMAKE_PROJECT_NAME})
 endif()
 
 # ---- Test Data Preparation ----
