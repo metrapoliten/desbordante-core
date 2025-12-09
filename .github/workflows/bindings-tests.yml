@@ -92,12 +92,12 @@ jobs:
 
           source .venv/bin/activate
 
-          cp test_input_data/WDC_satellites.csv src/python_bindings/
-          cp test_input_data/TestLong.csv src/python_bindings/
-          cp test_input_data/TestWide.csv src/python_bindings/
-          cp test_input_data/transactional_data/rules-kaggle-rows.csv src/python_bindings/
+          cp test_input_data/WDC_satellites.csv python_bindings/
+          cp test_input_data/TestLong.csv python_bindings/
+          cp test_input_data/TestWide.csv python_bindings/
+          cp test_input_data/transactional_data/rules-kaggle-rows.csv python_bindings/
 
-          cd src/python_bindings
+          cd python_bindings
           python test_bindings.py
       - name: Test data stats
         working-directory: ${{github.workspace}}
@@ -107,6 +107,6 @@ jobs:
 
           source .venv/bin/activate
 
-          cp test_input_data/TestDataStats.csv src/python_bindings
-          cd src/python_bindings
+          cp test_input_data/TestDataStats.csv python_bindings
+          cd python_bindings
           python test_pybind_data_stats.py
