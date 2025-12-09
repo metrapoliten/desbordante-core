@@ -5,7 +5,7 @@ Desbordante_AddLibrary(${name}
         apriori.cpp
         ar_algorithm.cpp
         candidate_hash_tree.cpp
-    LIBS ${Desb}.model.transaction ${Desb}.algos spdlog::spdlog_header_only better-enums
+    LIBS ${Desb}.model.transaction ${Desb}.algos spdlog::spdlog_header_only better-enums Boost::headers
 )
 #todo: apriori
 add_headers(${name}
