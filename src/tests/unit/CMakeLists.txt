@@ -71,7 +71,7 @@ Desbordante_AddTest(fd.approx
 
 Desbordante_AddTest(ucc.algos
     SRCS $<TARGET_OBJECTS:${Desb}.test.common.obj> test_ucc_algorithms.cpp
-    LIBS ${Desb}::ucc ${Desb}::ucc::hy ${Desb}.testlib.hash ${Desb}::ucc::pyro ${Desb}::ucc::hpivalid spdlog::spdlog_header_only better-enums
+    LIBS ${Desb}::ucc ${Desb}::ucc::hy ${Desb}.testlib.hash ${Desb}::ucc::pyro ${Desb}::ucc::hpivalid spdlog::spdlog_header_only better-enums gmock
 )
 #todo: rework
 

@@ -70,7 +70,7 @@ set(name algos)
 Desbordante_AddLibrary(${name}
     CREATE_ALIAS
     SRCS algo_factory.cpp algorithm.cpp
-    LIBS ${Desb}.util ${Desb}.config ${Desb}.parser.csv spdlog::spdlog_header_only better-enums
+    LIBS ${Desb}.util ${Desb}.config ${Desb}.parser.csv spdlog::spdlog_header_only better-enums Boost::headers
 )
 add_headers(${name} PRIVATE algo_factory.h algorithm.h)
 
