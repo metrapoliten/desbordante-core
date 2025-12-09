@@ -51,6 +51,7 @@ Desbordante_AddBinds(dc
     SRCS dc/bind_dc_verification.h dc/bind_fastadc.h dc/bind_dc_verification.cpp dc/bind_fastadc.cpp
     LIBS Desbordante::dc::verifier Desbordante::dc::fastadc
 )
+target_include_directories(${Desb}.bind.dc SYSTEM PRIVATE "${frozen_SOURCE_DIR}/include")
 
 Desbordante_AddBinds(dd
     SRCS dd/bind_dd_verification.h dd/bind_split.h dd/bind_dd_verification.cpp dd/bind_split.cpp

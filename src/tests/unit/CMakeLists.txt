@@ -114,10 +114,12 @@ Desbordante_AddTest(dc.structs
     SRCS test_dc_structures.cpp
     LIBS ${Desb}.dc.fastadc.structs ${Desb}.test.common ${Desb}.parser.csv ${Desb}.model.types ${Desb}.model.table spdlog::spdlog_header_only
 )
+target_include_directories(${Desb}.test.dc.structs SYSTEM PRIVATE "${frozen_SOURCE_DIR}/include")
 Desbordante_AddTest(dc.verifier
     SRCS test_dc_verifier.cpp
     LIBS ${Desb}::dc::verifier ${Desb}.test.common spdlog::spdlog_header_only
 )
+target_include_directories(${Desb}.test.dc.verifier SYSTEM PRIVATE "${frozen_SOURCE_DIR}/include")
 
 # --- DD ---
 Desbordante_AddTest(dd.verifier

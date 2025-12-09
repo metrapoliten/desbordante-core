@@ -4,7 +4,6 @@ Desbordante_AddLibrary(benchmark
     SRCS main.cpp benchmark_cli.cpp benchmark_comparer.cpp
     LIBS
         ${Desb}.test.common
-        Boost::program_options
         ${Desb}::dc::fastadc
         ${Desb}::dd::split
         ${Desb}::ind
@@ -16,8 +15,8 @@ Desbordante_AddLibrary(benchmark
         ${Desb}.md.hy
         ${Desb}.md.hy.preprocessing
         ${Desb}::nar::des
+        Boost::program_options
 )
-
 add_headers(${name}
     PRIVATE
         adc_benchmark.h
@@ -31,3 +30,4 @@ add_headers(${name}
         md_benchmark.h
         nar_benchmark.h
 )
+target_include_directories(${name} SYSTEM PRIVATE "${frozen_SOURCE_DIR}/include")

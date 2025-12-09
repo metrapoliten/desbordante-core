@@ -249,7 +249,6 @@ CPMAddPackage(
     GIT_TAG 1.2.0
     DOWNLOAD_ONLY True
 )
-include_directories(SYSTEM "${frozen_SOURCE_DIR}/include")
 
 CPMAddPackage(
     NAME better-enums

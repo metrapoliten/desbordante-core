@@ -48,6 +48,7 @@ add_headers(${name}
 
         misc/typed_column_data_value_differences.h
 )
+target_include_directories(${name} SYSTEM PRIVATE "${frozen_SOURCE_DIR}/include")
 
 set(name dc.fastadc)
 Desbordante_AddLibrary(${name}
@@ -56,3 +57,4 @@ Desbordante_AddLibrary(${name}
     LIBS ${Desb}.dc.fastadc.structs
 )
 add_headers(${name} PRIVATE fastadc.h)
+target_include_directories(${name} SYSTEM PRIVATE "${frozen_SOURCE_DIR}/include")
