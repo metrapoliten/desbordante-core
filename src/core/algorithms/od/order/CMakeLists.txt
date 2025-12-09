@@ -10,8 +10,7 @@ Desbordante_AddLibrary(${name}
         sorted_partitions.cpp
     LIBS ${Desb}.model.table spdlog::spdlog_header_only ${Desb}.algos
 )
-
-add_headers(${Desb}.od.order
+add_headers(${name}
     PRIVATE
         dependency_checker.h
         list_lattice.h
@@ -20,3 +19,4 @@ add_headers(${Desb}.od.order
         order_utility.h
         sorted_partitions.h
 )
+target_include_directories(${name} SYSTEM PRIVATE "${better-enums_SOURCE_DIR}")

@@ -13,7 +13,7 @@ Desbordante_AddLibrary(${name}
         util/evidence_aux_structures_builder.cpp
         util/predicate_builder.cpp
         util/single_clue_set_builder.cpp
-    LIBS spdlog::spdlog_header_only
+    LIBS spdlog::spdlog_header_only frozen better-enums
 )
 
 add_headers(${name}
@@ -48,13 +48,11 @@ add_headers(${name}
 
         misc/typed_column_data_value_differences.h
 )
-target_include_directories(${name} SYSTEM PRIVATE "${frozen_SOURCE_DIR}/include")
 
 set(name dc.fastadc)
 Desbordante_AddLibrary(${name}
     CREATE_ALIAS
     SRCS fastadc.cpp
-    LIBS ${Desb}.dc.fastadc.structs
+    LIBS ${Desb}.dc.fastadc.structs spdlog::spdlog_header_only better-enums frozen
 )
 add_headers(${name} PRIVATE fastadc.h)
-target_include_directories(${name} SYSTEM PRIVATE "${frozen_SOURCE_DIR}/include")

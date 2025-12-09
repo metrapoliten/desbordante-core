@@ -16,3 +16,4 @@ add_headers(${Desb}.ucc.hpivalid
         result_collector.h
         tree_search.h
 )
+target_include_directories(${name} SYSTEM PRIVATE "${better-enums_SOURCE_DIR}")

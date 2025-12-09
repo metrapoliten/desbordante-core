@@ -6,3 +6,4 @@ Desbordante_AddLibrary(${name}
 )
 add_headers(${name} PRIVATE dc_verifier.h)
 target_include_directories(${name} SYSTEM PRIVATE "${frozen_SOURCE_DIR}/include")
+target_include_directories(${name} SYSTEM PRIVATE "${better-enums_SOURCE_DIR}")

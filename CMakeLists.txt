@@ -249,6 +249,8 @@ CPMAddPackage(
     GIT_TAG 1.2.0
     DOWNLOAD_ONLY True
 )
+add_library(frozen INTERFACE)
+target_include_directories(frozen SYSTEM INTERFACE "${frozen_SOURCE_DIR}/include")
 
 CPMAddPackage(
     NAME better-enums
@@ -256,7 +258,8 @@ CPMAddPackage(
     GIT_TAG 0.11.3
     DOWNLOAD_ONLY True
 )
-include_directories(SYSTEM "${better-enums_SOURCE_DIR}")
+add_library(better-enums INTERFACE)
+target_include_directories(better-enums SYSTEM INTERFACE "${better-enums_SOURCE_DIR}")
 
 CPMAddPackage(
     NAME atomicbitvector

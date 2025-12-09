@@ -23,3 +23,4 @@ add_headers(${name}
         types.h
         undefined_type.h
 )
+target_include_directories(${name} SYSTEM PRIVATE "${better-enums_SOURCE_DIR}")

@@ -4,4 +4,5 @@ Desbordante_AddLibrary(${name}
     PREFIX ind
     SRCS spider.cpp attribute.cpp
 )
-add_headers(${Desb}.ind.spider PRIVATE spider.h attribute.h)
+add_headers(${name} PRIVATE spider.h attribute.h)
+target_include_directories(${name} SYSTEM PRIVATE "${better-enums_SOURCE_DIR}")

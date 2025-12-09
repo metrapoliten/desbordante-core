@@ -6,3 +6,4 @@ Desbordante_AddLibrary(${name}
     LIBS spdlog::spdlog_header_only
 )
 add_headers(${name} PRIVATE verifier.h)
+target_include_directories(${name} SYSTEM PRIVATE "${better-enums_SOURCE_DIR}")

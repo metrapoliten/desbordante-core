@@ -16,6 +16,8 @@ Desbordante_AddLibrary(benchmark
         ${Desb}.md.hy.preprocessing
         ${Desb}::nar::des
         Boost::program_options
+        better-enums
+        frozen
 )
 add_headers(${name}
     PRIVATE
@@ -30,4 +32,3 @@ add_headers(${name}
         md_benchmark.h
         nar_benchmark.h
 )
-target_include_directories(${name} SYSTEM PRIVATE "${frozen_SOURCE_DIR}/include")

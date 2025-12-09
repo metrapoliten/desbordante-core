@@ -33,3 +33,4 @@ add_headers(${name}
         timed_invoke.h
         worker_thread_pool.h
 )
+target_include_directories(${name} SYSTEM PRIVATE "${better-enums_SOURCE_DIR}")

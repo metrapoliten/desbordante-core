@@ -21,6 +21,7 @@ Desbordante_AddLibrary(${name}
     LIBS ${Desb}.fd.tane.common ${Desb}.fd.pli
 )
 add_headers(${name} PRIVATE afd_measures.h tane.h)
+target_include_directories(${name} SYSTEM PRIVATE "${better-enums_SOURCE_DIR}")
 
 # --- PFDTane ---
 set(name pfd)
@@ -31,3 +32,4 @@ Desbordante_AddLibrary(${name}
     LIBS ${Desb}.fd.tane.common ${Desb}.fd.pli
 )
 add_headers(${name} PRIVATE pfdtane.h)
+target_include_directories(${name} SYSTEM PRIVATE "${better-enums_SOURCE_DIR}")

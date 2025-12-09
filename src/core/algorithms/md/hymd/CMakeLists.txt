@@ -85,6 +85,7 @@ add_headers(${name}
         table_identifiers.h
         validator.h
 )
+target_include_directories(${name} SYSTEM PRIVATE "${better-enums_SOURCE_DIR}")
 
 set(name hy.preprocessing)
 Desbordante_AddLibrary(${name}
@@ -123,3 +124,4 @@ add_headers(${name}
         preprocessing/similarity.h
         preprocessing/valid_table_results.h
 )
+target_include_directories(${name} SYSTEM PRIVATE "${better-enums_SOURCE_DIR}")

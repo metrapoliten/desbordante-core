@@ -14,3 +14,4 @@ add_headers(${name}
         enums.h
         rng.h
 )
+target_include_directories(${name} SYSTEM PRIVATE "${better-enums_SOURCE_DIR}")

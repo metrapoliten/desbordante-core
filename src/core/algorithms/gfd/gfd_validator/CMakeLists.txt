@@ -7,3 +7,4 @@ Desbordante_AddLibrary(${name}
     LIBS ${Desb}.parser.graph spdlog::spdlog_header_only ${Desb}.gfd ${Desb}.algos
 )
 add_headers(${name} PRIVATE balancer.h egfd_validator.h gfd_handler.h gfd_validator.h naivegfd_validator.h verification_algorithms.h)
+target_include_directories(${name} SYSTEM PRIVATE "${better-enums_SOURCE_DIR}")

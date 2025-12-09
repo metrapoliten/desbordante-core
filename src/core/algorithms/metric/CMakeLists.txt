@@ -15,3 +15,4 @@ add_headers(${name}
         points.h
         points_calculator.h
 )
+target_include_directories(${name} SYSTEM PRIVATE "${better-enums_SOURCE_DIR}")

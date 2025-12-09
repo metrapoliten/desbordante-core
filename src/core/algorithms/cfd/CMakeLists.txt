@@ -13,6 +13,7 @@ add_headers(${name}
         cfd_discovery.h
         miner_node.h
 )
+target_include_directories(${name} SYSTEM PRIVATE "${better-enums_SOURCE_DIR}")
 
 set(name cfd.util)
 Desbordante_AddLibrary(${name}

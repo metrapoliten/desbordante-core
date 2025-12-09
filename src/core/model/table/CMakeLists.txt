@@ -50,3 +50,4 @@ add_headers(${name}
         vertical.h
         vertical_map.h
 )
+target_include_directories(${name} SYSTEM PRIVATE "${better-enums_SOURCE_DIR}")

@@ -73,6 +73,7 @@ Desbordante_AddLibrary(${name}
     LIBS ${Desb}.util ${Desb}.config ${Desb}.parser.csv spdlog::spdlog_header_only
 )
 add_headers(${name} PRIVATE algo_factory.h algorithm.h)
+target_include_directories(${name} SYSTEM PRIVATE "${better-enums_SOURCE_DIR}")
 
 foreach(DIR IN LISTS ALGO_SUBDIRS)
     add_subdirectory(${DIR})

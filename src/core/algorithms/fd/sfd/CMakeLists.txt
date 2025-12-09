@@ -5,7 +5,6 @@ Desbordante_AddLibrary(${name}
     SRCS contingency_table.cpp cords.cpp frequency_handler.cpp sample.cpp
     LIBS ${Desb}::fd
 )
-
 add_headers(${name}
     PRIVATE
         cords.h
@@ -14,3 +13,4 @@ add_headers(${name}
         sample.h
         contingency_table.h
 )
+target_include_directories(${name} SYSTEM PRIVATE "${better-enums_SOURCE_DIR}")

@@ -6,6 +6,7 @@ Desbordante_AddLibrary(${name}
     LIBS spdlog::spdlog_header_only ${Desb}.model.table
 )
 add_headers(${name} PRIVATE fd_verifier.h stats_calculator.h)
+target_include_directories(${name} SYSTEM PRIVATE "${better-enums_SOURCE_DIR}")
 
 set(name verifier.dynamic)
 Desbordante_AddLibrary(${name}
@@ -15,3 +16,4 @@ Desbordante_AddLibrary(${name}
     LIBS ${Desb}.model.table spdlog::spdlog_header_only
 )
 add_headers(${Desb}.fd.verifier.dynamic PRIVATE dynamic_fd_verifier.h dynamic_stats_calculator.h highlight.h)
+target_include_directories(${name} SYSTEM PRIVATE "${better-enums_SOURCE_DIR}")

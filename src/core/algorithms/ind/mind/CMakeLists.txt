@@ -5,5 +5,5 @@ Desbordante_AddLibrary(${name}
     SRCS mind.cpp
     LIBS ${Desb}.create_algo spdlog::spdlog_header_only
 )
-
 add_headers(${name} PRIVATE mind.h raw_ind.h)
+target_include_directories(${name} SYSTEM PRIVATE "${better-enums_SOURCE_DIR}")

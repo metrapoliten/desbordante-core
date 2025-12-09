@@ -14,8 +14,7 @@ Desbordante_AddLibrary(${name}
         faida.cpp
     LIBS spdlog::spdlog_header_only ${Desb}::ind emhash
 )
-
-add_headers(${Desb}.ind.faida
+add_headers(${name}
     PRIVATE
         candidate_generation/apriori_candidate_generator.h
 
@@ -39,3 +38,4 @@ add_headers(${Desb}.ind.faida
 
         faida.h
 )
+target_include_directories(${name} SYSTEM PRIVATE "${better-enums_SOURCE_DIR}")

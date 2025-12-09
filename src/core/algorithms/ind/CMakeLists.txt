@@ -10,3 +10,4 @@ Desbordante_AddLibrary(${name}
     LIBS ${Desb}.model.table ${Desb}.algos
 )
 add_headers(${name} PRIVATE ind.h ind_algorithm.h)
+target_include_directories(${name} SYSTEM PRIVATE "${better-enums_SOURCE_DIR}")

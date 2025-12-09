@@ -17,3 +17,4 @@ add_headers(${name}
         candidate_hash_tree.h
         node.h
 )
+target_include_directories(${name} SYSTEM PRIVATE "${better-enums_SOURCE_DIR}")

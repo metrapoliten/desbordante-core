@@ -16,7 +16,6 @@ Desbordante_AddLibrary(${name}
     SRCS hyfd.cpp inductor.cpp validator.cpp
     LIBS ${Desb}.fd.hy.common ${Desb}.fd.hy.model ${Desb}.fd.pli spdlog::spdlog_header_only
 )
-
 add_headers(${name} PRIVATE
     hyfd.h
     hyfd_config.h
@@ -24,3 +23,4 @@ add_headers(${name} PRIVATE
     sampler.h
     validator.h
 )
+target_include_directories(${name} SYSTEM PRIVATE "${better-enums_SOURCE_DIR}")

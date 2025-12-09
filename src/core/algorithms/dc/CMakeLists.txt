@@ -17,6 +17,7 @@ add_headers(${name}
         model/tuple.h
 )
 target_include_directories(${name} SYSTEM PRIVATE "${frozen_SOURCE_DIR}/include")
+target_include_directories(${name} SYSTEM PRIVATE "${better-enums_SOURCE_DIR}")
 
 set(name dc.parser)
 Desbordante_AddLibrary(${name}
@@ -25,3 +26,4 @@ Desbordante_AddLibrary(${name}
 )
 add_headers(${name} PRIVATE parser/dc_parser.h)
 target_include_directories(${name} SYSTEM PRIVATE "${frozen_SOURCE_DIR}/include")
+target_include_directories(${name} SYSTEM PRIVATE "${better-enums_SOURCE_DIR}")

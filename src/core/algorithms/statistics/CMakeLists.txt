@@ -5,3 +5,4 @@ Desbordante_AddLibrary(${name}
     LIBS ${Desb}.model.table ${Desb}.model.types ${Desb}.algos
 )
 add_headers(${name} PRIVATE data_stats.h statistic.h)
+target_include_directories(${name} SYSTEM PRIVATE "${better-enums_SOURCE_DIR}")

@@ -5,3 +5,4 @@ Desbordante_AddLibrary(${name}
     LIBS ${Desb}.dd ${Desb}.model.table ${Desb}.model.types spdlog::spdlog_header_only ${Desb}.algos
 )
 add_headers(${name} PRIVATE dd_verifier.h highlight.h)
+target_include_directories(${name} SYSTEM PRIVATE "${better-enums_SOURCE_DIR}")

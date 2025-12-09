@@ -12,3 +12,4 @@ add_headers(${name}
         util/stats_calculator.h
         util/value_combination.h
 )
+target_include_directories(${name} SYSTEM PRIVATE "${better-enums_SOURCE_DIR}")

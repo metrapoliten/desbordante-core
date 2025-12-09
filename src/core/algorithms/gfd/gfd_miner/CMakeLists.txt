@@ -6,3 +6,4 @@ Desbordante_AddLibrary(${name}
     LIBS ${Desb}.parser.graph ${Desb}.gfd ${Desb}.algos spdlog::spdlog_header_only
 )
 add_headers(${name} PRIVATE gfd_miner.h)
+target_include_directories(${name} SYSTEM PRIVATE "${better-enums_SOURCE_DIR}")

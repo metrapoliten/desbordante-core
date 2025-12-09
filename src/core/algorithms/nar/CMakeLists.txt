@@ -7,3 +7,4 @@ Desbordante_AddLibrary(${name}
     LIBS ${Desb}.model.table
 )
 add_headers(${name} PRIVATE nar_algorithm.h value_range.h)
+target_include_directories(${name} SYSTEM PRIVATE "${better-enums_SOURCE_DIR}")

@@ -40,3 +40,4 @@ add_headers(${name}
         util/timer.h
         util/type_util.h
 )
+target_include_directories(${name} SYSTEM PRIVATE "${better-enums_SOURCE_DIR}")
