@@ -18,9 +18,10 @@ add_headers(${name}
         model/tuple.h
 )
 
-set(name dc.parser)
+set(name parser)
 Desbordante_AddLibrary(${name}
+    PREFIX dc
     SRCS parser/dc_parser.cpp
-    LIBS spdlog::spdlog_header_only frozen better-enums
+    LIBS spdlog::spdlog_header_only frozen better-enums Boost::headers
 )
 add_headers(${name} PRIVATE parser/dc_parser.h)
