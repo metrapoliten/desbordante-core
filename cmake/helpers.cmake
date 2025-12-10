@@ -54,54 +54,64 @@ function(target_link_with_given given scope)
 endfunction()
 
 function(Desbordante_AddTarget name)
-    set(singleVals PREFIX TYPE LIB_TYPE)
-    set(multiVals SRCS LIBS)
-
-    cmake_parse_arguments(args "" "${singleVals}" "${multiVals}" ${ARGN})
-    if("${args_PREFIX}" STREQUAL "")
-        set(name "${Desb}.${name}")
-    else()
-        set(name "${Desb}.${args_PREFIX}.${name}")
-    endif()
-    if(args_TYPE STREQUAL "EXE")
-        add_executable(${name})
-    elseif(args_TYPE STREQUAL "LIB")
-        if(NOT args_LIB_TYPE)
-            add_library(${name})
-        elseif(args_LIB_TYPE STREQUAL "INTERFACE")
-            add_library(${name} INTERFACE)
-        else()
-            message(FATAL_ERROR "Unknown lib type")
-        endif ()
-    else()
-        message(FATAL_ERROR "add_target: TYPE must be EXE or LIB")
-    endif()
-    if(args_SRCS)
-        target_sources(${name} PRIVATE ${args_SRCS})
-    endif()
-    add_headers(${name} PUBLIC)
-    set_target_properties(${name} PROPERTIES LINK_LIBRARIES_ONLY_TARGETS ON)
-    if(args_LIBS)
-        target_link_libraries(${name} PRIVATE ${args_LIBS})
-    endif()
-    return(PROPAGATE name)
-endfunction()
-
-function(Desbordante_AddLibrary name)
     set(noVals CREATE_ALIAS)
-    set(singleVals PREFIX LIB_TYPE)
+    set(singleVals PREFIX TYPE)
     set(multiVals SRCS LIBS)
-    cmake_parse_arguments(args "${noVals}" "${singleVals}" "${multiVals}" ${ARGN})
-    Desbordante_AddTarget(${name}
-            PREFIX ${args_PREFIX}
-            TYPE LIB
-            LIB_TYPE ${args_LIB_TYPE}
-            SRCS ${args_SRCS}
-            LIBS ${args_LIBS}
-    )
-    if(args_CREATE_ALIAS)
+
+    cmake_parse_arguments(arg "${noVals}" "${singleVals}" "${multiVals}" ${ARGN})
+
+    if(DEFINED ${arg_PREFIX})
+        set(name "${Desb}.${args_PREFIX}.${name}")
+    else()
+        set(name "${Desb}.${name}")
+    endif()
+
+    if(arg_TYPE STREQUAL "EXE")
+        add_executable(${name})
+    elseif(arg_TYPE STREQUAL "LIB")
+        add_library(${name})
+    elseif(arg_TYPE STREQUAL "INTERFACE")
+        add_library(${name} INTERFACE)
+    elseif(arg_TYPE STREQUAL "OBJECT")
+        add_library(${name} OBJECT)
+    else()
+        add_library(${name} ${arg_TYPE})
+    endif()
+
+    set_target_properties(${name} PROPERTIES LINK_LIBRARIES_ONLY_TARGETS ON)
+    target_compile_features(${name} PUBLIC cxx_std_14)
+
+    macro(processScope scope raw_args)
+        if(NOT "${raw_args}" STREQUAL "")
+            set(innerNoVals "")
+            set(innerOneVals "")
+            set(innerMultiVals SRCS HDRS LIBS)
+
+            cmake_parse_arguments(innerArg "${innerNoVals}" "${innerOneVals}" "${innerMultiVals}" ${raw_args})
+
+            if(innerArg_SRCS)
+                target_sources(${name} ${scope} ${innerArg_SRCS})
+            endif()
+
+            if (innerArg_HDRS)
+                add_headers(${name} ${scope} ${innerArg_HDRS})
+            endif ()
+
+            if(innerArg_LIBS)
+                target_link_libraries(${name} ${scope} ${innerArg_LIBS})
+            endif()
+        endif()
+    endmacro()
+
+    process_scope(PRIVATE "${arg_PRIVATE}")
+    process_scope(PUBLIC "${arg_PUBLIC}")
+    process_scope(INTERFACE "${arg_INTERFACE}")
+
+    if(arg_CREATE_ALIAS AND arg_TYPE NOT STREQUAL "EXE")
         string(REPLACE "." "::" alias "${name}")
         add_library(${alias} ALIAS ${name})
     endif()
+
     return(PROPAGATE name)
 endfunction()
+
