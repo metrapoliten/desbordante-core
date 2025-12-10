@@ -3,6 +3,6 @@ Desbordante_AddLibrary(${name}
     CREATE_ALIAS
     PREFIX fd
     SRCS fastfds.cpp
-    LIBS spdlog::spdlog_header_only ${Desb}.fd.pli
+    LIBS spdlog::spdlog_header_only ${Desb}.fd.pli Boost::headers
 )
 add_headers(${name} PRIVATE fastfds.h)
