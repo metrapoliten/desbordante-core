@@ -1,21 +1,23 @@
-# ---- CMake Policies ----
-
 cmake_minimum_required(VERSION 3.25)
 
-if(POLICY CMP0167)
-    # deprecated by definition, but we use old behaviour for find_package(Boost) to load CMake's FindBoost module
-    # TODO: port project to "Modern CMake" https://gist.github.com/mbinna/c61dbb39bca0e4fb7d1f73b0d66a4fd1
-    cmake_policy(SET CMP0167 OLD)
-endif()
+list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_LIST_DIR}/cmake")
+include(desbordante_helpers)
+
+# ---- CMake Policies ----
 if(POLICY CMP0144)
+    # To use <PACKAGENAME>_ROOT variables. Added in version 3.27.
     cmake_policy(SET CMP0144 NEW)
 endif()
 
-if(POLICY CMP0175)
-    # Don't allow invalid arguments of `add_custom_command()`
-    cmake_policy(SET CMP0175 NEW)
+if(POLICY CMP0167)
+    # To search for the upstream BoostConfig.cmake. Added in version 3.30.
+    cmake_policy(SET CMP0167 NEW)
 endif()
 
+if(POLICY CMP0175)
+    # Don't allow invalid arguments of `add_custom_command()`. Added in version 3.31.
+    cmake_policy(SET CMP0175 NEW)
+endif()
 # ---- Project ----
 
 project(
@@ -90,8 +92,7 @@ endif()
 
 # Enable colored Ninja and compilers diagnostics
 set(CMAKE_COLOR_DIAGNOSTICS ON)
-
-set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_OPTIMIZE_DEPENDENCIES ON)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/target")
 
 if(BUILD_NATIVE)
@@ -130,11 +131,12 @@ endif()
 # Workaround for googletest bug with char conversions, being recognized by Clang 21+
 # See https://github.com/google/googletest/issues/4762
 # TODO(senichenkov): remove when googletest gets updated
-if (CMAKE_CXX_COMPILER_ID STREQUAL "Clang" AND CMAKE_CXX_COMPILER_VERSION VERSION_GREATER_EQUAL "21")
-	message(WARNING "Googletest has a bug recognized by Clang 21+. "
-					"Supressing character-conversion warning. "
-					"Consider using an older version of Clang.")
-				list(APPEND DEBUG_BUILD_OPTS "-Wno-error=character-conversion")
+if(CMAKE_CXX_COMPILER_ID STREQUAL "Clang" AND CMAKE_CXX_COMPILER_VERSION VERSION_GREATER_EQUAL "21")
+    message(WARNING "Googletest has a bug recognized by Clang 21+. "
+                    "Supressing character-conversion warning. "
+                    "Consider using an older version of Clang."
+    )
+    list(APPEND DEBUG_BUILD_OPTS "-Wno-error=character-conversion")
 endif()
 
 if(ASAN)
@@ -231,24 +233,30 @@ if(CMAKE_SOURCE_DIR STREQUAL PROJECT_SOURCE_DIR
     message(STATUS "Set CPM source cache location to ${CPM_SOURCE_CACHE}")
 endif()
 
-include(cmake/CPM.cmake)
+include(CPM)
 
 CPMAddPackage(
     NAME spdlog
     GITHUB_REPOSITORY gabime/spdlog
     GIT_TAG v1.15.2
-    OPTIONS
-        "SPDLOG_BUILD_EXAMPLE OFF"
-        "SPDLOG_BUILD_TESTS OFF"
-        "SPDLOG_INSTALL OFF"
-        "SPDLOG_HEADER_ONLY ON"
+    OPTIONS "SPDLOG_BUILD_EXAMPLE OFF" "SPDLOG_BUILD_TESTS OFF" "SPDLOG_INSTALL OFF"
+            "SPDLOG_HEADER_ONLY ON"
     SYSTEM YES
 )
-
-include_directories(SYSTEM "${spdlog_SOURCE_DIR}/include")
+# Set log level based on user input or build type
+set_property(
+    TARGET spdlog_header_only
+    APPEND
+    PROPERTY
+        INTERFACE_COMPILE_DEFINITIONS
+        $<$<BOOL:${LOG_LEVEL}>:SPDLOG_ACTIVE_LEVEL=SPDLOG_LEVEL_${LOG_LEVEL}>
+        $<$<AND:$<NOT:$<BOOL:${LOG_LEVEL}>>,$<CONFIG:Debug>>:SPDLOG_ACTIVE_LEVEL=SPDLOG_LEVEL_DEBUG>
+        $<$<AND:$<NOT:$<BOOL:${LOG_LEVEL}>>,$<NOT:$<CONFIG:Debug>>>:SPDLOG_ACTIVE_LEVEL=SPDLOG_LEVEL_INFO>
+)
 
 CPMAddPackage("gh:ktprime/emhash#5f327039a2776f38910e600889acf924a2d99ea3")
-include_directories(SYSTEM "${emhash_SOURCE_DIR}")
+add_library(emhash INTERFACE)
+target_include_directories(emhash SYSTEM INTERFACE ${emhash_SOURCE_DIR})
 
 CPMAddPackage(
     NAME frozen
@@ -256,7 +264,8 @@ CPMAddPackage(
     GIT_TAG 1.2.0
     DOWNLOAD_ONLY True
 )
-include_directories(SYSTEM "${frozen_SOURCE_DIR}/include")
+add_library(frozen INTERFACE)
+target_include_directories(frozen SYSTEM INTERFACE "${frozen_SOURCE_DIR}/include")
 
 CPMAddPackage(
     NAME better-enums
@@ -264,7 +273,8 @@ CPMAddPackage(
     GIT_TAG 0.11.3
     DOWNLOAD_ONLY True
 )
-include_directories(SYSTEM "${better-enums_SOURCE_DIR}")
+add_library(better-enums INTERFACE)
+target_include_directories(better-enums SYSTEM INTERFACE "${better-enums_SOURCE_DIR}")
 
 CPMAddPackage(
     NAME atomicbitvector
@@ -272,7 +282,10 @@ CPMAddPackage(
     GIT_TAG e295358fea9532fa4c37197630d037a4a53ddede
     DOWNLOAD_ONLY True
 )
-include_directories(SYSTEM "${atomicbitvector_SOURCE_DIR}/include")
+add_library(atomic_bitvector INTERFACE)
+target_include_directories(
+    atomic_bitvector SYSTEM INTERFACE "${atomicbitvector_SOURCE_DIR}/include"
+)
 
 if(COMPILE_TESTS)
     CPMAddPackage(
@@ -283,43 +296,27 @@ if(COMPILE_TESTS)
     )
 endif()
 
-if(PYTHON)
-    CPMAddPackage("gh:pybind/pybind11@2.13.4")
-endif()
-
 # Configure boost
 set(Boost_USE_STATIC_LIBS OFF)
 
 set(boost_libraries container thread graph)
-if (COMPILE_BENCHMARKS)
-	list(APPEND boost_libraries program_options)
+if(COMPILE_BENCHMARKS)
+    list(APPEND boost_libraries program_options)
 endif()
 
 find_package(Boost 1.85.0 REQUIRED COMPONENTS ${boost_libraries})
-if(Boost_FOUND)
-    message(STATUS "Found Boost include dirs: ${Boost_INCLUDE_DIRS}")
-    include_directories(${Boost_INCLUDE_DIRS})
-    message(STATUS "Found Boost library dirs: ${Boost_LIBRARY_DIRS}")
-else()
-    message(FATAL_ERROR "Boost not found. If boost is installed specify environment"
-                        "variables like \"BOOST_ROOT\" for hint to CMake where to search"
-    )
-endif()
 
 # --- Core Project Structure and Module Setup ---
-
-include_directories("src")
 
 add_subdirectory("src/core")
 
 # --- Optional Modules Setup ---
 
-# Configure tests
 if(COMPILE_TESTS)
     enable_testing()
 endif()
 
-if (COMPILE_TESTS OR COMPILE_BENCHMARKS)
+if(COMPILE_TESTS OR COMPILE_BENCHMARKS)
     add_subdirectory("src/tests")
 endif()
 
