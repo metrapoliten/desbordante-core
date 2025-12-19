@@ -1,4 +1,6 @@
-cmake_minimum_required(VERSION 3.25)
+# ---- CMake Policies ----
+
+cmake_minimum_required(VERSION 3.26)
 
 list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_LIST_DIR}/cmake")
 include(desbordante_helpers)
@@ -326,12 +328,9 @@ if(DESBORDANTE_BUILD_TESTS)
 endif()
 
 if(DESBORDANTE_BUILD_TESTS OR DESBORDANTE_BUILD_BENCHMARKS)
-    add_subdirectory("src/tests")
-endif()
-
-# Configure datasets
-if(DESBORDANTE_UNPACK_DATASETS)
+    # Configure the datasets required for tests and benchmarks (downloaded from desbordante-data)
     add_subdirectory("datasets")
+    add_subdirectory("src/tests")
 endif()
 
 # Configure Python bindings
