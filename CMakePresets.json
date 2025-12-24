@@ -85,6 +85,9 @@
             },
             "output": {
                 "outputOnFailure": true
+            },
+            "execution": {
+                "stopOnFailure": true
             }
         },
         {

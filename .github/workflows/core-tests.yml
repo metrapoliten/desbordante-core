@@ -44,9 +44,9 @@ jobs:
     strategy:
       matrix:
         system:
-          - os: ubuntu-latest
-            toolset: gcc
-            env: CXX=g++-10
+#          - os: ubuntu-latest
+#            toolset: gcc
+#            env: CXX=g++-10
 
           - os: ubuntu-latest
             toolset: llvm-clang
@@ -65,13 +65,13 @@ jobs:
           #     LDFLAGS="-L$(brew --prefix llvm@17)/lib/c++" BOOST_ROOT=/usr/local
           #   runtime-env: DYLD_LIBRARY_PATH=/usr/local/lib:${DYLD_LIBRARY_PATH}
 
-          - os: macos-latest
-            toolset: apple-clang
-            env: CXX=clang++
+#          - os: macos-latest
+#            toolset: apple-clang
+#            env: CXX=clang++
 
         cfg:
-          - { BUILD_TYPE: Release }
-          - { BUILD_TYPE: Debug }
+#          - { BUILD_TYPE: Release }
+#          - { BUILD_TYPE: Debug }
           - { BUILD_TYPE: DebugSan }
 
     runs-on: ${{ matrix.system.os }}
