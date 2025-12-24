@@ -25,3 +25,5 @@ target_link_libraries(
             frozen
             spdlog::spdlog_header_only
 )
+
+add_dependencies(${NAME} Desbordante.zip.performance-tests)

@@ -139,4 +139,9 @@ function(desbordante_add_test name)
     target_link_libraries(${name} PRIVATE ${arg_LIBS})
 
     gtest_discover_tests(${name} WORKING_DIRECTORY ${CMAKE_RUNTIME_OUTPUT_DIRECTORY})
+
+    add_dependencies(
+            ${name} Desbordante.zip.datasets Desbordante.zip.highway-neighbors
+            Desbordante.copy_test_input_data
+    )
 endfunction()
