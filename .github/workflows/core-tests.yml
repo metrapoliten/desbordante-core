@@ -94,7 +94,6 @@ jobs:
         shell: bash
         run: |
           export ${{ matrix.system.runtime-env }}
-          export ASAN_OPTIONS=alloc_dealloc_mismatch=0
 
           if [[ "${{ inputs.parallel-tests }}" != "false" ]]; then
             export CTEST_ARGS="-j ${nproc}"
