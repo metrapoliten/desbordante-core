@@ -111,7 +111,7 @@ if(CMAKE_CXX_COMPILER_ID MATCHES Clang)
     endif()
 
     execute_process(COMMAND grep -q "Ubuntu" /etc/os-release RESULT_VARIABLE IS_UBUNTU)
-    if(IS_UBUNTU EQUAL 0)
+#    if(IS_UBUNTU EQUAL 0)
         # alloc-dealloc-mismatch generates false positives on boost exceptions
         # This applies only to Ubuntu package:
         # https://github.com/llvm/llvm-project/issues/59432
@@ -128,7 +128,7 @@ if(CMAKE_CXX_COMPILER_ID MATCHES Clang)
         add_link_options(
                 "-fsanitize-ignorelist=${CMAKE_SOURCE_DIR}/address_sanitizer_ignore_list.txt"
         )
-    endif()
+#    endif()
 endif()
 
 # --- Dependencies installation ---
