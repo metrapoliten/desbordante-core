@@ -99,4 +99,4 @@ jobs:
             export CTEST_ARGS="-j ${nproc}"
           fi
           
-          ctest --preset ${{matrix.cfg.BUILD_TYPE}} $CTEST_ARGS 
+          ctest --preset ${{matrix.cfg.BUILD_TYPE}} $CTEST_ARGS --debug -VV
