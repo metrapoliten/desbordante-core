@@ -1,0 +1,1 @@
+hyperfine --prepare 'rm -rf  build/; sync; echo 3 | sudo tee /proc/sys/vm/drop_caches; cmake -S . -B build -DCOMPILE_BENCHMARKS=ON -DPYTHON=COMPILE -DCMAKE_BUILD_TYPE=Debug -G Ninja' 'cmake --build build -j16' --export-json experiment/without_changes.json
