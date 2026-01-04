@@ -179,7 +179,6 @@ function configure_and_build() {
     echo "CMake opts: ${EXTRA_CMAKE_OPTS[*]}"
     echo "Build opts: ${EXTRA_BUILD_OPTS[*]}"
 
-    rm -f build/$PRESET/CMakeCache.txt
     cmake --preset="$PRESET" "${EXTRA_CMAKE_OPTS[@]}"
     cmake --build --preset="$PRESET" "${EXTRA_BUILD_OPTS[@]}"
 }

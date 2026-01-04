@@ -10,7 +10,6 @@
                 "CMAKE_CXX_STANDARD": "20",
                 "DESBORDANTE_BUILD_NATIVE": "ON",
                 "DESBORDANTE_BUILD_TESTS": "ON",
-                "DESBORDANTE_UNPACK_DATASETS": "ON",
                 "CMAKE_COLOR_DIAGNOSTICS": "ON",
                 "CMAKE_EXPORT_COMPILE_COMMANDS": "ON",
                 "CMAKE_TOOLCHAIN_FILE": "cmake/desbordante_flags.cmake"
