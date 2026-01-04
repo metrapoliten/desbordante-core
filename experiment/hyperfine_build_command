@@ -1,1 +1,1 @@
-hyperfine -p 'rm -rf  build/; sync; echo 3 | sudo tee /proc/sys/vm/drop_caches; cmake --preset Debug -DDESBORDANTE_BUILD_BENCHMARKS=ON -DDESBORDANTE_BINDINGS=BUILD' 'cmake --build --preset Debug -j16' --export-json experiment/with_changes.json
+hyperfine -p 'rm -rf  build/; sync; echo 3 | sudo tee /proc/sys/vm/drop_caches; cmake --preset Debug -DDESBORDANTE_BUILD_BENCHMARKS=ON -DDESBORDANTE_BINDINGS=BUILD -DDESBORDANTE_FETCH_DATASETS=OFF' 'cmake --build --preset Debug -j16' --export-json experiment/with_changes.json
