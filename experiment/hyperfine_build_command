@@ -5,3 +5,4 @@ hyperfine -p 'rm -rf  build/; sync; echo 3 | sudo tee /proc/sys/vm/drop_caches; 
 rm -rf  build/;  cmake --preset Debug -DDESBORDANTE_BUILD_BENCHMARKS=ON -DDESBORDANTE_BINDINGS=BUILD -DDESBORDANTE_FETCH_DATASETS=OFF; cmake --build build -j16
 hyperfine -p 'sync; echo 3 | sudo tee /proc/sys/vm/drop_caches; touch src/core/algorithms/algorithm.cpp' 'cmake --build --preset Debug -j16' --export-json experiment/build_with_changes_touch_algo.json -m 100
 
+hyperfine -p 'sync; echo 3 | sudo tee /proc/sys/vm/drop_caches; touch src/core/algorithms/fd/eulerfd/eulerfd.cpp' 'cmake --build --preset Debug -j16' --export-json experiment/build_with_changes_touch_eulerfd.json -m 100
