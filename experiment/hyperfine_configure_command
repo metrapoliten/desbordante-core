@@ -1,1 +1,1 @@
-taskset -c 3 hyperfine --prepare 'rm -rf  build/; sync; echo 3 | sudo tee /proc/sys/vm/drop_caches' 'cmake -S . -B build -DCOMPILE_BENCHMARKS=ON -DPYTHON=COMPILE -DCMAKE_BUILD_TYPE=Debug -G Ninja' --export-json experiment/configure_without_changes.json -m 500
+taskset -c 15 hyperfine --prepare 'rm -rf  build/; sync; echo 3 | sudo tee /proc/sys/vm/drop_caches' 'cmake -S . -B build -DCOMPILE_BENCHMARKS=ON -DPYTHON=COMPILE -DCMAKE_BUILD_TYPE=Debug -G Ninja' --export-json experiment/configure_without_changes.json -m 500

@@ -1,0 +1,5 @@
+#initial full build (only build phase)
+hyperfine --prepare 'rm -rf  build/; sync; echo 3 | sudo tee /proc/sys/vm/drop_caches; cmake -S . -B build -DCOMPILE_BENCHMARKS=ON -DPYTHON=COMPILE -DCMAKE_BUILD_TYPE=Debug -G Ninja' 'cmake --build build -j16' --export-json experiment/build_without_changes.json
+
+# partial rebuild
+hyperfine --setup 'rm -rf  build/; cmake -S . -B build -DCOMPILE_BENCHMARKS=ON -DPYTHON=COMPILE -DCMAKE_BUILD_TYPE=Debug -G Ninja;cmake --build build -j16' --prepare 'sync; echo 3 | sudo tee /proc/sys/vm/drop_caches; touch src/core/algorithms/algorithm.cpp' 'cmake --build build -j16' --export-json experiment/build_without_changes_touch_algo.json
