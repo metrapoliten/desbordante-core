@@ -38,7 +38,7 @@ jobs:
         id: restore
         uses: ./.github/composite-actions/restore-datasets
         with:
-          github-token: ''
+          github-token: ${{ secrets.DESBORDANTE_DATA_COMMITS}}
       - name: Build
         run: |
           export CXX=g++-10
