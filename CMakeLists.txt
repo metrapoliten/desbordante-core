@@ -1,6 +1,6 @@
 # ---- CMake Policies ----
 
-cmake_minimum_required(VERSION 3.25)
+cmake_minimum_required(VERSION 3.26)
 
 if(POLICY CMP0167)
     # deprecated by definition, but we use old behaviour for find_package(Boost) to load CMake's FindBoost module
@@ -46,6 +46,7 @@ endif()
 option(DESBORDANTE_BUILD_BENCHMARKS "Build benchmarks" OFF)
 option(DESBORDANTE_BUILD_NATIVE "Build for host machine" ON)
 option(DESBORDANTE_BUILD_TESTS "Build tests" ON)
+option(DESBORDANTE_FETCH_DATASETS "Fetch datasets from desbordante-data" ON)
 option(DESBORDANTE_GDB_SYMBOLS "Include debug information for use by GDB" OFF)
 # ---- Vertical Hashing Optimization ----
 # Performance/functionality trade-off:
@@ -325,12 +326,9 @@ if(DESBORDANTE_BUILD_TESTS)
 endif()
 
 if (DESBORDANTE_BUILD_TESTS OR DESBORDANTE_BUILD_BENCHMARKS)
-    add_subdirectory("src/tests")
-endif()
-
-# Configure datasets
-if(DESBORDANTE_UNPACK_DATASETS)
+    # Configure the datasets required for tests and benchmarks (downloaded from desbordante-data)
     add_subdirectory("datasets")
+    add_subdirectory("src/tests")
 endif()
 
 # Configure Python bindings
