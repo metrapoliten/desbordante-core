@@ -5,7 +5,8 @@ cmake-build-debug/
 dist/
 lib/
 venv/
-datasets/datasets.zip
+datasets/*.sha256
+datasets/*.zip
 
 # IDE and related files
 .cache/
@@ -16,3 +17,6 @@ datasets/datasets.zip
 **/.DS_Store
 
 .env
+
+# File, which allows developers to specify their own local build configurations and options
+CMakeUserPresets.json

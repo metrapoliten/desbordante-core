@@ -31,12 +31,11 @@ jobs:
           os: ubuntu-latest
           toolset: gcc
           boost-libraries: 'container,thread,graph,program_options'
-      - name: Download datasets
-        uses: ./.github/composite-actions/download-datasets
       - name: Build
         run: |
           export CXX=g++-10
-          ./build.sh --benchmark --no-tests
+          cmake --preset Release -DDESBORDANTE_BUILD_BENCHMARKS=ON -DDESBORDANTE_BUILD_TESTS=OFF
+          cmake --build --preset Release
 
       - name: Get previous results
         run: |
