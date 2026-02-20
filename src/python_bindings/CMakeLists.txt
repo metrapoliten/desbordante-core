@@ -20,7 +20,7 @@ set(MODULE_NAME
 pybind11_add_module(${MODULE_NAME} bind_main_classes.cpp bind_main_classes.h bindings.cpp)
 target_link_libraries(
     ${MODULE_NAME}
-    PRIVATE pybind11::module
+    PUBLIC pybind11::module
             Desbordante::algos
             better-enums
             spdlog::spdlog_header_only
@@ -43,7 +43,7 @@ target_sources(
     PRIVATE data/bind_data_types.h data/bind_data_types.cpp
     PRIVATE FILE_SET HEADERS BASE_DIRS "${CMAKE_CURRENT_SOURCE_DIR}/.."
 )
-target_link_libraries(${NAME} PRIVATE pybind11::pybind11)
+target_link_libraries(${NAME} PUBLIC pybind11::pybind11)
 set_target_properties(${NAME} PROPERTIES CXX_VISIBILITY_PRESET "hidden")
 
 set(NAME bindlib.util)
@@ -60,7 +60,7 @@ target_sources(
     PRIVATE FILE_SET HEADERS BASE_DIRS "${CMAKE_CURRENT_SOURCE_DIR}/.."
 )
 target_link_libraries(
-    ${NAME} PRIVATE better-enums spdlog::spdlog_header_only Boost::headers pybind11::pybind11
+    ${NAME} PUBLIC better-enums spdlog::spdlog_header_only Boost::headers pybind11::pybind11
 )
 set_target_properties(${NAME} PROPERTIES CXX_VISIBILITY_PRESET "hidden")
 
