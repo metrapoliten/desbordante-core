@@ -6,6 +6,7 @@
 #include <typeinfo>
 
 #include <boost/any.hpp>
+#include <boost/type_index.hpp>
 
 #include "core/config/exceptions.h"
 #include "core/config/ioption.h"
@@ -148,8 +149,11 @@ T Option<T>::ConvertValue(boost::any const &value) const {
         if (!default_func_) throw ConfigurationError(no_value_no_default);
         return default_func_();
     } else {
-        if (value.type() != typeid(T))
-            throw ConfigurationError(std::string("Incorrect type for option ") + name_.data());
+        if (value.type() != typeid(T)) {
+            const std::string boost_any = boost::typeindex::type_index(value.type()).pretty_name();
+            const std::string option_type = boost::typeindex::type_id<T>().pretty_name();
+            throw ConfigurationError(std::string("Incorrect type for option ") + name_.data() + std::string(".\n Boost::any: ") + boost_any + std::string("\n Option type: ") + option_type);
+        }
         return boost::any_cast<T>(value);
     }
 }
