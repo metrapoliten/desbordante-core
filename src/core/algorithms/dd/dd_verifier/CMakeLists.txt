@@ -7,7 +7,7 @@ target_sources(
 )
 target_link_libraries(
     ${NAME}
-    PRIVATE ${DESBORDANTE_PREFIX}::dd
+    PUBLIC ${DESBORDANTE_PREFIX}::dd
             ${DESBORDANTE_PREFIX}::model::table
             ${DESBORDANTE_PREFIX}::model::types
             spdlog::spdlog_header_only

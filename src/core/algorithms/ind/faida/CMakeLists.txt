@@ -15,7 +15,7 @@ target_sources(
 )
 target_link_libraries(
     ${NAME}
-    PRIVATE spdlog::spdlog_header_only
+    PUBLIC spdlog::spdlog_header_only
             ${DESBORDANTE_PREFIX}::ind
             emhash
             better-enums

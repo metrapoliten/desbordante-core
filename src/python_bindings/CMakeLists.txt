@@ -31,9 +31,9 @@ target_link_libraries(
 
 # Uncomment to debug linker issues
 if(APPLE)
-    target_link_libraries(${MODULE_NAME} PRIVATE "-Wl,-undefined,error" pybind11::embed)
+    target_link_libraries(${MODULE_NAME} PUBLIC "-Wl,-undefined,error" pybind11::embed)
 else()
-    target_link_libraries(${MODULE_NAME} PRIVATE "-Wl,--no-undefined" pybind11::embed)
+    target_link_libraries(${MODULE_NAME} PUBLIC "-Wl,--no-undefined" pybind11::embed)
 endif()
 
 set(NAME bindlib.data)

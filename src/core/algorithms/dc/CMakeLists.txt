@@ -9,7 +9,7 @@ target_sources(
     PUBLIC FILE_SET HEADERS BASE_DIRS "${PROJECT_SOURCE_DIR}/src"
 )
 target_link_libraries(
-    ${NAME} PRIVATE ${DESBORDANTE_PREFIX}::algos spdlog::spdlog_header_only frozen better-enums
+    ${NAME} PUBLIC ${DESBORDANTE_PREFIX}::algos spdlog::spdlog_header_only frozen better-enums
                     Boost::headers
 )
 
@@ -20,4 +20,4 @@ target_sources(
     PRIVATE parser/dc_parser.cpp
     PUBLIC FILE_SET HEADERS BASE_DIRS "${PROJECT_SOURCE_DIR}/src"
 )
-target_link_libraries(${NAME} PRIVATE spdlog::spdlog_header_only frozen better-enums Boost::headers)
+target_link_libraries(${NAME} PUBLIC spdlog::spdlog_header_only frozen better-enums Boost::headers)

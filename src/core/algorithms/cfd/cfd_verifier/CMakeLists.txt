@@ -7,6 +7,6 @@ target_sources(
 )
 target_link_libraries(
     ${NAME}
-    PRIVATE ${DESBORDANTE_PREFIX}::cfd::util ${DESBORDANTE_PREFIX}::cfd::model
+    PUBLIC ${DESBORDANTE_PREFIX}::cfd::util ${DESBORDANTE_PREFIX}::cfd::model
             ${DESBORDANTE_PREFIX}::algos spdlog::spdlog_header_only better-enums Boost::headers
 )

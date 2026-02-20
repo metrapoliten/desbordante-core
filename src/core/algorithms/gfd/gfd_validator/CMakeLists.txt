@@ -7,6 +7,6 @@ target_sources(
 )
 target_link_libraries(
     ${NAME}
-    PRIVATE ${DESBORDANTE_PREFIX}::parser::graph spdlog::spdlog_header_only
+    PUBLIC ${DESBORDANTE_PREFIX}::parser::graph spdlog::spdlog_header_only
             ${DESBORDANTE_PREFIX}::gfd ${DESBORDANTE_PREFIX}::algos better-enums Boost::headers
 )

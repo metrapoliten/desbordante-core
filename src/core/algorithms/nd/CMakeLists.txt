@@ -7,4 +7,4 @@ target_sources(
     PRIVATE nd.cpp util/get_vertical_names.cpp
     PUBLIC FILE_SET HEADERS BASE_DIRS "${PROJECT_SOURCE_DIR}/src"
 )
-target_link_libraries(${NAME} PRIVATE Boost::headers)
+target_link_libraries(${NAME} PUBLIC Boost::headers)

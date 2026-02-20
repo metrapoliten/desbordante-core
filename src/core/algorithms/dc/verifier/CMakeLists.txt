@@ -7,7 +7,7 @@ target_sources(
 )
 target_link_libraries(
     ${NAME}
-    PRIVATE ${DESBORDANTE_PREFIX}::model::table
+    PUBLIC ${DESBORDANTE_PREFIX}::model::table
             ${DESBORDANTE_PREFIX}::model::types
             ${DESBORDANTE_PREFIX}::dc::model
             ${DESBORDANTE_PREFIX}::dc::parser

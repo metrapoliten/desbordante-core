@@ -8,7 +8,7 @@ target_sources(
 )
 target_link_libraries(
     ${NAME}
-    PRIVATE ${DESBORDANTE_PREFIX}::testlib::common
+    PUBLIC ${DESBORDANTE_PREFIX}::testlib::common
             ${DESBORDANTE_PREFIX}::dc::fastadc
             ${DESBORDANTE_PREFIX}::dd::split
             ${DESBORDANTE_PREFIX}::ind

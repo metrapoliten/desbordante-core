@@ -82,7 +82,7 @@ target_sources(
 )
 target_link_libraries(
     ${NAME}
-    PRIVATE ${DESBORDANTE_PREFIX}::util ${DESBORDANTE_PREFIX}::config
+    PUBLIC ${DESBORDANTE_PREFIX}::util ${DESBORDANTE_PREFIX}::config
             ${DESBORDANTE_PREFIX}::parser::csv spdlog::spdlog_header_only better-enums
             Boost::headers
 )

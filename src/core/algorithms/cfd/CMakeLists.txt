@@ -8,7 +8,7 @@ target_sources(
             util/set_util.cpp util/tidlist_util.cpp
     PUBLIC FILE_SET HEADERS BASE_DIRS "${PROJECT_SOURCE_DIR}/src"
 )
-target_link_libraries(${NAME} PRIVATE Boost::headers)
+target_link_libraries(${NAME} PUBLIC Boost::headers)
 
 set(NAME cfd.model)
 desbordante_add_lib(NAME OBJECT)
@@ -18,7 +18,7 @@ target_sources(
     PUBLIC FILE_SET HEADERS BASE_DIRS "${PROJECT_SOURCE_DIR}/src"
 )
 target_link_libraries(
-    ${NAME} PRIVATE ${DESBORDANTE_PREFIX}::cfd::util ${DESBORDANTE_PREFIX}::model::table
+    ${NAME} PUBLIC ${DESBORDANTE_PREFIX}::cfd::util ${DESBORDANTE_PREFIX}::model::table
                     Boost::headers
 )
 
@@ -31,6 +31,6 @@ target_sources(
 )
 target_link_libraries(
     ${NAME}
-    PRIVATE ${DESBORDANTE_PREFIX}::cfd::model ${DESBORDANTE_PREFIX}::cfd::util
+    PUBLIC ${DESBORDANTE_PREFIX}::cfd::model ${DESBORDANTE_PREFIX}::cfd::util
             ${DESBORDANTE_PREFIX}::algos spdlog::spdlog_header_only better-enums Boost::headers
 )

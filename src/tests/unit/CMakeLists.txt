@@ -9,7 +9,7 @@ target_sources(
     PRIVATE main.cpp
     PUBLIC FILE_SET HEADERS BASE_DIRS "${PROJECT_SOURCE_DIR}/src"
 )
-target_link_libraries(${NAME} PRIVATE spdlog::spdlog_header_only gtest)
+target_link_libraries(${NAME} PUBLIC spdlog::spdlog_header_only gtest)
 
 set(NAME testlib.gfd.paths)
 desbordante_add_lib(NAME OBJECT)
@@ -18,7 +18,7 @@ target_sources(
     PRIVATE all_gfd_paths.cpp
     PUBLIC FILE_SET HEADERS BASE_DIRS "${PROJECT_SOURCE_DIR}/src"
 )
-target_link_libraries(${NAME} PRIVATE Boost::headers)
+target_link_libraries(${NAME} PUBLIC Boost::headers)
 
 set(NAME testlib.hash)
 desbordante_add_lib(NAME OBJECT)
@@ -35,7 +35,7 @@ target_sources(
     PRIVATE test_ind_util.cpp
     PUBLIC FILE_SET HEADERS BASE_DIRS "${PROJECT_SOURCE_DIR}/src"
 )
-target_link_libraries(${NAME} PRIVATE ${DESBORDANTE_PREFIX}::ind gtest Boost::headers)
+target_link_libraries(${NAME} PUBLIC ${DESBORDANTE_PREFIX}::ind gtest Boost::headers)
 
 # --- AC ---
 desbordante_add_test(

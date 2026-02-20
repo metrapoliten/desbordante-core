@@ -30,7 +30,7 @@ target_sources(
     PUBLIC FILE_SET HEADERS BASE_DIRS "${PROJECT_SOURCE_DIR}/src"
 )
 target_link_libraries(
-    ${NAME} PRIVATE ${DESBORDANTE_PREFIX}::model::table ${DESBORDANTE_PREFIX}::algos Boost::headers
+    ${NAME} PUBLIC ${DESBORDANTE_PREFIX}::model::table ${DESBORDANTE_PREFIX}::algos Boost::headers
 )
 
 # --- PliBasedFD ---
@@ -41,4 +41,4 @@ target_sources(
     PRIVATE pli_based_fd_algorithm.cpp
     PUBLIC FILE_SET HEADERS BASE_DIRS "${PROJECT_SOURCE_DIR}/src"
 )
-target_link_libraries(${NAME} PRIVATE ${DESBORDANTE_PREFIX}::fd Boost::headers)
+target_link_libraries(${NAME} PUBLIC ${DESBORDANTE_PREFIX}::fd Boost::headers)

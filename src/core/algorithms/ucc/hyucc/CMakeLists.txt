@@ -7,7 +7,7 @@ target_sources(
 )
 target_link_libraries(
     ${NAME}
-    PRIVATE spdlog::spdlog_header_only ${DESBORDANTE_PREFIX}::config
+    PUBLIC spdlog::spdlog_header_only ${DESBORDANTE_PREFIX}::config
             ${DESBORDANTE_PREFIX}::fd::hy::common ${DESBORDANTE_PREFIX}::ucc
             ${DESBORDANTE_PREFIX}::algos Boost::headers
 )

@@ -6,5 +6,5 @@ target_sources(
     PUBLIC FILE_SET HEADERS BASE_DIRS "${PROJECT_SOURCE_DIR}/src"
 )
 target_link_libraries(
-    ${NAME} PRIVATE spdlog::spdlog_header_only ${DESBORDANTE_PREFIX}::fd::pli Boost::headers
+    ${NAME} PUBLIC spdlog::spdlog_header_only ${DESBORDANTE_PREFIX}::fd::pli Boost::headers
 )

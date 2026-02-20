@@ -5,4 +5,4 @@ target_sources(
     PRIVATE spider.cpp attribute.cpp
     PUBLIC FILE_SET HEADERS BASE_DIRS "${PROJECT_SOURCE_DIR}/src"
 )
-target_link_libraries(${NAME} PRIVATE better-enums Boost::headers)
+target_link_libraries(${NAME} PUBLIC better-enums Boost::headers)
