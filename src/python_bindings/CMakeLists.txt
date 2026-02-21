@@ -41,7 +41,7 @@ desbordante_add_lib(NAME OBJECT)
 target_sources(
     ${NAME}
     PRIVATE data/bind_data_types.h data/bind_data_types.cpp
-    PRIVATE FILE_SET HEADERS BASE_DIRS "${CMAKE_CURRENT_SOURCE_DIR}/.."
+    PUBLIC FILE_SET HEADERS BASE_DIRS "${CMAKE_CURRENT_SOURCE_DIR}/.."
 )
 target_link_libraries(${NAME} PUBLIC pybind11::pybind11)
 set_target_properties(${NAME} PROPERTIES CXX_VISIBILITY_PRESET "hidden")
@@ -57,7 +57,7 @@ target_sources(
             py_util/opt_to_py.cpp
             py_util/py_to_any.cpp
             py_util/table_serialization.cpp
-    PRIVATE FILE_SET HEADERS BASE_DIRS "${CMAKE_CURRENT_SOURCE_DIR}/.."
+    PUBLIC FILE_SET HEADERS BASE_DIRS "${CMAKE_CURRENT_SOURCE_DIR}/.."
 )
 target_link_libraries(
     ${NAME} PUBLIC better-enums spdlog::spdlog_header_only Boost::headers pybind11::pybind11
