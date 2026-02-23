@@ -37,7 +37,7 @@ endif()
 
 set_target_properties(
     ${MODULE_NAME}
-    PROPERTIES CXX_VISIBILITY_PRESET "hidden"
+    PROPERTIES # CXX_VISIBILITY_PRESET "hidden"
                # Configure output directory to central build folder
                # Ensures generated .so/.pyd files are placed alongside other binaries
                LIBRARY_OUTPUT_DIRECTORY
@@ -59,7 +59,7 @@ target_sources(
     PRIVATE FILE_SET HEADERS BASE_DIRS "${CMAKE_CURRENT_SOURCE_DIR}/.."
 )
 target_link_libraries(${NAME} PUBLIC pybind11::pybind11)
-set_target_properties(${NAME} PROPERTIES CXX_VISIBILITY_PRESET "hidden")
+#set_target_properties(${NAME} PROPERTIES CXX_VISIBILITY_PRESET "hidden")
 
 set(NAME bindlib.util)
 desbordante_add_lib(NAME OBJECT)
@@ -77,7 +77,7 @@ target_sources(
 target_link_libraries(
     ${NAME} PRIVATE better-enums spdlog::spdlog_header_only Boost::headers pybind11::pybind11
 )
-set_target_properties(${NAME} PROPERTIES CXX_VISIBILITY_PRESET "hidden")
+#set_target_properties(${NAME} PROPERTIES CXX_VISIBILITY_PRESET "hidden")
 
 desbordante_add_bind(
     ac
