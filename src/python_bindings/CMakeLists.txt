@@ -17,16 +17,31 @@ set(MODULE_NAME
     CACHE INTERNAL ""
 )
 
-pybind11_add_module(${MODULE_NAME} bind_main_classes.cpp bindings.cpp)
+add_library(${MODULE_NAME} MODULE bind_main_classes.cpp bindings.cpp)
 target_link_libraries(
     ${MODULE_NAME}
-    PUBLIC pybind11::module
+    PRIVATE pybind11::module
             Desbordante::algos
             better-enums
             spdlog::spdlog_header_only
             Boost::headers
             Desbordante.bindlib.util
             Desbordante.bindlib.data
+)
+pybind11_extension(${MODULE_NAME})
+
+if(NOT ${CMAKE_BUILD_TYPE} MATCHES Debug)
+    # Strip unnecessary sections of the binary on Linux/macOS
+    pybind11_strip(${MODULE_NAME})
+endif()
+
+set_target_properties(
+    ${MODULE_NAME}
+    PROPERTIES CXX_VISIBILITY_PRESET "hidden"
+               # Configure output directory to central build folder
+               # Ensures generated .so/.pyd files are placed alongside other binaries
+               LIBRARY_OUTPUT_DIRECTORY
+               ${CMAKE_RUNTIME_OUTPUT_DIRECTORY} # ${CMAKE_BINARY_DIR}/target
 )
 
 # Uncomment to debug linker issues
@@ -41,7 +56,7 @@ desbordante_add_lib(NAME OBJECT)
 target_sources(
     ${NAME}
     PRIVATE data/bind_data_types.cpp
-    PUBLIC FILE_SET HEADERS BASE_DIRS "${CMAKE_CURRENT_SOURCE_DIR}/.."
+    PRIVATE FILE_SET HEADERS BASE_DIRS "${CMAKE_CURRENT_SOURCE_DIR}/.."
 )
 target_link_libraries(${NAME} PUBLIC pybind11::pybind11)
 set_target_properties(${NAME} PROPERTIES CXX_VISIBILITY_PRESET "hidden")
@@ -57,10 +72,10 @@ target_sources(
             py_util/opt_to_py.cpp
             py_util/py_to_any.cpp
             py_util/table_serialization.cpp
-    PUBLIC FILE_SET HEADERS BASE_DIRS "${CMAKE_CURRENT_SOURCE_DIR}/.."
+    PRIVATE FILE_SET HEADERS BASE_DIRS "${CMAKE_CURRENT_SOURCE_DIR}/.."
 )
 target_link_libraries(
-    ${NAME} PUBLIC better-enums spdlog::spdlog_header_only Boost::headers pybind11::pybind11
+    ${NAME} PRIVATE better-enums spdlog::spdlog_header_only Boost::headers pybind11::pybind11
 )
 set_target_properties(${NAME} PROPERTIES CXX_VISIBILITY_PRESET "hidden")
 
