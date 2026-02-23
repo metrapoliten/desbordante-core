@@ -104,9 +104,9 @@ function(desbordante_add_bind name)
     set_target_properties(${bind_name} PROPERTIES CXX_VISIBILITY_PRESET "hidden")
 
     list(APPEND arg_LIBS pybind11::pybind11 ${DESBORDANTE_PREFIX}.compile_feats)
-    target_link_libraries(${bind_name} PUBLIC ${arg_LIBS})
+    target_link_libraries(${bind_name} PRIVATE ${arg_LIBS})
 
-    target_link_libraries(${MODULE_NAME} PUBLIC ${bind_name})
+    target_link_libraries(${MODULE_NAME} PRIVATE ${bind_name})
 endfunction()
 
 #[=[
