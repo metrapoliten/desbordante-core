@@ -45,11 +45,11 @@ set_target_properties(
 )
 
 # Uncomment to debug linker issues
-if(APPLE)
-    target_link_libraries(${MODULE_NAME} PUBLIC "-Wl,-undefined,error" pybind11::embed)
-else()
-    target_link_libraries(${MODULE_NAME} PUBLIC "-Wl,--no-undefined" pybind11::embed)
-endif()
+#if(APPLE)
+#    target_link_libraries(${MODULE_NAME} PUBLIC "-Wl,-undefined,error" pybind11::embed)
+#else()
+#    target_link_libraries(${MODULE_NAME} PUBLIC "-Wl,--no-undefined" pybind11::embed)
+#endif()
 
 set(NAME bindlib.data)
 desbordante_add_lib(NAME OBJECT)
