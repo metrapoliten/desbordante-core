@@ -5,7 +5,7 @@
 
 namespace model {
 
-class IDatasetStream {
+class __attribute__((visibility("default"))) IDatasetStream {
 public:
     using Row = std::vector<std::string>;
 

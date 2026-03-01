@@ -3,13 +3,16 @@
 #include <enum.h>
 
 namespace algos::metric {
-
+#pragma push_macro("BETTER_ENUMS_CLASS_ATTRIBUTE")
+#undef BETTER_ENUMS_CLASS_ATTRIBUTE
+#define BETTER_ENUMS_CLASS_ATTRIBUTE __attribute__((visibility("default")))
 BETTER_ENUM(Metric, char, euclidean = 0, /* Standard metric for calculating the distance between
                                           * numeric values */
             levenshtein,                 /* Levenshtein distance between strings */
             cosine /* Represent strings as q-gram vectors and calculate cosine distance
                     * between these vectors */
 )
+#pragma pop_macro("BETTER_ENUMS_CLASS_ATTRIBUTE")
 
 BETTER_ENUM(MetricAlgo, char,
             brute = 0, /* Brute force algorithm. Calculates distance between all possible pairs
