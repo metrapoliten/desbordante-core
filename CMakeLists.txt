@@ -65,6 +65,21 @@ option(DESBORDANTE_SAFE_VERTICAL_HASHING
 option(DESBORDANTE_UNPACK_DATASETS "Unpack datasets" ON)
 option(DESBORDANTE_USE_LTO "Build using interprocedural optimization" OFF)
 
+option(ENABLE_COVERAGE "Enable coverage instrumentation" OFF)
+
+# $ ./build.sh -C-DENABLE_COVERAGE=ON
+# $ ctest --test-dir build --exclude-regex ".*HeavyDatasets.*" -j14
+# mkdir -p cov/
+# for clang:
+# $ gcovr --gcov-executable "llvm-cov gcov" --filter src/core --html-details gcovr.html --gcov-ignore-parse-errors
+# open cov/gcovr.html in browser
+# without --gcov-ignore-parse-errors there are errors with my clang22.1.1 (no tested with gcc)
+# also look at llvm-cov, gcov, lcov
+if(ENABLE_COVERAGE)
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} --coverage -O0 -g") # coverage + debug
+    set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} --coverage")
+endif()
+
 set(DESBORDANTE_SANITIZER
     ""
     CACHE STRING "Build with sanitizer, possible values: ADDRESS, UB"
